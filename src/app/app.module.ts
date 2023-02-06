@@ -7,6 +7,11 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { AccountModule } from './account/account.module';
+import { CustomerModule } from './customer/customer.module';
+import { DepositModule } from './deposit/deposit.module';
+import { TransferModule } from './transfer/transfer.module';
+import { AuthService } from './login/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +25,13 @@ import { MaterialModule } from './material/material.module';
     MaterialModule,
     SharedModule,
     LoginModule,
+    AccountModule,
+    CustomerModule,
+    DepositModule,
+    TransferModule
 
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
