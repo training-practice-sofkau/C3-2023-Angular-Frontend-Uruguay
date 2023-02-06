@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AccountTypeComponent } from './account-type/account-type.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AccountTypeComponent
+  ],
   imports: [
     CommonModule
   ]
