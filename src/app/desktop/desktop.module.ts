@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DesktopComponent } from './desktop.component';
 import { MaterialModule } from '../material/material.module';
-import { LoginModule } from '../login/login-module.module';
+import { LoginModule } from '../login/login.module';
 
 
 
