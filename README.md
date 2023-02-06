@@ -19,13 +19,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Body of the delivery
 ¿Qué está entregando?
-[Answer]
+[Create components and modules to fulfill the requirements of the aplication]
 
 ¿Qué hizo falta?
 [Answer]
 
 ¿Qué dificultades se tuvieron?
-[Answer]
+[Understanding the concept of modules and their function]
 ```
 
 ## Workshop
