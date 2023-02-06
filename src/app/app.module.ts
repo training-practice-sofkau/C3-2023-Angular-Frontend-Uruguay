@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login-module.module';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HomeComponent } from './home/home.component';
     MaterialModule,
     SharedModule,
     LoginModule,
+    DashboardModule,
   ],
   providers: []
 })
