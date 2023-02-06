@@ -7,10 +7,16 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { NewDepositComponent } from './movements/new-deposit/new-deposit.component';
+import { NewTransaccionComponent } from './movements/new-transaccion/new-transaccion.component';
+import { ViewTransferComponent } from './movements/view-transfer/view-transfer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NewDepositComponent,
+    NewTransaccionComponent,
+    ViewTransferComponent,
   ],
   imports: [
     BrowserModule,
