@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SinginComponent } from './singin/singin.component';
-import { SingupComponent } from './singup/singup.component';
-import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
+import { SignOutComponent } from './sign-out/sign-out.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
 @NgModule({
   declarations: [
-    SinginComponent,
-    SingupComponent,
-    SingOutComponent,
+    SignInComponent,
+    SignOutComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,

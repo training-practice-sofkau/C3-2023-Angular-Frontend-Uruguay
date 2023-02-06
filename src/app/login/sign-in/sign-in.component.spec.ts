@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SingOutComponent } from './sing-out.component';
+import { SignInComponent } from './sign-in.component';
 
-describe('SingOutComponent', () => {
-  let component: SingOutComponent;
-  let fixture: ComponentFixture<SingOutComponent>;
+describe('SignInComponent', () => {
+  let component: SignInComponent;
+  let fixture: ComponentFixture<SignInComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingOutComponent ]
+      declarations: [ SignInComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SingOutComponent);
+    fixture = TestBed.createComponent(SignInComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -15,17 +15,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 3 - Day 1] - Angular (Estructura de proyecto)
+[Workshop Week 3 - Day 1] - Angular (Project Structure)
 
 # Body of the delivery
-¿Qué está entregando?
-[Answer]
+What is being delivered?
 
-¿Qué hizo falta?
-[Answer]
+What am I missing to deliver?
 
-¿Qué dificultades se tuvieron?
-[Answer]
+What difficulty did you have?
 ```
 
 ## Workshop
