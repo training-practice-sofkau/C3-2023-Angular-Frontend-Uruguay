@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CreateAccountComponent
+  ],
   imports: [
     CommonModule
   ]
