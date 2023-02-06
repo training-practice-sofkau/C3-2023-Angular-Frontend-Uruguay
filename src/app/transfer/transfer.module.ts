@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CreateTransferComponent } from './create-transfer/create-transfer/create-transfer.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CreateTransferComponent
+  ],
   imports: [
     CommonModule
   ]
