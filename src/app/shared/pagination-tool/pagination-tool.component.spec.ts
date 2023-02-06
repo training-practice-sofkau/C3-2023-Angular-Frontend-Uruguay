@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteBtnComponent } from './delete-btn.component';
+import { PaginationToolComponent } from './pagination-tool.component';
 
-describe('DeleteBtnComponent', () => {
-  let component: DeleteBtnComponent;
-  let fixture: ComponentFixture<DeleteBtnComponent>;
+describe('PaginationToolComponent', () => {
+  let component: PaginationToolComponent;
+  let fixture: ComponentFixture<PaginationToolComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteBtnComponent ]
+      declarations: [ PaginationToolComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeleteBtnComponent);
+    fixture = TestBed.createComponent(PaginationToolComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
