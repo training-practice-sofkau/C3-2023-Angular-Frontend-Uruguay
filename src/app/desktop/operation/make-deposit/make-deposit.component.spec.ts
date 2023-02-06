@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateAccountComponent } from './create-account.component';
+import { MakeDepositComponent } from './make-deposit.component';
 
-describe('CreateAccountComponent', () => {
-  let component: CreateAccountComponent;
-  let fixture: ComponentFixture<CreateAccountComponent>;
+describe('MakeDepositComponent', () => {
+  let component: MakeDepositComponent;
+  let fixture: ComponentFixture<MakeDepositComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateAccountComponent ]
+      declarations: [ MakeDepositComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateAccountComponent);
+    fixture = TestBed.createComponent(MakeDepositComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
