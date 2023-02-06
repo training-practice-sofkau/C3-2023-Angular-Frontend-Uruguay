@@ -4,6 +4,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from '../material/material.module';
 import { FooterComponent } from './footer/footer.component';
 import { DeleteComponent } from './delete/delete.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -11,7 +12,8 @@ import { DeleteComponent } from './delete/delete.component';
   declarations: [
     ToolbarComponent,
     FooterComponent,
-    DeleteComponent
+    DeleteComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
