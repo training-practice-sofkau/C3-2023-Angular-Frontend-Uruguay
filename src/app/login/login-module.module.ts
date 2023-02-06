@@ -5,8 +5,6 @@ import { SignOutComponent } from './sign-out/sign-out.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DesktopComponent } from '../desktop/desktop.component';
-import { DesktopModule } from '../desktop/desktop.module';
-
 
 
 @NgModule({
@@ -18,7 +16,6 @@ import { DesktopModule } from '../desktop/desktop.module';
   ],
   imports: [
     CommonModule,
-    DesktopModule,
     MaterialModule,
   ]
 })
