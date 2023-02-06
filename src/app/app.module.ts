@@ -6,6 +6,8 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { CustomerAccountModule } from './customer-account/customer-account.module';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { MaterialModule } from './material/material.module';
     MaterialModule,
     SharedModule,
     LoginModule,
-
+    CustomerAccountModule,
+    TransactionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
