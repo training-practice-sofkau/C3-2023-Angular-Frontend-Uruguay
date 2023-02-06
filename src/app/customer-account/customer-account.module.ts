@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MyAccountsComponent } from './my-accounts/my-accounts.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewAccountComponent } from './new-account/new-account.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 
@@ -10,7 +11,8 @@ import { NewAccountComponent } from './new-account/new-account.component';
   declarations: [
     MyAccountsComponent,
     UserProfileComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    UpdateUserComponent
   ],
   imports: [
     CommonModule
