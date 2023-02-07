@@ -1,2 +1,12 @@
+<div class="container">
+    <h1>Cuenta : </h1>
+    <pre>{{newState}}</pre>
+</div>
 
-<div>Cuenta : {{getActiveCustomers("asd12a1s2s")}}</div>
+<div>
+    <h1>
+        <h2 *ngIf="getActiveCustomers(asd)">
+            {{(getActiveCustomers(asd)|async)}}
+        </h2>
+    </h1>
+</div>

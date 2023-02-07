@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, from, map, of } from 'rxjs';
+import { filter, from, map } from 'rxjs';
 import { CustomerModel } from '../../interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
@@ -9,6 +9,11 @@ import { baseCustomers } from '../customer-data/customer.data';
   styleUrls: ['./ejercicio.component.scss']
 })
 export class EjercicioComponent {
+
+  asd = "asd12a1s2s"
+  constructor() {
+    this.getActiveCustomers(this.asd)
+  }
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
    * Se deben usar 2 operadores funcionales para cada transformacion.
@@ -23,6 +28,7 @@ export class EjercicioComponent {
    */
 
   //test = baseCustomers
+
   //funcion pura
   getCustomers(): Array<CustomerModel> {
     return [...baseCustomers]
@@ -36,11 +42,11 @@ export class EjercicioComponent {
   //Transformaciones
   newState!: boolean;
 
-  getActiveCustomers(id: string): void {
-    from(this.getCustomers()).pipe(
-      filter(c => c.state === true),
-      map(c => c.id === id)
-    ).subscribe(valor => this.newState = valor)
+  getActiveCustomers(id: string) {
+    return from(this.getCustomers()).pipe(
+      filter(c => c.state === true && c.id === id),
+      map(c => c.fullName.toUpperCase())
+    )
   }
 
   getDeactivatedCustomers(id: string): void {
@@ -55,10 +61,13 @@ export class EjercicioComponent {
       this.getCustomers().forEach(c => c.phone.toString())
   }
 
-  isActive(id: string, callback: string): boolean {
-    from(this.getCustomers()).pipe(
-      this.getActiveCustomers(id)
-    )
+  nameToUppercase(id: string) {
+    this.getActiveCustomers(id)
+
+  }
+
+  isAccountActive(id: string, callback: (c: string) => void): boolean {
+    this.getCustomers()
     return true
   }
 
