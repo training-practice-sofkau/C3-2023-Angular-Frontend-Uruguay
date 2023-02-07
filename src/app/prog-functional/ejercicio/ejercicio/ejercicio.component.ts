@@ -6,6 +6,8 @@ import { CustomerModel } from 'src/app/i-model/i-customer';
 import { map } from 'rxjs/internal/operators/map';
 import { find } from 'rxjs/operators';
 
+
+
 @Component({
   selector: 'app-ejercicio',
   templateUrl: './ejercicio.component.html',
@@ -13,38 +15,39 @@ import { find } from 'rxjs/operators';
 })
 export class EjercicioComponent {
 
-    /*
-    * Transformaciones de datos con observables.
-    */
-
     copia = baseCustomers;
 
+    
+    //Transformaciones de datos sin observables.
 
+    Email() {
+      return this.copia.filter(customer => customer.email === 'email4@email.com').map(customer => `Customer: ${customer.fullName}`)
+    }
+      
+    cedula() {
+      return this.copia.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
+    }
+      
+
+
+    
+    //Transformaciones de datos con observables.
+  
     Mayus() {
     return from(this.copia).pipe(
       filter((customer) => customer.documentType.name === 'Cedula'),
-      map((customer) => `CUSTOMER: ${customer.fullName.toUpperCase()}`),);
+      map((customer) => `CUSTOMER: ${customer.fullName.toUpperCase()}`));
     }
 
 
     Pass() {
     return from(this.copia).pipe(
       filter(customer => customer.password === '52saad2a'),
-      map(customer => customer.phone*2));
+      map(customer => customer.email));
     }
   
   
-  //Transformaciones de datos sin observables.
 
-
-    ThisEmail() {
-    return this.copia.filter(customer => customer.email === 'email4@email.com').map(customer => `Customer: ${customer.fullName}`)
-    }
-  
-    cedula() {
-    return this.copia.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
-    }
-  
 
     //Crear una funcion pura. 
 
