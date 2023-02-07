@@ -35,12 +35,13 @@ getCustomerState() {   //observable
   }
 
   newphone! : string;
+  
   addPhoneCustomer() {   //observable
     return from(this.customers)
     .pipe(
       filter((item)=> item.phone !== undefined),
       map((item) => "+598"+ item.phone)
-    ).subscribe((item) => (this.newphone = item) )
+    )//.subscribe((item) => (this.newphone = item))
   }
 
   getFullName() {   
