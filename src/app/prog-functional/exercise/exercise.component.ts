@@ -25,7 +25,7 @@ export class ExerciseComponent {
 
   public customers: CustomerModel[] = baseCustomers;
 
-  // Funcion pura
+  // Funciones puras
   getAllEmails(customers: CustomerModel[]): string[] {
     const emails: string[] = [];
     customers.forEach((data) => {
