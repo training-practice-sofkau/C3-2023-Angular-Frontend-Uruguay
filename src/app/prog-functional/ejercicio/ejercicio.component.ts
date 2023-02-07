@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { filter, from } from 'rxjs';
-import { CustomerArray } from '../customer-data/customer.data';
 import { CustomerModel } from '../../interfaces/Customer.interface';
+import { baseCustomers } from '../customer-data/customer.data';
 
 @Component({
   selector: 'app-ejercicio',
@@ -10,8 +10,8 @@ import { CustomerModel } from '../../interfaces/Customer.interface';
 })
 
 export class EjercicioComponent {
-  constructor(private readonly customerArray: CustomerArray ) {}
 
+  data = baseCustomers;
 
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
@@ -26,10 +26,12 @@ export class EjercicioComponent {
    * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
    */
 
+
+
   //funcion pura
   newData!: CustomerModel;
   transform(document: string) {
-    from(this.customerArray.baseCustomers).pipe(
+    from(this.data).pipe(
       filter(n => n.document === document),
     ).subscribe((data) => this.newData = data)
   }

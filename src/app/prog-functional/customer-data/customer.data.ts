@@ -1,8 +1,6 @@
 import { CustomerModel } from "src/app/interfaces/Customer.interface";
-import { Injectable } from '@angular/core';
-@Injectable()
-export class CustomerArray {
-  baseCustomers: Array<CustomerModel> = [
+
+export const baseCustomers: Array<CustomerModel> = [
     {
       id: "asd12a1s2s",
       documentType: {
@@ -60,4 +58,4 @@ export class CustomerArray {
       state: true,
     },
   ]
-}
+
