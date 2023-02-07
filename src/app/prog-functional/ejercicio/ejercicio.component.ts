@@ -54,6 +54,7 @@ export class EjercicioComponent {
     ).subscribe((data) => this.newData = data)
   }
 
+
   findByEmailProvider(provider: string){
     from(this.customers).pipe(
       filter(i => i.email.includes(provider) ),
@@ -67,20 +68,11 @@ export class EjercicioComponent {
      * @param customers array of Customers
      * @param fn function that manages the results ( array of strings )
      */
-  getCustomersFullNameAndId(customers: CustomerModel[], fn: (str: string[]) => void) {
+  getCustomersFullNameAndId(customers: CustomerModel[], fn: (str: string[]) => string[]) {
 
     const customersInfo = customers.map(c => `Customer: ${c.fullName} has de Document: ${c.document} `);
     fn(customersInfo);
   }
-
-  showMailProviderUsers(provider: string): CustomerModel[]{
-
-    this.findByEmailProvider(provider);
-
-    return this.mailUsers;
-
-  }
-
 
   /**
    * Take a customerArray and sort the info
@@ -90,8 +82,23 @@ export class EjercicioComponent {
   sortCustomers(customerList: string[]): string[]{
 
     return customerList.sort();
+  }
+
+
+
+  /**
+   * Search for the email providers of the customers
+   * @param provider name of the email provider
+   * @returns array of CustomerModels
+   */
+  showMailProviderUsers(provider: string): CustomerModel[]{
+
+    this.findByEmailProvider(provider);
+
+    return this.mailUsers;
 
   }
+
 
   /**
    * shows the info of the current CustomerModel element
@@ -118,6 +125,11 @@ export class EjercicioComponent {
   }
 
 
+  /**
+   * Search for a customer by the document and return an string of data
+   * @param document document to search
+   * @returns string with all the data of the customer found
+   */
   showCustomerData(document: string): string{
 
     this.transform(document); // find the customer
