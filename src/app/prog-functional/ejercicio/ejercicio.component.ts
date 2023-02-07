@@ -34,14 +34,26 @@ export class EjercicioComponent {
   //   ).subscribe((data) => this.newData = data)
   // }
   //Transformaciones
+  newState!: boolean;
 
-  newState!:boolean;
-
-  getActiveCustomers() {
+  getActiveCustomers(): void {
     from(this.getCustomers()).pipe(
-      filter(c => c.state === true)
-    ).subscribe(valor => this.newState = valor.state)
+      filter(c => c.state === true),
+      map(c => c.id === "asd12a1s2s")
+    ).subscribe(valor => this.newState = valor)
   }
+
+  getDeactivatedCustomers(): void {
+    from(this.getCustomers()).pipe(
+      filter(c => c.state === false),
+      map(c => c.id === "asd12a1s2s")
+    ).subscribe(valor => this.newState = valor)
+  }
+
+  phoneToString() {
+    this.getCustomers().forEach(c => c.phone.toString())
+  }
+
 
   //Funcion de orden superior        //Funcion de primer orden
   getInfo(customers: CustomerModel[], fn: (b: string[]) => void) {
