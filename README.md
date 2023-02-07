@@ -34,6 +34,9 @@ The following are the guidelines that should be taken into account for the devel
 1. Perform data transformations on the Customer array.
 2. 6 operations must be performed on the array of customers, 3 with observables and 3 without observables.
 3. Each operation must have at least 2 functional operators.
+4. Create a pure function.
+5. Create a composition of functions.
+6. Create a higher order function.
 
 >example: array.filter().map() or from(array).pipe( filter(), map() )
 
@@ -48,4 +51,3 @@ ng g --help
 
 ## inportant note
 Do not forget that for this workshop, you should make at least 6 commits properly documented (title and message body).
- 
