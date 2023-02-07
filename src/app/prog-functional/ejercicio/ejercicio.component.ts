@@ -17,6 +17,8 @@ export class EjercicioComponent {
 
 
 
+
+
 sumaDeTelefonos(documento:string){
 
   this.sumadTelefonos = baseCustomers.reduce((acc, customer) => {
@@ -47,19 +49,6 @@ filtradoPorEstado(estado: boolean){
   })).filter(customer => customer.state === estado );
 
 }
-
-filteredByEmail = (email: string): Observable<{ name: string, email: string, documentType: string }[]> => {
-  return of(baseCustomers).pipe(
-    map(customers => customers.map(customer => ({
-      name: customer.fullName,
-      email: customer.email,
-      documentType: customer.documentType.name
-    }))),
-    filter(customers => customers.some(customer => customer.email === email))
-  );
-};
-
-
 
 
 
