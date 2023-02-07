@@ -13,6 +13,7 @@ export class EjercicioComponent {
   public customerPhone : {phone:number}[] = []
   public activeCustomer : {state: boolean}[] = []
   public cedulaCustomers: {name: string}[] = []
+  public customerData: {document:string}[] = []
   
 
   //TRANSFORMACION CON OBSERVABLES 1
@@ -56,14 +57,17 @@ export class EjercicioComponent {
        console.log("hola")
   }
 
-  //Transformación sin observables: Filtrar los clientes con tipo de documento "Cédula".
-//   filterCedulaCustomers(documentName: string) {
-//     this.customerPhone = baseCustomers.map(customer =>
-//       ({phone:customer.phone,
-//       name:customer.fullName})
-//        ).filter(customer => customer.phone === phone) ;
-//        console.log("hola")
-// }
+
+  mapCustomersByDocument(document: string) {
+  this.customerData = baseCustomers.map(customer =>
+    ({document: customer.document,
+    name: customer.fullName,
+    email: customer.email})
+  ).filter(customer => customer.document === document);
+}
+
+
+
 
 
   //Funcion Pura

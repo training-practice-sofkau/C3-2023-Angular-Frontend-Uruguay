@@ -4,3 +4,6 @@
 
 <pre> {{ activeCustomer | json }} </pre>
 <button (click)="filterActiveCustomers(true)"> Filtrar por activo </button> 
+
+<pre> {{ customerData | json }} </pre>
+<button (click)="mapCustomersByDocument('123456-3')"> Buscar por documento </button> 
