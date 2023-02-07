@@ -9,6 +9,10 @@ import { MaterialModule } from './material/material.module';
 import { NewDepositComponent } from './movements/new-deposit/new-deposit.component';
 import { NewTransaccionComponent } from './movements/new-transaccion/new-transaccion.component';
 import { ViewTransferComponent } from './movements/view-transfer/view-transfer.component';
+import { AuthService } from './login/services/auth.service';
+import { AccountService } from './administrator/services/account.service';
+import { CustomerService } from './administrator/services/customer.service';
+import { DepositService } from './administrator/services/deposit.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,7 @@ import { ViewTransferComponent } from './movements/view-transfer/view-transfer.c
     LoginModule,
 
   ],
-  providers: [],
+  providers: [AuthService, AccountService, CustomerService, DepositService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
