@@ -11,12 +11,12 @@ import { baseCustomers } from '../customer-data/customer.data';
   styleUrls: ['./ejercicio.component.scss']
 })
 export class EjercicioComponent {
-  
+  public customerPhone : {phone:number}[] = []
 
   //TRANSFORMACION CON OBSERVABLES 1
   //Transformación con observables: Filtrar los clientes con tipo de documento "Cedula".
     filterCustomersByDocumentType(document: string) {
-    return from(baseCustomers).pipe(
+    const filterDocumentType = from(baseCustomers).pipe(
       filter(customer => customer.documentType.name === document)
     );
   }
@@ -43,7 +43,12 @@ export class EjercicioComponent {
   //TRANSFORMACION SIN OBSERVABLES 2
   //Transformación sin observables: Mapear los clientes para obtener solo su número de teléfono.
    mapCustomersToPhone(phone: number) {
-    return baseCustomers.map(customer => customer.phone);
+    
+     this.customerPhone = baseCustomers.map(customer =>
+      ({phone:customer.phone,
+      name:customer.fullName})
+       ).filter(customer => customer.phone === phone) ;
+       console.log("hola")
   }
 
 
@@ -54,7 +59,6 @@ export class EjercicioComponent {
   pureFilterActiveCustomers(state: boolean) {
     return baseCustomers.filter(customer => customer.state === state);
   }
-
   
   
 
