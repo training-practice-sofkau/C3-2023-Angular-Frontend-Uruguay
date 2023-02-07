@@ -50,5 +50,5 @@ ng g --help
 [Material](https://material.angular.io/components/categories)
 
 ## inportant note
-Do not forget that for this workshop, you should make at least 6 commits properly documented (title and message body).
+Do not forget that for this workshop, you should make at least 9 commits properly documented (title and message body).
  
