@@ -49,7 +49,7 @@ export class ExerciseComponent {
     return customers;
   }
 
-  // Transformaciones
+  // Transformaciones con suscribe
 
   setStateForCustomer(id: string, state: boolean) {
     from(this.customers).pipe(
