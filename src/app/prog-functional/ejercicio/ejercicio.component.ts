@@ -48,17 +48,17 @@ export class EjercicioComponent {
    * Look for an Id key trough the array, if found, assign the object to a variable
    * @param id id key to search
    */
-  findById(id: string){
+  findById(id: string) {
     from(this.customers).pipe(
       filter(i => i.id === id),
     ).subscribe((data) => this.newData = data)
   }
 
 
-  findByEmailProvider(provider: string){
+  findByEmailProvider(provider: string) {
     from(this.customers).pipe(
-      filter(i => i.email.includes(provider) ),
-      ).subscribe((data) => this.mailUsers.push(data))
+      filter(i => i.email.includes(provider)),
+    ).subscribe((data) => this.mailUsers.push(data))
   }
 
   /**
@@ -68,7 +68,7 @@ export class EjercicioComponent {
      * @param customers array of Customers
      * @param fn function that manages the results ( array of strings )
      */
-  getCustomersFullNameAndId(customers: CustomerModel[], fn: (str: string[]) => string[]) {
+  getCustomersFullNameAndId(customers: CustomerModel[], fn: (str: string[]) => string) {
 
     const customersInfo = customers.map(c => `Customer: ${c.fullName} has de Document: ${c.document} `);
     fn(customersInfo);
@@ -79,9 +79,12 @@ export class EjercicioComponent {
    * @param customerList array of customers
    * @returns sorted array
    */
-  sortCustomers(customerList: string[]): string[]{
+  sortCustomers(customerList: string[]): string {
 
-    return customerList.sort();
+    let sortedList = customerList.sort();
+    return (sortedList.reduce(function (prev, curr) { return prev.concat(" - " + curr) })
+    ).toString();
+
   }
 
 
@@ -91,7 +94,7 @@ export class EjercicioComponent {
    * @param provider name of the email provider
    * @returns array of CustomerModels
    */
-  showMailProviderUsers(provider: string): CustomerModel[]{
+  showMailProviderUsers(provider: string): CustomerModel[] {
 
     this.findByEmailProvider(provider);
 
@@ -104,7 +107,7 @@ export class EjercicioComponent {
    * shows the info of the current CustomerModel element
    * @returns String
    */
-  public showCurrentElement() : string {
+  public showCurrentElement(): string {
 
     return this.customerFullDataString(this.newData);
 
@@ -116,12 +119,11 @@ export class EjercicioComponent {
    * @param customer customer Data to convert
    * @returns string of data
    */
-  customerFullDataString(customer: CustomerModel): string{
+  customerFullDataString(customer: CustomerModel): string {
 
     return (Object.values(customer)
-              .reduce(function(prev, curr)
-              { return prev.concat(" - " + curr)})
-           ).toString();
+      .reduce(function (prev, curr) { return prev.concat(" - " + curr) })
+    ).toString();
   }
 
 
@@ -130,7 +132,7 @@ export class EjercicioComponent {
    * @param document document to search
    * @returns string with all the data of the customer found
    */
-  showCustomerData(document: string): string{
+  showCustomerData(document: string): string {
 
     this.transform(document); // find the customer
     return this.customerFullDataString(this.newData);
