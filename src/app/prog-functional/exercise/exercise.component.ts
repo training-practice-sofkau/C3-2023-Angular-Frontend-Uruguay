@@ -34,13 +34,6 @@ export class ExerciseComponent {
     return emails;
   }
 
-  getDisabledCustomers(): Observable<CustomerModel> {
-    const observable = from(this.customers).pipe(
-      filter(customer => customer.state === false),
-    )
-    return observable;
-  }
-
   getAllCustomersNames(): string[] {
     const customers: string[] = [];
     this.customers.forEach((data) => {
@@ -82,6 +75,13 @@ export class ExerciseComponent {
   }
 
   // Funcion de orden superior mediante callback (?)
+
+  getDisabledCustomers(): Observable<CustomerModel> {
+    const observable = from(this.customers).pipe(
+      filter(customer => customer.state === false),
+    )
+    return observable;
+  }
 
   setAllStatesForCustomersToTrue() {
     this.getDisabledCustomers().subscribe((data) => data.state = true);
