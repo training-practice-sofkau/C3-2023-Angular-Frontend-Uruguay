@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, from } from 'rxjs';
+import { filter, find, from, map } from 'rxjs';
 import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
@@ -9,8 +9,6 @@ import { baseCustomers } from '../customer-data/customer.data';
   styleUrls: ['./exercise.component.scss']
 })
 export class ExerciseComponent {
-
-
 
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
@@ -25,7 +23,6 @@ export class ExerciseComponent {
    * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
    */
 
-
   public customers: CustomerModel[] = baseCustomers;
 
   public mailUsers: CustomerModel[] = [];
@@ -39,6 +36,7 @@ export class ExerciseComponent {
     ).subscribe((data) => this.newData = data)
   }
 
+  // Funcion pura
   getAllEmails(customers: CustomerModel[]): string[] {
     const emails: string[] = [];
     customers.forEach((data) => {
@@ -47,10 +45,42 @@ export class ExerciseComponent {
     return emails;
   }
 
-  findById(id: string) {
+  getDisabledCustomers() {
     from(this.customers).pipe(
-      filter(i => i.id === id),
-    ).subscribe((data) => this.newData = data)
+      filter(customer => customer.state === false),
+    )
+  }
+
+  // Transformaciones
+
+  setStateForCustomer(id: string, state: boolean) {
+    from(this.customers).pipe(
+      filter(customer => customer.id === id && customer !== undefined),
+    ).subscribe((data) => data.state = state)
+  }
+
+  setNameForCustomer(id: string, name: string) {
+    from(this.customers).pipe(
+      filter(customer => customer.id === id && customer !== undefined),
+    ).subscribe((data) => data.fullName = name)
+  }
+
+  setEmailForCustomer(id: string, email: string) {
+    from(this.customers).pipe(
+      filter(customer => customer.id === id && customer !== undefined),
+    ).subscribe((data) => data.email = email)
+  }
+
+  setDocumentForCustomer(id: string, document: string) {
+    from(this.customers).pipe(
+      filter(customer => customer.id === id && customer !== undefined),
+    ).subscribe((data) => data.document = document)
+  }
+
+  setPhoneForCustomer(id: string, phone: number) {
+    from(this.customers).pipe(
+      filter(customer => customer.id === id && customer !== undefined),
+    ).subscribe((data) => data.phone = phone)
   }
 
 }
