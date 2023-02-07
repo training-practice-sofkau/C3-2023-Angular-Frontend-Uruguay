@@ -55,6 +55,10 @@ export class EjercicioComponent {
   }
 
 
+  /**
+   * check the email and return the ones that matches the query
+   * @param provider text to search
+   */
   findByEmailProvider(provider: string) {
     from(this.customers).pipe(
       filter(i => i.email.includes(provider)),
@@ -103,6 +107,8 @@ export class EjercicioComponent {
   }
 
 
+
+
   /**
    * shows the info of the current CustomerModel element
    * @returns String
@@ -127,9 +133,15 @@ export class EjercicioComponent {
   }
 
 
+  /**
+   * Convert the string given to Upper case
+   * @param data string to convert
+   * @returns a string converted
+   */
   allDataToUpper(data: string) : string{
     return data.toUpperCase();
   }
+
 
   /**
    * Search for a customer by the document and return an string of data
