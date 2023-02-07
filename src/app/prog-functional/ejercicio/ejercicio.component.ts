@@ -12,8 +12,16 @@ export class EjercicioComponent {
 
  transformacion1(){
 
+  const fullNames = baseCustomers.map(customer => customer.fullName);
+  return console.log(fullNames)
+
 
 }
+
+
+
+
+
 
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
