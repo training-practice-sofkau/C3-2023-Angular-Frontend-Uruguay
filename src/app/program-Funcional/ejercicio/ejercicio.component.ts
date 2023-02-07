@@ -12,10 +12,10 @@ import { CustomerModel } from '../interfaces/customerModel';
 })
 
 export class EjercicioComponent {
-  
+
   customers = baseCustomers;
   newCustomer!: CustomerModel;
-
+  c ="Nombre 3";
   //newcustomer! : CustomerModel;
   newc! : string;
   getCustomerName(name: string) {   //observable
@@ -23,15 +23,15 @@ export class EjercicioComponent {
     .pipe(
       filter((customer) => customer.fullName === name),
       map(customer=> customer.fullName.toUpperCase())
-    ).subscribe((customer) => (this.newc = customer))
+    )
   }
-
+//.subscribe((customer) => (this.newc = customer))
 newState! : boolean;
 getCustomerState() {   //observable
   return from(this.customers).pipe(
       filter((item) => item.state === true),
       map((item)=> item.state === false)
-    ).subscribe((newstate) => (this.newState = newstate))
+    )
   }
 
   newphone! : string;
@@ -88,22 +88,6 @@ getCustomerState() {   //observable
   }
   
 
-
-
-
-  array:string[] = [];
-
-  // callback(customer: string[]):string[] {
-  //    customer.forEach(item => (item));
-  //    return this.array2;
-  // }
-
-  // customerCallBack(fn: (s: string[]) => string[]): string[] {
-
-  //   const array = this.customers.map(e =>
-  //     `El nombre es ${e.fullName},y su documento: ${e.document}`);
-  //   return fn(array);
-  // }
 
   sumar(p:number ,r:number):number{
     return p+r;
