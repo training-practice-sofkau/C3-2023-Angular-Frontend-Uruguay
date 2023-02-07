@@ -1,20 +1,20 @@
-<p class="text-xl-center">With Observer</p>
+<p class="text-xl-center mb-5 text-4xl">With Observer</p>
 
-<h2 *ngIf="textTransform()">{{(textTransform() | async)}}</h2>
+<h2 class="text-xl-center" *ngIf="textTransform()">{{(textTransform() | async)}}</h2>
 
-<h2 *ngIf="changePhone()">{{(changePhone() | async)}}</h2>
+<h2 class="text-xl-center" *ngIf="changePhone()">{{(changePhone() | async)}}</h2>
 
-<h2 *ngIf="someCustomer()">{{(someCustomer() | async)}}</h2>
+<h2 class="text-xl-center" *ngIf="someCustomer()">{{(someCustomer() | async)}}</h2>
 
-<p class="text-xl-center">Without Observer</p>
+<p class="text-xl-center my-5 text-4xl">Without Observer</p>
 
-<h3 *ngIf="cedulaFilter()">{{(cedulaFilter())}}</h3>
+<h3 class="text-xl-center" *ngIf="cedulaFilter()">{{(cedulaFilter())}}</h3>
 
-<h3 *ngIf="setState()">{{(setState())}}</h3>
+<h3 class="text-xl-center" *ngIf="setState()">{{(setState())}}</h3>
 
-<h3 *ngIf="allTrue()">{{allTrue()}}</h3>
+<h3 class="text-xl-center" *ngIf="allTrue()">{{allTrue()}}</h3>
 
-<p class="text-xl-center">Function composition</p>
+<p class="text-xl-center my-5 text-4xl">Function composition</p>
 
-<h3 *ngIf="getInfo(showInfo)">{{getInfo(showInfo)}}</h3>
+<h3 class="text-xl-center" *ngIf="getInfo(showInfo)">{{getInfo(showInfo)}}</h3>
 
