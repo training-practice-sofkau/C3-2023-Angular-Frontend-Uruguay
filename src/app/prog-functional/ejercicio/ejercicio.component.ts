@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, from } from 'rxjs';
+import { filter, from, map } from 'rxjs';
 import { CustomerModel } from '../../interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
@@ -11,7 +11,8 @@ import { baseCustomers } from '../customer-data/customer.data';
 
 export class EjercicioComponent {
 
-  data = baseCustomers;
+  public customers: CustomerModel[] = baseCustomers;
+  newData!: CustomerModel;
 
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
@@ -26,15 +27,21 @@ export class EjercicioComponent {
    * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
    */
 
-
-
   //funcion pura
-  newData!: CustomerModel;
-  transform(document: string) {
-    from(this.data).pipe(
-      filter(n => n.document === document),
-    ).subscribe((data) => this.newData = data)
-  }
-}
 
+  transform(document: string) {
+    from(this.customers).pipe(
+      filter(n => n.document === document),
+    ).subscribe((d) => this.newData = d)
+  }
+
+      //Transformaciones de datos sin observables.
+
+      searchCustomrByEmail() {
+        return this.customers
+        .filter(customer => customer.email === 'email4@email.com')
+        .map(customer => `Customer: ${customer.fullName
+          .toUpperCase()}`)
+      }
+}
 
