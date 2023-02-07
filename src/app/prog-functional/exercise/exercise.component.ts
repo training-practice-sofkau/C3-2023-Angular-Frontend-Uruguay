@@ -81,7 +81,7 @@ export class ExerciseComponent {
     ).subscribe((data) => data.phone = phone);
   }
 
-  // Funcion de orden superior mediante callback
+  // Funcion de orden superior mediante callback (?)
 
   setAllStatesForCustomersToTrue() {
     this.getDisabledCustomers().subscribe((data) => data.state = true);
