@@ -49,5 +49,11 @@ export class EjercicioComponent {
       .map(customer => `Customer: ${customer.fullName
         .toUpperCase()}`)
   }
+  filterCustomerByPhone() {
+    return this.customers
+      .filter(customer => customer.phone === 100)
+      .map(customer => `Customer: ${customer.fullName
+        .toUpperCase()}`)
+  }
 }
 
