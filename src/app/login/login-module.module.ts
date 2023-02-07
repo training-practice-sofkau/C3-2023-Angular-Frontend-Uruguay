@@ -4,6 +4,7 @@ import { SinginComponent } from './singin/singin.component';
 import { SingupComponent } from './singup/singup.component';
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -16,6 +17,8 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     MaterialModule,
-  ]
+  ],
+  providers: [AuthService],
+  exports: [LoginModule]
 })
 export class LoginModule { }
