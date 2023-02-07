@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { filter, map, Observable, of } from 'rxjs';
+import { from } from 'rxjs/internal/observable/from';
 import{ baseCustomers} from '../customer-data/customer.data'
 @Component({
   selector: 'app-ejercicio',
@@ -7,16 +9,55 @@ import{ baseCustomers} from '../customer-data/customer.data'
 })
 export class EjercicioComponent {
 
+  public clientesConNombresEnMayusculas: { name: string; }[] = [];
+  public sumadTelefonos: number = 0
+  public filtradoxDocumento: { name: string; }[] = [];
+  public filtradoXEstado: { name: string; }[] = [];
+  public  baseCustomerss = [...baseCustomers]
 
 
 
- transformacion1(){
+sumaDeTelefonos(documento:string){
 
-  const fullNames = baseCustomers.map(customer => customer.fullName);
-  return console.log(fullNames)
-
+  this.sumadTelefonos = baseCustomers.reduce((acc, customer) => {
+    if (customer.documentType.name === documento) {
+      acc += customer.phone;
+    }
+    return acc;
+  }, 0);
 
 }
+filtradoPorDocumento(documento: string){
+
+  this.filtradoxDocumento = baseCustomers.map(customer => ({
+    name: customer.fullName,
+    document: customer.document,
+    documentType: customer.documentType.name
+  })).filter(customer => customer.documentType === documento);
+
+}
+
+filtradoPorEstado(estado: boolean){
+
+  this.filtradoXEstado = baseCustomers.map(customer => ({
+    name: customer.fullName,
+    document: customer.document,
+    documentType: customer.documentType.name,
+    state: customer.state
+  })).filter(customer => customer.state === estado );
+
+}
+
+filteredByEmail = (email: string): Observable<{ name: string, email: string, documentType: string }[]> => {
+  return of(baseCustomers).pipe(
+    map(customers => customers.map(customer => ({
+      name: customer.fullName,
+      email: customer.email,
+      documentType: customer.documentType.name
+    }))),
+    filter(customers => customers.some(customer => customer.email === email))
+  );
+};
 
 
 
@@ -24,6 +65,8 @@ export class EjercicioComponent {
 
 
   /**
+
+
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
 
 
@@ -34,6 +77,25 @@ export class EjercicioComponent {
 
 
    * Se debe crear una funcion pura, a demas de la que dio el coach
+/*/
+
+
+transformarNombre(cliente: { fullName: string; }) {
+  return {
+    name: cliente.fullName.toUpperCase()
+  };
+}
+
+nombreMayusculas(baseCustomers: Array<{ fullName: string }>, transformarNombre: (cliente: { fullName: string }) => { name: string }) {
+  this.clientesConNombresEnMayusculas = Array.from(baseCustomers, transformarNombre);
+}
+
+}
+
+
+
+/**
+
    *
    * A partir de la funcion pura crear una composicion de funciones y
    * una funcion de orden superior o un callback.
@@ -47,10 +109,10 @@ export class EjercicioComponent {
   //funcion pura
 
 
-  transform(document: string) {
-    from(this.customers).pipe(
-      filter(n => n.document === document),
-    ).subscribe((data) => this.newData = data)
-  }
+  // transform(document: string) {
+  //   from(this.customers).pipe(
+  //     filter(n => n.document === document),
+  //   ).subscribe((data) => this.newData = data)
+  // }
 
-}
+
