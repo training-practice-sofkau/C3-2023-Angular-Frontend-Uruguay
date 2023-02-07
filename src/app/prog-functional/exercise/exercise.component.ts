@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, find, from, map } from 'rxjs';
+import { filter, find, from, map, Observable } from 'rxjs';
 import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
@@ -34,10 +34,11 @@ export class ExerciseComponent {
     return emails;
   }
 
-  getDisabledCustomers() {
-    from(this.customers).pipe(
+  getDisabledCustomers(): Observable<CustomerModel> {
+    const observable = from(this.customers).pipe(
       filter(customer => customer.state === false),
     )
+    return observable;
   }
 
   // Transformaciones
@@ -45,31 +46,37 @@ export class ExerciseComponent {
   setStateForCustomer(id: string, state: boolean) {
     from(this.customers).pipe(
       filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.state = state)
+    ).subscribe((data) => data.state = state);
   }
 
   setNameForCustomer(id: string, name: string) {
     from(this.customers).pipe(
       filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.fullName = name)
+    ).subscribe((data) => data.fullName = name);
   }
 
   setEmailForCustomer(id: string, email: string) {
     from(this.customers).pipe(
       filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.email = email)
+    ).subscribe((data) => data.email = email);
   }
 
   setDocumentForCustomer(id: string, document: string) {
     from(this.customers).pipe(
       filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.document = document)
+    ).subscribe((data) => data.document = document);
   }
 
   setPhoneForCustomer(id: string, phone: number) {
     from(this.customers).pipe(
       filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.phone = phone)
+    ).subscribe((data) => data.phone = phone);
+  }
+
+  // Funcion de orden superior
+
+  setAllStatesForCustomersToTrue() {
+    this.getDisabledCustomers().subscribe((data) => data.state = true);
   }
 
 }
