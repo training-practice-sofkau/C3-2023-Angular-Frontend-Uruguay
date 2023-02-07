@@ -33,21 +33,24 @@ export class EjercicioComponent {
 
   someCustomer() {
     return from(this.data).pipe(
-      find((customer) => customer.fullName === 'Nombre 1'),
+      find((customer) => customer.fullName === 'Nombre'),
       map(customer => `${customer?.fullName || 'No encontrado' }`)
     )
   }
 
   cedulaFilter() {
-    return this.data.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
+    return this.data.filter(customer => customer.documentType.name === 'Cedula')
+    .map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
   }
 
   setState() {
-    return this.data.filter(customer => customer.phone >= 100).map(customer => `${customer.fullName} and ${customer.state = false}`)
+    return this.data.filter(customer => customer.phone >= 100)
+    .map(customer => `${customer.fullName} and ${customer.state}`)
   }
 
   allTrue() {
-    return this.data.filter(customer => customer.state === true).map(customer => `Customer: ${customer.fullName} is available customer`)
+    return this.data.filter(customer => customer.state === true)
+    .map(customer => `Customer: ${customer.fullName} is available customer`)
   }
 
 
@@ -62,10 +65,9 @@ export class EjercicioComponent {
    * una funcion de orden superior o un callback.
    **/
 
-   getInfo(fn: (customers: CustomerModel[]) => void) {
+  getInfo(fn: (customers: CustomerModel[]) => void) {
     const customers = this.data.filter(customer => customer.state === true);
     return fn(customers);
-    //GitHubProblem
   }
 
    /** Funcion de orden superior: Tomar una o más funciones como entrada y Devolver una función como salida
