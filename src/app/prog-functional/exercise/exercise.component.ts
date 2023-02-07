@@ -25,17 +25,6 @@ export class ExerciseComponent {
 
   public customers: CustomerModel[] = baseCustomers;
 
-  public mailUsers: CustomerModel[] = [];
-
-  newData!: CustomerModel;
-
-
-  transform(document: string) {
-    from(this.customers).pipe(
-      filter(n => n.document === document),
-    ).subscribe((data) => this.newData = data)
-  }
-
   // Funcion pura
   getAllEmails(customers: CustomerModel[]): string[] {
     const emails: string[] = [];
