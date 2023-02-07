@@ -13,6 +13,7 @@ export class EjercicioComponent {
 
   public customers: CustomerModel[] = baseCustomers;
   newData!: CustomerModel;
+  obsName?: string;
 
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
@@ -55,5 +56,17 @@ export class EjercicioComponent {
       .map(customer => `Customer: ${customer.fullName
         .toUpperCase()}`)
   }
+
+  //Transformaciones de datos con observables.
+
+  searchCustomerByFullName() {
+    from(this.customers)
+    .pipe(
+      filter((customer) => customer.fullName === 'Nombre 2'),
+      map((customer) => `Cliente: ${customer.fullName.toUpperCase()} ID: ${customer.id}`))
+      .subscribe((obs) => this.obsName = obs);
+      return this.obsName;
+  }
+
 }
 
