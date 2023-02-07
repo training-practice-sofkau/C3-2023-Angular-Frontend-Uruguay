@@ -1,7 +1,6 @@
 import { CustomerModel } from "src/app/interfaces/Customer.interface";
 
-
-const baseCustomers: Array<CustomerModel> = [
+export const baseCustomers: Array<CustomerModel> = [
   {
     id: "asd12a1s2s",
     documentType: {
