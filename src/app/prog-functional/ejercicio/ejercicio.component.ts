@@ -98,15 +98,15 @@ export class EjercicioComponent {
    * @param provider name of the email provider
    * @returns array of CustomerModels
    */
-  showMailProviderUsers(provider: string): CustomerModel[] {
+  showMailProviderUsers(provider: string): String[] {
 
     this.findByEmailProvider(provider);
 
-    return this.mailUsers;
+    const users = this.mailUsers.map(c => `Customer: ${c.fullName} has de email: ${c.email} `);
+
+    return users;
 
   }
-
-
 
 
   /**
