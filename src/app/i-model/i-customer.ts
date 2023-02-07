@@ -1,4 +1,6 @@
 export interface CustomerModel {
+
+
     id: string;
     documentType: DocumentTypeModel;
     document: string;
@@ -10,6 +12,8 @@ export interface CustomerModel {
     state: boolean;
     daletedAt?: Date | number;
   }
+  
+
   
   export interface DocumentTypeModel {
     id: string;

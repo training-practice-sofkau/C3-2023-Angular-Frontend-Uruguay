@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { from } from 'rxjs/internal/observable/from';
 import { filter } from 'rxjs/internal/operators/filter';
+import { baseCustomers } from '../customer-data/customer.data';
+import { CustomerModel } from 'src/app/i-model/i-customer';
+import { map } from 'rxjs/internal/operators/map';
+import { find } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ejercicio',
@@ -14,20 +18,60 @@ export class EjercicioComponent {
    * Se deben usar 2 operadores funcionales para cada transformacion.
    */
 
+    data = baseCustomers;
+
+    textTransform() {
+      return from(this.data).pipe(
+        filter((customer) => customer.documentType.name === 'Pasaporte'),
+        map((customer) => `Customer: ${customer.fullName.toLowerCase()}, DocumentType: ${customer.documentType.name.toUpperCase()}`),
+      );
+    }
 
 
+    changePhone() {
+      return from(this.data).pipe(
+        filter(customer => customer.phone === 100),
+        map(customer => customer.phone*2)
+      );
+    }
+  
+    someCustomer() {
+      return from(this.data).pipe(
+        find((customer) => customer.fullName === 'Nombre 1'),
+        map(customer => `${customer?.fullName || 'No encontrado' }`)
+      )
+    }
+  
+    cedulaFilter() {
+      return this.data.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
+    }
+  
+    setState() {
+      return this.data.filter(customer => customer.phone >= 100).map(customer => `${customer.fullName} and ${customer.state = false}`)
+    }
+  
+    allTrue() {
+      return this.data.filter(customer => customer.state === true).map(customer => `Customer: ${customer.fullName} is available customer`)
+    }
 
    /*
    * Se debe crear una funcion pura, a demas de la que dio el coach
    */
 
+   showInfo(customers: CustomerModel[]) {
+    return customers.map(customer => `Customer: ${customer.fullName}, Document: ${customer.document}`)
+  }
 
    /*
    * A partir de la funcion pura crear una composicion de funciones y
    * una funcion de orden superior o un callback.
    */
 
-
+   getInfo(fn: (customers: CustomerModel[]) => void) {
+    const customers = this.data.filter(customer => customer.state === true);
+    return fn(customers);
+    //GitHubProblem
+  }
 
 
    /*
