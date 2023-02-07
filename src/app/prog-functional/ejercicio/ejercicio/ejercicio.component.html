@@ -1,15 +1,23 @@
-
 <br>
-<h2 class="text-xl-center">Transformaciones de datos SIN observable:</h2><br>
-<h3 class="text-xl-center" *ngIf="ThisEmail()">{{(ThisEmail() )}}</h3>
-<h3 class="text-xl-center" *ngIf="cedulaFilter()">{{(cedulaFilter())}}</h3>
-<h3 class="text-xl-center" *ngIf="State()">{{(State())}}</h3>
-<h3 class="text-xl-center" *ngIf="allTrue()">{{allTrue()}}</h3><br>
+<br>
+<br>
 
-<h2 class="text-xl-center">Transformaciones de datos CON observables:</h2><br>
+<h2 class="text-xl-center">Transformaciones de datos SIN observable:</h2>
+<br>
+<br>
+<h3 class="text-xl-center" *ngIf="ThisEmail()">{{(ThisEmail())}}</h3>
+<h3 class="text-xl-center" *ngIf="cedula()">{{(cedula())}}</h3>
+<br>
+
+
+<h2 class="text-xl-center">Transformaciones de datos CON observables:</h2>
+<br>
+<br>
 <h3 class="text-xl-center" *ngIf="Mayus()">{{(Mayus() )}}</h3>
 <h3 class="text-xl-center" *ngIf="Pass()">{{(Pass() )}}</h3>
-<h3 class="text-xl-center" *ngIf="ThisCustomer()">{{(ThisCustomer())}}</h3>
+<br>
 
-<h2 class="text-xl-center">Composicion de funciones:</h2><br>
+<h2 class="text-xl-center">Composicion de funciones:</h2>
+<br>
+<br>
 <h3 class="text-xl-center" *ngIf="Info(showInfo)">{{Info(showInfo)}}</h3>

@@ -23,7 +23,7 @@ export class EjercicioComponent {
     Mayus() {
     return from(this.copia).pipe(
       filter((customer) => customer.documentType.name === 'Cedula'),
-      map((customer) => `Customer: ${customer.fullName.toUpperCase()}`),);
+      map((customer) => `CUSTOMER: ${customer.fullName.toUpperCase()}`),);
     }
 
 
@@ -33,13 +33,7 @@ export class EjercicioComponent {
       map(customer => customer.phone*2));
     }
   
-    ThisCustomer() {
-    return from(this.copia).pipe(
-      find((customer) => customer.fullName === 'Bob Patiño'),
-      map(customer => `${customer?.fullName || 'No existe!' }`))
-    }
-
- 
+  
   //Transformaciones de datos sin observables.
 
 
@@ -47,19 +41,11 @@ export class EjercicioComponent {
     return this.copia.filter(customer => customer.email === 'email4@email.com').map(customer => `Customer: ${customer.fullName}`)
     }
   
-    cedulaFilter() {
+    cedula() {
     return this.copia.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
     }
   
-    State() {
-    return this.copia.filter(customer => customer.phone >= 100).map(customer => `${customer.fullName} and ${customer.state = false}`)
-    }
-  
-    allTrue() {
-    return this.copia.filter(customer => customer.state === true).map(customer => `Customer: ${customer.fullName}`)
-    }
 
-    
     //Crear una funcion pura. 
 
     showInfo(customers: CustomerModel[]) {
@@ -71,7 +57,7 @@ export class EjercicioComponent {
   
 
     Info(funcion: (customers: CustomerModel[]) => void) {
-    const customers = this.copia.filter(customer => customer.state === true);
+    const customers = this.copia.filter(customer => customer.phone === 10);
     return funcion(customers);
     }
 
