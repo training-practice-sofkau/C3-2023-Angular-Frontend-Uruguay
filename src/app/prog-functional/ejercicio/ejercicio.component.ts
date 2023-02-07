@@ -18,6 +18,10 @@ export class EjercicioComponent {
     );
   }
 
+  //Funcion Pura
+   sum = (a: number, b:number) => a+b;
+  
+
 
 }
 
