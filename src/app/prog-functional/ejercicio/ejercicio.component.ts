@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { filter, from, map } from 'rxjs';
+import { filter, from, groupBy, map, mergeMap } from 'rxjs';
 import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
+
 
 
 @Component({
@@ -11,25 +12,50 @@ import { baseCustomers } from '../customer-data/customer.data';
 })
 export class EjercicioComponent {
   
+
+  //TRANSFORMACION CON OBSERVABLES 1
   //Transformación con observables: Filtrar los clientes con tipo de documento "Cedula".
-    filterCustomersByDocumentType(customers: Array<CustomerModel>) {
-    return from(customers).pipe(
-      filter(customer => customer.documentType.name === 'Cedula')
+    filterCustomersByDocumentType(document: string) {
+    return from(baseCustomers).pipe(
+      filter(customer => customer.documentType.name === document)
     );
   }
 
-
+  //TRANSFORMACION CON OBSERVABLES 2
   //Transformación con observables: Mapear los clientes para obtener solo su nombre completo.
-    mapCustomersToFullName(customers: Array<CustomerModel>) {
-    return from(customers).pipe(
+    mapCustomersToFullName(nombre: string) {
+    return from(baseCustomers).pipe(
       map(customer => customer.fullName)
     );
   }
 
+  //TRANSFORMACION CON OBSERVABLES 3
+
+ // *******************FALTA****************
+
+  //TRANSFORMACION SIN OBSERVABLES 1
+  //Transformación sin observables: Filtrar los clientes con estado activo.
+    filterActiveCustomers(state: boolean) {
+    return baseCustomers.filter(customer => customer.state);
+  }
+
+
+  //TRANSFORMACION SIN OBSERVABLES 2
+  //Transformación sin observables: Mapear los clientes para obtener solo su número de teléfono.
+   mapCustomersToPhone(phone: number) {
+    return baseCustomers.map(customer => customer.phone);
+  }
+
+
+
 
 
   //Funcion Pura
-   sum = (a: number, b:number) => a+b;
+  pureFilterActiveCustomers(state: boolean) {
+    return baseCustomers.filter(customer => customer.state === state);
+  }
+
+  
   
 
 
@@ -65,7 +91,7 @@ function getInfo(
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
    * Se deben usar 2 operadores funcionales para cada transformacion.
   *
-   * Se debe crear una funcion pura, a demas de la que dio el coach
+   * Se debe crear una funcion pura,
   *
   * A partir de la funcion pura crear una composicion de funciones y
   * una funcion de orden superior o un callback.
