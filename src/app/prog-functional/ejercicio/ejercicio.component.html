@@ -41,6 +41,26 @@
     </div>
   </div>
 
+
+  <div class="d-flex justify-content-start">
+    <div class="m-3">
+      <button class="btn btn-primary" (click)="filtradoPorCorreo(documentType3.value)">Filtrar clientes por su Correo</button>
+      <input type="text" #documentType3>
+
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap">
+    <div class="card col-sm-3" *ngFor="let cliente of filtradoxemail">
+      <div class="card-body">
+        {{ cliente | json }}
+      </div>
+    </div>
+  </div>
+
+
+
+
   <div class="d-flex justify-content-start">
     <button class="btn btn-secondary m-3" (click)="filtradoPorEstado(true)">Filtrar por estado "true"</button>
     <button class="btn btn-secondary m-3" (click)="filtradoPorEstado(false)">Filtrar por estado "false"</button>

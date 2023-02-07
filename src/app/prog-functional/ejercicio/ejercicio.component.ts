@@ -9,12 +9,12 @@ import{ baseCustomers} from '../customer-data/customer.data'
 })
 export class EjercicioComponent {
 
-  public clientesConNombresEnMayusculas: { name: string; }[] = [];
-  public sumadTelefonos: number = 0
-  public filtradoxDocumento: { name: string; }[] = [];
-  public filtradoXEstado: { name: string; }[] = [];
-  public  baseCustomerss = [...baseCustomers]
-
+  clientesConNombresEnMayusculas: { name: string; }[] = [];
+  sumadTelefonos: number = 0
+  filtradoxDocumento: { name: string; }[] = [];
+  filtradoXEstado: { name: string; }[] = [];
+  baseCustomerss = [...baseCustomers]
+  filtradoxemail: { name: string; }[] = [];
 
 
 
@@ -52,6 +52,15 @@ filtradoPorEstado(estado: boolean){
 
 
 
+filtradoPorCorreo(email: string){
+
+  this.filtradoxemail = baseCustomers.map(customer => ({
+    name: customer.fullName,
+    document: customer.document,
+    email: customer.email
+  })).filter(customer => customer.email === email);
+
+}
 
   /**
 
