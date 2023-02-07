@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SinginComponent } from './singin/singin.component';
-import { SingupComponent } from './singup/singup.component';
+import { SinginComponent } from './sing-in/sing-in.component';
+import { SingupComponent } from './sing-up/sing-up.component';
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
 
