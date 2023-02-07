@@ -13,6 +13,7 @@ import { AuthService } from './login/services/auth.service';
 import { AccountService } from './administrator/services/account.service';
 import { CustomerService } from './administrator/services/customer.service';
 import { DepositService } from './administrator/services/deposit.service';
+import { TransferService } from './administrator/services/transfer.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { DepositService } from './administrator/services/deposit.service';
     LoginModule,
 
   ],
-  providers: [AuthService, AccountService, CustomerService, DepositService],
+  providers: [AuthService, AccountService, CustomerService, DepositService,DepositService,TransferService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
