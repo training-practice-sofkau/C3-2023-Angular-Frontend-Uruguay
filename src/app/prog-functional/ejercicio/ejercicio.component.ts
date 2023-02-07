@@ -29,12 +29,9 @@ export class EjercicioComponent {
 
   public customers: CustomerModel[] = baseCustomers;
 
+  public mailUsers: CustomerModel[] = [];
+
   newData!: CustomerModel;
-
-
-
-
-
 
 
   /**
@@ -48,6 +45,22 @@ export class EjercicioComponent {
   }
 
   /**
+   * Look for an Id key trough the array, if found, assign the object to a variable
+   * @param id id key to search
+   */
+  findById(id: string){
+    from(this.customers).pipe(
+      filter(i => i.id === id),
+    ).subscribe((data) => this.newData = data)
+  }
+
+  findByEmailProvider(provider: string){
+    from(this.customers).pipe(
+      filter(i => i.email.includes(provider) ),
+      ).subscribe((data) => this.mailUsers.push(data))
+  }
+
+  /**
      * Function that returns an array of names and Id's
      * Next, it passes that info to another function that uses the data
      *
@@ -58,6 +71,14 @@ export class EjercicioComponent {
 
     const customersInfo = customers.map(c => `Customer: ${c.fullName} has de Document: ${c.document} `);
     fn(customersInfo);
+  }
+
+  showMailProviderUsers(provider: string): CustomerModel[]{
+
+    this.findByEmailProvider(provider);
+
+    return this.mailUsers;
+
   }
 
 
@@ -110,8 +131,8 @@ export class EjercicioComponent {
    * return an array of Id and fullnames of customers
    * @returns array of strings
    */
-  public showIdAndFullnameAllCustomers(): string[] {
-    return this.customers.map(e => `ID: ${e.id} -> Name: ${e.fullName} `);
+  public showIdAndFullnameAllCustomers(list: CustomerModel[]): string[] {
+    return list.map(e => `ID: ${e.id} -> Name: ${e.fullName} `);
   }
 
   /**
