@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { CustomerModel } from 'src/app/interfaces/Customer.interface';
+import { baseCustomers } from '../customer-data/customer.data';
+
 
 @Component({
   selector: 'app-ejercicio',
@@ -6,6 +9,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./ejercicio.component.scss']
 })
 export class EjercicioComponent {
+
+}
+
+//Funcion de orden superior
+function getInfo(
+  fn: (parametro: string[]) => void ){ //Aqui tengo mi funcion de primer orden
+
+ const customersInfo = baseCustomers.map(usuario =>  //mapeo hace que sea un array de strings
+   `id de cuenta: ${usuario.id},
+    id de tipo de documento: ${usuario.documentType.id}
+    nombre del documento: ${usuario.documentType.name}
+    estado del documento: ${usuario.documentType.state}
+    numero del documento: ${usuario.document}
+    nombre completo: ${usuario.fullName}
+    correo electronico: ${usuario.email}
+    telefono: ${usuario.phone}
+    contraseña: ${usuario.password}
+    estado de la cuenta: ${usuario.state}`);
+    fn(customersInfo);
+}
+
+function mostrar(customer: string[]){
+ customer.forEach(item => console.log(item));
+
+}
+
+getInfo(mostrar) //no necesito parentesis
 
 
   /**
@@ -20,14 +50,3 @@ export class EjercicioComponent {
    * Funcion de orden superior: Tomar una o más funciones como entrada y Devolver una función como salida
    * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
    */
-
-
-
-  //funcion pura
-  transform(document: string) {
-    from(this.customers).pipe(
-      filter(n => n.document === document),
-    ).subscribe((data) => this.newData = data)
-  }
-
-}

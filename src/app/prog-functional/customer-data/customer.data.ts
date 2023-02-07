@@ -1,7 +1,8 @@
 import { CustomerModel } from "src/app/interfaces/Customer.interface";
 
-
-const baseCustomers: Array<CustomerModel> = [
+//Ya tengo la interface CustomerModel y pasamos a hacer una coleccion
+//Ya tenemos un conjunto de Customer en la variable baseCustomer
+ export const baseCustomers: Array<CustomerModel> = [
   {
     id: "asd12a1s2s",
     documentType: {
