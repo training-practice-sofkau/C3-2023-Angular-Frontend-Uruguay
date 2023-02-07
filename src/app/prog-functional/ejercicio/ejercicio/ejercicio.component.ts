@@ -13,64 +13,69 @@ import { find } from 'rxjs/operators';
 })
 export class EjercicioComponent {
 
-   /**
-   * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
-   * Se deben usar 2 operadores funcionales para cada transformacion.
-   */
+    /*
+    * Transformaciones de datos con observables.
+    */
 
     data = baseCustomers;
 
     Transform() {
-      return from(this.data).pipe(
-        filter((customer) => customer.documentType.name === 'Cedula'),
-        map((customer) => `Customer: ${customer.fullName.toLowerCase()}, DocumentType: ${customer.documentType.name.toUpperCase()}`),
-      );
+    return from(this.data).pipe(
+      filter((customer) => customer.documentType.name === 'Cedula'),
+      map((customer) => `Customer: ${customer.fullName.toUpperCase()}, DocumentType: ${customer.documentType.name.toUpperCase()}`),);
     }
 
 
-      Phone() {
-      return from(this.data).pipe(
-        filter(customer => customer.phone === 100),
-        map(customer => customer.phone*2)
-      );
+    Phone() {
+    return from(this.data).pipe(
+      filter(customer => customer.phone === 100),
+      map(customer => customer.phone*2));
     }
   
-    someCustomer() {
-      return from(this.data).pipe(
-        find((customer) => customer.fullName === 'Nombre 1'),
-        map(customer => `${customer?.fullName || 'No encontrado' }`)
-      )
+    ThisCustomer() {
+    return from(this.data).pipe(
+      find((customer) => customer.fullName === 'Bob Patiño'),
+      map(customer => `${customer?.fullName || 'No existe!' }`))
+    }
+
+ 
+  //Transformaciones de datos sin observables.
+
+
+    ThisEmail() {
+    return this.data.filter(customer => customer.email === 'email4@email.com').map(customer => `Customer: ${customer.fullName}`)
     }
   
     cedulaFilter() {
-      return this.data.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
+    return this.data.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
     }
   
     setState() {
-      return this.data.filter(customer => customer.phone >= 100).map(customer => `${customer.fullName} and ${customer.state = false}`)
+    return this.data.filter(customer => customer.phone >= 100).map(customer => `${customer.fullName} and ${customer.state = false}`)
     }
   
     allTrue() {
-      return this.data.filter(customer => customer.state === true).map(customer => `Customer: ${customer.fullName} is available customer`)
+    return this.data.filter(customer => customer.state === true).map(customer => `Customer: ${customer.fullName}`)
     }
 
-   /*
-   * Se debe crear una funcion pura, a demas de la que dio el coach
-   */
 
-   showInfo(customers: CustomerModel[]) {
-    return customers.map(customer => `Customer: ${customer.fullName}, Document: ${customer.document}`)
-  }
+   
+    
+    //Crear una funcion pura. 
+
+    showInfo(customers: CustomerModel[]) {
+    return customers.map(customer => `Customer: ${customer.fullName}, Document: ${customer.documentType.name}`)
+    }
 
    /*
    * A partir de la funcion pura crear una composicion de funciones y
    * una funcion de orden superior o un callback.
    */
 
-   Info(funcion: (customers: CustomerModel[]) => void) {
+    Info(funcion: (customers: CustomerModel[]) => void) {
     const customers = this.data.filter(customer => customer.state === true);
     return funcion(customers);
-  }
+    }
 
 
    /*
