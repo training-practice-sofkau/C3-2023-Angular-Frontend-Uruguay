@@ -83,8 +83,8 @@ export class ExerciseComponent {
     return observable;
   }
 
-  setAllStatesForCustomersToTrue() {
-    this.getDisabledCustomers().subscribe((data) => data.state = true);
+  setAllStatesForCustomersToTrue(callback: () => Observable<CustomerModel>) {
+    callback().subscribe((data) => data.state = true);
   }
 
   // Getters
