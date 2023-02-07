@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, from } from 'rxjs';
+import { filter, from, map } from 'rxjs';
 import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
@@ -17,6 +17,16 @@ export class EjercicioComponent {
       filter(customer => customer.documentType.name === 'Cedula')
     );
   }
+
+
+  //Transformación con observables: Mapear los clientes para obtener solo su nombre completo.
+    mapCustomersToFullName(customers: Array<CustomerModel>) {
+    return from(customers).pipe(
+      map(customer => customer.fullName)
+    );
+  }
+
+
 
   //Funcion Pura
    sum = (a: number, b:number) => a+b;
