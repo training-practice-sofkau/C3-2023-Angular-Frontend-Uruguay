@@ -12,6 +12,10 @@ import { CustomerModule } from './customer/customer.module';
 import { DepositModule } from './deposit/deposit.module';
 import { TransferModule } from './transfer/transfer.module';
 import { AuthService } from './login/services/auth.service';
+import { AccountService } from './account/service/account.service';
+import { DepositService } from './deposit/service/deposit.service';
+import { TransferService } from './transfer/service/transfer.service';
+import { CustomerService } from './customer/service/customer.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,7 @@ import { AuthService } from './login/services/auth.service';
     TransferModule
 
   ],
-  providers: [AuthService],
+  providers: [AuthService,AccountService,DepositService,TransferService,CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
