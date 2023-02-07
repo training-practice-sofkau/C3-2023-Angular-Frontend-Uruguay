@@ -12,13 +12,14 @@ import { CustomerModel } from '../interfaces/customerModel';
 })
 
 export class EjercicioComponent {
+  
   customers = baseCustomers;
   newCustomer!: CustomerModel;
 
   //newcustomer! : CustomerModel;
   newc! : string;
   getCustomerName(name: string) {   //observable
-    from(this.customers)
+    return from(this.customers)
     .pipe(
       filter((customer) => customer.fullName === name),
       map(customer=> customer.fullName.toUpperCase())
@@ -27,7 +28,7 @@ export class EjercicioComponent {
 
 newState! : boolean;
 getCustomerState() {   //observable
-    from(this.customers).pipe(
+  return from(this.customers).pipe(
       filter((item) => item.state === true),
       map((item)=> item.state === false)
     ).subscribe((newstate) => (this.newState = newstate))
@@ -35,7 +36,7 @@ getCustomerState() {   //observable
 
   newphone! : string;
   addPhoneCustomer() {   //observable
-    from(this.customers)
+    return from(this.customers)
     .pipe(
       filter((item)=> item.phone !== undefined),
       map((item) => "+598"+ item.phone)
@@ -43,12 +44,12 @@ getCustomerState() {   //observable
   }
 
   getFullName() {   
-    this.customers.forEach(item => item.fullName.toUpperCase);
+    return this.customers.forEach(item => item.fullName.toUpperCase);
   }
 
   
   getState(state: boolean) {   
-    this.customers
+    return this.customers
     .filter(item => item.state === state)
     .forEach(item => item.state = false);
   }
