@@ -35,13 +35,19 @@ export class EjercicioComponent {
     ).subscribe((d) => this.newData = d)
   }
 
-      //Transformaciones de datos sin observables.
+  //Transformaciones de datos sin observables.
 
-      searchCustomrByEmail() {
-        return this.customers
-        .filter(customer => customer.email === 'email4@email.com')
-        .map(customer => `Customer: ${customer.fullName
-          .toUpperCase()}`)
-      }
+  searchCustomrByEmail() {
+    return this.customers
+      .filter(customer => customer.email === 'email4@email.com')
+      .map(customer => `Customer: ${customer.fullName
+        .toUpperCase()}`)
+  }
+  filterCustomerByDocType() {
+    return this.customers
+      .filter(customer => customer.documentType.name === 'Pasaporte')
+      .map(customer => `Customer: ${customer.fullName
+        .toUpperCase()}`)
+  }
 }
 
