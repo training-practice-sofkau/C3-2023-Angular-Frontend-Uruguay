@@ -51,3 +51,4 @@ ng g --help
 
 ## inportant note
 Do not forget that for this workshop, you should make at least 6 commits properly documented (title and message body).
+ 
