@@ -12,6 +12,7 @@ import { baseCustomers } from '../customer-data/customer.data';
 export class EjercicioComponent {
   public customerPhone : {phone:number}[] = []
   public activeCustomer : {state: boolean}[] = []
+  public cedulaCustomers: {name: string}[] = []
   
 
   //TRANSFORMACION CON OBSERVABLES 1
@@ -31,9 +32,6 @@ export class EjercicioComponent {
     );
   }
 
-  //TRANSFORMACION CON OBSERVABLES 3
-
- // *******************FALTA****************
 
   //TRANSFORMACION SIN OBSERVABLES 1
   //Transformación sin observables: Filtrar los clientes con estado activo.
@@ -43,7 +41,7 @@ export class EjercicioComponent {
         ({state:customer.state,
         name:customer.fullName})
          ).filter(customer => customer.state === state) ;
-         console.log("hola")
+         console.log("probar que sirve si pongo false y no encuentra")
   }
 
 
@@ -58,6 +56,14 @@ export class EjercicioComponent {
        console.log("hola")
   }
 
+  //Transformación sin observables: Filtrar los clientes con tipo de documento "Cédula".
+//   filterCedulaCustomers(documentName: string) {
+//     this.customerPhone = baseCustomers.map(customer =>
+//       ({phone:customer.phone,
+//       name:customer.fullName})
+//        ).filter(customer => customer.phone === phone) ;
+//        console.log("hola")
+// }
 
 
   //Funcion Pura
@@ -71,9 +77,9 @@ export class EjercicioComponent {
 
 //Funcion de orden superior
 function getInfo(
-  fn: (parametro: string[]) => void ){ //Aqui tengo mi funcion de primer orden
+  fn: (parametro: string[]) => void ){ 
 
- const customersInfo = baseCustomers.map(usuario =>  //mapeo hace que sea un array de strings
+ const customersInfo = baseCustomers.map(usuario =>  
    `id de cuenta: ${usuario.id},
     id de tipo de documento: ${usuario.documentType.id}
     nombre del documento: ${usuario.documentType.name}
@@ -92,7 +98,7 @@ function getInfo(
     
   }
   
-  getInfo(mostrar) //no necesito parentesis
+  getInfo(mostrar)
   
   
   /**
