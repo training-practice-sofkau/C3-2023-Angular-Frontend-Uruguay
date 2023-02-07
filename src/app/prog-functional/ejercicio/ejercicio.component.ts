@@ -127,6 +127,10 @@ export class EjercicioComponent {
   }
 
 
+  allDataToUpper(data: string) : string{
+    return data.toUpperCase();
+  }
+
   /**
    * Search for a customer by the document and return an string of data
    * @param document document to search
