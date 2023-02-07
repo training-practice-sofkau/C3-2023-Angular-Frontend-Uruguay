@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MaterialModule } from '../material/material.module';
+import { ConfirmationWindowsComponent, ToolbarComponent, PaginationToolComponent, FooterComponent } from './';
 
 
 
 @NgModule({
-  declarations: [
-    ToolbarComponent
-  ],
+  declarations: [ConfirmationWindowsComponent,
+  FooterComponent,
+PaginationToolComponent,
+ToolbarComponent],
   imports: [
-    CommonModule,
-    MaterialModule,
-  ],
-  exports:[ToolbarComponent]
+    CommonModule
+  ]
 })
 export class SharedModule { }
