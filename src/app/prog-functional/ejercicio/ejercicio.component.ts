@@ -15,6 +15,7 @@ export class EjercicioComponent {
   newData!: CustomerModel;
   obsName?: string;
   obsState: string[] = [];
+  obsDoc: string[] = [];
 
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
@@ -76,6 +77,14 @@ export class EjercicioComponent {
       map((customer) => `Cliente: ${customer.fullName.toUpperCase()} ID: ${customer.id}`))
       .subscribe((obs1) => this.obsState.push(obs1));
       return this.obsState;
+  }
+  searchCustomerByDocType() {
+    from(this.customers)
+    .pipe(
+      filter((customer) => customer.documentType.name === 'Cedula'),
+      map((customer) => `Cliente: ${customer.fullName.toUpperCase()} Document: ${customer.documentType.name}`))
+      .subscribe((obs2) => this.obsDoc.push(obs2));
+      return this.obsDoc;
   }
 
 }
