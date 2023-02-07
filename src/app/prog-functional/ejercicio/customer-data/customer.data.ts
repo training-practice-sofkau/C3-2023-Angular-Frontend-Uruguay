@@ -9,7 +9,7 @@ export const baseCustomers: Array<CustomerModel> = [
         state: true
       },
       document: "123456-3",
-      fullName: "Nombre 1",
+      fullName: "Homero Simpson",
       email: "nombre1@email.com",
       phone: 10,
       password: "52sa",
@@ -23,7 +23,7 @@ export const baseCustomers: Array<CustomerModel> = [
         state: true
       },
       document: "3303054-3",
-      fullName: "Nombre 2",
+      fullName: "Bob Patiño",
       email: "email2@email.com",
       phone: 100,
       password: "52saad2a",
@@ -37,7 +37,7 @@ export const baseCustomers: Array<CustomerModel> = [
         state: true
       },
       document: "123232-3",
-      fullName: "Nombre 3",
+      fullName: "Jefe Gorgory",
       email: "email3@email.com",
       phone: 100,
       password: "asdad",
@@ -51,7 +51,7 @@ export const baseCustomers: Array<CustomerModel> = [
         state: true
       },
       document: "2323232-3",
-      fullName: "Nombre 4",
+      fullName: "Moe Szyslak",
       email: "email4@email.com",
       phone: 100,
       password: "aaaa222",

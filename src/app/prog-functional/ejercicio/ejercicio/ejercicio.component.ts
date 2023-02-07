@@ -20,15 +20,15 @@ export class EjercicioComponent {
 
     data = baseCustomers;
 
-    textTransform() {
+    Transform() {
       return from(this.data).pipe(
-        filter((customer) => customer.documentType.name === 'Pasaporte'),
+        filter((customer) => customer.documentType.name === 'Cedula'),
         map((customer) => `Customer: ${customer.fullName.toLowerCase()}, DocumentType: ${customer.documentType.name.toUpperCase()}`),
       );
     }
 
 
-    changePhone() {
+      Phone() {
       return from(this.data).pipe(
         filter(customer => customer.phone === 100),
         map(customer => customer.phone*2)
@@ -67,10 +67,9 @@ export class EjercicioComponent {
    * una funcion de orden superior o un callback.
    */
 
-   getInfo(fn: (customers: CustomerModel[]) => void) {
+   Info(funcion: (customers: CustomerModel[]) => void) {
     const customers = this.data.filter(customer => customer.state === true);
-    return fn(customers);
-    //GitHubProblem
+    return funcion(customers);
   }
 
 
