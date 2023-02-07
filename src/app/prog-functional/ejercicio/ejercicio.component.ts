@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { filter, from } from 'rxjs';
+import { filter, from, map } from 'rxjs';
 import { CustomerModel } from 'src/app/interfaces/Customer.interface';
-import { NewLineKind } from 'typescript';
 import { baseCustomers } from '../customer-data/customer-data';
 
 @Component({
@@ -27,12 +26,21 @@ export class EjercicioComponent {
    */
 
 
+  constructor() {
+
+    this.findById("a21s2d2w2");
+
+    this.findByEmailProvider("email.com");
+
+  }
+
   public customers: CustomerModel[] = baseCustomers;
 
-  public mailUsers: CustomerModel[] = [];
+  mailUsers: string[] = [];
 
   newData!: CustomerModel;
 
+  currentUser: string = "";
 
   /**
    * return the element that matches the document provided
@@ -44,25 +52,30 @@ export class EjercicioComponent {
     ).subscribe((data) => this.newData = data)
   }
 
+
   /**
-   * Look for an Id key trough the array, if found, assign the object to a variable
-   * @param id id key to search
-   */
+     * Look for an Id key trough the array, if found, assign the object to a variable
+     * @param id id key to search
+     */
   findById(id: string) {
     from(this.customers).pipe(
-      filter(i => i.id === id),
-    ).subscribe((data) => this.newData = data)
+      filter(i => i.id === id && i.state === true),
+      map(i => `Customer with ID: ${id} - ${i.fullName} Found!`),
+    ).subscribe((data) => this.currentUser = data)
   }
-
 
   /**
    * check the email and return the ones that matches the query
    * @param provider text to search
    */
   findByEmailProvider(provider: string) {
-    from(this.customers).pipe(
-      filter(i => i.email.includes(provider)),
-    ).subscribe((data) => this.mailUsers.push(data))
+
+    this.mailUsers = this.customers.filter(i => i.state === true && i.email.includes(provider))
+                                   .map(i => `Id: ${i.id} - Name: ${i.fullName} has the email: ${i.email}`);
+
+    //from(this.customers).pipe(
+    //  filter(i => i.email.includes(provider))
+    //).subscribe((data) => this.mailUsers.push(data))
   }
 
   /**
@@ -83,9 +96,10 @@ export class EjercicioComponent {
    * @param customerList array of customers
    * @returns sorted array
    */
-  sortCustomers(customerList: string[]): string {
+  sortCustomers(customerList: readonly string[]): string {
 
-    let sortedList = customerList.sort();
+    let sortedList = [...customerList].sort();
+
     return (sortedList.reduce(function (prev, curr) { return prev.concat(" - " + curr) })
     ).toString();
 
@@ -102,9 +116,7 @@ export class EjercicioComponent {
 
     this.findByEmailProvider(provider);
 
-    const users = this.mailUsers.map(c => `Customer: ${c.fullName} has de email: ${c.email} `);
-
-    return users;
+    return this.mailUsers;
 
   }
 
@@ -138,7 +150,7 @@ export class EjercicioComponent {
    * @param data string to convert
    * @returns a string converted
    */
-  allDataToUpper(data: string) : string{
+  allDataToUpper(data: string): string {
     return data.toUpperCase();
   }
 
@@ -164,6 +176,16 @@ export class EjercicioComponent {
   public showIdAndFullnameAllCustomers(list: CustomerModel[]): string[] {
     return list.map(e => `ID: ${e.id} -> Name: ${e.fullName} `);
   }
+
+  getAllEmails(customers: CustomerModel[]): string[] {
+    const emails: string[] = [];
+    customers.forEach((data) => {
+      emails.push(data.email);
+    });
+    return emails;
+  }
+
+
 
   /**
    * Take 2 values and return the sum of them
