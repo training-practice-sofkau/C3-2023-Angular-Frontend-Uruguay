@@ -35,12 +35,12 @@ getCustomerState() {   //observable
   }
 
   newphone! : string;
-  
-  addPhoneCustomer() {   //observable
+
+  addPhoneCustomer(phone : number) {   //observable
     return from(this.customers)
     .pipe(
-      filter((item)=> item.phone !== undefined),
-      map((item) => "+598"+ item.phone)
+      filter((item)=> item.phone === phone),
+      map((item) => item.phone * 2)
     )//.subscribe((item) => (this.newphone = item))
   }
 
@@ -48,13 +48,6 @@ getCustomerState() {   //observable
     return this.customers.forEach(item => item.fullName.toUpperCase);
   }
 
-  
-  getState(state: boolean) {   
-    return this.customers
-    .filter(item => item.state === state)
-    .forEach(item => item.state = false);
-  }
-  
 
 
   //Funcion Pura

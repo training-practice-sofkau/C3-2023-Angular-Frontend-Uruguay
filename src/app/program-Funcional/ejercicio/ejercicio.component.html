@@ -16,21 +16,21 @@
     
 </div>
 
+
 <div>
-    <h2 h2 class="text-xl-center" *ngIf="addPhoneCustomer()">
-        {{getCustomerState() | async}}</h2>
-    
+    <h2 h2 class="text-xl-center" *ngIf="addPhoneCustomer(100)">
+        {{addPhoneCustomer(100) | async}}</h2>
 </div>
 
 <div>
     <h2 h2 class="text-xl-center" *ngIf="getCustomerName(c)">
         {{getCustomerName(c) | async}}</h2>
-    
 </div>
 
 <div>
     <h2 h2 class="text-xl-center" *ngIf="getCustomerState()">
         {{getCustomerState() | async}}</h2>
-    
 </div>
+
+
 
