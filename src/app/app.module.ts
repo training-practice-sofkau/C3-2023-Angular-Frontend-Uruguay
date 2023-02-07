@@ -8,10 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { CustomerAccountModule } from './customer-account/customer-account.module';
 import { TransactionsModule } from './transactions/transactions.module';
+import { HomeComponent } from './shared/home/home.component';
+import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    EjercicioComponent,
   ],
   imports: [
     BrowserModule,
