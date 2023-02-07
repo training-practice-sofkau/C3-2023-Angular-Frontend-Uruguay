@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { filter, from, groupBy, map, mergeMap } from 'rxjs';
-import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
 
@@ -12,6 +11,8 @@ import { baseCustomers } from '../customer-data/customer.data';
 })
 export class EjercicioComponent {
   public customerPhone : {phone:number}[] = []
+  public activeCustomer : {state: boolean}[] = []
+  
 
   //TRANSFORMACION CON OBSERVABLES 1
   //Transformación con observables: Filtrar los clientes con tipo de documento "Cedula".
@@ -19,6 +20,7 @@ export class EjercicioComponent {
     const filterDocumentType = from(baseCustomers).pipe(
       filter(customer => customer.documentType.name === document)
     );
+   
   }
 
   //TRANSFORMACION CON OBSERVABLES 2
@@ -36,7 +38,12 @@ export class EjercicioComponent {
   //TRANSFORMACION SIN OBSERVABLES 1
   //Transformación sin observables: Filtrar los clientes con estado activo.
     filterActiveCustomers(state: boolean) {
-    return baseCustomers.filter(customer => customer.state);
+     
+      this.activeCustomer = baseCustomers.map(customer =>
+        ({state:customer.state,
+        name:customer.fullName})
+         ).filter(customer => customer.state === state) ;
+         console.log("hola")
   }
 
 
@@ -53,15 +60,12 @@ export class EjercicioComponent {
 
 
 
-
-
   //Funcion Pura
   pureFilterActiveCustomers(state: boolean) {
     return baseCustomers.filter(customer => customer.state === state);
   }
   
   
-
 
 }
 
