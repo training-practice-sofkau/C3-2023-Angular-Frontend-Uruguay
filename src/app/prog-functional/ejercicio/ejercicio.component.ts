@@ -36,22 +36,30 @@ export class EjercicioComponent {
   //Transformaciones
   newState!: boolean;
 
-  getActiveCustomers(): void {
+  getActiveCustomers(id: string): void {
     from(this.getCustomers()).pipe(
       filter(c => c.state === true),
-      map(c => c.id === "asd12a1s2s")
+      map(c => c.id === id)
     ).subscribe(valor => this.newState = valor)
   }
 
-  getDeactivatedCustomers(): void {
+  getDeactivatedCustomers(id: string): void {
     from(this.getCustomers()).pipe(
       filter(c => c.state === false),
-      map(c => c.id === "asd12a1s2s")
+      map(c => c.id === id)
     ).subscribe(valor => this.newState = valor)
   }
 
-  phoneToString() {
-    this.getCustomers().forEach(c => c.phone.toString())
+  phoneToString(id: string) {
+    this.getActiveCustomers(id),
+      this.getCustomers().forEach(c => c.phone.toString())
+  }
+
+  isActive(id: string, callback: string): boolean {
+    from(this.getCustomers()).pipe(
+      this.getActiveCustomers(id)
+    )
+    return true
   }
 
 
