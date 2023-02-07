@@ -41,6 +41,14 @@ export class ExerciseComponent {
     return observable;
   }
 
+  getAllCustomersNames(): string[] {
+    const customers: string[] = [];
+    this.customers.forEach((data) => {
+      customers.push(data.fullName);
+    });
+    return customers;
+  }
+
   // Transformaciones
 
   setStateForCustomer(id: string, state: boolean) {
