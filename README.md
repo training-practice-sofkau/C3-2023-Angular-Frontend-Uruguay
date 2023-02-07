@@ -1,4 +1,4 @@
-# HolaMundo
+# Angular Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
@@ -15,7 +15,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 3 - Day 1] - Angular (Estructura de proyecto)
+[Workshop Week 3 - Day 2] - Angular (Programacion Funcional)
 
 # Body of the delivery
 ¿Qué está entregando?
@@ -31,11 +31,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Workshop
 The following are the guidelines that should be taken into account for the development of the workshop to be submitted:
 
-1. Identify missing folder or modules.
-2. Identify the services for each module, interfaces, guards.
-3. Create missing folders or modules.
-4. Create components corresponding to each modulo.
-5. If they come up with something else, you can also create it, but you have to discuss.
+1. Perform data transformations on the Customer array.
+2. 6 operations must be performed on the array of customers, 3 with observables and 3 without observables.
+3. Each operation must have at least 2 functional operators.
+
+>example: array.filter().map() or from(array).pipe( filter(), map() )
 
 ## for more information, about the command line
 ng g --help
