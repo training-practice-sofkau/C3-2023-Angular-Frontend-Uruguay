@@ -49,6 +49,22 @@ export class ExerciseComponent {
     return customers;
   }
 
+  getCustomerStateById(id: string): string[] {
+    const customers: string[] = [];
+    this.customers.filter((data) => data.id === id).forEach((data) => {
+      customers.push(data.state.toString());
+    });
+    return customers;
+  }
+
+  getCustomerNameById(id: string): string[] {
+    const customers: string[] = [];
+    this.customers.filter((data) => data.id === id).forEach((data) => {
+      customers.push(data.fullName);
+    });
+    return customers;
+  }
+
   // Transformaciones con suscribe
 
   setStateForCustomer(id: string, state: boolean) {
