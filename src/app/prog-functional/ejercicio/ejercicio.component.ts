@@ -65,6 +65,7 @@ export class EjercicioComponent {
    getInfo(fn: (customers: CustomerModel[]) => void) {
     const customers = this.data.filter(customer => customer.state === true);
     return fn(customers);
+    //GitHubProblem
   }
 
    /** Funcion de orden superior: Tomar una o más funciones como entrada y Devolver una función como salida
