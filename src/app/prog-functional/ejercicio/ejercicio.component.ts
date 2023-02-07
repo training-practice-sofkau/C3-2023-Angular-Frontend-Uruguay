@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { filter, from } from 'rxjs';
+import { CustomerArray } from '../customer-data/customer.data';
+import { CustomerModel } from '../../interfaces/Customer.interface';
 
 @Component({
   selector: 'app-ejercicio',
   templateUrl: './ejercicio.component.html',
   styleUrls: ['./ejercicio.component.scss']
 })
+
 export class EjercicioComponent {
+  constructor(private readonly customerArray: CustomerArray ) {}
 
 
   /**
@@ -21,13 +26,13 @@ export class EjercicioComponent {
    * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
    */
 
-
-
   //funcion pura
+  newData!: CustomerModel;
   transform(document: string) {
-    from(this.customers).pipe(
+    from(this.customerArray.baseCustomers).pipe(
       filter(n => n.document === document),
     ).subscribe((data) => this.newData = data)
   }
-
 }
+
+
