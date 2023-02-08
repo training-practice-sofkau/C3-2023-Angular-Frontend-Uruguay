@@ -15,7 +15,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 3 - Day 1] - Angular (Project Structure)
+[Workshop Week 3 - Day 2] - Angular (Functional Programming)
 
 # Body of the delivery
 What is being delivered?
@@ -28,11 +28,14 @@ What difficulty did you have?
 ## Workshop
 The following are the guidelines that should be taken into account for the development of the workshop to be submitted:
 
-1. Identify missing folder or modules.
-2. Identify the services for each module, interfaces, guards.
-3. Create missing folders or modules.
-4. Create components corresponding to each modulo.
-5. If they come up with something else, you can also create it, but you have to discuss.
+1. Perform data transformations on the Customer array.
+2. 6 operations must be performed on the array of customers, 3 with observables and 3 without observables.
+3. Each operation must have at least 2 functional operators.
+4. Create a pure function.
+5. Create a composition of functions.
+6. Create a higher order function.
+
+>example: array.filter().map() or from(array).pipe( filter(), map() )
 
 ## for more information, about the command line
 ng g --help
@@ -44,5 +47,4 @@ ng g --help
 [Material](https://material.angular.io/components/categories)
 
 ## inportant note
-Do not forget that for this workshop, you should make at least 6 commits properly documented (title and message body).
- 
+Do not forget that for this workshop, you should make at least 9 commits properly documented (title and message body).

@@ -1,0 +1,59 @@
+<div class="container" style="margin-left: 20px;">
+  <br>
+  <label>currentUSer</label>
+  <div class="results"> Customer: {{currentUser}}</div>
+
+  <hr>
+
+  <br>
+  <label>showCustomerData</label>
+  <br>
+  <div class="results"> Customer: {{showCustomerData("3303054-3")}}</div>
+
+  <hr>
+
+  <br>
+  <label>showIdAndFullnameAllCustomers</label>
+  <div class="results"> Customers: {{showIdAndFullnameAllCustomers(customers)}} </div>
+
+  <hr>
+
+  <br>
+  <label>showCurrentElement</label>
+  <div class="results"> Elemento: {{showCurrentElement()}} </div>
+
+  <hr>
+
+  <br>
+  <label>Sum( a + b )</label>
+  <div class="results"> Resultados: {{sum(1,2)}} </div>
+
+  <hr>
+
+  <br>
+  <label>getCustomersFullNameAndId + sortCustomers</label>
+  <div class="results"> Customers: {{getCustomersFullNameAndId(customers, sortCustomers)}} </div>
+
+  <hr>
+
+  <br>
+  <label>showMailUsers</label>
+  <div class="results"> Customers: {{findByEmailProvider("mimail.com")}} </div>
+
+  <hr>
+
+  <br>
+  <label>showCustomerData</label>
+  <div class="results"> Customer: {{allDataToUpper(showCustomerData("123232-3"))}}</div>
+
+  <hr>
+
+  <br>
+  <label>show Disabled Customers</label>
+  <div class="results"> Customer: {{findDisabledCustomers()}}</div>
+
+
+  <br>
+  <div>FIN</div>
+
+</div>
