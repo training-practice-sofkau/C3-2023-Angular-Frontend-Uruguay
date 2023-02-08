@@ -92,4 +92,11 @@ export class EjercicioComponent {
   showCustomerName(customer: CustomerModel[]) {
     return customer.map(customer => `Customer: ${customer.fullName}`)
   }
+
+    //Composicion de funciones
+
+  showInfo(fn: (customer: CustomerModel[]) => void) {
+    const customer = this.customers.filter(customer => customer.state === true);
+    return fn(customer);
+  }
 }
