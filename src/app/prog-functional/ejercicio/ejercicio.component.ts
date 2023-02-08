@@ -18,6 +18,9 @@ public activeCustomer : {state: boolean}[] = []
   public observado1?: string;
   public customers: CustomerModel[] = baseCustomers;
   obsState: string[] = [];
+  public  listCustomer: { name: string; }[] | undefined;
+
+  
 
   //observer
   searchByNameAndGetNameAndEmail(fullName: string) {
@@ -100,15 +103,16 @@ getInfo(fn: (parametro: string[]) => void ){
   }
 
 //funcion Pura
-getAllCust(): Array<string>[]{
-const listCustomer = baseCustomers.map(n => n.fullName);
-return [listCustomer]
-}
+//getAllCust(): void{
+//this.listCustomer = baseCustomers.map(n => n.fullName);
+//return [listCustomer]
+//}
 
 
 //FUNCION PURA
 getCustomerById = (id: string) => {
   return baseCustomers.filter(baseCustomers => baseCustomers.id === id);
+
 };
 
 getFullName = (customer: CustomerModel[]) => baseCustomers[0].fullName;
