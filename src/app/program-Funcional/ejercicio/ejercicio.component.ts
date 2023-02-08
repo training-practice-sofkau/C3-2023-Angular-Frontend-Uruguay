@@ -15,40 +15,48 @@ export class EjercicioComponent {
 
   customers = baseCustomers;
   newCustomer!: CustomerModel;
-  c ="Nombre 3";
+  c = "Nombre 3";
   //newcustomer! : CustomerModel;
-  newc! : string;
+  newc!: string;
   getCustomerName(name: string) {   //observable
     return from(this.customers)
-    .pipe(
-      filter((customer) => customer.fullName === name),
-      map(customer=> customer.fullName.toUpperCase())
-    )
+      .pipe(
+        filter((customer) => customer.fullName === name),
+        map(customer => customer.fullName.toUpperCase())
+      )
   }
-//.subscribe((customer) => (this.newc = customer))
-newState! : boolean;
-getCustomerState() {   //observable
-  return from(this.customers).pipe(
+  //.subscribe((customer) => (this.newc = customer))
+  newState!: boolean;
+  getCustomerState() {   //observable
+    return from(this.customers).pipe(
       filter((item) => item.state === true),
-      map((item)=> item.state === false)
+      map((item) => item.state === false)
     )
   }
 
-  newphone! : string;
+  newphone!: string;
 
-  addPhoneCustomer(phone : number) {   //observable
+  addPhoneCustomer(phone: number) {   //observable
     return from(this.customers)
-    .pipe(
-      filter((item)=> item.phone === phone),
-      map((item) => item.phone * 2)
-    )//.subscribe((item) => (this.newphone = item))
+      .pipe(
+        filter((item) => item.phone === phone),
+        map((item) => item.phone * 2)
+      )//.subscribe((item) => (this.newphone = item))
   }
 
-  getFullName() {   
+  getFullName() {
     return from(this.customers)
-    .pipe(filter((item)=> item.state != false),
-    map(item => item.fullName)
-    )
+      .pipe(filter((item) => item.state != false),
+        map(item => item.fullName)
+      )
+  }
+
+  id: string = "asd12a1s2s";
+  getIdName(id: string) {
+    return from(this.customers)
+      .pipe(filter((item) => item.id === id),
+        map(item => item.fullName)
+      )
   }
 
 
@@ -69,41 +77,41 @@ getCustomerState() {   //observable
       "cedula");
   }
 
-  agregarTexto(nombre: string,edad:number): string {
+  agregarTexto(nombre: string, edad: number): string {
     return `Tu nombre es :${nombre} y tu edad es : ${edad}`
   }
 
-  fraseMayuscula(nombre : string): string {
+  fraseMayuscula(nombre: string): string {
     return nombre
-    .toUpperCase();
+      .toUpperCase();
   }
   nombre = "cristian";
-  edad= 24;
+  edad = 24;
 
-  producirTextoMayuscula(nombre: string ,edad:number):string{
-    return this.fraseMayuscula(this.agregarTexto(nombre,edad));
-  }
-  
-
-
-  sumar(p:number ,r:number):number{
-    return p+r;
+  producirTextoMayuscula(nombre: string, edad: number): string {
+    return this.fraseMayuscula(this.agregarTexto(nombre, edad));
   }
 
 
-  add (a:number,b:number,fn:(p:number,r:number) => number):number{
-    return fn(a,b);
-  }   
 
-  
-  
+  sumar(p: number, r: number): number {
+    return p + r;
+  }
 
 
+  add(a: number, b: number, fn: (p: number, r: number) => number): number {
+    return fn(a, b);
+  }
 
 
-  
-  
-  
+
+
+
+
+
+
+
+
 
 
 }
