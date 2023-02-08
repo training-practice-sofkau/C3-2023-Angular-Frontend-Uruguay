@@ -87,60 +87,56 @@ filterCustomersByDocumentType(document: string) {
    combinacionDeHechizos(hechizo1: (objetivo: string) => string, hechizo2: (objetivo: string) => string) {
     return (objetivo: string) => hechizo1(hechizo2(objetivo));
   };
+
+
+  //FUNCION PURA
+
+   add(a: number, b: number): number {
+    return a + b;
+  }
+
+   //AGREGO OTRA FUNCION PURA
   
+   multiply(a: number, b: number): number {
+    return a * b;
+  }
+  
+  //TOMAMOS DOS NUMEROS Y UNA FUNCION DE ORDEN SUP("cb") COMO ARG
+    
+  composicion(a: number, b: number, cb: (a: number, b: number) => number): number {
+    return cb(this.add(a, b), b);
+  }
+  
+  //ALMACENAMOS EL RESULTADO EN RESULT, POR SI LO QUEREMOS USAR LUEGO
+   result = this.composicion(3, 4, this.multiply);
+ 
   
 }
 
 
-
-
-
-
-
-
-
-
-  
-  
-
-
-
 //Funcion de orden superior
-function getInfo(
-  fn: (parametro: string[]) => void ){ 
+// function getInfo(
+//   fn: (parametro: string[]) => void ){ 
 
- const customersInfo = baseCustomers.map(usuario =>  
-   `id de cuenta: ${usuario.id},
-    id de tipo de documento: ${usuario.documentType.id}
-    nombre del documento: ${usuario.documentType.name}
-    estado del documento: ${usuario.documentType.state}
-    numero del documento: ${usuario.document}
-    nombre completo: ${usuario.fullName}
-    correo electronico: ${usuario.email}
-    telefono: ${usuario.phone}
-    contraseña: ${usuario.password}
-    estado de la cuenta: ${usuario.state}`);
-    fn(customersInfo);
-  }
+//  const customersInfo = baseCustomers.map(usuario =>  
+//    `id de cuenta: ${usuario.id},
+//     id de tipo de documento: ${usuario.documentType.id}
+//     nombre del documento: ${usuario.documentType.name}
+//     estado del documento: ${usuario.documentType.state}
+//     numero del documento: ${usuario.document}
+//     nombre completo: ${usuario.fullName}
+//     correo electronico: ${usuario.email}
+//     telefono: ${usuario.phone}
+//     contraseña: ${usuario.password}
+//     estado de la cuenta: ${usuario.state}`);
+//     fn(customersInfo);
+//   }
   
-  function mostrar(customer: string[]){
-    customer.forEach(item => console.log(item));
+//   function mostrar(customer: string[]){
+//     customer.forEach(item => console.log(item));
     
-  }
+//   }
   
-  getInfo(mostrar)
+//   getInfo(mostrar)
   
-  
-  /**
-   * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
-   * Se deben usar 2 operadores funcionales para cada transformacion.
-  *
-   * Se debe crear una funcion pura,
-  *
-  * A partir de la funcion pura crear una composicion de funciones y
-  * una funcion de orden superior o un callback.
-   *
-   * Funcion de orden superior: Tomar una o más funciones como entrada y Devolver una función como salida
-   * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
-   */
-  
+
