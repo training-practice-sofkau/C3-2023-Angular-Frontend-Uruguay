@@ -14,7 +14,8 @@ export class EjercicioComponent {
   public activeCustomer : {state: boolean}[] = []
   public cedulaCustomers: {name: string}[] = []
   public customerData: {document:string}[] = []
-  
+  public obsName?: string;
+  baseC = [...baseCustomers]
 
   //TRANSFORMACION CON OBSERVABLES 1
   //Transformación con observables: Filtrar los clientes con tipo de documento "Cedula".
@@ -32,6 +33,15 @@ export class EjercicioComponent {
       map(customer => customer.fullName)
     );
   }
+
+  //TRANSFORMACION CON OBSERVABLES 3
+  nombresObservados(fullName: string) {
+    from(this.baseC).pipe(
+     filter((customer) => customer.fullName === fullName),
+     map((customer) => `El nombre del cliente es ${customer.fullName} y su documento es ${customer.document}`)
+   ).subscribe((name)=> this.obsName = name);
+  return this.obsName
+ }
 
 
   //TRANSFORMACION SIN OBSERVABLES 1
