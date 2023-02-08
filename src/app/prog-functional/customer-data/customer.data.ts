@@ -3,7 +3,7 @@ import { CustomerModel } from "src/app/interfaces/Customer.interface";
 
 export const baseCustomers: Array<CustomerModel> = [
   {
-    id: "asd12a1s2s",
+    id: "111111111aaaa",
     documentType: {
       id: "a1s5s5e",
       name: "Cedula",
@@ -17,7 +17,7 @@ export const baseCustomers: Array<CustomerModel> = [
     state: true,
   },
   {
-    id: "a21s2d2w2",
+    id: "22222222bbbb",
     documentType: {
       id: "a6a6s6e6e",
       name: "Pasaporte",
@@ -31,7 +31,7 @@ export const baseCustomers: Array<CustomerModel> = [
     state: true,
   },
   {
-    id: "235552a44a4s",
+    id: "333333333cccc",
     documentType: {
       id: "asd45442",
       name: "Pasaporte",
@@ -45,7 +45,7 @@ export const baseCustomers: Array<CustomerModel> = [
     state: true,
   },
   {
-    id: "123445aaas454",
+    id: "444444444dddd",
     documentType: {
       id: "asw22",
       name: "Cedula",

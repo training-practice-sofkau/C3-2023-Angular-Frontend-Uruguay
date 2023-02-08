@@ -3,10 +3,10 @@
     <pre>{{newState}}</pre>
 </div>
 
-<div>
+<div class="container">
     <h1>
-        <h2 *ngIf="getActiveCustomers(asd)">
-            {{(getActiveCustomers(asd)|async)}}
+        <h2 *ngIf="getActiveCustomers()">
+            {{(getActiveCustomers()|json)}}
         </h2>
     </h1>
 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, from, map } from 'rxjs';
+import { filter, from, map, Observable } from 'rxjs';
 import { CustomerModel } from '../../interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
@@ -10,9 +10,9 @@ import { baseCustomers } from '../customer-data/customer.data';
 })
 export class EjercicioComponent {
 
-  asd = "asd12a1s2s"
+  asd = "111111111aaaa"
   constructor() {
-    this.getActiveCustomers(this.asd)
+    this.getActiveCustomers()
   }
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
@@ -42,51 +42,45 @@ export class EjercicioComponent {
   //Transformaciones
   newState!: boolean;
 
-  getActiveCustomers(id: string) {
-    return from(this.getCustomers()).pipe(
-      filter(c => c.state === true && c.id === id),
-      map(c => c.fullName.toUpperCase())
-    )
+  getActiveCustomers() {
+    return (this.getCustomers()).filter(c => c.state === true)
+      .map(c => c.document.toString())
   }
 
-  getDeactivatedCustomers(id: string): void {
-    from(this.getCustomers()).pipe(
-      filter(c => c.state === false),
-      map(c => c.id === id)
-    ).subscribe(valor => this.newState = valor)
+  getDeactivatedCustomers() {
+    return (this.getCustomers()).filter(c => c.state === false)
+      .map(c => c.fullName.toUpperCase)
   }
 
   phoneToString(id: string) {
-    this.getActiveCustomers(id),
-      this.getCustomers().forEach(c => c.phone.toString())
+    return (this.getCustomers()).filter(c => c.id === id)
+      .map(c => c.phone.toString())
   }
 
-  nameToUppercase(id: string) {
-    this.getActiveCustomers(id)
-
+  nameToUppercase() {
+    return from(this.getCustomers()).pipe(
+      filter(c => c.documentType.name === 'Cedula'),
+      map(c => c.fullName.toLowerCase()),
+    );
   }
 
-  isAccountActive(id: string, callback: (c: string) => void): boolean {
-    this.getCustomers()
+    isAccountActive(id: string, fn: (c: string) => string): boolean {
+    from(fn(id)).pipe(
+      //filter(c => c)
+    )
     return true
   }
 
-
-  //Funcion de orden superior        //Funcion de primer orden
-  getInfo(customers: CustomerModel[], fn: (b: string[]) => void) {
-    const customerInfo =
-      customers.map(e => `Cliente con id: ${e.id} puede hacer depositos: ${e.state}`)
-    fn(customerInfo)
+  //Funcion de primer orden
+  showToUppercase() {
+    (this.getCustomers()).forEach(item => console.log(item.fullName.toUpperCase()))
   }
 
   //Funcion de primer orden
-  show(customers: string[]) {
-    customers.forEach(item => console.log(item))
+  showCustomer() {
+    (this.getCustomers()).forEach(item => console.log(item))
   }
-  //Funcion de primer orden
-  showToUppercase(customers: string[]) {
-    customers.forEach(item => console.log(item.toUpperCase))
-  }
+
   //Funcion de primer orden
   showOrdered(customers: string[]) {
     customers.sort().forEach((item, index) => {
@@ -94,4 +88,10 @@ export class EjercicioComponent {
     })
   }
 
+  //Funcion de orden superior        //Funcion de primer orden
+  getInfo(customers: CustomerModel[], fn: (b: string[]) => void) {
+    const customerInfo =
+      customers.map(e => `Cliente con id: ${e.id} puede hacer depositos: ${e.state}`)
+    fn(customerInfo)
+  }
 }
