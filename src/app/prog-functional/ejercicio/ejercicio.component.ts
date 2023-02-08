@@ -63,29 +63,33 @@ export class EjercicioComponent {
 
   searchCustomerByFullName() {
     from(this.customers)
-    .pipe(
-      filter((customer) => customer.fullName === 'Nombre 2'),
-      map((customer) => `Cliente: ${customer.fullName.toUpperCase()} ID: ${customer.id}`))
+      .pipe(
+        filter((customer) => customer.fullName === 'Nombre 2'),
+        map((customer) => `Cliente: ${customer.fullName.toUpperCase()} ID: ${customer.id}`))
       .subscribe((obs) => this.obsName = obs);
-      return this.obsName;
+    return this.obsName;
   }
 
   filterCustomerByState() {
     from(this.customers)
-    .pipe(
-      filter((customer) => customer.state === false),
-      map((customer) => `Cliente: ${customer.fullName.toUpperCase()} ID: ${customer.id}`))
+      .pipe(
+        filter((customer) => customer.state === false),
+        map((customer) => `Cliente: ${customer.fullName.toUpperCase()} ID: ${customer.id}`))
       .subscribe((obs1) => this.obsState.push(obs1));
-      return this.obsState;
+    return this.obsState;
   }
   searchCustomerByDocType() {
     from(this.customers)
-    .pipe(
-      filter((customer) => customer.documentType.name === 'Cedula'),
-      map((customer) => `Cliente: ${customer.fullName.toUpperCase()} Document: ${customer.documentType.name}`))
+      .pipe(
+        filter((customer) => customer.documentType.name === 'Cedula'),
+        map((customer) => `Cliente: ${customer.fullName.toUpperCase()} Document: ${customer.documentType.name}`))
       .subscribe((obs2) => this.obsDoc.push(obs2));
-      return this.obsDoc;
+    return this.obsDoc;
   }
 
-}
+  //Funcion pura
 
+  showCustomerName(customer: CustomerModel[]) {
+    return customer.map(customer => `Customer: ${customer.fullName}`)
+  }
+}
