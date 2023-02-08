@@ -4,6 +4,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterOutlet } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -16,7 +18,13 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     CommonModule,
     MaterialModule,
+    RouterOutlet, //?
+    AppRoutingModule //?
   ],
-  exports:[ToolbarComponent]
+  exports:[
+    ToolbarComponent,
+    FooterComponent,
+    HomeComponent
+   ]
 })
 export class SharedModule { }
