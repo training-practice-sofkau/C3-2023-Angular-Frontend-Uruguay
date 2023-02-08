@@ -8,5 +8,9 @@
 <pre> {{ customerData | json }} </pre>
 <button (click)="mapCustomersByDocument('123456-3')"> Buscar por documento </button> 
 
-<pre> {{ obsName | json }} </pre>
+<pre> {{ observadoN | json }} </pre>
 <button (click)="nombresObservados('Nombre 1')"> Nombres Observados </button> 
+
+<pre> {{filteredCustomers | json }} </pre>
+<button (click)="filterCustomersByDocumentType('a6a6s6e6e')"> Filtrar por documento </button> 
+

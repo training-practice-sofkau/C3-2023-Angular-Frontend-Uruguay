@@ -14,18 +14,21 @@ export class EjercicioComponent {
   public activeCustomer : {state: boolean}[] = []
   public cedulaCustomers: {name: string}[] = []
   public customerData: {document:string}[] = []
-  public obsName?: string;
+  public observadoN?: string;
+  public filteredCustomers?: string;
   baseC = [...baseCustomers]
 
   //TRANSFORMACION CON OBSERVABLES 1
   //Transformación con observables: Filtrar los clientes con tipo de documento "Cedula".
-    filterCustomersByDocumentType(document: string) {
-    const filterDocumentType = from(baseCustomers).pipe(
-      filter(customer => customer.documentType.name === document)
-    );
-   
-  }
+filterCustomersByDocumentType(document: string) {
+   from(baseCustomers).pipe(
+    filter(customer => customer.documentType.id === document),
+    map((customer) => `El nombre del documento es ${customer.documentType.name} `)
+  ).subscribe((document)=> this.filteredCustomers = document);
+  return this.filteredCustomers;
 
+}
+  
   //TRANSFORMACION CON OBSERVABLES 2
   //Transformación con observables: Mapear los clientes para obtener solo su nombre completo.
     mapCustomersToFullName(nombre: string) {
@@ -33,22 +36,21 @@ export class EjercicioComponent {
       map(customer => customer.fullName)
     );
   }
-
+  
   //TRANSFORMACION CON OBSERVABLES 3
   nombresObservados(fullName: string) {
     from(this.baseC).pipe(
-     filter((customer) => customer.fullName === fullName),
+      filter((customer) => customer.fullName === fullName),
      map((customer) => `El nombre del cliente es ${customer.fullName} y su documento es ${customer.document}`)
-   ).subscribe((name)=> this.obsName = name);
-  return this.obsName
- }
-
-
+   ).subscribe((name)=> this.observadoN = name);
+  return this.observadoN
+  }
+  
   //TRANSFORMACION SIN OBSERVABLES 1
   //Transformación sin observables: Filtrar los clientes con estado activo.
-    filterActiveCustomers(state: boolean) {
-     
-      this.activeCustomer = baseCustomers.map(customer =>
+  filterActiveCustomers(state: boolean) {
+    
+    this.activeCustomer = baseCustomers.map(customer =>
         ({state:customer.state,
         name:customer.fullName})
          ).filter(customer => customer.state === state) ;
