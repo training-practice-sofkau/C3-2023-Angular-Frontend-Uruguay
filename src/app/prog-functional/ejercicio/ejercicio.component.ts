@@ -86,7 +86,7 @@ const found = filteredData.find(n => n.document === numDoc);
 }
 
   
-
+//no se termino de implementar la idea
 getInfo(fn: (parametro: string[]) => void ){
     const customersInfo = baseCustomers.map(usuario => 
       `id de cuenta: ${usuario.id},
