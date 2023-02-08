@@ -1,0 +1,30 @@
+<table>
+    <tr>
+    <td>
+<pre> {{ activeCustomer | json }} </pre>
+<button (click)="filterActiveCustomers(true)"> Filtrar por activo </button>
+</td>
+<td>
+<pre> {{ selectedData | json }} </pre>
+<button (click)="modDocumentType()"> Modificar Tipo Documento </button>
+</td>
+<td>
+<pre> {{ selectedData1 | json }} </pre>
+<button (click)="listForDocType()"> Listar Usuarios con Pasaportes </button>
+</td>
+</tr>
+<tr>
+    <td>
+        <button (click)="searchByNameAndGetNameAndEmail('Nombre 1')"> Nombres observados </button> 
+        <pre> {{ observadoN | json }} </pre>
+    </td>
+</tr>
+<td>
+    <button (click)="searchByphone(100)"> numeros observados </button> 
+    <pre> {{ observado1 | json }} </pre>
+
+</td>
+<button (click)="filterCustomerByState()"> numeros observados3 </button> 
+    <pre> {{ obsState | json }} </pre>
+
+</table>

@@ -14,6 +14,7 @@ import { AccountService } from './administrator/services/account.service';
 import { CustomerService } from './administrator/services/customer.service';
 import { DepositService } from './administrator/services/deposit.service';
 import { TransferService } from './administrator/services/transfer.service';
+import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TransferService } from './administrator/services/transfer.service';
     NewDepositComponent,
     NewTransaccionComponent,
     ViewTransferComponent,
+    EjercicioComponent,
   ],
   imports: [
     BrowserModule,
