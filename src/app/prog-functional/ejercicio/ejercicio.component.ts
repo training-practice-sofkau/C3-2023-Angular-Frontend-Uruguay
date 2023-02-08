@@ -16,6 +16,7 @@ export class EjercicioComponent {
   public customerData: {document:string}[] = []
   public observadoN?: string;
   public filteredCustomers?: string;
+  public observadoC?: string;
   baseC = [...baseCustomers]
 
   //TRANSFORMACION CON OBSERVABLES 1
@@ -30,12 +31,16 @@ filterCustomersByDocumentType(document: string) {
 }
   
   //TRANSFORMACION CON OBSERVABLES 2
-  //Transformación con observables: Mapear los clientes para obtener solo su nombre completo.
-    mapCustomersToFullName(nombre: string) {
-    return from(baseCustomers).pipe(
-      map(customer => customer.fullName)
-    );
+  searchCustomerByFullNameUpperCase(){
+    from(baseCustomers)
+    .pipe(
+      filter((customer) => customer.fullName === "Nombre 3"),
+      map((customer)=> `Cliente: ${customer.fullName.toUpperCase()} ID: ${customer.id})`))
+      .subscribe((item)=> this.observadoC = item);
+      return this.observadoC;
   }
+ 
+
   
   //TRANSFORMACION CON OBSERVABLES 3
   nombresObservados(fullName: string) {
