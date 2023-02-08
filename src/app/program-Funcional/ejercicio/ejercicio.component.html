@@ -14,22 +14,41 @@
 
 
 <div>
-    <h2>Observer 1</h2>
-    <h2 h2 class="text-xl-center" *ngIf="addPhoneCustomer(100)">
-        {{addPhoneCustomer(100) | async}}</h2>
+    <h2 class="text-xl-center">Observable 1</h2>
+    <h4 class="text-xl-center" *ngIf="addPhoneCustomer(100)">
+        {{addPhoneCustomer(100) | async}}</h4>
 </div>
 
 <div>
-    <h2>Observer 2</h2>
+    <h2 class="text-xl-center">Observable 2</h2>
 
-    <h2 h2 class="text-xl-center" *ngIf="getCustomerName(c)">
-        {{getCustomerName(c) | async}}</h2>
+    <h4  class="text-xl-center" *ngIf="getCustomerName(c)">
+        {{getCustomerName(c) | async}}</h4>
 </div>
 
 <div>
-    <h2>Observer 3</h2>
-    <h2 h2 class="text-xl-center" *ngIf="getCustomerState()">
-        {{getCustomerState() | async}}</h2>
+    <h2 class="text-xl-center">Observable 3</h2>
+    <h4 class="text-xl-center" *ngIf="getCustomerState()">
+        {{getCustomerState() | async}}</h4>
+</div>
+
+
+<div>
+    <h1 class="text-xl-center">Observable 4</h1>
+    <h4 class="text-xl-center" *ngIf="getFullName()">
+        {{getFullName() | async}}</h4>
+</div>
+
+<div>
+    <h2 class="text-xl-center">Observable 5</h2>
+    <h4 class="text-xl-center" *ngIf="getCustomerState()">
+        {{getCustomerState() | async}}</h4>
+</div>
+
+<div>
+    <h2 class="text-xl-center">Observable 6</h2>
+    <h4 class="text-xl-center" *ngIf="getCustomerState()">
+        {{getCustomerState() | async}}</h4>
 </div>
 
 

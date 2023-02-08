@@ -45,7 +45,10 @@ getCustomerState() {   //observable
   }
 
   getFullName() {   
-    return this.customers.forEach(item => item.fullName.toUpperCase);
+    return from(this.customers)
+    .pipe(filter((item)=> item.state != false),
+    map(item => item.fullName)
+    )
   }
 
 
