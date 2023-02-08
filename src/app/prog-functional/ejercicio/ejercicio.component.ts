@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { filter, map, Observable, of } from 'rxjs';
 import { from } from 'rxjs/internal/observable/from';
-import{ baseCustomers} from '../customer-data/customer.data'
+import { baseCustomers } from '../customer-data/customer.data';
 @Component({
   selector: 'app-ejercicio',
   templateUrl: './ejercicio.component.html',
@@ -15,8 +15,13 @@ export class EjercicioComponent {
   filtradoXEstado: { name: string; }[] = [];
   baseCustomerss = [...baseCustomers]
   filtradoxemail: { name: string; }[] = [];
+  filteredByEmail: { name: string; }[] = [];
+  nombresobservados?: string;
+  passwordHackeada?: string;
+  estados?: string;
 
 
+// Funcion que suma los telefonos segun su documento
 
 
 sumaDeTelefonos(documento:string){
@@ -29,6 +34,10 @@ sumaDeTelefonos(documento:string){
   }, 0);
 
 }
+
+
+// Funcion que filtra los usuarios por su documento
+
 filtradoPorDocumento(documento: string){
 
   this.filtradoxDocumento = baseCustomers.map(customer => ({
@@ -38,6 +47,10 @@ filtradoPorDocumento(documento: string){
   })).filter(customer => customer.documentType === documento);
 
 }
+
+
+// Funcion que filtra los usuarios por su estado
+
 
 filtradoPorEstado(estado: boolean){
 
@@ -50,6 +63,7 @@ filtradoPorEstado(estado: boolean){
 
 }
 
+// Funcion que filtra los usuarios por su correo
 
 
 filtradoPorCorreo(email: string){
@@ -61,6 +75,62 @@ filtradoPorCorreo(email: string){
   })).filter(customer => customer.email === email);
 
 }
+
+// Funcion que te muestra el full name del cliente y su documento
+
+
+nombresObservados(fullName: string) {
+   from(this.baseCustomerss).pipe(
+    filter((customer) => customer.fullName === fullName),
+    map((customer) => `El nombre del cliente es ${customer.fullName} y su documento es ${customer.document}`)
+  ).subscribe((name)=> this.nombresobservados = name);
+ return this.nombresobservados
+}
+
+
+// Funcion de alto riesgo en busqueda de la password
+
+
+
+filtradoPorPassword(password: string) {
+  from(this.baseCustomerss).pipe(
+   filter((customer) => customer.password === password),
+   map((customer) => `WOW LA CONTRASEÑA DEL CLIENTE ERA ESTA!!!${customer.password} ERES UN HACKER`)
+ ).subscribe((name)=> this.passwordHackeada = name);
+return this.passwordHackeada
+}
+
+
+// Funcion que te cambia el estado
+
+cambiarEstado(Document: string) {
+  from(this.baseCustomerss).pipe(
+   filter((customer) => customer.documentType.id === Document),
+   map((customer) => `El estado del cliente es: ${customer.fullName} era ${customer.state}  y ahora es ${!customer.state} ` )
+ ).subscribe((estado)=> this.estados = estado);
+return this.estados
+}
+
+
+// Funcion pura
+
+transformarNombre(cliente: { fullName: string; }) {
+  return {
+    name: cliente.fullName.toUpperCase(),
+  };
+}
+
+//  función de orden superior
+
+
+nombreMayusculas(baseCustomers: Array<{ fullName: string }>, transformarNombre: (cliente: { fullName: string }) => { name: string }) {
+  this.clientesConNombresEnMayusculas = Array.from(baseCustomers, transformarNombre);
+}
+
+}
+
+
+
 
   /**
 
@@ -76,21 +146,6 @@ filtradoPorCorreo(email: string){
 
    * Se debe crear una funcion pura, a demas de la que dio el coach
 /*/
-
-
-transformarNombre(cliente: { fullName: string; }) {
-  return {
-    name: cliente.fullName.toUpperCase()
-  };
-}
-
-nombreMayusculas(baseCustomers: Array<{ fullName: string }>, transformarNombre: (cliente: { fullName: string }) => { name: string }) {
-  this.clientesConNombresEnMayusculas = Array.from(baseCustomers, transformarNombre);
-}
-
-}
-
-
 
 /**
 
