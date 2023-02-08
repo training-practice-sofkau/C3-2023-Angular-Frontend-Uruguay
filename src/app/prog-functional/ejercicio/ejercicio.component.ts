@@ -23,48 +23,65 @@ export class EjercicioComponent {
    * Comopsicion de funciones: Componer funciones se basa en combinar funciones simples para construir funciones más complicadas
    */
 
-  //test = baseCustomers
+  newEmails: string[] = []
+  newClients: string[] = []
+  newDocuments: string[] = []
+
+  newState!: boolean;
 
   //funcion pura
   getCustomers(): Array<CustomerModel> {
     return [...baseCustomers]
   }
 
-  // transform(document: string) {
-  //   from(this.customers).pipe(
-  //     filter(n => n.document === document),
-  //   ).subscribe((data) => this.newData = data)
-  // }
-  //Transformaciones
-  newState!: boolean;
-
+  //Funciones sin observable
   getActiveCustomers() {
-    return (this.getCustomers()).filter(c => c.state === true)
+    return (this.getCustomers())
+      .filter(c => c.state === true)
       .map(c => c.document.toString())
   }
 
   getDeactivatedCustomers() {
-    return (this.getCustomers()).filter(c => c.state === false)
-      .map(c => c.fullName.toUpperCase)
+    return (this.getCustomers())
+      .filter(c => c.state === false)
+      .map(c => c.fullName.toUpperCase())
   }
 
   phoneToString(id: string): string[] {
-    return (this.getCustomers()).filter(c => c.id === id)
+    return (this.getCustomers())
+      .filter(c => c.id === id)
       .map(c => c.phone.toString())
   }
 
+  //Pipes
   nameToUpperCase() {
-    return from(this.getCustomers()).pipe(
+    from(this.getCustomers()).pipe(
       filter(c => c.documentType.name === 'Cedula'),
-      map(c => c.fullName.toUpperCase()),
-    );
+      map(c => c.fullName.toUpperCase()))
+      .subscribe(c => this.newClients.push(c));
+      return this.newClients
   }
 
-  isAccountActive(id: string, fn: (c: string) => string): boolean {
-    from(fn(id)).pipe(
-      //filter(c => c)
+  transformEmail() {
+    from(this.getCustomers()).pipe(
+      filter(c => c.state === true),
+      map(name => name.email))
+      .subscribe(c => this.newEmails.push(c))
+  }
+
+  changeDocument() {
+    from(this.getCustomers()).pipe(
+      filter(c => c.documentType.name === "Pasaporte"),
+      map(c => c.documentType.name = "Cedula"))
+      .subscribe(c => this.newDocuments.push(c))
+  }
+
+  //Callback
+  isAccountActive(id: string, fn: () => Array<CustomerModel>) {
+    return from(fn()).pipe(
+      filter(c => c.id === id && c.state === true),
+      map(c => c.fullName.toUpperCase()),
     )
-    return true
   }
 
   //Funcion de primer orden
