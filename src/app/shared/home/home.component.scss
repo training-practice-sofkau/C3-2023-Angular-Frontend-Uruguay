@@ -18,7 +18,7 @@
   
   .content {
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     color: rgba(234, 234, 234, 0.9);
     font-family: Helvetica;
   }
@@ -30,7 +30,7 @@
   .btn-home1{
     width: 240px;
     height: 48px;
-    background-color: black;
+    background-color: #212127;
     color: white;
     font-size: 17px;
     text-transform: uppercase;
@@ -39,7 +39,8 @@
   }
   
   .btn-home1:hover{
-    background-color: #7cb136f5;;
+    //#5900cdf2
+    background-color:  #fe6047;;
     color: rgb(248, 250, 248);
   
   }
@@ -56,7 +57,8 @@
   }
   
   .btn-home2:hover{
-    border: 2px solid #c4fa00f2;
+    //#c4fa00f2
+    border: 2px solid #fe6047;
     color: rgb(248, 250, 248);
   }
   
