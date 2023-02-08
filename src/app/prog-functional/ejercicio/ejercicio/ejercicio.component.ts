@@ -23,11 +23,11 @@ export class EjercicioComponent {
     //Transformaciones de datos sin observables.
 
     Email() {
-      return this.copia.filter(customer => customer.email === 'email4@email.com').map(customer => `Customer: ${customer.fullName}`)
+      return this.copia.filter(customer => customer.email === 'police@email.com').map(customer => `${customer.fullName}`)
     }
       
     cedula() {
-      return this.copia.filter(customer => customer.documentType.name === 'Cedula').map(customer => `Customer: ${customer.fullName.toUpperCase()}`)
+      return this.copia.filter(customer => customer.documentType.name === 'Cedula').map(customer => `${customer.fullName.toUpperCase()}`)
     }
       
     
@@ -50,28 +50,20 @@ export class EjercicioComponent {
       map((customer) => customer.email)).subscribe(obj => this.data2.push(obj));
       return this.data2;
     }
-
-    /*
-    Pass() {
-    return from(this.copia).pipe(
-      filter(customer => customer.password === '52saad2a'),
-      map(customer => customer.email));
-    }
-    */
-  
+ 
 
     //Crear una funcion pura. 
     
     showInfo(customers: CustomerModel[]) {
-    return customers.map(customer => `Customer: ${customer.fullName}, Document: ${customer.documentType.name}`)
+    return customers.map(customer => ` ${customer.fullName},  ${customer.documentType.name}`)
     }
     
    
     //Crear una composicion de funciones y una funcion de orden superior o un callback.
   
     
-    Info( funcion: (customers: CustomerModel[]) => void) {
-    const customers = this.copia.filter(customer => customer.email === 'email3@email.com');
+    Info(funcion: (customers: CustomerModel[]) => void) {
+    const customers = this.copia.filter(customer => customer.email === 'patinio@email.com');
     return funcion(customers);
     }
     
