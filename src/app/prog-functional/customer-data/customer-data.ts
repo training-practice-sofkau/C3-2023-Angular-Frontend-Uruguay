@@ -41,7 +41,7 @@ export const  baseCustomers: Array<CustomerModel> = [
       email: "email3@email.com",
       phone: 100,
       password: "asdad",
-      state: true,
+      state: false,
     },
     {
       id: "123445aaas454",
@@ -55,7 +55,7 @@ export const  baseCustomers: Array<CustomerModel> = [
       email: "email4@tumail.com",
       phone: 100,
       password: "aaaa222",
-      state: true,
+      state: false,
     },
   ]
 

@@ -28,19 +28,21 @@ export class EjercicioComponent {
 
   constructor() {
 
-    this.findById("a21s2d2w2");
-
-    this.findByEmailProvider("email.com");
+    this.findById("123445aaas454");
 
   }
 
   public customers: CustomerModel[] = baseCustomers;
 
-  mailUsers: string[] = [];
+  disabledUsers: string[] = [];
 
   newData!: CustomerModel;
 
   currentUser: string = "";
+
+
+
+  //--------> Observables
 
   /**
    * return the element that matches the document provided
@@ -64,18 +66,33 @@ export class EjercicioComponent {
     ).subscribe((data) => this.currentUser = data)
   }
 
+
+  /**
+   * Find all customers with state False
+   * @returns array of strings
+   */
+  findDisabledCustomers() {
+    from(this.customers).pipe(
+      filter(i => i.state === false),
+      map(i => `Id: ${i.id} - Is Disabled!`),
+    ).subscribe(data => this.disabledUsers.push(data));
+
+
+    return this.disabledUsers;
+  }
+
+
+
+  //--------> Not Observables
+
   /**
    * check the email and return the ones that matches the query
    * @param provider text to search
    */
-  findByEmailProvider(provider: string) {
+  findByEmailProvider(provider: string): string[] {
 
-    this.mailUsers = this.customers.filter(i => i.state === true && i.email.includes(provider))
-                                   .map(i => `Id: ${i.id} - Name: ${i.fullName} has the email: ${i.email}`);
-
-    //from(this.customers).pipe(
-    //  filter(i => i.email.includes(provider))
-    //).subscribe((data) => this.mailUsers.push(data))
+    return this.customers.filter(i => i.email.includes(provider) === true && i.state === true)
+      .map(i => `Id: ${i.id} has the email: ${i.email}`);
   }
 
   /**
@@ -88,7 +105,7 @@ export class EjercicioComponent {
   getCustomersFullNameAndId(customers: CustomerModel[], fn: (str: string[]) => string) {
 
     const customersInfo = customers.map(c => `Customer: ${c.fullName} has de Document: ${c.document} `);
-    fn(customersInfo);
+    return fn(customersInfo);
   }
 
   /**
@@ -104,22 +121,6 @@ export class EjercicioComponent {
     ).toString();
 
   }
-
-
-
-  /**
-   * Search for the email providers of the customers
-   * @param provider name of the email provider
-   * @returns array of CustomerModels
-   */
-  showMailProviderUsers(provider: string): String[] {
-
-    this.findByEmailProvider(provider);
-
-    return this.mailUsers;
-
-  }
-
 
   /**
    * shows the info of the current CustomerModel element
@@ -166,8 +167,6 @@ export class EjercicioComponent {
     return this.customerFullDataString(this.newData);
 
   }
-
-
 
   /**
    * return an array of Id and fullnames of customers
