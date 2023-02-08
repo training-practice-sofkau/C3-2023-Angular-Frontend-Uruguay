@@ -18,6 +18,7 @@ export class EjercicioComponent {
     copia = baseCustomers;
     data : string [] = [];
     data2 : string [] = [];
+    data3 : string [] = [];
 
     
     //Transformaciones de datos sin observables.
@@ -28,6 +29,10 @@ export class EjercicioComponent {
       
     cedula() {
       return this.copia.filter(customer => customer.documentType.name === 'Cedula').map(customer => `${customer.fullName.toUpperCase()}`)
+    }
+
+    Fullname() {
+      return this.copia.filter(customer => customer.fullName === 'Jefe Gorgory').map(customer => `${customer.fullName.toLocaleUpperCase()}`)
     }
       
     
@@ -50,6 +55,17 @@ export class EjercicioComponent {
       map((customer) => customer.email)).subscribe(obj => this.data2.push(obj));
       return this.data2;
     }
+
+
+    Document() {
+      from(this.copia)
+      .pipe(
+        filter(customer => customer.phone === 70),
+        map((customer) => `${customer.documentType.name.toUpperCase()}`))
+        .subscribe(obj => this.data3.push(obj));
+        return this.data3;
+      }
+   
  
 
     //Crear una funcion pura. 
