@@ -20,7 +20,6 @@ export class EjercicioComponent {
   baseC = [...baseCustomers]
 
   //TRANSFORMACION CON OBSERVABLES 1
-  //Transformación con observables: Filtrar los clientes con tipo de documento "Cedula".
 filterCustomersByDocumentType(document: string) {
    from(baseCustomers).pipe(
     filter(customer => customer.documentType.id === document),
@@ -40,13 +39,11 @@ filterCustomersByDocumentType(document: string) {
       return this.observadoC;
   }
  
-
-  
   //TRANSFORMACION CON OBSERVABLES 3
-  nombresObservados(fullName: string) {
+  searchByNameAndGetNameAndEmail(fullName: string) {
     from(this.baseC).pipe(
       filter((customer) => customer.fullName === fullName),
-     map((customer) => `El nombre del cliente es ${customer.fullName} y su documento es ${customer.document}`)
+     map((customer) => `El nombre del cliente es ${customer.fullName} y su correo es ${customer.email}`)
    ).subscribe((name)=> this.observadoN = name);
   return this.observadoN
   }
@@ -74,7 +71,8 @@ filterCustomersByDocumentType(document: string) {
        console.log("hola")
   }
 
-
+  //TRANSFORMACION SIN OBSERVABLES 3
+  
   mapCustomersByDocument(document: string) {
   this.customerData = baseCustomers.map(customer =>
     ({document: customer.document,
@@ -84,17 +82,28 @@ filterCustomersByDocumentType(document: string) {
 }
 
 
+  //FUNCION DE ORDEN SUPERIOR   
 
-
-
-  //Funcion Pura
-  pureFilterActiveCustomers(state: boolean) {
-    return baseCustomers.filter(customer => customer.state === state);
-  }
+   combinacionDeHechizos(hechizo1: (objetivo: string) => string, hechizo2: (objetivo: string) => string) {
+    return (objetivo: string) => hechizo1(hechizo2(objetivo));
+  };
   
   
-
 }
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
 
 //Funcion de orden superior
 function getInfo(
