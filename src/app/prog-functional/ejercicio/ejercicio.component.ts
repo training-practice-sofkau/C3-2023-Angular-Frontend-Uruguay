@@ -117,13 +117,15 @@ export class EjercicioComponent {
 
   };
 
+  //no se pudo mostrar en html
   getFullName = (customer: CustomerModel[]) => baseCustomers[0].fullName;
 
   getCustomerFullNameById = (id: string, customers: CustomerModel[]) =>
     this.getFullName(this.getCustomerById(id));
 
-  //const logCustomerFullName = (id: string) => (customers: CustomerModel[]) =>
-  //console.log(getCustomerFullNameById(id, customers));
+   logCustomerFullName = (id: string) => (customers: CustomerModel[]) =>
+  console.log(this.getCustomerFullNameById(id, customers));
+
 
 }
 /*
