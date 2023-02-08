@@ -3,7 +3,6 @@ import { baseCustomers } from '../customer-data/customer.data';
 import { CustomerModel } from '../../interfaces/customer.interface';
 import { filter, from, map } from 'rxjs';
 
-
 @Component({
   selector: 'app-ejercicio',
   templateUrl: './ejercicio.component.html',
