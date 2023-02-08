@@ -9,11 +9,13 @@ import { LoginModule } from './login/login-module.module';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ExerciseComponent } from './prog-functional/exercise/exercise.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ExerciseComponent,
   ],
   imports: [
     BrowserModule,
