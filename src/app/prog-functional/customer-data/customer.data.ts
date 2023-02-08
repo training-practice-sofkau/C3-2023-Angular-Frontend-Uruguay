@@ -42,7 +42,7 @@ export const baseCustomers: Array<CustomerModel> = [
     email: "email3@email.com",
     phone: 100,
     password: "asdad",
-    state: true,
+    state: false,
   },
   {
     id: "444444444dddd",

@@ -10,10 +10,6 @@ import { baseCustomers } from '../customer-data/customer.data';
 })
 export class EjercicioComponent {
 
-  asd = "111111111aaaa"
-  constructor() {
-    this.getActiveCustomers()
-  }
   /**
    * Aplicar 6 transformaciones de datos 3 con observables y 3 sin.
    * Se deben usar 2 operadores funcionales para cada transformacion.
@@ -52,19 +48,19 @@ export class EjercicioComponent {
       .map(c => c.fullName.toUpperCase)
   }
 
-  phoneToString(id: string) {
+  phoneToString(id: string): string[] {
     return (this.getCustomers()).filter(c => c.id === id)
       .map(c => c.phone.toString())
   }
 
-  nameToUppercase() {
+  nameToUpperCase() {
     return from(this.getCustomers()).pipe(
       filter(c => c.documentType.name === 'Cedula'),
-      map(c => c.fullName.toLowerCase()),
+      map(c => c.fullName.toUpperCase()),
     );
   }
 
-    isAccountActive(id: string, fn: (c: string) => string): boolean {
+  isAccountActive(id: string, fn: (c: string) => string): boolean {
     from(fn(id)).pipe(
       //filter(c => c)
     )

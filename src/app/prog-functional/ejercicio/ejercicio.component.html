@@ -4,9 +4,30 @@
 </div>
 
 <div class="container">
-    <h1>
-        <h2 *ngIf="getActiveCustomers()">
-            {{(getActiveCustomers()|json)}}
-        </h2>
-    </h1>
+    <h3> Get Active Accounts</h3>
+    <p>retorna los numeros de documento de las cuentas activas</p>
+    <pre *ngIf="getActiveCustomers()">
+        {{(getActiveCustomers()|json)}}
+    </pre>
+</div>
+<div class="container">
+    <h3> Get Deactive Accounts</h3>
+    <p>retorna los nombres en mayuscula de las cuentas desactivadas</p>
+    <pre *ngIf="getDeactivatedCustomers()">
+        {{(getDeactivatedCustomers()|json)}}
+    </pre>
+</div>
+<!-- <div class="container">
+    <h3> Phone to String</h3>
+    <p>busca el telefono del ID dado y lo pasa a string</p>
+    <pre *ngIf="phoneToString("111111111aaaa")">
+        {{(phoneToString("111111111aaaa")|json)}}
+    </pre>
+</div> -->
+<div class="container">
+    <h3> Name to Uppercase</h3>
+    <p>retorna los nombres en mayuscula de las cuentas desactivadas</p>
+    <pre *ngIf="nameToUpperCase()">
+        {{(nameToUpperCase()|json)}}
+    </pre>
 </div>
