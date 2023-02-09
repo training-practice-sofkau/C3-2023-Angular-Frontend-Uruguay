@@ -1,0 +1,48 @@
+<div class="bg-white p-5 max-w-md mx-auto rounded shadow-sm text-center">
+  <h2 class="text-4xl">BANK SOFKA</h2>
+  <form  class="mt-10 space-y-8" >
+    <div class="form-group">
+      <label for="username">Nombre de usuario</label>
+      <input type="text" class="form-control" id="username"  [(ngModel)]="username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password">
+    </div>
+    <button (click)="login(username, password)">Iniciar sesión</button>
+
+        <br /><br />
+        <button (click)="openModal($event)" >Registrar</button>
+
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title">Registro</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <app-singup> </app-singup>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close()"
+            >
+              Cerrar
+            </button>
+          </div>
+        </ng-template>
+        <br />
+        <a
+          class="text-black-400 text-sm underline self-center md:self-auto mt-4 md:mt-0"
+          >Forgot your password?
+        </a>
+  </form>
+</div>
