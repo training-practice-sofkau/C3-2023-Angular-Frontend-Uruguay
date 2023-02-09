@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./singin.component.scss']
 })
 export class SinginComponent {
-
   
+
 }
