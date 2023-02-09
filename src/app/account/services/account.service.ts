@@ -19,7 +19,7 @@ export class AccountService implements OnDestroy {
   }
 
 
-  listAccountAll = () =>{
+  updateAccountList = () =>{
     if(this.observableAccount.observed && !this.observableAccount.closed){
       this.apiService.getAllAccounts().subscribe({
         next: (typeApi) => { this.newAccounts = typeApi ;},
