@@ -1,6 +1,5 @@
-import { ɵgetParentElement } from '@angular/animations/browser';
 import { Component } from '@angular/core';
-import { filter, from, map, Observable, of } from 'rxjs';
+import { filter, from, map } from 'rxjs';
 import { CustomerModel } from '../../interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
