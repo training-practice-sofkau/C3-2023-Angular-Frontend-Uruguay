@@ -7,16 +7,18 @@ import { CustomersTableComponent } from './shared/customers-table/customers-tabl
 import { PageNotFoundComponent } from './404/page-not-found.component';
 import { SinginComponent } from './login/sing-in/sing-in.component';
 import { SingupComponent } from './login/sing-up/sing-up.component';
+import { AuthGuard } from './login/guards/auth.guard';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', title: 'Dashboard', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', title: 'Home', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'sign-up', title: 'Sign-up', component: SingupComponent },
   { path: 'sign-in', title: 'Sign-in', component: SinginComponent },
-  { path: 'dashboard', title: 'Dashboard', component: ViewComponent },
-  { path: 'user-accounts', title: 'UserAccounts', component: UserAccountsComponent },
-  { path: 'customers-table', title: 'CustomersTable', component: CustomersTableComponent },
-  { path: 'accounts-table', title: 'AccountsTable', component: AccountsTableComponent },
-  { path: '**', title: 'Dashboard', component: PageNotFoundComponent },
+  { path: 'dashboard', title: 'Dashboard', canActivate: [ AuthGuard ], component: ViewComponent },
+  { path: 'user-accounts', title: 'UserAccounts', canActivate: [ AuthGuard ], component: UserAccountsComponent },
+  { path: 'customers-table', title: 'CustomersTable', canActivate: [ AuthGuard ], component: CustomersTableComponent },
+  { path: 'accounts-table', title: 'AccountsTable', canActivate: [ AuthGuard ], component: AccountsTableComponent },
+  { path: '**', title: '404', component: PageNotFoundComponent },
 ]
 
 @NgModule({
