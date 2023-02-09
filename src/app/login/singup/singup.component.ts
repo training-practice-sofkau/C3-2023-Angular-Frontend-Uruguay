@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./singup.component.scss']
 })
 export class SingupComponent {
-
+  constructor() {
+    this.defaultLogin()
+  }
+  defaultLogin() {
+    localStorage.setItem('logged', 'false')
+  }
   activeLogin() {
     localStorage.getItem('logged')
     localStorage.setItem('logged', 'true')
