@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: "singin", component: SinginComponent},
   {path: "createaccount", component: CreateAccountComponent, canActivate: [LoginGuard]},
   {path: "createdeposit", component:CreateDepositComponent, canActivate: [LoginGuard]},
-  {path: "help", component: HelpComponent}
+  {path: "help", component: HelpComponent, }
 ];
 
 @NgModule({
