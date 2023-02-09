@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-
+import { AuthService } from '../components/login/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class PermissionsGuard implements CanActivate {
+
+  constructor(private readonly authService: AuthService){}
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 
-    return true;
-
+    if (this.authService.getUserStatus()) {
+      return true;
+    }
+    return false;
   }
 
 }

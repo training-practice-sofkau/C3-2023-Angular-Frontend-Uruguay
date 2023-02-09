@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -15,7 +16,12 @@ export class SignInComponent implements OnInit {
   loading = false;
   userIsLogged = false;
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    private authService: AuthService,
+    ) {
     this.form = this.fb.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
@@ -29,12 +35,12 @@ export class SignInComponent implements OnInit {
    * User login authentication
    */
   login() {
-    const usuario = this.form.value.username;
+    const username = this.form.value.username;
     const password = this.form.value.password;
 
     //TODO: verify credentials calling backend
 
-    if (usuario == "admin" && password == "1234") {     //dummy credentials only for testing
+    if (username == "admin" && password == "1234") {     //dummy credentials only for testing
 
       this.transitionToDesktop();
 
@@ -50,13 +56,11 @@ export class SignInComponent implements OnInit {
    * Transition from login to Desktop ( after verify credentials )
    */
   transitionToDesktop() {
+    this.authService.setUSerStatus(true);
     this.loading = true;
     setTimeout(() => {
 
       this.router.navigate(["desktop"]);
-
-      //this.loading = false;
-      //this.userIsLogged = true;
 
     }, 1500);
   }

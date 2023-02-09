@@ -3,23 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { DesktopComponent } from './desktop.component';
 import { OperationComponent } from './operation/operation.component';
 import { AdministrationComponent } from './administration/administration.component';
+import { ManagementModule } from './management/management.module';
 
 const routes: Routes = [
   {
     path: '', component: DesktopComponent, pathMatch: "full",
     children: [
-      { path: 'operation', component: OperationComponent },
-      { path: 'administration', component: AdministrationComponent },
+      { path: 'desktop/operation', component: OperationComponent },
+      { path: 'desktop/administration', component: AdministrationComponent },
+      //{ path: 'desktop/management', component: ManagementModule },
 
     ]},
-    /* children: [
-      { path: `operation`, title: "Operations", component: OperationComponent },
-      { path: `desktop`, title: "Administration", component: AdministrationComponent },
-    ] */
-
-  //{ path: `operation`, component: OperationComponent , pathMatch: `full` },
-  //{ path: `administration`, component: AdministrationComponent , pathMatch: `full` },
-  //{ path: "management", component: CrearUsuarioComponent }, */
   ]
 
 

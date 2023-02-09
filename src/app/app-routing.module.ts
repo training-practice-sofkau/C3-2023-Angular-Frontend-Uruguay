@@ -4,17 +4,28 @@ import { SignInComponent } from './components/login/sign-in/sign-in.component';
 import { SignUpComponent } from './components/login/sign-up/sign-up.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DesktopComponent } from './components/desktop/desktop.component';
+import { OperationComponent } from './components/desktop/operation/operation.component';
+import { AdministrationComponent } from './components/desktop/administration/administration.component';
 import { PermissionsGuard } from './guards/permissions.guard';
+
 
 
 const routes: Routes = [
   { path: ``, redirectTo: 'login', pathMatch: "full" },
-  { path: 'login', component: SignInComponent },
+  { path: 'login', component: SignInComponent},
   { path: 'signup', component: SignUpComponent },
   { path: 'not-found', component: NotFoundComponent },
-  { path: 'desktop', component: DesktopComponent},
+  {
+    path: 'desktop', component: DesktopComponent, canActivate: [PermissionsGuard],
+    children: [
+      { path: 'operation', component: OperationComponent },
+      { path: 'administration', component: AdministrationComponent },
+    ]
+  },
+
   { path: "**", redirectTo: "not-found" },
 ]
+
 //loadChildren: () => import('./components/desktop/desktop.module').then(x => x.DesktopModule)
 
 @NgModule({
