@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateDepositFormComponent, DepositHistoryComponent, DepositFinderComponent, DepositInfoComponent } from './';
-
+import { CreateDepositFormComponent, DepositHistoryComponent, DepositInfoComponent } from './';
+import { MainDepositComponent } from './main-deposit/main-deposit.component';
+import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     CreateDepositFormComponent,
     DepositHistoryComponent,
-    DepositFinderComponent,
-    DepositInfoComponent
+    DepositInfoComponent,
+    MainDepositComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    SharedModule
+  ],
+  exports: [CreateDepositFormComponent,
+    DepositHistoryComponent,
+    DepositInfoComponent]
 })
 export class DepositModule { }

@@ -1,21 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TransferInfoComponent } from './transfer-info/transfer-info.component';
-import { CreateTransferFormComponent } from './create-transfer-form/create-transfer-form.component';
-import { TransferHistoryComponent } from './transfer-history/transfer-history.component';
-import { TransferFinderComponent } from './transfer-finder/transfer-finder.component';
-
-
+import { CreateTransferFormComponent, TransferHistoryComponent, TransferInfoComponent } from './';
+import { SharedModule } from '../shared/shared.module';
+import { MainTransferComponent } from './main-transfer/main-transfer.component';
 
 @NgModule({
-  declarations: [
-    TransferInfoComponent,
-    CreateTransferFormComponent,
-    TransferHistoryComponent,
-    TransferFinderComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [CreateTransferFormComponent, TransferHistoryComponent, TransferInfoComponent, MainTransferComponent],
+  imports: [CommonModule, SharedModule],
+  exports: [CreateTransferFormComponent, TransferHistoryComponent, TransferInfoComponent]
 })
-export class TransferModule { }
+export class TransferModule {}
