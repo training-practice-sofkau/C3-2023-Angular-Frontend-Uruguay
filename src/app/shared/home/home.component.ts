@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit{
 
-  public tituloHome = "Home";
+  // public tituloHome = "Home";
 
 
   constructor() {
@@ -15,13 +15,13 @@ export class HomeComponent implements OnInit{
   }
 
   defaultLogged(){
-    localStorage.setItem('logged', 'false')
+    localStorage.setItem('MyToken', 'false')
   }
 
 
   activeLogged(){
-    localStorage.getItem('logged')
-    localStorage.setItem('logged', 'true')
+    localStorage.getItem('MyToken')
+    localStorage.setItem('MyToken', 'true')
   }
 
   logOut(){
