@@ -1,3 +1,5 @@
+import { DocumentTypeModel } from "./document-type.model";
+
 export interface CustomerModel {
   id: string;
   documentType: DocumentTypeModel;
@@ -9,10 +11,4 @@ export interface CustomerModel {
   avatarUrl?: string;
   state: boolean;
   daletedAt?: Date | number;
-}
-
-export interface DocumentTypeModel {
-  id: string;
-  name: string;
-  state: boolean;
 }
