@@ -12,8 +12,7 @@ export class AuthGuard implements CanActivate {
   canActivate(_route: ActivatedRouteSnapshot,_state: RouterStateSnapshot): boolean {
       if (this.cookie.get('hola').length >= 1) {
         return true;
-      }
-      else {
+      } else {
         this.router.navigate(['/sign-up']);
         return false;
       }

@@ -1,4 +1,4 @@
-import { Component, Host, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccountModel } from 'src/app/interfaces/account.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAccountsService } from './user-accounts.service';

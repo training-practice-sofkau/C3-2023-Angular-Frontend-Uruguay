@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { DocumentTypeListModel } from 'src/app/interfaces/document.list.interface';
 import { CookieService } from 'ngx-cookie-service';
@@ -26,6 +26,10 @@ export class SingupComponent {
   });
 
   constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router) {}
+
+  redirect(url: string) {
+    this.router.navigate(["/" + url]);
+  }
 
   onSubmit(): void {
     //this.signupForm.controls.name.setValue("xd");
