@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
     MyAccountComponent,
     NewAccountComponent,
     ProfileComponent
+    
   ],
   imports: [
     CommonModule

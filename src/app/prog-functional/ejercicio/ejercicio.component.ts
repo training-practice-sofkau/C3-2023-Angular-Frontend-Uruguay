@@ -79,9 +79,9 @@ export class EjercicioComponent {
     this.selectedData = documetMod.map(d => ({ name: d.fullName, document: d.documentType.name }));
 
   }
-
+  //no observer
   // buscar por cedula 
-  orderByName(numDoc: string): void {
+  findByDocPasaport(numDoc: string): void {
     const filteredData = baseCustomers.filter(d => d.document == 'Pasaporte');
     const found = filteredData.find(n => n.document === numDoc);
 
@@ -117,7 +117,7 @@ export class EjercicioComponent {
 
   };
 
-  //no se pudo mostrar en html
+  //no se pudo mostrar en html //FUNCION PURA
   getFullName = (customer: CustomerModel[]) => baseCustomers[0].fullName;
 
   getCustomerFullNameById = (id: string, customers: CustomerModel[]) =>
