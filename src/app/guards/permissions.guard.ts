@@ -14,6 +14,8 @@ export class PermissionsGuard implements CanActivate {
     if (this.authService.getUserStatus()) {
       return true;
     }
+
+    alert("You don't have permission to access that page.");
     return false;
   }
 
