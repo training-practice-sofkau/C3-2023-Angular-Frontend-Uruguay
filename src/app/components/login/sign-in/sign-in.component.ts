@@ -52,8 +52,12 @@ export class SignInComponent implements OnInit {
   transitionToDesktop() {
     this.loading = true;
     setTimeout(() => {
-      this.loading = false;
+
       this.router.navigate(["desktop"]);
+
+      //this.loading = false;
+      //this.userIsLogged = true;
+
     }, 1500);
   }
 
