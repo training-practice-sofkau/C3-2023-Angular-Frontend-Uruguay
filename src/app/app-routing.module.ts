@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/home/home.component';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { TransferComponent } from './transaction/transfer/transfer.component';
+import { SearchComponent } from './components/search/search.component';
+import { DepositComponent } from './transaction/deposit/deposit.component';
 
 const routes: Routes = [
 
@@ -12,14 +15,11 @@ const routes: Routes = [
     pathMatch: 'full',
 },
 
-{
-  path: 'app-home',
-  component: HomeComponent,
-},
-{
-  path: 'app-ejercicio',
-  component: EjercicioComponent
-},
+{ path: 'home', component: HomeComponent },
+{ path: 'ejercicio', component: EjercicioComponent },
+{ path: 'transfer', component: TransferComponent },
+{ path: 'search', component: SearchComponent },
+{ path: 'deposit', component: DepositComponent },
 
 {
   path: '**',
