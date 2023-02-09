@@ -6,7 +6,7 @@ import { HandleCustomerStatusComponent } from './handle-customer-status/handle-c
 import { HandleDepositStatusComponent } from './handle-deposit-status/handle-deposit-status.component';
 import { HandleTransferStatusComponent } from './handle-transfer-status/handle-transfer-status.component';
 import { UpdateAccountDataComponent } from './update-account-data/update-account-data.component';
-import { MaterialModule } from '../../shared/material/material.module';
+import { MaterialModule } from '../../material/material.module';
 
 
 

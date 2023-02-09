@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: ``, title: "Main",  redirectTo: '', pathMatch: `full` },
   { path: 'login', title: "Sign In", component: SignInComponent, pathMatch: `full`  },
   { path: 'signup', title: "Register", component: SignUpComponent, pathMatch: `full`  },
-  { path: 'prog-functional', title: "Functional Programming", component: EjercicioComponent, pathMatch: `full` },
-  { path: "**", redirectTo: "" , pathMatch: `full`},
+  { path: 'desktop', title:"Desktop", loadChildren: () => import('./components/desktop/desktop.module').then(x => x.DesktopModule) },
+  { path: "**", redirectTo: "" , pathMatch: 'full'},
 ]
 
 @NgModule({

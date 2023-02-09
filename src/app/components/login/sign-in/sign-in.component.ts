@@ -13,7 +13,7 @@ export class SignInComponent implements OnInit {
 
   form: FormGroup;
   loading = false;
-  loggedIn = false;
+  userIsLogged = false;
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
@@ -53,6 +53,7 @@ export class SignInComponent implements OnInit {
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
+      this.userIsLogged = true;
       this.router.navigate(["desktop"]);
     }, 1500);
   }
