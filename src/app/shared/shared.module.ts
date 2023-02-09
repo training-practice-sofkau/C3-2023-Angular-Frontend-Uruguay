@@ -5,7 +5,7 @@ import { MaterialModule } from '../material/material.module';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
-
+import { LoginModule } from '../login/login-module.module';
 
 
 @NgModule({
@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MaterialModule,
     RouterModule,
+    LoginModule
   ],
   exports:[ToolbarComponent]
 })

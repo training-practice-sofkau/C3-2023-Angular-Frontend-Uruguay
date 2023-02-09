@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './singin.component.html',
   styleUrls: ['./singin.component.scss']
 })
-export class SinginComponent {
-
-}
+export class SinginComponent { }

@@ -19,6 +19,7 @@ import { MaterialModule } from '../material/material.module';
   ],
   exports: [
     SinginComponent,
+    SingupComponent,
   ],
 })
 export class LoginModule { }
