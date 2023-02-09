@@ -16,12 +16,29 @@ import { AccountService } from './account/service/account.service';
 import { DepositService } from './deposit/service/deposit.service';
 import { TransferService } from './transfer/service/transfer.service';
 import { CustomerService } from './customer/service/customer.service';
-import { EjercicioComponent} from './prog-functional/ejercicio/ejercicio.component'
+import { MyNavComponent } from './my-nav/my-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MyTableComponent } from './my-table/my-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    EjercicioComponent,
+    MyNavComponent,
+    DashboardComponent,
+    MyTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +51,19 @@ import { EjercicioComponent} from './prog-functional/ejercicio/ejercicio.compone
     AccountModule,
     CustomerModule,
     DepositModule,
-    TransferModule
+    TransferModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
 
   ],
   providers: [AuthService,AccountService,DepositService,TransferService,CustomerService],
