@@ -9,6 +9,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { LoginModule } from './components/login/login.module';
 import { MaterialModule } from './components/shared/material/material.module';
 import { EjercicioComponent } from './components/prog-functional/ejercicio/ejercicio.component';
+import { MainComponent } from './components/main/main.component';
 
 
 
@@ -16,6 +17,7 @@ import { EjercicioComponent } from './components/prog-functional/ejercicio/ejerc
   declarations: [
     AppComponent,
     EjercicioComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
