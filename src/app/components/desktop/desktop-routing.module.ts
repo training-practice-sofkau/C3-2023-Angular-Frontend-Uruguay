@@ -6,7 +6,7 @@ import { AdministrationComponent } from './administration/administration.compone
 
 const routes: Routes = [
   {
-    path: 'desktop', component: DesktopComponent, pathMatch: "full",
+    path: '', component: DesktopComponent, pathMatch: "full",
     children: [
       { path: 'operation', component: OperationComponent },
       { path: 'administration', component: AdministrationComponent },
