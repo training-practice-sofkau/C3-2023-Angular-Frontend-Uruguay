@@ -6,7 +6,7 @@
 <div class="container">
     <h3> Get Active Accounts</h3>
     <p>retorna los numeros de documento de las cuentas activas</p>
-    <pre *ngIf="getActiveCustomers()">
+    <pre>
         {{(getActiveCustomers()|json)}}
     </pre>
 </div>
@@ -15,18 +15,9 @@
     <h3> Get Deactive Accounts</h3>
     <p>retorna los nombres en mayuscula de las cuentas desactivadas</p>
     <pre *ngIf="getDeactivatedCustomers()">
-        {{(getDeactivatedCustomers()|json)}}
+        {{(getDeactivatedCustomers())}}
     </pre>
 </div>
-
-<!-- <div class="container">
-    <h3> Phone to String</h3>
-    <p>busca el telefono del ID dado y lo pasa a string</p>
-    <pre *ngIf="phoneToString("111111111aaaa")">
-        {{(phoneToString("111111111aaaa")|json)}}
-    </pre>
-</div> -->
-
 <div class="container">
     <h3> Name to Uppercase</h3>
     <p>retorna los nombres en mayuscula de las cuentas desactivadas</p>
@@ -35,9 +26,17 @@
     </pre>
 </div>
 <div class="container">
-    <h3> Name to Uppercase</h3>
-    <p>retorna los nombres en mayuscula de las cuentas desactivadas</p>
+    <h3> Email to UpperCase</h3>
+    <p>retorna los emails en mayusculas de las cuentas activas</p>
     <pre>
-        {{(transformEmail()|json)}}
+        {{(transformEmail())}}
+    </pre>
+</div>
+<div class="container">
+    <h3> Change Document</h3>
+    <p>retorna los clientes y documentos de quienes tuvieran Pasaporte</p>
+    <pre>
+        {{(changeDocument())}}
+        {{this.newDocuments}}
     </pre>
 </div>
