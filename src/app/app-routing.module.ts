@@ -3,18 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import * as path from 'path';
 import { CustomerChangePasswordComponent } from './customer/customer-change-password/customer-change-password.component';
 import { PermissionsGuard } from './customer/guards/permissions.guard';
+import { LoggedGuard } from './customer/guards/logged.guard';
 
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login-routing.module')
-    .then(m => m.LoginRoutingModule)
+    .then(m => m.LoginRoutingModule),
+    canActivate: [LoggedGuard]
   },
   {
     path: 'dashboard',
     loadChildren: () => import('./account/account-routing.module')
     .then(m => m.AccountRoutingModule),
-    canActivate: [PermissionsGuard]
+    canActivate: [PermissionsGuard],
   },
   {
     path: 'profile',
@@ -34,7 +36,7 @@ const routes: Routes = [
     .then(m => m.TransferRoutingModule),
     canActivate: [PermissionsGuard]
   },
-  {path: '**', redirectTo: 'login'},
+  {path: '**', redirectTo: 'dashboard',},
 ];
 
 @NgModule({

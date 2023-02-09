@@ -15,7 +15,6 @@ import { AccountService } from './account/services/account.service';
 import { CustomerService } from './customer/services/customer.service';
 import { TransferService } from './transfer/services/transfer.service';
 import { DepositService } from './deposit/services/deposit.service';
-import { SharedService } from './shared/services/shared.service';
 import { AuthService } from './login/services/auth.service';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 
@@ -24,7 +23,7 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.compon
         AppComponent,
         EjercicioComponent
     ],
-    providers: [AccountService, CustomerService, TransferService, DepositService, SharedService, AuthService],
+    providers: [AccountService, CustomerService, TransferService, DepositService, AuthService],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
