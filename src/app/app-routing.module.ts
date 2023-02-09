@@ -21,7 +21,7 @@ const routes: Routes = [
  
  
    {path:`account`,component: FindAllComponent,pathMatch: 'full'},
-   {path:`account/create`,component: CreateAccountComponent,pathMatch: 'full',canActivate:[AdminGuard]},
+   {path:`account/create`,component: CreateAccountComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
    {path:`account/find-all`,component: AccountListComponent,pathMatch: 'full'},
    {path:`account/account-type/create`,component: FindAllComponent,pathMatch: 'full'},
    {path:`account/customer/:customerId`,component: FindAllComponent,pathMatch: 'full'},
