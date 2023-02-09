@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -10,6 +10,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SinginComponent {
   show: boolean = true;
+
+  signinForm = this.formBuilder.group({
+    email: new FormControl(""),
+    password: new FormControl(""),
+    remember: new FormControl("")
+  });
 
   constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router) {}
 
