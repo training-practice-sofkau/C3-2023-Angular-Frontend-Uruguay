@@ -6,7 +6,7 @@
   <h2 class="text-xl font-weight-bold">Tipo de Cuenta: <ng-container *ngIf="accountType">{{ accountType.name }}</ng-container></h2>
   <p class="text-lg font-medium my-2">Balance: <span class="font-bold">$100</span></p>
   <button  (click)="openEditModal()"  type="button" class="btn btn-primary my-3 py-2 px-4">Agregar tipo de cuenta</button>
-  <button type="button" class="btn btn-primary my-3 py-2 px-4">Agregar depósito</button>
+  <button  (click)="openEditModal2()"  type="button" class="btn btn-primary my-3 py-2 px-4">Agregar depósito</button>
   <button [routerLink]="['/customer']" type="button" class="btn btn-danger my-3 py-2 px-4">Cambios de cuenta</button>
 </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 export class SingupComponent implements OnInit {
 
 
-  constructor (private formBuilder: FormBuilder){}
+  constructor (private formBuilder: FormBuilder, private router: Router){}
 
   formRegister = this.formBuilder.group({
     document: [''],
@@ -36,10 +37,13 @@ export class SingupComponent implements OnInit {
 
   send(): void {
 
+    this.router.navigate(['account']);
 
      let  persona =  this.formRegister?.value
      console.log(this.formRegister?.value)
+
     localStorage.setItem( 'persona', JSON.stringify(persona) )
+
   }
 
 }

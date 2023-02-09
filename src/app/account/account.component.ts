@@ -6,6 +6,7 @@ import { AccountTypeinterface } from './interface/Account-type-interface';
 import { AccountService } from './services/account.service';
 import { CreateaccounttypeComponent } from './create-account-type/createaccounttype.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NewdepositComponent } from '../deposit/new-deposit/newdeposit.component';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -72,6 +73,9 @@ export class AccountComponent implements OnInit {
   }
 
 
+  openEditModal2() {
+    this.modalService.open(NewdepositComponent);
+  }
 
 }
 

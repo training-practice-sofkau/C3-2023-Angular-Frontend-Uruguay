@@ -28,7 +28,19 @@
         <label for="password">Password:</label>
         <input formControlName="password" type="password" class="form-control" id="password" placeholder="Ingrese su nueva contraseña">
       </div>
-      
+
     </form>
+    <button
+    type="button"
+    class="btn btn-sm btn-outline-danger"
+    >
+    Cerrar
+  </button>
+  <button
+  type="button"
+  class=" btn-sm btn btn-outline-success "
+  (click)="saveChanges()"  >
+Confirmar
+</button>
 
   </div>
