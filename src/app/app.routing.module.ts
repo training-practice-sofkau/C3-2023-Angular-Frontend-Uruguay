@@ -8,7 +8,6 @@ import { PageNotFoundComponent } from './404/page-not-found.component';
 import { SinginComponent } from './login/sing-in/sing-in.component';
 import { SingupComponent } from './login/sing-up/sing-up.component';
 import { AuthGuard } from './login/guards/auth.guard';
-import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: '', title: 'Home', redirectTo: 'dashboard', pathMatch: 'full' },
