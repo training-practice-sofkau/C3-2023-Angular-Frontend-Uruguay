@@ -8,6 +8,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 const component = [
   MatCardModule,
@@ -18,6 +22,9 @@ const component = [
   MatIconModule,
   MatToolbarModule,
   MatInputModule,
+  MatSidenavModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
 ];
 
 
@@ -32,6 +39,9 @@ const component = [
     MatIconModule,
     MatToolbarModule,
     MatInputModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
   exports: [
     component
