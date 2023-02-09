@@ -45,11 +45,11 @@
   
   .form-register {
     width: 500px;
-    background: #2a3034;
+    background: #212127;
     padding: 30px;
     margin: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 150px;
     font-family: Helvetica;
     color: white;
     box-shadow: 7px 13px 37px #000000;
@@ -83,7 +83,7 @@
   
   .form-register .boton {
     width: 100%;
-    background: #8f4fff;
+    background: #fe6047;
     border: none;
     padding: 12px;
     color: white;
@@ -92,6 +92,11 @@
   }
   
   .form-register .boton:hover{
-    background-color: #eeae20;
+    background-color: #5eaefff2;
+  }
+
+
+  .form-register .link {
+    color: #4f8dcaf2
   }
   
