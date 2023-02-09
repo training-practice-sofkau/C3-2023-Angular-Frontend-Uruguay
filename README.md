@@ -15,10 +15,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 3 - Day 2] - Angular (Programacion Funcional)
+[Workshop Week 3 - Day 3] - Angular (Componentes Web y navegación)
 
 # Body of the delivery
 ¿Qué está entregando?
+
+Explicar lo lo mejor que puedan lo que entregan.
+
+Agreguen imagenes para visualizar como se ve la entrega ( Estetica de la pagina )
+
+Tambien pueden agregar imagenes de la estructura donde se hicieron modificaciones para ayudar a corregir ( imagenes de los componentes, de las rutas y todo lo que pueda servir para corregir )
+
 [Answer]
 
 ¿Qué hizo falta?
@@ -31,24 +38,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Workshop
 The following are the guidelines that should be taken into account for the development of the workshop to be submitted:
 
-1. Perform data transformations on the Customer array.
-2. 6 operations must be performed on the array of customers, 3 with observables and 3 without observables.
-3. Each operation must have at least 2 functional operators.
-4. Create a pure function.
-5. Create a composition of functions.
-6. Create a higher order function.
+1. Develop a navigation route with Guards
+2. You must interact with at least 5 pages
+3. One of them must be without security and the others must have security
 
->example: array.filter().map() or from(array).pipe( filter(), map() )
-
-## for more information, about the command line
-ng g --help
-
-## Bootstrap
-[Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-
-## Angular Material
-[Material](https://material.angular.io/components/categories)
+## More information about Guards
+[Guards](https://www.youtube.com/watch?v=Fhq20zubpPc)
 
 ## inportant note
-Do not forget that for this workshop, you should make at least 9 commits properly documented (title and message body).
+Do not forget that for this workshop, you should make at least 6 commits properly documented (title and message body).
  
