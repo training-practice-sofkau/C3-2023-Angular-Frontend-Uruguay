@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 
+
 @NgModule({
   declarations: [
     MyAccountComponent,
@@ -15,6 +16,12 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   imports: [
     CommonModule
+    
+  ],
+  exports:[
+
+    ProfileComponent
+
   ]
 })
 export class AccountCustomerModule { }
