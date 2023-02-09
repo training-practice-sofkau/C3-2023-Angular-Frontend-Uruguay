@@ -1,3 +1,38 @@
-<pre>
-  app-account
-</pre>
+<div class="d-flex flex-column align-items-center">
+  <img alt="fotoperfil" src="https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg"
+  class="rounded-circle w-25 h-25 mt-3">
+  <h2 class="text-3xl my-3">Nombre completo: <ng-container *ngIf="customer">{{ customer.fullName   }}</ng-container></h2>
+  <h2 class="text-xl font-weight-bold">Id de Cuenta: <ng-container *ngIf="accountType">{{ accountType.id }}</ng-container></h2>
+  <h2 class="text-xl font-weight-bold">Tipo de Cuenta: <ng-container *ngIf="accountType">{{ accountType.name }}</ng-container></h2>
+  <p class="text-lg font-medium my-2">Balance: <span class="font-bold">$100</span></p>
+  <button  (click)="openEditModal()"  type="button" class="btn btn-primary my-3 py-2 px-4">Agregar tipo de cuenta</button>
+  <button type="button" class="btn btn-primary my-3 py-2 px-4">Agregar depósito</button>
+  <button [routerLink]="['/customer']" type="button" class="btn btn-danger my-3 py-2 px-4">Cambios de cuenta</button>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Registro</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-createaccounttype></app-createaccounttype>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close()"
+    >
+      Cerrar
+    </button>
+  </div>
+</ng-template>

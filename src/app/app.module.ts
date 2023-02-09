@@ -16,11 +16,10 @@ import { AccountService } from './account/services/account.service';
 import { DepositService } from './deposit/services/deposit.service';
 import { TransferService } from './transfer/services/transfer.service';
 import { CustomerService } from './customer/services/customer.service';
-import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 
 @NgModule({
   declarations: [
-    AppComponent,  EjercicioComponent
+    AppComponent,
 
   ],
   imports: [
