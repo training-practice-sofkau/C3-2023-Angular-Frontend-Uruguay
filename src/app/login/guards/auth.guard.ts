@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  authService: { isLoggedIn: boolean } = { isLoggedIn: true };
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cookie: CookieService) {}
 
   canActivate(_route: ActivatedRouteSnapshot,_state: RouterStateSnapshot): boolean {
-      if (this.authService.isLoggedIn) {
+      if (this.cookie.get('hola').length >= 1) {
         return true;
       }
       else {

@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { DocumentTypeListModel } from 'src/app/interfaces/document.list.interface';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sing-up',
@@ -23,10 +25,13 @@ export class SingupComponent {
     read: new FormControl("")
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router) {}
 
   onSubmit(): void {
-    this.signupForm.controls.name.setValue("xd");
+    //this.signupForm.controls.name.setValue("xd");
+    this.cookie.set('hola', 'xd');
+    this.signupForm.reset();
+    this.router.navigate(['/dashboard']);
   }
 
   ngOnInit() {
