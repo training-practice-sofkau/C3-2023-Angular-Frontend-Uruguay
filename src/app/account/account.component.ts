@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
 
 
 
-  constructor(private AccountService: AccountService, private modalService: NgbModal, private CreateaccounttypeComponent: CreateaccounttypeComponent) {}
+  constructor(private AccountService: AccountService, private modalService: NgbModal, ) {}
     public customer: customerInterface | undefined
     public accountType: AccountTypeinterface | undefined
     public persona: AccountInterfaec | undefined
@@ -52,7 +52,6 @@ export class AccountComponent implements OnInit {
     localStorage.setItem('accountype', JSON.stringify(this.accountType ))
 
     return this.persona
-
 
 
 

@@ -9,7 +9,8 @@ import { AccountComponent } from '../account/account.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule,FormsModule,ReactiveFormsModule, RouterModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule, RouterModule, ],
+
   declarations: [CustomerComponent,UnsubscribeComponent,UpdateCustomerComponent,],
   exports: [CustomerComponent],
   providers:[AccountComponent]

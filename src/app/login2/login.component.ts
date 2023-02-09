@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SingupComponent } from './singup/singup.component';
 import { AuthService } from './services/auth.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder,  } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpResponse } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
+import { Token } from '@angular/compiler';
+import { lastValueFrom } from 'rxjs';
+import { customerInterface } from '../account/interface/customer-interface';
 
 @Component({
   selector: 'app-login2',
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
   public password:string =  ''
   public username:string =  ''
 
+
   constructor(private modalService: NgbModal, private AuthService: AuthService, private formBuilder: FormBuilder, private router: Router ) { }
 
     openModal(event: { preventDefault: () => void; }) {
@@ -31,32 +34,52 @@ export class LoginComponent implements OnInit {
 
 
         formLogin = this.formBuilder.group({
+
           username: [''],
           password: [''],
 
         })
 
-        login(username: string, password: string) {
-          this.AuthService.post('http://localhost:3000/security/sign-in', {
-            username: username,
-            password: password
-          }).subscribe(res => {
-            const token = res.token;
-            const decoded: {} = jwt_decode(token);
-              console.log(decoded);
-            if (token && typeof token === 'string') {
-              // Guardar el token en el almacenamiento local y redirigir al usuario a otra página
-              localStorage.setItem('hola', 'true')
-              localStorage.setItem('token', token);
-              localStorage.setItem('account', JSON.stringify(decoded));
-              this.router.navigate(['account']);
-            } else {
-              console.error('Token inválido');
-            }
-          }, error => {
+
+
+        async login(username: string, password: string) {
+          try {
+            const source$ = this.AuthService.post('http://localhost:3000/security/sign-in', {
+              username: username,
+              password: password
+            });
+            const res = await lastValueFrom(source$);
+            this.handleSuccessfulLogin(res);
+          } catch (error) {
             console.error('Datos de inicio de sesión incorrectos');
-          });
+          }
         }
+
+        handleSuccessfulLogin(res: customerInterface) {
+          const token = res.token;
+          const decoded: void = jwt_decode(token);
+          if (this.validateToken(token)) {
+            this.storeToken(token, decoded);
+            this.redirectToAccount();
+          } else {
+            console.error('Token inválido');
+          }
+        }
+
+        validateToken(token: string): boolean {
+          return typeof token === 'string' && token !== '';
+        }
+
+        storeToken(token: string, decoded: void) {
+          localStorage.setItem('token', token);
+          localStorage.setItem('account', JSON.stringify(decoded));
+        }
+
+        redirectToAccount() {
+          this.router.navigate(['account']);
+        }
+
+
 
 
 

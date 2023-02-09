@@ -17,7 +17,9 @@ import { TransferService } from './transfer/services/transfer.service';
 import { CustomerService } from './customer/services/customer.service';
 import {HttpClientModule} from  '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
+
   declarations: [
     AppComponent,
   ],
