@@ -11,13 +11,14 @@
           <h2>Please login</h2>
         </div>
 
-        <img src="../../../../assets/img/usuario.png" alt="login" width="10%" style="margin-top: 20px; margin-bottom: 20px;">
+        <img src="../../../../assets/img/shield.png" alt="login" width="50%" style="margin-top: 20px; margin-bottom: 20px;">
 
         <div style="background-color:gray;">
           <mat-form-field class="formFieldSize" appearance="fill" style="margin-top: 20px;">
             <mat-label>e-Mail</mat-label>
             <input type="text" matInput autocomplete="off" formControlName="username">
           </mat-form-field>
+          <br>
           <mat-form-field class="formFieldSize" appearance="fill">
             <mat-label>Password</mat-label>
             <input type="password" matInput autocomplete="off" formControlName="password">
@@ -26,7 +27,7 @@
         <br>
         <button type="submit" class="signin-button" color="primary" [disabled]="form.invalid">Sign In</button>
       </form>
-      <div style="margin-top: 10px;">
+      <div class="foot-message">
         <h3>Dont have an account yet? <a href="signup">Click Here!</a> </h3>
       </div>
 
