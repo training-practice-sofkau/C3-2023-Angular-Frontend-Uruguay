@@ -6,21 +6,19 @@ import { DesktopComponent } from './desktop.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DesktopRoutingModule } from './desktop-routing.module';
-import { OperationComponent } from './operation/operation.component';
+
 
 
 @NgModule({
   declarations: [
-    DesktopComponent,
-    OperationComponent
+    DesktopComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    DesktopRoutingModule,
     MaterialModule,
     SharedModule,
-    DesktopRoutingModule
-
   ]
 })
 export class DesktopModule { }

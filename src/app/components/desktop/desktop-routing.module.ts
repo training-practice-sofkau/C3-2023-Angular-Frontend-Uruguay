@@ -7,14 +7,7 @@ import { AdministrationComponent } from './administration/administration.compone
 
 const routes: Routes = [
 
-  { path: ``, component: DesktopComponent,
-  children:[
-    {path: `operation`, component:OperationComponent},
-    {path: `administration`, component:AdministrationComponent},
-
-  ]}
-
- /*  { path: ``, redirectTo: `desktop`, pathMatch: `full` },
+  { path: ``, redirectTo: `desktop`, pathMatch: `full` },
   { path: `desktop`, component: DesktopComponent , pathMatch: `full` },
   { path: `operation`, component: OperationComponent , pathMatch: `full` },
   { path: `administration`, component: AdministrationComponent , pathMatch: `full` },

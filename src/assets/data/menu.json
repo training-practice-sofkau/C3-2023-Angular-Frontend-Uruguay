@@ -1,0 +1,16 @@
+[
+  {
+    "nombre":"",
+    "redirect":"/desktop"
+  },
+  {
+    "nombre":"Operation",
+    "redirect":"/desktop/operation"
+  },{
+    "nombre":"Administration",
+    "redirect":"/desktop/administration"
+  },{
+    "nombre":"Management",
+    "redirect":"/desktop/management"
+  }
+]

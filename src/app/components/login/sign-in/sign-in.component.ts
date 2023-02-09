@@ -53,7 +53,6 @@ export class SignInComponent implements OnInit {
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
-      this.userIsLogged = true;
       this.router.navigate(["desktop"]);
     }, 1500);
   }
