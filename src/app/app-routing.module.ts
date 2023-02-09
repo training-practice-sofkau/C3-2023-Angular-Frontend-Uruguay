@@ -6,16 +6,17 @@ import { SinginComponent } from './login/singin/singin.component';
 import { SingupComponent } from './login/singup/singup.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
+import { GuardsGuard } from './login/guards/guards.guard';
 
 const routes: Routes = [
   
   { path: '', redirectTo:'/SignIn', pathMatch:"full"}, 
 
-  { path: 'Myaccount', component: MyAccountComponent},
+  { path: 'Myaccount', component: MyAccountComponent, canActivate:[GuardsGuard]},
   { path: 'SignIn', component: SinginComponent}, 
   { path: 'SignUp', component: SingupComponent}, 
-  { path: 'profile', component: ProfileComponent}, 
-  { path: 'ejercicio', component: EjercicioComponent}, 
+  { path: 'profile', component: ProfileComponent, canActivate:[GuardsGuard]}, 
+  { path: 'ejercicio', component: EjercicioComponent, canActivate:[GuardsGuard]}, 
   
   { path: '**', component: NotfoundComponent}, 
   
