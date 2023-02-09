@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from '../material/material.module';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -10,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     ToolbarComponent,
     FooterComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
