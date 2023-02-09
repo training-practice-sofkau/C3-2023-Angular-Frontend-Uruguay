@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { LoginModule } from '../login/login-module.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { LoginModule } from '../login/login-module.module';
     ToolbarComponent,
     FooterComponent,
     HomeComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,9 @@ import { LoginModule } from '../login/login-module.module';
     RouterModule,
     LoginModule
   ],
-  exports:[ToolbarComponent]
+  exports:[
+    ToolbarComponent,
+    PageNotFoundComponent,
+  ]
 })
 export class SharedModule { }
