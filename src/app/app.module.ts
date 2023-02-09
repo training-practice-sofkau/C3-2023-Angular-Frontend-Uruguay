@@ -7,6 +7,9 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login-module.module';
 import { MaterialModule } from './material/material.module';
 import { EjercicioComponent } from './program-Funcional/ejercicio/ejercicio.component';
+import { AccountListComponent } from './account/account-list/account-list.component';
+import { AccountModule } from './account/account.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,12 @@ import { EjercicioComponent } from './program-Funcional/ejercicio/ejercicio.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
 
     MaterialModule,
     SharedModule,
     LoginModule,
-
+    AccountModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

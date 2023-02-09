@@ -4,24 +4,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { SingupComponent } from './login/singup/singup.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
 import { FindAllComponent } from './components/find-all/find-all.component';
+import { AccountListComponent } from './account/account-list/account-list.component';
 
 const routes: Routes = [
    //Rutas de segurity 
-   {path:`signUp`,component: SingupComponent},
-   {path:``,component: SingupComponent},
-   {path:`signOut`,component: SingupComponent},
+   {path:``,component: SingupComponent ,pathMatch: 'full'},
+   {path:`signUp`,component: SingupComponent,pathMatch: 'full'},
+   {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
  
  
    //Rutas de Customer
-   {path:`customer`,component: FindAllComponent},
-   {path:`customer/create`,component: FindAllComponent},
-   {path:`customer/documentType/create`,component:FindAllComponent },
+   {path:`customer`,component: FindAllComponent,pathMatch: 'full'},
+   {path:`customer/create`,component: FindAllComponent,pathMatch: 'full'},
+   {path:`customer/documentType/create`,component:FindAllComponent,pathMatch: 'full' },
    //Rutas de Account
  
  
-   {path:`account`,component: FindAllComponent},
-   {path:`account/create`,component: CreateAccountComponent},
-   {path:`account/find-all`,component: FindAllComponent},
+   {path:`account`,component: FindAllComponent,pathMatch: 'full'},
+   {path:`account/create`,component: CreateAccountComponent,pathMatch: 'full'},
+   {path:`account/find-all`,component: AccountListComponent,pathMatch: 'full'},
    {path:`account/account-type/create`,component: FindAllComponent},
    {path:`account/customer/:customerId`,component: FindAllComponent},
    {path:`account/customer/:accountId`, component: FindAllComponent},

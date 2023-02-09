@@ -1,46 +1,21 @@
-<table class="table">
+<table class="table" >
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Correo</th>
+        <th scope="col">Account Id </th>
+        <th scope="col">Name Customer</th>
+        <th scope="col">Name Type Account</th>
         <th scope="col">Balance</th>
-        <th scope="col">Tipo de Cuenta</th>
         <th scope="col">Estado</th>
       </tr>
     </thead>
-    <tbody  *ngFor="let account of AccountsList" >
+    <tbody  *ngFor="let account of lisAccounts">
       <tr>
-        <td>{{account.}</td>
-        <td>{{account.}}</td>
-        <td>{{account}}</td>
-        <td>{{account}}</td>
-        <td>{{account}}</td>
-        <td>{{account}}</td>
-      </tr>
+        <td>{{account.id}}</td>
+        <td>{{account.coustomer_id.fullName}}</td>
+        <td>{{account.account_type_id.name}}</td>
+        <td>{{account.balance}}</td>
+        <td>{{account.state}}</td>
       </tr>
     </tbody>
-  </table>
+</table>
 
-  <div class="table w-full ...">
-    <div class="table-header-group ...">
-      <div class="table-row">
-        <div class="table-cell text-left ...">ID</div>
-        <div class="table-cell text-left ...">Nombre del cliente</div>
-        <div class="table-cell text-left ...">Correo del cliente</div>
-        <div class="table-cell text-left ...">Balance</div>
-        <div class="table-cell text-left ...">Tipo de cuenta</div>
-        <div class="table-cell text-left ...">Estado</div>
-      </div>
-    </div>
-    <div class="table-row-group">
-      <div class="table-row" *ngFor="let account of AccountsList">
-        <div class="table-cell text-left align-middle ...">{{account.id}}</div>
-        <div class="table-cell text-left align-middle ...">{{account.customer.fullName}}</div>
-        <div class="table-cell text-left align-middle ...">{{account.customer.email}}</div>
-        <div class="table-cell text-left align-middle ...">{{account.balance}}</div>
-        <div class="table-cell text-left align-middle ...">{{account.accountType.name}}</div>
-        <div class="table-cell text-left align-middle ...">{{account.state}}</div>
-      </div>
-    </div>
-  </div>
