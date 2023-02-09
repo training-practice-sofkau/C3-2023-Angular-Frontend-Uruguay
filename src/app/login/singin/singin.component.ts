@@ -7,4 +7,28 @@ import { Component } from '@angular/core';
 })
 export class SinginComponent {
 
+
+  
+  constructor() {
+    this.defaultLogged()
+  }
+
+  defaultLogged(){
+    localStorage.setItem('MyToken', 'false')
+  }
+
+
+  activeLogged(){
+    localStorage.getItem('MyToken')
+    localStorage.setItem('MyToken', 'true')
+  }
+
+  logOut(){
+    localStorage.clear()
+  }
+
+  ngOnInit(): void {
+  }
+
+
 }
