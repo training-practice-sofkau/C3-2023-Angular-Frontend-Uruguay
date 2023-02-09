@@ -14,10 +14,10 @@ export class UserAccountsComponent implements OnInit {
 
   UserAccountsList: AccountModel[] = [];
 
-  constructor(private cookies: CookieService, @Host() public userAccountsService: UserAccountsService){}
+  constructor(private cookies: CookieService, public userAccountsService: UserAccountsService){}
 
   ngOnInit(): void {
-    this.cookies.set("id", "f4d414bc-641d-4240-9180-4d2d0359b57a");
+    this.cookies.set("id", "bf5da11d-c840-4861-bb74-e84528b68b9c");
     this.userAccountsService.id = this.cookies.get("id");
     this.userAccountsService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (this.UserAccountsList.length !== data.length) this.UserAccountsList = data });
     this.userAccountsService.updateUserAccountsTable();

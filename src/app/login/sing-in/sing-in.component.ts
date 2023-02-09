@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./sing-in.component.scss']
 })
 export class SinginComponent {
-
+  show: boolean = false;
 }

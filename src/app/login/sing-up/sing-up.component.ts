@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sing-up.component.scss']
 })
 export class SingupComponent {
+  show: boolean = true;
 
+  switchPassword(){
+    this.show = !this.show;
+  }
 }
