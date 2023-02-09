@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Account } from '../account/interfaces/account';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  URL = "http://localhost:3000";
+  BASE_URL = "http://localhost:3000";
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +23,8 @@ export class ApiService {
 
   getAllAccount():Observable<Account[]>{
     return this.http.get<Account[]>
-    (`${this.BASE_URL}/account/find-all`)
+    (`${this.BASE_URL}/account/find-all`,this.httpOptions)
   }
+
+  
 }
