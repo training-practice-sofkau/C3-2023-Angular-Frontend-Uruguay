@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login-module.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { EjercicioComponent } from './program-Funcional/ejercicio/ejercicio.component';
 
@@ -17,7 +16,6 @@ import { EjercicioComponent } from './program-Funcional/ejercicio/ejercicio.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
 
     MaterialModule,
     SharedModule,

@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Account } from '../account/interfaces/account';
 import { CreateAccount } from '../account/interfaces/createAccount';
 import { Customer } from '../customer/interface/customer';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +23,12 @@ export class ApiService {
     })
   }
 
-  getAllAccount():Observable<Account[]>{
+  getAllAccounts():Observable<Account[]>{
     return this.http.get<Account[]>
     (`${this.BASE_URL}/account/find-all`,this.httpOptions)
   }
 
-  getAllCustomer():Observable<Customer[]>{
+  getAllCustomers():Observable<Customer[]>{
     return this.http.get<Customer[]>
     (`${this.BASE_URL}/customer/all`,this.httpOptions)
   }
