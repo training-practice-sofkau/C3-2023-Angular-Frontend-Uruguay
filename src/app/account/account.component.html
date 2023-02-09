@@ -1,12 +1,15 @@
 <div class="d-flex flex-column align-items-center">
-  <img alt="fotoperfil" src="https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg"
-  class="rounded-circle w-25 h-25 mt-3">
+  <img   alt="fotoperfil" src="https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg"
+  class="rounded-circle w-10 h-10 mt-3">
   <h2 class="text-3xl my-3">Nombre completo: <ng-container *ngIf="customer">{{ customer.fullName   }}</ng-container></h2>
   <h2 class="text-xl font-weight-bold">Id de Cuenta: <ng-container *ngIf="accountType">{{ accountType.id }}</ng-container></h2>
   <h2 class="text-xl font-weight-bold">Tipo de Cuenta: <ng-container *ngIf="accountType">{{ accountType.name }}</ng-container></h2>
   <p class="text-lg font-medium my-2">Balance: <span class="font-bold">$100</span></p>
   <button  (click)="openEditModal()"  type="button" class="btn btn-primary my-3 py-2 px-4">Agregar tipo de cuenta</button>
+  <br>
   <button  (click)="openEditModal2()"  type="button" class="btn btn-primary my-3 py-2 px-4">Agregar depósito</button>
+  <br>
+
   <button [routerLink]="['/customer']" type="button" class="btn btn-danger my-3 py-2 px-4">Cambios de cuenta</button>
 </div>
 

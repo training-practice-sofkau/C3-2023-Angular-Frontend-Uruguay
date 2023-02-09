@@ -1,13 +1,16 @@
 <div class="d-flex flex-column align-items-center">
   <img alt="fotoperfil" src="https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg"
-  class="rounded-circle img-fluid w-25 mb-3">
+  class="rounded-circle img-fluid w-10 mb-3">
   <h2 class="text-xl font-weight-bold">Nombre completo:  <ng-container *ngIf="customer">{{ customer.fullName }}</ng-container></h2>
   <h2 class="text-xl font-weight-bold">Documento: <ng-container *ngIf="customer">{{ customer.documentType.name }}</ng-container></h2>
   <h2 class="text-xl font-weight-bold">Documento ID: <ng-container *ngIf="customer">{{ customer.documentType.id }}</ng-container></h2>
   <h2 class="text-xl font-weight-bold">Correo: <ng-container *ngIf="customer">{{ customer.email }}</ng-container></h2>
   <h2 class="text-xl font-weight-bold">Telefono: <ng-container *ngIf="customer">{{ customer.phone }}</ng-container></h2>
+  <br>
   <button class="btn btn-primary" (click)="openEditModal()">Editar datos</button>
-  <button  class="btn btn-primary mb-2">Confirmar</button>
+  <br>
+  <button [routerLink]="['/account']"class="btn btn-primary mb-2">Confirmar</button>
+  <br>
   <button class="btn btn-danger">Borrar cuenta</button>
 </div>
 
@@ -51,7 +54,7 @@
   </div>
 
   <div class="modal-footer">
-    
+
     <button
       type="button"
       class="btn btn-outline-dark"
