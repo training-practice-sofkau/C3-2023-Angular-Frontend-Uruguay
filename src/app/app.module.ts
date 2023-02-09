@@ -8,6 +8,7 @@ import { LoginModule } from './login/login-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
+import { HomeComponent } from './shared/home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.compon
     MaterialModule,
     SharedModule,
     LoginModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
