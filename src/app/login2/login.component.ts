@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
               console.log(decoded);
             if (token && typeof token === 'string') {
               // Guardar el token en el almacenamiento local y redirigir al usuario a otra página
+              localStorage.setItem('hola', 'true')
               localStorage.setItem('token', token);
               localStorage.setItem('account', JSON.stringify(decoded));
               this.router.navigate(['account']);
