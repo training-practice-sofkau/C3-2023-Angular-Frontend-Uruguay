@@ -12,7 +12,7 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.compon
 @NgModule({
   declarations: [
     AppComponent,
-    EjercicioComponent
+    EjercicioComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +22,6 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.compon
     MaterialModule,
     SharedModule,
     LoginModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
