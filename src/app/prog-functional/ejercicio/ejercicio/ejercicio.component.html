@@ -24,6 +24,22 @@
 <br>
 <br>
 
+
+
+
+<section class="form-register"  *ngIf="(true)">
+    <h4>Sign In</h4>
+    <form>
+      <input class="controls" type="text" id="tipo" name="tipo"  placeholder="Usuario">
+      <input class="controls" type="text" id="nombre" name="nombre"  placeholder="Contraseña">
+ 
+
+      <p>Ya casi terminamos!</p>
+      <button class="boton" type="submit" >Guardar</button>
+      <button class="boton"  [routerLink]="['/app-home']" type="submit" >Volver</button>
+      <p>¡Listo!</p>
+    </form>
+  </section>
 <!--
 
 -->

@@ -1,0 +1,97 @@
+
+.comienzo {
+    text-align: center;
+    font-size: 19px;
+    color: rgba(234, 234, 234, 0.9);
+    font-family: Helvetica;
+    margin-top: 200px;
+    margin-bottom: 30px;
+  }
+  
+  .comienzo h1{
+    font-size: 64px;
+  }
+  
+  .comienzo p{
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-comienzo{
+    width: 240px;
+    height: 48px;
+    background-color: #000000;
+    color: #f8faf8;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: none;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .btn-comienzo:hover{
+    background-color: #eeae20;
+    color: #f8faf8;
+  }
+  
+  /***********************************************************/
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .form-register {
+    width: 500px;
+    background: #2a3034;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-family: Helvetica;
+    color: white;
+    box-shadow: 7px 13px 37px #000000;
+  }
+  
+  .form-register h4 {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .controls {
+    width: 100%;
+    background: #f8faf8;
+    padding: 10px;
+  
+  
+    margin-bottom: 16px;
+    border: 3px solid #f8faf8;
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #212121;
+  }
+  
+  .form-register p {
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+  }
+  
+  
+  .form-register .boton {
+    width: 100%;
+    background: #8f4fff;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+  }
+  
+  .form-register .boton:hover{
+    background-color: #eeae20;
+  }
+  

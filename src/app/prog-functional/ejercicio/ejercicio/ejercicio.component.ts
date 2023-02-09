@@ -65,6 +65,8 @@ export class EjercicioComponent {
         .subscribe(obj => this.data3.push(obj));
         return this.data3;
       }
+
+      //
    
  
 

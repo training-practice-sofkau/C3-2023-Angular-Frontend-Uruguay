@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { LoginModule } from '../login/login-module.module';
 
 
 
@@ -19,7 +20,8 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     MaterialModule,
     RouterOutlet, //?
-    AppRoutingModule //?
+    AppRoutingModule,
+    LoginModule //?
   ],
   exports:[
     ToolbarComponent,
