@@ -1,11 +1,25 @@
   <div class="w-full">
-    <div class="relative min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+    <div class="relative min-w-0 break-words w-full mb-3 shadow-lg rounded-lg bg-blueGray-100 border-0">
       <div class="rounded-t bg-white mb-0 px-6 py-6">
 
-        <div class="flex flex-col justify-center gap-2">
-          <button class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white">Deposit NOW!</button>
-          <button class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white">Transfer balance FAST!</button>
-          <button class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white"> CREATE new Account </button>
+        <div class="flex flex-col justify-center gap-2" *ngIf="!isCreatingAccount">
+          <a href="http://localhost:4200/deposit/new-deposit" class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-xl">Deposit now!</a>
+          <a href="http://localhost:4200/transfer/new-transfer" class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-xl">Transfer balance fast!</a>
+          <a class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-xl" (click)="isCreatingAccount = !isCreatingAccount"> Create new Account </a>
+        </div>
+
+        <div class="flex flex-col justify-center gap-2" *ngIf="isCreatingAccount">
+          <p class="text-xl">Select the type of account</p>
+
+          <select name="" id="" class="px-4 py-2 shadow rounded-sm mb-3 w-full text-xl">
+            <option value="" class="text-xl rounded-sm ">Saving Account</option>
+            <option value="" class="text-xl rounded-sm ">Checking Account</option>
+          </select>
+
+          <div class="flex flex-row mx-auto gap-4">
+            <a class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-center text-xl" (click)="isCreatingAccount = !isCreatingAccount"> BACK </a>
+            <a class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-center text-xl" (click)="isCreatingAccount = !isCreatingAccount"> CREATE </a>
+          </div>
         </div>
 
       </div>
