@@ -11,12 +11,12 @@ export class HomeComponent {
   }
 
   defaultLogin() {
-    localStorage.setItem('logged', 'false')
+    localStorage.setItem('key', 'false')
   }
 
   activeLogin(){
-    localStorage.getItem('logged')
-    localStorage.setItem('logged', 'true')
+    localStorage.getItem('key')
+    localStorage.setItem('key', 'true')
   }
 
   logOut(){

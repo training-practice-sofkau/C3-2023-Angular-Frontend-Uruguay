@@ -12,7 +12,7 @@ export class GuardGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (localStorage.getItem('key')) {
+    if (localStorage.getItem('key') === 'true') {
       return true;
     }
 

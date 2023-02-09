@@ -25,6 +25,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   exports:[
     ToolbarComponent,
     PageNotFoundComponent,
+    HomeComponent,
   ]
 })
 export class SharedModule { }
