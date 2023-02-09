@@ -20,10 +20,10 @@ export class AccountsTableService implements OnDestroy {
   updateAllAccounts = () => {
     if(this.accountsEmitter.observed && !this.accountsEmitter.closed){
         this.api.getAllAccounts().subscribe({
-        next: (value) => { this.newDataAccounts = value; },
-        complete: () => {
-          this.accountsEmitter.next(this.newDataAccounts);
-          asyncScheduler.schedule(this.updateAllAccounts, 1000); }
+          next: (value) => { this.newDataAccounts = value; },
+          complete: () => {
+            this.accountsEmitter.next(this.newDataAccounts);
+            asyncScheduler.schedule(this.updateAllAccounts, 1000); }
         });
     } else {
       asyncScheduler.schedule(this.updateAllAccounts, 1000);
