@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sing-in.component.scss']
 })
 export class SinginComponent {
-  show: boolean = false;
+  show: boolean = true;
+
+  switchPassword(){
+    this.show = !this.show;
+  }
 }
