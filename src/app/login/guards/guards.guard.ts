@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GuardsGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router
+    //inyecccion de servicio
+    ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -16,7 +18,9 @@ export class GuardsGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/login']);
+    //hacer if de check 
+    // si es true return true
+    //this.router.navigate(['/login']);
     return false;
   }
 }

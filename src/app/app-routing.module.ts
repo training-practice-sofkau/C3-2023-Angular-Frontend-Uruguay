@@ -12,8 +12,8 @@ const routes: Routes = [
   
   { path: '', redirectTo:'/SignIn', pathMatch:"full"}, 
 
-  { path: 'Myaccount', component: MyAccountComponent, canActivate:[GuardsGuard]},
-  { path: 'SignIn', component: SinginComponent}, 
+  { path: 'Myaccount', component: MyAccountComponent},
+  { path: 'SignIn', component: SinginComponent  }, 
   { path: 'SignUp', component: SingupComponent}, 
   { path: 'profile', component: ProfileComponent, canActivate:[GuardsGuard]}, 
   { path: 'ejercicio', component: EjercicioComponent, canActivate:[GuardsGuard]}, 

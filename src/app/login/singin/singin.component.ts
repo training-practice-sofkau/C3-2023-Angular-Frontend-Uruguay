@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-singin',
@@ -9,9 +11,22 @@ import { Router, RouterModule } from '@angular/router';
 export class SinginComponent {
 
 constructor(
-  private router: Router
+  private router: Router,
+  private readonly serviceCom: AuthService
   )
 {}
+
+
+
+login (){
+  
+
+//consultar si el user existet
+this.serviceCom.check = true
+this.router.navigate(['/Myaccount'])
+
+}
+
 
 
 }
