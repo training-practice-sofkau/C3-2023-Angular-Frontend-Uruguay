@@ -19,7 +19,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     ],
     exports: [
         ToolbarComponent,
-        FooterComponent
+        FooterComponent,
+        HomeComponent
     ],
     imports: [
         CommonModule,

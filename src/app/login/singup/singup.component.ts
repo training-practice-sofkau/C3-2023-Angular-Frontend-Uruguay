@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class SingupComponent {
 
+  activeLogin() {
+    localStorage.getItem('logged')
+    localStorage.setItem('logged', 'true')
+  }
+
+  logOut() {
+    localStorage.clear()
+  }
 }

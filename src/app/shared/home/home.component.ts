@@ -6,24 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
-  constructor(){
+  constructor() {
     this.defaultLogin()
   }
 
   defaultLogin() {
     localStorage.setItem('logged', 'false')
   }
-
-  activeLogin(){
-    localStorage.getItem('logged')
-    localStorage.setItem('logged', 'true')
-  }
-
-  logOut(){
-    localStorage.clear()
-  }
-
-  
-
 }
