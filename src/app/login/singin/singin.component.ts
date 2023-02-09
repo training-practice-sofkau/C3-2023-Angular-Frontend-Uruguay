@@ -12,7 +12,7 @@ export class SinginComponent {
 
 constructor(
   private router: Router,
-  private readonly serviceCom: AuthService
+  private  serviceCom: AuthService
   )
 {}
 
