@@ -1,0 +1,22 @@
+<div class="table w-full ...">
+  <div class="table-header-group ...">
+    <div class="table-row">
+      <div class="table-cell text-left ...">ID</div>
+      <div class="table-cell text-left ...">Nombre del cliente</div>
+      <div class="table-cell text-left ...">Correo del cliente</div>
+      <div class="table-cell text-left ...">Balance</div>
+      <div class="table-cell text-left ...">Tipo de cuenta</div>
+      <div class="table-cell text-left ...">Estado</div>
+    </div>
+  </div>
+  <div class="table-row-group">
+    <div class="table-row" *ngFor="let account of AccountsList">
+      <div class="table-cell text-left align-middle ...">{{account.id}}</div>
+      <div class="table-cell text-left align-middle ...">{{account.customer.fullName}}</div>
+      <div class="table-cell text-left align-middle ...">{{account.customer.email}}</div>
+      <div class="table-cell text-left align-middle ...">{{account.balance}}</div>
+      <div class="table-cell text-left align-middle ...">{{account.accountType.name}}</div>
+      <div class="table-cell text-left align-middle ...">{{account.state}}</div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { CustomerModel } from "src/app/interfaces/Customer.interface";
+import { CustomerModel } from "src/app/interfaces/customer.interface";
 
 export const baseCustomers: Array<CustomerModel> = [
   {

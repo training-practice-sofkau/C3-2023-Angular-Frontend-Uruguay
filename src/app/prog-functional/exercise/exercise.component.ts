@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { filter, find, from, map, Observable } from 'rxjs';
-import { CustomerModel } from 'src/app/interfaces/Customer.interface';
+import { BehaviorSubject, filter, from, Observable } from 'rxjs';
+import { CustomerModel, DocumentTypeModel } from 'src/app/interfaces/customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
 @Component({
@@ -25,6 +25,9 @@ export class ExerciseComponent {
 
   public customers: CustomerModel[] = baseCustomers;
 
+  public observableSource = new BehaviorSubject(this.customers);
+  public observable$ = this.observableSource.asObservable();
+
   // Funciones puras
   getAllEmails(customers: CustomerModel[]): string[] {
     const emails: string[] = [];
@@ -42,7 +45,18 @@ export class ExerciseComponent {
     return customers;
   }
 
-  // Transformaciones con suscribe
+  // Funciones de muestreo con observables
+  getAllEmailsObs(): string[] {
+    let customers: string[] = [];
+    this.observable$.subscribe((data) => {
+      data.forEach( (data) => {
+        customers.push(" " + data.email);
+      })
+    });
+    return customers;
+  }
+
+  // Transformaciones con observables
 
   setStateForCustomer(id: string, state: boolean) {
     from(this.customers).pipe(
@@ -56,25 +70,37 @@ export class ExerciseComponent {
     ).subscribe((data) => data.fullName = name);
   }
 
-  setEmailForCustomer(id: string, email: string) {
+  setDocumentTypeForCustomer(id: string, documentType: DocumentTypeModel) {
     from(this.customers).pipe(
       filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.email = email);
+    ).subscribe((data) => data.documentType = documentType);
+  }
+
+  setEmailForCustomer2(id: string, email: string) {
+    this.observableSource.getValue()
+  }
+
+  // Transformaciones sin observables
+
+  setEmailForCustomer(id: string, email: string) {
+    this.customers.filter(customer => customer.id === id && customer !== undefined).forEach((data) => {
+      data.email = email;
+    });
   }
 
   setDocumentForCustomer(id: string, document: string) {
-    from(this.customers).pipe(
-      filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.document = document);
+    this.customers.filter(customer => customer.id === id && customer !== undefined).forEach((data) => {
+      data.document = document;
+    });
   }
 
   setPhoneForCustomer(id: string, phone: number) {
-    from(this.customers).pipe(
-      filter(customer => customer.id === id && customer !== undefined),
-    ).subscribe((data) => data.phone = phone);
+    this.customers.filter(customer => customer.id === id && customer !== undefined).forEach((data) => {
+      data.phone = phone;
+    });
   }
 
-  // Funcion de orden superior mediante callback (?)
+  // Funcion mediante callback
 
   getDisabledCustomers(): Observable<CustomerModel> {
     const observable = from(this.customers).pipe(
@@ -89,18 +115,26 @@ export class ExerciseComponent {
 
   // Getters
 
-  getCustomerStateById(id: string): string[] {
-    const customers: string[] = [];
+  getCustomerStateById(id: string): string {
+    let customers: string = '';
     this.customers.filter((data) => data.id === id).forEach((data) => {
-      customers.push(data.state.toString());
+      customers = data.state.valueOf().toString();
     });
     return customers;
   }
 
-  getCustomerNameById(id: string): string[] {
-    const customers: string[] = [];
+  getCustomerNameById(id: string): string {
+    let customers: string = '';
     this.customers.filter((data) => data.id === id).forEach((data) => {
-      customers.push(data.fullName);
+      customers = data.fullName;
+    });
+    return customers;
+  }
+
+  getEmailById(id: string): string {
+    let customers: string = '';
+    this.customers.filter((data) => data.id === id).forEach((data) => {
+      customers = data.email;
     });
     return customers;
   }
