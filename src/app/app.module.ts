@@ -31,6 +31,7 @@ import { MyTableComponent } from './my-table/my-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HelpComponent } from './help/help.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MatSortModule } from '@angular/material/sort';
     MyNavComponent,
     DashboardComponent,
     MyTableComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,
