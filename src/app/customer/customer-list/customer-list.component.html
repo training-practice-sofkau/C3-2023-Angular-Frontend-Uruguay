@@ -1,1 +1,23 @@
-<p>customer-list works!</p>
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">Id </th>
+        <th scope="col">State</th>
+        <th scope="col">Name documentType</th>
+        <th scope="col">Document</th>
+        <th scope="col">fullName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Password</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let account of lisAccounts">
+      <tr>
+        <td>{{account.id}}</td>
+        <td>{{account.coustomer_id.fullName}}</td>
+        <td>{{account.account_type_id.name}}</td>
+        <td>{{account.balance}}</td>
+        <td>{{account.state}}</td>
+      </tr>
+    </tbody>
+</table>

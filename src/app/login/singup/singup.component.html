@@ -1,45 +1,43 @@
-<!-- (submit)="submitSignUp()" -->
-<body>
-  <div >
-    <form  class="mapForm"> 
-      <section >
-        <h1 style="margin: 15px;color:rgb(8, 82, 141);"> Registrarse</h1>
-      </section>
-      <div class="col-md-6">
-        <label for="inputDocumentType" class="form-label">Document Type</label>
-          <select style="margin: 3px;" class="form-select" aria-label="Default select example">
-            <option selected>Option </option>
-            <option value="1">Cedula</option>
-            <option value="2">Credencial</option>
-            <option value="3">Pasaporte</option>
-        </select>
-      </div>
-      <div class="col-md-6">
-        <label for="inputDocument" class="form-label">Document</label>
-        <input type="text" class="form-control" id="inputDocument" placeholder="12345678">
-      </div>
-      <div class="col-md-6">
-        <label for="inputFullname" class="form-label">Full name</label>
-        <input type="text" class="form-control" id="inputFullname" placeholder="Exemplo: José Gervasio Artigas">
-      </div>
-      <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Exemplo: Exemplo@gmail.com">
-      </div>
-      <div class="col-md-6">
-        <label for="inputPhone" class="form-label">Phone</label>
-        <input type="text" class="form-control" id="inputPhone" placeholder="Exemplo: 091234567">
-      </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword4">
-      </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Confirmar</button>
-        <button type="submit" style="margin: 20px;" class="btn btn-dark" routerLink="/">Cancelar</button>
-      </div>
-    
-    </form>
+
+<form> 
+  <section>
+    <h1 style="margin: 15px;color:rgb(8, 82, 141);"> Registrarse</h1>
+  </section>
+  <div class="col-md-6">
+    <label for="inputDocumentType" class="form-label">Document Type</label>
+      <select style="margin: 3px;" class="form-select" aria-label="Default select example">
+        <option selected>Option </option>
+        <option value="1">Cedula</option>
+        <option value="2">Credencial</option>
+        <option value="3">Pasaporte</option>
+    </select>
   </div>
-</body>
+  <div class="col-md-6">
+    <label for="inputDocument" class="form-label">Document</label>
+    <input type="text" class="form-control" id="inputDocument" placeholder="12345678">
+  </div>
+  <div class="col-md-6">
+    <label for="inputFullname" class="form-label">Full name</label>
+    <input type="text" class="form-control" id="inputFullname" placeholder="Exemplo: José Gervasio Artigas">
+  </div>
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4" placeholder="Exemplo: Exemplo@gmail.com">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPhone" class="form-label">Phone</label>
+    <input type="number" class="form-control" id="inputPhone" placeholder="Exemplo: 091234567">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+    <button type="submit" style="margin: 20px;" class="btn btn-dark" routerLink="/">Cancelar</button>
+  </div>
+
+</form>
+
+
 

@@ -6,24 +6,30 @@ import { CreateAccountComponent } from './account/create-account/create-account.
 import { FindAllComponent } from './components/find-all/find-all.component';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AdminGuard } from './guards/admin.guard';
+import { SinginComponent } from './login/singin/singin.component';
+import { CreateAccountTypeComponent } from './account/create-account-type/create-account-type.component';
+import { CreateTransferComponent } from './transfer/create-transfer/create-transfer.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CreateDepositComponent } from './deposit/create-deposit/create-deposit.component';
+import { DepositListComponent } from './deposit/deposit-list/deposit-list.component';
 
 const routes: Routes = [
    //Rutas de segurity 
-   {path:``,component: SingupComponent ,pathMatch: 'full'},
+   {path:``,component: SinginComponent ,pathMatch: 'full'},
    {path:`signUp`,component: SingupComponent,pathMatch: 'full'},
    {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
  
  
    //Rutas de Customer
-   {path:`customerList`,component: FindAllComponent,pathMatch: 'full'},
-   {path:`customer/documentType/create`,component:FindAllComponent,pathMatch: 'full' },
+   {path:`customerList`,component: CustomerListComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
+   {path:`customer/documentType/create`,component:FindAllComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/ },
    //Rutas de Account
  
  
    {path:`account`,component: FindAllComponent,pathMatch: 'full'},
-   {path:`account/create`,component: CreateAccountComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
+   {path:`account/create`,component: CreateAccountComponent,pathMatch: 'full'/*,canActivate:[AdminGuard] */},
    {path:`account/find-all`,component: AccountListComponent,pathMatch: 'full'},
-   {path:`account/account-type/create`,component: FindAllComponent,pathMatch: 'full'},
+   {path:`account/account-type/create`,component: CreateAccountTypeComponent,pathMatch: 'full'/*,canActivate:[AdminGuard] */},
    {path:`account/customer/:customerId`,component: FindAllComponent,pathMatch: 'full'},
    {path:`account/customer/:accountId`, component: FindAllComponent,pathMatch: 'full'},
    {path:`account/account-type/find-all`,component: FindAllComponent,pathMatch: 'full'},
@@ -44,9 +50,10 @@ const routes: Routes = [
    {path:`account/state/:id`,component: FindAllComponent,pathMatch: 'full'},
    {path:`account/Balance/:id`,component: FindAllComponent,pathMatch: 'full'},
    //Rutas de Transfer
-   {path:`transfer`,component: FindAllComponent,pathMatch: 'full'},
-   //Rutas de Deposit
-   {path:`deposit`,component: FindAllComponent,pathMatch: 'full'},
+   {path:`transfer`,component: CreateTransferComponent,pathMatch: 'full'},
+   //Rutas de Deposit 
+   {path:`deposit`,component: CreateDepositComponent,pathMatch: 'full'},
+   {path:`deposit/list`,component: DepositListComponent,pathMatch: 'full'},
 ];
 
 @NgModule({

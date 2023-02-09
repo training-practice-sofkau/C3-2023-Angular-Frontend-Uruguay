@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,7 +10,6 @@ import { MaterialModule } from './material/material.module';
 import { EjercicioComponent } from './program-Funcional/ejercicio/ejercicio.component';
 import { AccountModule } from './account/account.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
