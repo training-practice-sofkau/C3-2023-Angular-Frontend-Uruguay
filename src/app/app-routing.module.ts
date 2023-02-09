@@ -5,13 +5,14 @@ import { SinginComponent } from './login/singin/singin.component';
 import { SingupComponent } from './login/singup/singup.component';
 import { CreateDepositComponent } from './deposit/create-deposit/create-deposit/create-deposit.component';
 import { HelpComponent } from './help/help.component';
+import { LoginGuard } from './login/guard.guard';
 
 
 const routes: Routes = [
-  { path: 'singup', component: SingupComponent },
+  { path: 'singup', component: SingupComponent, },
   {path: "singin", component: SinginComponent},
-  {path: "createaccount", component: CreateAccountComponent},
-  {path: "createdeposit", component:CreateDepositComponent},
+  {path: "createaccount", component: CreateAccountComponent, canActivate: [LoginGuard]},
+  {path: "createdeposit", component:CreateDepositComponent, canActivate: [LoginGuard]},
   {path: "help", component: HelpComponent}
 ];
 
