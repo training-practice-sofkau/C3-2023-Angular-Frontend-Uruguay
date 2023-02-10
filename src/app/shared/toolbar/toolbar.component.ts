@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router,NavigationEnd  } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/login/services/auth.service';
-import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-toolbar',
