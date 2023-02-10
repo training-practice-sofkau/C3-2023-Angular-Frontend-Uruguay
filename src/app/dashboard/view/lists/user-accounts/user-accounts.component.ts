@@ -17,7 +17,6 @@ export class UserAccountsComponent implements OnInit {
   constructor(private cookies: CookieService, public userAccountsService: UserAccountsService){}
 
   ngOnInit(): void {
-    this.userAccountsService.id = this.cookies.get("id");
     this.userAccountsService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (this.UserAccountsList.length !== data.length) this.UserAccountsList = data });
     this.userAccountsService.updateUserAccountsTable();
   }
