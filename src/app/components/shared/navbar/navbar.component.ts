@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../login/services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,6 +15,7 @@ export class NavbarComponent  {
   ) { }
 
   logout(){
+    this.authService.setUSerStatus(false);
     this.authService.deauthenticate();
     this.router.navigate(["/"]);
   }

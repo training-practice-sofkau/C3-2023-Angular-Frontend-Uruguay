@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 
-
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -63,6 +62,7 @@ export class SignInComponent implements OnInit {
 
     setTimeout(() => {
       this.loading=false;
+      this.authService.setUSerStatus(true);
       this.authService.authenticate();
       this.router.navigate(["desktop"]);
     }, 1500);

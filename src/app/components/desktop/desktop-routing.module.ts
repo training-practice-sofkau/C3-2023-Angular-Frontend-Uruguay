@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DesktopComponent } from './desktop.component';
-import { OperationComponent } from './operation/operation.component';
-import { AdministrationComponent } from './administration/administration.component';
-import { ManagementComponent } from './management/management.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: '',  component: DesktopComponent, title:"Desktop", pathMatch: 'full',
     children: [
-      { path: 'desktop', title:"Desktop",  component: DesktopComponent },
-      { path: 'operation', title:"Operation", component: OperationComponent },
-      { path: 'administration', title:"Administration", component: AdministrationComponent },
-      { path: 'management', title:"Management", component: ManagementComponent },
+     { path: 'desktop', title:"Desktop",  component: DesktopComponent, pathMatch: 'full'},
+     { path: 'profile', title:"Customer details", component: ProfileComponent, pathMatch: 'full' },
+    //  { path: 'administration', title:"Administration", component: AdministrationComponent, pathMatch: 'full' },
+    //  { path: 'management', title:"Management", component: ManagementComponent, pathMatch: 'full' },
     ]
   }
 ]
