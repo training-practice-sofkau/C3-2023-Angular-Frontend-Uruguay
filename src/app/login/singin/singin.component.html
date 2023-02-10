@@ -4,8 +4,24 @@
         <input class="controls" type="text" id="tipo" name="tipo" placeholder="Usuario">
         <input class="controls" type="text" id="nombre" name="nombre" placeholder="Contraseña">
 
-        <button class="boton" type="submit" (click)="activeLogin()">Login</button>
+        <button class="boton" (click)="activeLogin()">Login</button>
         <p>Aun no tenes cuenta con nosotros?</p>
-        <button class="boton" type="submit">Sign Up</button>
+        <button class="boton" (click)="logOut()">Sign Up</button>
     </form>
 </section>
+
+<mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
+</mat-form-field>
