@@ -26,7 +26,7 @@ export class CustomersTableService implements OnDestroy {
           asyncScheduler.schedule(this.updateAllCustomers, 1000); }
         });
     } else {
-      asyncScheduler.schedule(this.updateAllCustomers, 1000);
+      asyncScheduler.schedule(this.updateAllCustomers, 100);
     }
   }
 

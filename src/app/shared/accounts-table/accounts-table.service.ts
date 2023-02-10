@@ -26,7 +26,7 @@ export class AccountsTableService implements OnDestroy {
           asyncScheduler.schedule(this.updateAllAccounts, 1000); }
       });
     } else {
-      asyncScheduler.schedule(this.updateAllAccounts, 1000);
+      asyncScheduler.schedule(this.updateAllAccounts, 100);
     }
   }
 }

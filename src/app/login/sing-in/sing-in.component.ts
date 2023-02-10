@@ -35,7 +35,6 @@ export class SinginComponent {
       this.auth.login(this.signinForm.controls.email.value, this.signinForm.controls.password.value).subscribe({
         next: (value) => { answer = value; },
         complete: () => {
-          this.cookie.set('id', answer.customer.id);
           this.cookie.set('token', answer.token);
           this.auth.loadCurrentUser();
           this.router.navigate(["/"]);
