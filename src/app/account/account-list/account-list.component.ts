@@ -17,14 +17,23 @@ export class AccountListComponent implements OnInit {
 
   ngOnInit(): void {
     //Primero llamo el dato de la api atraves de mi servicio accountService
-    this.AccountService.observableAccount
-    .subscribe((data: Account[]) => {
-      if(this.lisAccounts.length != data.length)this.lisAccounts = data});
-
+    this.updateListAccount();
     
-    this.AccountService.updateAccountList();//actualiza la lista de account
   }
 
+
+  updateListAccount():void{
+
+    this.AccountService.observableAccount
+    .subscribe((data: Account[]) => {
+
+      if(this.lisAccounts.length != data.length){
+        
+        this.lisAccounts = data
+      }
+      });
+      this.AccountService.updateAccountList();
+  }
 
 
 

@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
 
   BASE_URL = "http://localhost:3000";
@@ -22,16 +23,50 @@ export class ApiService {
       'Access-Control-Allow-Origin': '*'
     })
   }
+  
 
+
+  //--------------Account----------------------------
+  //createAccount(){}
+  //createAccountType(){}
+  //updateAccount(){}
+  //deleteAccount(){}
+  //getAccountType(){}
+  //getBalanceAccount(){}
+  //getCustomerAccount(){}
+  //getStateAccount(){}
+  //addBalanceAccount(){}
+  //changeAccountType(){}
+  //removeBalanceAll(){}
+  //changeStateAccount(){}
+  //removeBalance(){}
+  
   getAllAccounts():Observable<Account[]>{
     return this.http.get<Account[]>
     (`${this.BASE_URL}/account/find-all`,this.httpOptions)
   }
-
+  
+  
+  //--------------Customer----------------------------------------
+  //(){}
   getAllCustomers():Observable<Customer[]>{
     return this.http.get<Customer[]>
     (`${this.BASE_URL}/customer/all`,this.httpOptions)
   }
+  //--------------Deposit----------------------------
+  //--------------Transfer----------------------------
+  //--------------Segurity----------------------------
+  //getDeposit(){}
+  //getTransfer(){}
+  //getBalance
+  
+  //get account type
+
+
+  //create Account 
+  //Create account type 
+
+
   
   
 

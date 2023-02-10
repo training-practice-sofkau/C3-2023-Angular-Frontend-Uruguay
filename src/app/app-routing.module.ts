@@ -9,10 +9,10 @@ import { AdminGuard } from './guards/admin.guard';
 import { SinginComponent } from './login/singin/singin.component';
 import { CreateAccountTypeComponent } from './account/create-account-type/create-account-type.component';
 import { CreateTransferComponent } from './transfer/create-transfer/create-transfer.component';
-import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CreateDepositComponent } from './deposit/create-deposit/create-deposit.component';
 import { DepositListComponent } from './deposit/deposit-list/deposit-list.component';
 import { TransferListComponent } from './transfer/transfer-list/transfer-list.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 
 const routes: Routes = [
    //Rutas de segurity 
@@ -22,7 +22,7 @@ const routes: Routes = [
    {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
 
    //Rutas de Customer
-   {path:`customerList`,component: CustomerListComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
+   {path:`customerList`,component :CustomerListComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
    {path:`customer/documentType/create`,component:FindAllComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/ },
    
    //Rutas de Account
