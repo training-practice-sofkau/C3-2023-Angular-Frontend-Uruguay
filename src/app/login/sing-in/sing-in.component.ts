@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../services/auth.service';
-import { LoginModel } from 'src/app/interfaces/login.interface';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
 
 @Component({
