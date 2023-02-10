@@ -1,3 +1,52 @@
-<pre>
-  app-account
-</pre>
+<div class="d-flex align-items-center" style="background-color: rgba(255, 255, 255, 0.5);">
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex flex-column align-items-start">
+        <div class="my-3">
+          <button (click)="openEditModal()" class="btn btn-primary">Agregar tipo de cuenta</button>
+        </div>
+        <div class="my-3">
+          <button (click)="openEditModal2()" class="btn btn-primary">Agregar depósito</button>
+        </div>
+      </div>
+      <div class="d-flex flex-column" style="width: 250px;">
+        <img alt="fotoperfil" [src]="customer?.avatarUrl || 'https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg'" class="rounded-circle w-100 h-100 mt-3">
+        <h4 class="mt-3">Nombre completo: <ng-container *ngIf="customer">{{ customer.fullName }}</ng-container></h4>
+        <h4 class="font-weight-bold mt-3">Id de Cuenta: <ng-container *ngIf="accountType">{{ accountType.id }}</ng-container></h4>
+        <h4 class="font-weight-bold mt-3">Tipo de Cuenta: <ng-container *ngIf="accountType">{{ accountType.name }}</ng-container></h4>
+        <p class="mt-3">Balance: <span class="font-weight-bold">$100</span></p>
+      </div>
+      <div class="d-flex flex-column align-items-end">
+        <div class="my-3">
+          <button [routerLink]="['/customer']" class="btn btn-danger">Cambios de cuenta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Registro</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-createaccounttype></app-createaccounttype>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close()"
+    >
+      Cerrar
+    </button>
+  </div>
+</ng-template>

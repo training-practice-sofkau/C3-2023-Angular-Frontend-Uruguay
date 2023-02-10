@@ -4,4 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-newdeposit',
   templateUrl: './newdeposit.component.html',
 })
-export class NewdepositComponent { }
+export class NewdepositComponent {
+
+
+
+
+
+ }

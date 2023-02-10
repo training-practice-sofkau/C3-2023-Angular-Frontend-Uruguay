@@ -1,0 +1,30 @@
+<div class="container mt-5 p-5 max-w-md mx-auto rounded shadow-sm text-center bg-grey-dark">
+  <h2 class="text-4xl">BANK SOFKA</h2>
+  <form class="mt-4">
+    <div class="form-group">
+      <label for="username" >Nombre de usuario</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="password" >Contraseña</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password">
+    </div>
+    <button  type="button" (click)="login(username, password)">Ingresar</button>
+
+    <br />
+  
+    <br />
+    <button type="button"  (click)="openModal($event)">Registrar</button>
+
+    <ng-template #content let-modal>
+      <div class="modal-body">
+        <app-singup> </app-singup>
+      </div>
+    </ng-template>
+
+    <a    href="www.google.com"  class=" text-sm underline mt-3">Olvido su contraseña?</a>
+  </form>
+    <img  class="icon" (click)="onClick()"  src="data:image/png;base64,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"
+         alt="Google logo"
+         style="width: 30px; height: 30px; margin-right: 10px;">
+</div>
