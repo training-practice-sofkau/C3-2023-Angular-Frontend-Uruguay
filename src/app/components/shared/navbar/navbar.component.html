@@ -14,7 +14,7 @@
 <ng-template #privateNavbar>
 
   <mat-toolbar color="primary">
-    <span routerLink="">Virtual Banking APP - User Desktop </span>
+    <span routerLink="/">Virtual Banking APP - User Desktop </span>
     <span class="spacer"></span>
 
     <button class="desk-navbar-button" mat-raised-button routerLink="/desktop/operation">
@@ -30,7 +30,7 @@
     </button>
 
     <span class="spacer"></span>
-    <button class="navbar-button" mat-fab extended color="accent" routerLink="/">
+    <button class="navbar-button" mat-fab extended color="accent" (click)="logout()">
       <mat-icon>logout</mat-icon> Logout
     </button>
   </mat-toolbar>

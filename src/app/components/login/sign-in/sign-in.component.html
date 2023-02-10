@@ -3,7 +3,7 @@
   <div class="body">
     <div class="login">
 
-      <mat-spinner *ngIf="loading" class="spinner" diameter="50" style="margin:50% auto;"> </mat-spinner>
+      <mat-spinner *ngIf="loading" class="spinner" diameter="100" strokeWidth="15" color="accent" style="margin:50% auto;"> </mat-spinner>
 
       <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()" style="padding: 10px;">
         <div style="background-color: aquamarine;">

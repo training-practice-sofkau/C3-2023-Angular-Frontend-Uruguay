@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { DesktopComponent } from './desktop.component';
 import { OperationComponent } from './operation/operation.component';
 import { AdministrationComponent } from './administration/administration.component';
-import { ManagementModule } from './management/management.module';
+
 
 const routes: Routes = [
   {
-    path: '', component: DesktopComponent, pathMatch: "full",
+    path: 'desktop', title:"Virtual Banking - Desktop", component: DesktopComponent, pathMatch: `full`,
     children: [
-      { path: 'desktop/operation', component: OperationComponent },
-      { path: 'desktop/administration', component: AdministrationComponent },
+      { path: 'desktop/operation', title:"Virtual Banking - Operations", component: OperationComponent },
+      { path: 'desktop/administration', title:"Virtual Banking - Administration", component: AdministrationComponent },
       //{ path: 'desktop/management', component: ManagementModule },
 
     ]},
