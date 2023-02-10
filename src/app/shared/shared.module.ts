@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { LoginModule } from '../login/login-module.module';
+import { ServiceLogIn } from '../global-service/service-login.service';
 
 
 
@@ -19,12 +21,14 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     MaterialModule,
     RouterOutlet, //?
-    AppRoutingModule //?
+    AppRoutingModule,
+    LoginModule, //?
   ],
   exports:[
     ToolbarComponent,
     FooterComponent,
     HomeComponent
-   ]
+   ],
+   providers: [ServiceLogIn],
 })
 export class SharedModule { }
