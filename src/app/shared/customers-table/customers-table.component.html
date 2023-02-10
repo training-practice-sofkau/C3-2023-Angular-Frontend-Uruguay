@@ -1,0 +1,29 @@
+<div class="table w-full ...">
+  <div class="table-header-group ...">
+    <div class="table-row">
+      <div class="table-cell text-left ...">ID</div>
+      <div class="table-cell text-left ...">Nombre</div>
+      <div class="table-cell text-left ...">Documento</div>
+      <div class="table-cell text-left ...">Tipo de documento</div>
+      <div class="table-cell text-left ...">Email</div>
+      <div class="table-cell text-left ...">Telefono</div>
+      <div class="table-cell text-left ...">Avatar</div>
+      <div class="table-cell text-left ...">Estado</div>
+    </div>
+  </div>
+  <div class="table-row-group">
+    <div class="table-row" *ngFor="let customer of CustomerList">
+      <div class="table-cell text-left align-middle ...">{{customer.id}}</div>
+      <div class="table-cell text-left align-middle ...">{{customer.fullName}}</div>
+      <div class="table-cell text-left align-middle ...">{{customer.document}}</div>
+      <div class="table-cell text-left align-middle ...">{{customer.documentType.name}}</div>
+      <div class="table-cell text-left align-middle ...">{{customer.email}}</div>
+      <div class="table-cell text-left align-middle ...">{{customer.phone}}</div>
+      <div class="table-cell text-left align-middle ...">
+        <img *ngIf="customer?.avatarUrl" class="h-8 w-8 rounded-full" src="{{customer?.avatarUrl}}" alt="">
+        <b *ngIf="!customer?.avatarUrl" class="text-lg"> No tiene </b>
+      </div>
+      <div class="table-cell ...">{{customer.state}}</div>
+    </div>
+  </div>
+</div>

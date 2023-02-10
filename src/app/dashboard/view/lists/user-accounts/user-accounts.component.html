@@ -1,0 +1,18 @@
+<div class="rounded-lg border table w-full">
+  <div class="table-header-group bg-gray-800">
+    <div class="table-row">
+      <div class="table-cell text-left py-3 text-white">ID</div>
+      <div class="table-cell text-left py-3 text-white">Balance</div>
+      <div class="table-cell text-left py-3 text-white">Tipo de cuenta</div>
+      <div class="table-cell text-left py-3 text-white">Estado</div>
+    </div>
+  </div>
+  <div class="table-row-group">
+    <div *ngFor="let account of UserAccountsList" class="table-row transition duration-300 ease-in-out hover:bg-gray-100">
+      <td *ngIf="(account)" class="border-hidden table-cell text-left py-3 whitespace-nowrap">{{account.id}}</td>
+      <td *ngIf="(account)" class="border-hidden table-cell text-left py-3 whitespace-nowrap">{{account.balance}}</td>
+      <td *ngIf="(account)" class="border-hidden table-cell text-left py-3 whitespace-nowrap">{{account.accountType.name}}</td>
+      <td *ngIf="(account)" class="border-hidden table-cell text-left py-3 whitespace-nowrap">{{account.state}}</td>
+    </div>
+  </div>
+</div>

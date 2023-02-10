@@ -1,4 +1,4 @@
-# Frontend Angular
+# Angular Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
@@ -15,36 +15,35 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 3 - Day 1] - Angular (Estructura de proyecto)
+[Workshop Week 3 - Day 3] - Angular (Web components and navigation)
 
 # Body of the delivery
-¿Qué está entregando?
+What are you delivering?
+
+Explain to the best of their ability what they deliver.
+
+Add images to see what the delivery looks like (Aesthetics of the page)
+
+You can also add images of the structure where modifications were made to help correct (images of components, routes and everything that can be used to correct)
+
 [Answer]
 
-¿Qué hizo falta?
+What was missing?
 [Answer]
 
-¿Qué dificultades se tuvieron?
+What difficulties did you have?
 [Answer]
 ```
 
 ## Workshop
 The following are the guidelines that should be taken into account for the development of the workshop to be submitted:
 
-1. Identify missing folder or modules.
-2. Identify the services for each module, interfaces, guards.
-3. Create missing folders or modules.
-4. Create components corresponding to each modulo.
-5. If they come up with something else, you can also create it, but you have to discuss.
+1. Develop a navigation route with Guards
+2. You must interact with at least 5 pages
+3. One of them must be without security and the others must have security
 
-## for more information, about the command line
-ng g --help
-
-## Bootstrap
-[Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-
-## Angular Material
-[Material](https://material.angular.io/components/categories)
+## More information about Guards
+[Guards](https://www.youtube.com/watch?v=Fhq20zubpPc)
 
 ## inportant note
 Do not forget that for this workshop, you should make at least 6 commits properly documented (title and message body).
