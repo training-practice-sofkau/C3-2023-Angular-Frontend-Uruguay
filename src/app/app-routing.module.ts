@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AccountComponent } from './account/account.component';
-import { CustomerComponent } from './customer/customer.component';
-import { DepositComponent } from './deposit/deposit.component';
-import { LoginComponent} from './login2/login.component';
-import { TransferComponent } from './transfer/transfer.component';
-import { LoginGuard } from './guard/login.guard';
+import { Routes, RouterModule } from '@angular/router';
+import { DepositComponent } from './AccountMovement/'
+;import { TransferComponent } from './AccountMovement/transfer'
+
+import { LoginGuard } from './tools';
+import { LoginComponent } from './userLogin-Register';
+import { AccountComponent, CustomerComponent } from './UserProfile';
+
 
 
 const appRoutes: Routes = [

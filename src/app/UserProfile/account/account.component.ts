@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerComponent } from '../customer/customer.component';
-import { customerInterface } from '../interface/customer-interface';
-import { AccountInterfaec } from '../interface/account-interface';
-import { AccountTypeinterface } from '../interface/Account-type-interface';
+import { AccountTypeinterface, AccountInterfaec, customerInterface} from '../../tools';
 import { AccountService } from './services/account.service';
-import { CreateaccounttypeComponent } from './create-account-type/createaccounttype.component';
+import { CreateaccounttypeComponent } from '../../AccountMovement';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NewdepositComponent } from '../deposit/new-deposit/newdeposit.component';
+import { NewdepositComponent } from '../../AccountMovement';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',

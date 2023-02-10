@@ -13,10 +13,10 @@ import { DepositService } from './AccountMovement/deposit/services/deposit.servi
 import { TransferService } from './AccountMovement/transfer/services/transfer.service';
 import { TransferModule } from './AccountMovement/transfer/transfer.module';
 import { MaterialModule } from './tools/material/material.module';
-import { SharedModule } from './tools/shared/shared.module';
+import { SharedModule } from '../app/shared/shared.module'
 import { Login2Module } from './userLogin-Register/login2/login.module';
 import { AuthService } from './userLogin-Register/login2/services/auth.service';
-import { AccountModule, CustomerModule, AccountService, CustomerService } from './UserProfile';
+import { AccountModule,  AccountService, CustomerModule, CustomerService } from './UserProfile';
 
 @NgModule({
 
@@ -31,12 +31,13 @@ import { AccountModule, CustomerModule, AccountService, CustomerService } from '
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    SharedModule,
     Login2Module,
     AccountModule,
     DepositModule,
     TransferModule,
     CustomerModule,
+
+    SharedModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
 

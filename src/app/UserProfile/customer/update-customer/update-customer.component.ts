@@ -1,10 +1,10 @@
-import { AccountComponent } from './../../account/account.component';
+import { AccountComponent,  } from './../../account/account.component';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { customerInterface } from 'src/app/interface/customer-interface';
-import { AuthService } from 'src/app/login2/services/auth.service';
+import { AuthService} from '../../../userLogin-Register';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { customerInterface } from 'src/app/tools';
 
 
 

@@ -1,25 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../tools'
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SingOutComponent } from '../login2/sing-out/sing-out.component';
+// import { SingOutComponent } from '../userLogin-Register/login2/sing-out/sing-out.component';
+import { ToolbarrComponent } from './toolbarr/toolbarr.component'
 
 
 
 @NgModule({
   declarations: [
-    ToolbarComponent,
-  ],
+    ToolbarrComponent ],
   imports: [
     ReactiveFormsModule,
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+
   ],
-  exports:[ToolbarComponent],
-  providers: [SingOutComponent]
+  exports:[ToolbarrComponent]
 
 })
 export class SharedModule { }

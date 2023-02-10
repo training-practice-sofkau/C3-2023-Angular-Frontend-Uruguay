@@ -6,18 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent  implements OnInit {
-  
+
   title = 'Bank';
-  public token:boolean = false 
+  public token:boolean = false
 
 
   ngOnInit(): void {
     this.token = this.tokenSi()
+    
   }
 
-  
-  
-  tokenSi(){  
+
+  tokenSi(){
     if(localStorage.getItem('token')==null){ return true}
     return false
   }

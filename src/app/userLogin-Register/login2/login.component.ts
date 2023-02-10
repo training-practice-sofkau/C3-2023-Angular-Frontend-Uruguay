@@ -6,9 +6,9 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { lastValueFrom } from 'rxjs';
+import {AlertsService} from '../../../app/shared'
+import {  DecodedToken,AccountInterfaec,customerInterface } from '../../tools';
 import jwtDecode from 'jwt-decode';
-
-import { AlertsService, DecodedToken,AccountInterfaec,customerInterface } from '../../tools';
 
 @Component({
   selector: 'app-login2',

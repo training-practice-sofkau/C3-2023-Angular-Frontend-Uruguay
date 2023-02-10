@@ -4,7 +4,8 @@ import { AccountComponent } from '../account/account.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import  Swal  from 'sweetalert2';
-import { AlertsService,  AccountInterfaec, AccountTypeinterface, customerInterface} from '../../tools'
+import {   AccountInterfaec, AccountTypeinterface, customerInterface} from '../../tools'
+import {AlertsService} from './../../shared'
 @Component({
 
   selector: 'app-customer',
