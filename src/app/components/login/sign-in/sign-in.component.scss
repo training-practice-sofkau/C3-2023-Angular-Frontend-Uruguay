@@ -1,0 +1,28 @@
+.body{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+
+.login{
+  width: 100%;
+  max-width: 430px;
+  text-align: center;
+}
+
+.formFieldSize{
+  width: 80%;
+}
+
+.signin-button{
+  height: 50px;
+  width: 300px;
+  font-size: 20px;
+}
+
+.foot-message{
+  margin-top: 10px;
+  font-size: 15px;
+  color: beige;
+}
