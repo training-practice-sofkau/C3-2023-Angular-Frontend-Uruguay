@@ -22,6 +22,7 @@ export class ToolbarComponent {
   }
 
   logout(){
+    sessionStorage.clear();
     this.cookie.deleteAll();
     this.router.navigate(["/sign-in"]);
     this.userDropdown = !this.userDropdown;

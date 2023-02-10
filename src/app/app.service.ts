@@ -13,58 +13,52 @@ export class AppService {
 
   constructor(public http: HttpClient) {}
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      //'Content-Type': 'application/json',
+  httpheaders = new HttpHeaders({
       'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET',
+      'Access-Control-Allow-Methods': 'POST, GET',
       'Access-Control-Allow-Origin': '*'
-    })
-  };
+  });
 
   getAllCustomers() : Observable<CustomerModel[]> {
+    const httpOptions = {
+      headers: this.httpheaders
+    };
     return this.http.get<CustomerModel[]>(
       this.baseurl + "/customer/get-all",
-      this.httpOptions
+      httpOptions
     );
   }
 
   getAllAccounts() : Observable<AccountModel[]> {
+    const httpOptions = {
+      headers: this.httpheaders
+    };
     return this.http.get<AccountModel[]>(
       this.baseurl + "/account/get-all",
-      this.httpOptions
+      httpOptions
     );
   }
 
   getAllAccountsByCustomerId(id: string) : Observable<AccountModel[]> {
-    const httpOptionsFinal = {
-      headers: new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Origin': '*'
-      }),
+    const httpOptions = {
+      headers: this.httpheaders,
       params: new HttpParams().set("customer", id)
     };
     return this.http.get<AccountModel[]>(
       this.baseurl + "/account/get-by-customer-id",
-      httpOptionsFinal
+      httpOptions
     );
   }
 
   getCustomerById(id: string): Observable<CustomerModel> {
-    const httpOptionsFinal = {
-      headers: new HttpHeaders({
-        //'Content-Type': 'application/json',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Origin': '*'
-      }),
+    const httpOptions = {
+      headers: this.httpheaders,
       params: new HttpParams().set("customer", id)
     };
     return this.http.get<CustomerModel>(
       this.baseurl + "/customer/get-by-id",
-      httpOptionsFinal
+      httpOptions
     );
   }
+
 }
