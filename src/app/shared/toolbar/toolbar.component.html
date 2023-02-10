@@ -7,20 +7,24 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">Sign in</a>
+          <a class="nav-link active" (click)="link('/')" aria-current="page">Sign in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="account/find-all">Account</a>
+          <a class="nav-link"  (click)="link('/account/find-all')">Account</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="customerList">Customer</a>
+          <a class="nav-link" (click)="link('/customerList')">Customer</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link disabled" href="transfer">Transfer</a>
+          <a class="nav-link" (click)="link('/transfer')">Transfer</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link disabled" href="deposit">Deposit</a>
+          <a class="nav-link" (click)="link('/deposit')">Deposit</a>
         </li>
+
       </ul>
     </div>
   </div>

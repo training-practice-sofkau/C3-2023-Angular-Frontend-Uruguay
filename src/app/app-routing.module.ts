@@ -12,20 +12,19 @@ import { CreateTransferComponent } from './transfer/create-transfer/create-trans
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CreateDepositComponent } from './deposit/create-deposit/create-deposit.component';
 import { DepositListComponent } from './deposit/deposit-list/deposit-list.component';
+import { TransferListComponent } from './transfer/transfer-list/transfer-list.component';
 
 const routes: Routes = [
    //Rutas de segurity 
    {path:``,component: SinginComponent ,pathMatch: 'full'},
    {path:`signUp`,component: SingupComponent,pathMatch: 'full'},
    {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
- 
- 
+
    //Rutas de Customer
    {path:`customerList`,component: CustomerListComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
    {path:`customer/documentType/create`,component:FindAllComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/ },
+   
    //Rutas de Account
- 
- 
    {path:`account`,component: FindAllComponent,pathMatch: 'full'},
    {path:`account/create`,component: CreateAccountComponent,pathMatch: 'full'/*,canActivate:[AdminGuard] */},
    {path:`account/find-all`,component: AccountListComponent,pathMatch: 'full'},
@@ -51,6 +50,7 @@ const routes: Routes = [
    {path:`account/Balance/:id`,component: FindAllComponent,pathMatch: 'full'},
    //Rutas de Transfer
    {path:`transfer`,component: CreateTransferComponent,pathMatch: 'full'},
+   {path:`transfer/list`,component: TransferListComponent,pathMatch: 'full'},
    //Rutas de Deposit 
    {path:`deposit`,component: CreateDepositComponent,pathMatch: 'full'},
    {path:`deposit/list`,component: DepositListComponent,pathMatch: 'full'},
