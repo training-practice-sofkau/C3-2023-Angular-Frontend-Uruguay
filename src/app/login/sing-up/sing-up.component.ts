@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DocumentTypeListModel } from 'src/app/interfaces/document.list.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ export class SingupComponent {
 
   signupForm = this.formBuilder.group({
     name: new FormControl(""),
-    email: new FormControl(""),
+    email: new FormControl("", Validators.email),
     documentType: new FormControl(0),
     document: new FormControl(""),
     phone: new FormControl(""),
@@ -32,10 +32,13 @@ export class SingupComponent {
   }
 
   onSubmit(): void {
+    if (this.signupForm.valid){
+      console.log("valid");
+    }
     //this.signupForm.controls.name.setValue("xd");
-    this.cookie.set('hola', 'xd');
-    this.signupForm.reset();
-    this.router.navigate(['/dashboard']);
+    //this.cookie.set('hola', 'xd');
+    //this.signupForm.reset();
+    //this.router.navigate(['/dashboard']);
   }
 
   ngOnInit() {

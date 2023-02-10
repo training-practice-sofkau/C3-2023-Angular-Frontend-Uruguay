@@ -11,7 +11,7 @@ export class AppService {
 
   baseurl = "http://localhost:3000/api";
 
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({
