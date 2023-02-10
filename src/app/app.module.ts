@@ -8,6 +8,7 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.compon
 import { LoginModule } from './modules/login/login-module.module';
 import { MaterialModule } from './modules/material/material.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,9 +21,12 @@ import { SharedModule } from './modules/shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
 
+    HttpClientModule,
+
     MaterialModule,
     SharedModule,
     LoginModule,
+
 
   ],
   providers: [],
