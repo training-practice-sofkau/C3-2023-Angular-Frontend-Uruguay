@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { filter, from, map, Observable } from 'rxjs';
+import { filter, from, map } from 'rxjs';
 import { CustomerModel } from '../../interfaces/Customer.interface';
 import { baseCustomers } from '../customer-data/customer.data';
 
@@ -59,7 +59,7 @@ export class EjercicioComponent {
       filter(c => c.documentType.name === 'Cedula'),
       map(c => c.fullName.toUpperCase()))
       .subscribe(c => this.newClients.push(c));
-      return this.newClients
+    return this.newClients
   }
 
   transformEmail() {
@@ -67,15 +67,15 @@ export class EjercicioComponent {
       filter(c => c.state === true),
       map(name => name.email.toUpperCase()))
       .subscribe(c => this.newEmails.push(c))
-      return this.newEmails
+    return this.newEmails
   }
 
   changeDocument() {
     from(this.getCustomers()).pipe(
       filter(c => c.documentType.name === "Pasaporte"),
-      map(c => c.documentType.name = "Cedula"))
-      .subscribe(c => this.newDocuments.push(c))
-      return this.newDocuments
+      map(c => `${c.fullName} ${c.documentType} n°:${c.document} `
+      )).subscribe(c => this.newDocuments.push(c))
+    return this.newDocuments
   }
 
   //Callback
