@@ -13,7 +13,7 @@ export class AuthService {
    * Sets the status of the user ( login )
    * @param status boolean to set Status
    */
-  setUSerStatus(status: boolean){
+  public setUSerStatus(status: boolean){
     this.userIsValid = status;
   }
 
@@ -21,19 +21,8 @@ export class AuthService {
    * return the status of the user ( login )
    * @returns boolean with the status of the user
    */
-  getUserStatus(): boolean{
+  public getUserStatus(): boolean{
     return this.userIsValid;
-  }
-
-
-  authenticated$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
-  public authenticate() {
-    this.authenticated$.next(true);
-  }
-
-  public deauthenticate() {
-    this.authenticated$.next(false);
   }
 
 

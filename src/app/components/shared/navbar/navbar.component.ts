@@ -19,7 +19,6 @@ export class NavbarComponent  {
 
   logout(){
     this.authService.setUSerStatus(false);
-    this.authService.deauthenticate();
     this.router.navigate(["/"]);
     this.appComp.isInPublicZone = true;
   }

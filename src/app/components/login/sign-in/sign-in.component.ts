@@ -64,7 +64,6 @@ export class SignInComponent implements OnInit {
     setTimeout(() => {
       this.loading=false;
       this.authService.setUSerStatus(true);
-      this.authService.authenticate();
       this.appComp.isInPublicZone = false;
       this.router.navigate(["desktop"]);
     }, 1500);

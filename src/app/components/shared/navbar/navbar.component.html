@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" *ngIf="(authService.authenticated$ | async) === false; else privateNavbar">
+<mat-toolbar color="primary" *ngIf="(authService.getUserStatus()) === false; else privateNavbar">
   <span (click)="appComp.toHome()" >Virtual Banking APP</span>
   <span class="spacer"></span>
   <button class="navbar-button" mat-fab extended color="accent" (click)="appComp.toRegister()">
