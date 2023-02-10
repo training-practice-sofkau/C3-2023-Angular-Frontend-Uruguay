@@ -17,17 +17,28 @@ export class AuthGuard implements CanActivate {
         this.updateStat(token);
         return true;
       } else {
-        this.router.navigate(['/sign-up']);
+        this.removeUserData()
         return false;
       }
   }
 
   updateStat(token: string){
-    this.security.isValid(token).subscribe((value) => this.validateExpireTime(value));
+    this.security.isValid(token).subscribe({
+      next: (value) => { this.validateExpireTime(value) },
+      error: () => { this.removeUserData() }
+    });
   }
 
   validateExpireTime(token: JwtTokenModel){
-    if (Date.now() <= token.exp) this.cookie.deleteAll();
+    if (Date.now() <= token.exp && token.customer.id) {
+      this.removeUserData()
+    }
+  }
+
+  removeUserData(){
+    this.cookie.deleteAll();
+    sessionStorage.clear();
+    this.router.navigate(['/sign-up']);
   }
 
 }
