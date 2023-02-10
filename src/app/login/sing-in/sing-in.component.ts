@@ -20,7 +20,7 @@ export class SinginComponent {
     remember: new FormControl("")
   });
 
-  constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private security: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private auth: AuthService) {}
 
   redirect(url: string) {
     this.router.navigate(["/" + url]);
@@ -33,11 +33,12 @@ export class SinginComponent {
   onSubmit(): void {
     if (this.signinForm.valid && this.signinForm.controls.email.value && this.signinForm.controls.password.value){
       let answer: LoginResponseModel;
-      this.security.login(this.signinForm.controls.email.value, this.signinForm.controls.password.value).subscribe({
+      this.auth.login(this.signinForm.controls.email.value, this.signinForm.controls.password.value).subscribe({
         next: (value) => { answer = value; },
         complete: () => {
           this.cookie.set('id', answer.customer.id);
           this.cookie.set('token', answer.token);
+          this.auth.loadCurrentUser();
           this.router.navigate(["/"]);
         }
       });

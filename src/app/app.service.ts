@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomerModel } from './interfaces/customer.interface';
 import { AccountModel } from './interfaces/account.interface';
+import { LoginResponseModel } from './interfaces/login.response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,22 @@ export class AppService {
     };
     return this.http.get<AccountModel[]>(
       this.baseurl + "/account/get-by-customer-id",
+      httpOptionsFinal
+    );
+  }
+
+  getCustomerById(id: string): Observable<CustomerModel> {
+    const httpOptionsFinal = {
+      headers: new HttpHeaders({
+        //'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Allow-Origin': '*'
+      }),
+      params: new HttpParams().set("customer", id)
+    };
+    return this.http.get<CustomerModel>(
+      this.baseurl + "/customer/get-by-id",
       httpOptionsFinal
     );
   }

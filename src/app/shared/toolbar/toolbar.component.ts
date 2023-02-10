@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router,NavigationEnd  } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from 'src/app/login/services/auth.service';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,7 +14,7 @@ export class ToolbarComponent {
   userDropdown: boolean = false;
   currentRoute: string = '';
 
-  constructor(private router: Router, private cookie: CookieService) {
+  constructor(private router: Router, private cookie: CookieService, protected auth: AuthService) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd){
         this.currentRoute = event.url;
@@ -28,7 +30,6 @@ export class ToolbarComponent {
 
   userDropdownSwitch(){
     this.userDropdown = !this.userDropdown;
-    console.log(this.currentRoute);
   }
 
 }

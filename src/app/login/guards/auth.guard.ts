@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
   }
 
   validateExpireTime(token: JwtTokenModel){
-    const email = token.customer.email;
-    (Date.now() >= token.exp) ? this.cookie.set('email', email) : this.cookie.deleteAll();
+    if (Date.now() <= token.exp) this.cookie.deleteAll();
   }
+
 }
