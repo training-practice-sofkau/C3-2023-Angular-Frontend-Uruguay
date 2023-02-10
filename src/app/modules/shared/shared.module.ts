@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ToolbarComponent,
     PageNotFoundComponent,
     HomeComponent,
+    FooterComponent,
   ]
 })
 export class SharedModule { }

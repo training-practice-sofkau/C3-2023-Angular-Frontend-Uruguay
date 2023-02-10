@@ -8,10 +8,14 @@
       <mat-form-field>
         <input matInput type="password" placeholder="Password" name="password" required>
       </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Document Type" name="documentType" required>
+      <mat-form-field appearance="fill">
+        <mat-label name="documentType" required>Document Type</mat-label>
+        <mat-select>
+          <mat-option value="one">CI</mat-option>
+          <mat-option value="two">Pasaporte</mat-option>
+        </mat-select>
       </mat-form-field>
-            <mat-form-field>
+      <mat-form-field>
         <input matInput placeholder="Document" name="document" required>
       </mat-form-field>
       <mat-form-field>
