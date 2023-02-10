@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
 })
 export class SinginComponent {
 
+  ngOnInit(): void {
+    this.defaultLogin()
+  }
+
   defaultLogin() {
     if(!localStorage.getItem('key'))
     localStorage.setItem('key', 'false')
