@@ -22,9 +22,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     SharedModule,
   ],
   exports:[
+    LoginComponent,
     SignInComponent,
     SignUpComponent
-
   ]
 })
 

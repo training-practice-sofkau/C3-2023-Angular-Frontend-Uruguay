@@ -1,4 +1,10 @@
-
 <app-navbar></app-navbar>
+
+<!-- This area is for all the components in the main page -->
+<nav *ngIf="isGoingHome && isInPublicZone"> <app-login></app-login> </nav>
+<nav *ngIf="isLoggingIn && isInPublicZone"> <app-sign-in></app-sign-in></nav>
+<nav *ngIf="isRegistering && isInPublicZone"> <app-sign-up></app-sign-up> </nav>
+
+<!-- TODO: hacer logout component y mostrarlo al salir del desktop -->
 
 <router-outlet></router-outlet>

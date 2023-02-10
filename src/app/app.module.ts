@@ -7,12 +7,14 @@ import { SharedModule } from './components/shared/shared.module';
 import { MaterialModule } from './components/shared/material/material.module';
 import { LoginModule } from './components/login/login.module';
 import { DesktopModule } from './components/desktop/desktop.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -22,7 +24,6 @@ import { DesktopModule } from './components/desktop/desktop.module';
     LoginModule,
     DesktopModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

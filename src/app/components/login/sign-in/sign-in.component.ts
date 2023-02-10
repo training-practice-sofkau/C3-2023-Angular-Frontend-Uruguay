@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../../services/auth.service';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -21,7 +22,7 @@ export class SignInComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private router: Router,
     private authService: AuthService,
-
+    public appComp: AppComponent,
     ) {
     this.form = this.fb.group({
       username: ["", Validators.required],
@@ -64,6 +65,7 @@ export class SignInComponent implements OnInit {
       this.loading=false;
       this.authService.setUSerStatus(true);
       this.authService.authenticate();
+      this.appComp.isInPublicZone = false;
       this.router.navigate(["desktop"]);
     }, 1500);
   }

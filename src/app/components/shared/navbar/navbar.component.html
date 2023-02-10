@@ -1,10 +1,10 @@
 <mat-toolbar color="primary" *ngIf="(authService.authenticated$ | async) === false; else privateNavbar">
-  <span routerLink="/">Virtual Banking APP</span>
+  <span (click)="appComp.toHome()" >Virtual Banking APP</span>
   <span class="spacer"></span>
-  <button class="navbar-button" mat-fab extended color="accent" routerLink="/signup">
+  <button class="navbar-button" mat-fab extended color="accent" (click)="appComp.toRegister()">
     <mat-icon>assignment_ind</mat-icon> Sign Up
   </button>
-  <button class="navbar-button" mat-fab extended color="accent" routerLink="/signin">
+  <button class="navbar-button" mat-fab extended color="accent" (click)="appComp.toLogin()">
     <mat-icon>login</mat-icon> Login
   </button>
 </mat-toolbar>
@@ -17,14 +17,6 @@
     <button class="desk-navbar-button" mat-raised-button routerLink="/profile">
       <mat-icon>assignment_ind</mat-icon> Profile
     </button>
-
-   <!--  <button class="desk-navbar-button" mat-raised-button routerLink="/administration">
-      <mat-icon>assignment_ind</mat-icon> Administration
-    </button>
-
-    <button class="desk-navbar-button" mat-raised-button routerLink="/management">
-      <mat-icon>assignment_ind</mat-icon> Management
-    </button> -->
 
     <span class="spacer"></span>
     <button class="navbar-button" mat-fab extended color="accent" (click)="logout()">
