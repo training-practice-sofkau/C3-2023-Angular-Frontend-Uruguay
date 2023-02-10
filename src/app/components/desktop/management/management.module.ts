@@ -6,6 +6,7 @@ import { HandleCustomerStatusComponent } from './handle-customer-status/handle-c
 import { HandleDepositStatusComponent } from './handle-deposit-status/handle-deposit-status.component';
 import { HandleTransferStatusComponent } from './handle-transfer-status/handle-transfer-status.component';
 import { UpdateAccountDataComponent } from './update-account-data/update-account-data.component';
+import { ManagementComponent } from './management.component';
 
 
 
@@ -17,7 +18,8 @@ import { UpdateAccountDataComponent } from './update-account-data/update-account
     HandleCustomerStatusComponent,
     HandleDepositStatusComponent,
     HandleTransferStatusComponent,
-    UpdateAccountDataComponent
+    UpdateAccountDataComponent,
+    ManagementComponent
   ],
   imports: [
     CommonModule,

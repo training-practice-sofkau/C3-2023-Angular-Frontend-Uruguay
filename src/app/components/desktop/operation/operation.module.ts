@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../material/material.module';
+import { MaterialModule } from '../../shared/material/material.module';
 import { CheckAccountInfoComponent } from './check-account-info/check-account-info.component';
 import { CheckAccountMovementComponent } from './check-account-movement/check-account-movement.component';
 import { MakeDepositComponent } from './make-deposit/make-deposit.component';

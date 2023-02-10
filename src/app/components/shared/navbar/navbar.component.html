@@ -1,5 +1,4 @@
 <mat-toolbar color="primary" *ngIf="(authService.authenticated$ | async) === false; else privateNavbar">
-
   <span routerLink="/">Virtual Banking APP</span>
   <span class="spacer"></span>
   <button class="navbar-button" mat-fab extended color="accent" routerLink="/signup">
@@ -8,24 +7,22 @@
   <button class="navbar-button" mat-fab extended color="accent" routerLink="/login">
     <mat-icon>login</mat-icon> Login
   </button>
-
 </mat-toolbar>
 
 <ng-template #privateNavbar>
-
   <mat-toolbar color="primary">
-    <span routerLink="/">Virtual Banking APP - User Desktop </span>
+    <span routerLink="/desktop" >Virtual Banking APP - User Desktop </span>
     <span class="spacer"></span>
 
-    <button class="desk-navbar-button" mat-raised-button routerLink="/desktop/operation">
+    <button class="desk-navbar-button" mat-raised-button routerLink="/operation">
       <mat-icon>assignment_ind</mat-icon> Operations
     </button>
 
-    <button class="desk-navbar-button" mat-raised-button routerLink="/desktop/administration">
+    <button class="desk-navbar-button" mat-raised-button routerLink="/administration">
       <mat-icon>assignment_ind</mat-icon> Administration
     </button>
 
-    <button class="desk-navbar-button" mat-raised-button routerLink="/desktop/management">
+    <button class="desk-navbar-button" mat-raised-button routerLink="/management">
       <mat-icon>assignment_ind</mat-icon> Management
     </button>
 
