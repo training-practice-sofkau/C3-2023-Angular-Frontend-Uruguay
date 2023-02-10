@@ -15,7 +15,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 3 - Day 3] - Angular (Componentes Web y navegación)
+[Workshop Week 3 - Day 4] - Angular (Consumo de API y lazy loading )
 
 # Body of the delivery
 ¿Qué está entregando?
@@ -38,13 +38,27 @@ Tambien pueden agregar imagenes de la estructura donde se hicieron modificacione
 ## Workshop
 The following are the guidelines that should be taken into account for the development of the workshop to be submitted:
 
-1. Develop a navigation route with Guards
-2. You must interact with at least 5 pages
-3. One of them must be without security and the others must have security
+HACER UN TODO
 
-## More information about Guards
-[Guards](https://www.youtube.com/watch?v=Fhq20zubpPc)
+1. Importar modulo httpClientModule.
+2. Inyectar en los servicios el HttpClient.
+
+3. Cargar los modulos por lazy loading.
+4. Mostrar Información del customer ( GET ) CON TOKEN GENTE.
+5. Mostrar información de la cuenta del customer ( GET ).
+6. Poder hacer Deposito ( POST ).
+7. Hacer el login ( Sign-in ).
+
+## Extra
+1. Hacer un updated cualquiera.
+2. Hacer un delete cualquiera.
+
+
+## More information about forms
+[Reactive forms](https://www.youtube.com/watch?v=sYVHJ0SPt6M)
+[Login consumo de API](https://www.youtube.com/watch?v=a07vRDN7cZw)
+[Motivación](https://www.youtube.com/watch?v=O5wCbxUTI9U)
 
 ## inportant note
-Do not forget that for this workshop, you should make at least 6 commits properly documented (title and message body).
+Do not forget that for this workshop, you should make at least 10 commits properly documented (title and message body).
  
