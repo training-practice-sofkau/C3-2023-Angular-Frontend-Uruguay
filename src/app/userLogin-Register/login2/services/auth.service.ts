@@ -15,7 +15,7 @@ post(url: string, data: any){
   return this.http.post<customerInterface>(url, data)
 }
 
-post2(url: string, data: any){
+post2(url: string, data: void){
   return this.http.post(url, data)
 }
 

@@ -13,7 +13,12 @@ export class ToolbarComponent {
 
 
 
+  singOut(){
+    localStorage.clear();
+    this.AuthService.logOut()
+    this.router.navigate(['login']);
 
+  }
 
 }
 
