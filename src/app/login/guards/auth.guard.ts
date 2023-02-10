@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private cookie: CookieService, private security: AuthService) {}
 
   canActivate(_route: ActivatedRouteSnapshot,_state: RouterStateSnapshot): boolean {
-      const token = this.cookie.get('token');
-      if (token.length >= 1) {
+      const token: string = this.cookie.get('token') || sessionStorage.getItem('token') as string;
+      if (token && token.length > 4){
         this.updateStat(token);
         return true;
       } else {

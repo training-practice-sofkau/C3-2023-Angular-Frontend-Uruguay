@@ -54,15 +54,13 @@ export class AuthService {
 
   loadCurrentUser(): void {
     let user: CustomerModel;
-    let token: string =  this.cookie.get('token');
-    if (token){
+    const token: string = this.cookie.get('token') || sessionStorage.getItem('token') as string;
+    if (token && token.length > 4){
       this.isValid(token).subscribe({
         next:(value) => {
           this.api.getCustomerById(value.customer.id).subscribe({
             next: (data) => { user = data; },
-            complete: () => {
-              this.currentUserEmitter.next({ customer: user, token: token });
-            }
+            complete: () => { this.currentUserEmitter.next({ customer: user, token: token }); }
           });
         }
       });

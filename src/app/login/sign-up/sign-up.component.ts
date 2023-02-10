@@ -5,11 +5,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sing-up',
-  templateUrl: './sing-up.component.html',
-  styleUrls: ['./sing-up.component.scss']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class SingupComponent {
+export class SignupComponent {
   show: boolean = true;
   documentTypes: DocumentTypeListModel[] = [];
   documentTypeCurrent: string = "cedula de identidad";

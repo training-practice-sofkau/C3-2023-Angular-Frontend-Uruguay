@@ -4,19 +4,21 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
+import { ErrorTypes } from 'src/app/interfaces/error-type.interface';
 
 @Component({
-  selector: 'app-sing-in',
-  templateUrl: './sing-in.component.html',
-  styleUrls: ['./sing-in.component.scss']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss']
 })
-export class SinginComponent {
+export class SigninComponent {
   show: boolean = true;
+  error = {description: "error.description", state: false};
 
   signinForm = this.formBuilder.group({
     email: new FormControl("", Validators.email),
     password: new FormControl(""),
-    remember: new FormControl("")
+    remember: new FormControl(false)
   });
 
   constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private auth: AuthService) {}
@@ -29,17 +31,26 @@ export class SinginComponent {
     this.show = !this.show;
   }
 
+  catchError(error: ErrorTypes){
+    this.error.state = true;
+    this.error.description = error;
+  }
+
   onSubmit(): void {
     if (this.signinForm.valid && this.signinForm.controls.email.value && this.signinForm.controls.password.value){
       let answer: LoginResponseModel;
       this.auth.login(this.signinForm.controls.email.value, this.signinForm.controls.password.value).subscribe({
         next: (value) => { answer = value; },
+        error: () => { this.catchError(ErrorTypes.notfound) },
         complete: () => {
-          this.cookie.set('token', answer.token);
+          this.error.state = false;
+          (this.signinForm.controls.remember.value) ? this.cookie.set('token', answer.token) : sessionStorage.setItem('token', answer.token);
           this.auth.loadCurrentUser();
           this.router.navigate(["/"]);
         }
       });
+    } else {
+      this.catchError(ErrorTypes.invalid)
     }
   }
 }

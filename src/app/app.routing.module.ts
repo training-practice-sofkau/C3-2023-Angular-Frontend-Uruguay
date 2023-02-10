@@ -5,14 +5,14 @@ import { ViewComponent } from './dashboard/view/view.component';
 import { AccountsTableComponent } from './shared/accounts-table/accounts-table.component';
 import { CustomersTableComponent } from './shared/customers-table/customers-table.component';
 import { PageNotFoundComponent } from './404/page-not-found.component';
-import { SinginComponent } from './login/sing-in/sing-in.component';
-import { SingupComponent } from './login/sing-up/sing-up.component';
+import { SigninComponent } from './login/sign-in/sign-in.component';
+import { SignupComponent } from './login/sign-up/sign-up.component';
 import { AuthGuard } from './login/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', title: 'Home', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'sign-up', title: 'Sign-up', component: SingupComponent },
-  { path: 'sign-in', title: 'Sign-in', component: SinginComponent },
+  { path: 'sign-up', title: 'Sign-up', component: SignupComponent },
+  { path: 'sign-in', title: 'Sign-in', component: SigninComponent },
   { path: 'dashboard', title: 'Dashboard', canActivate: [ AuthGuard ], component: ViewComponent },
   { path: 'user-accounts', title: 'UserAccounts', canActivate: [ AuthGuard ], component: UserAccountsComponent },
   { path: 'customers-table', title: 'CustomersTable', canActivate: [ AuthGuard ], component: CustomersTableComponent },
