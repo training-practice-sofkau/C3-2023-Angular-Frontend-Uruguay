@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 const component = [
   MatCardModule,
@@ -18,6 +19,7 @@ const component = [
   MatIconModule,
   MatToolbarModule,
   MatInputModule,
+  MatPaginatorModule
 ];
 
 
@@ -32,6 +34,7 @@ const component = [
     MatIconModule,
     MatToolbarModule,
     MatInputModule,
+    MatPaginatorModule
   ],
   exports: [
     component

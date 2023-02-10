@@ -14,6 +14,9 @@ import { SignInComponent, SignOutComponent, SignUpComponent } from './';
   imports: [
     CommonModule,
     MaterialModule,
-  ]
+  ],
+  exports: [SignInComponent,
+    SignOutComponent,
+    SignUpComponent]
 })
 export class LoginModule { }

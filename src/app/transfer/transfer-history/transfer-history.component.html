@@ -1,1 +1,44 @@
-<p>transfer-history works!</p>
+<div class="relative p-4 shadow-lg rounded-lg bg-blueGray-100 border-0 w-9/12 mx-auto mt-4">
+  <div class="flex flex-col rounded-t bg-white mb-0 p-5">
+    <h1>Transfers List</h1>
+
+    <div class="flex flex-col lg:flex-row justify-center gap-1 mb-4">
+      <button class="py-1 px-4 mb-2 shadow rounded hover:text-white hover:bg-blue-600">Incomes</button>
+      <button class="py-1 px-4 mb-2 shadow rounded hover:text-white hover:bg-blue-600">Outcomes</button>
+    </div>
+
+      <table class="mb-5" *ngIf="true">
+        <tr>
+          <th>Income</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Reason</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <table class="mb-5" *ngIf="false">
+        <tr>
+          <th>Outcome</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Reason</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+    <div>
+      <app-pagination></app-pagination>
+    </div>
+  </div>
+</div>

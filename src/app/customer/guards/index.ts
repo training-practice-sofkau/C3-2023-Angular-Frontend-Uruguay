@@ -1,2 +1,2 @@
 
-export * from './guards.guard';
+export * from './permissions.guard';

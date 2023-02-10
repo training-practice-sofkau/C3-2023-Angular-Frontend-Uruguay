@@ -15,28 +15,22 @@ import { AccountService } from './account/services/account.service';
 import { CustomerService } from './customer/services/customer.service';
 import { TransferService } from './transfer/services/transfer.service';
 import { DepositService } from './deposit/services/deposit.service';
-import { SharedService } from './shared/services/shared.service';
 import { AuthService } from './login/services/auth.service';
+import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    LoginModule,
-    AccountModule,
-    CustomerModule,
-    DepositModule,
-    TransferModule,
-    SharedModule
-
-
-  ],
-  providers: [AccountService, CustomerService, TransferService, DepositService, SharedService, AuthService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        EjercicioComponent
+    ],
+    providers: [AccountService, CustomerService, TransferService, DepositService, AuthService],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        SharedModule,
+    ]
 })
 export class AppModule { }

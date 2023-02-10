@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateAccountFormComponent, AccountFinderComponent, AccountInfoComponent, ModifyAccountInfoComponent, AccountsListComponent } from './';
-
+import { AccountMovementsComponent, AccountDashboardComponent, AccountInfoComponent } from './';
+import { AccountBtnsComponent } from './account-btns/account-btns.component';
 
 
 @NgModule({
   declarations: [
-    CreateAccountFormComponent,
-    AccountFinderComponent,
+    AccountDashboardComponent,
     AccountInfoComponent,
-    ModifyAccountInfoComponent,
-    AccountsListComponent
+    AccountMovementsComponent,
+    AccountBtnsComponent
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [AccountDashboardComponent,
+    AccountInfoComponent,
+    AccountMovementsComponent,
+    AccountBtnsComponent]
 })
 export class AccountModule { }
