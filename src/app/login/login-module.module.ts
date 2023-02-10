@@ -5,6 +5,9 @@ import { SingupComponent } from './singup/singup.component';
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
 import { AuthService } from './services/auth.service';
+import { MainPageComponent } from './main-page/main-page.component';
+import { ApiSecurityService } from './services/api-security.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,15 +16,18 @@ import { AuthService } from './services/auth.service';
     SinginComponent,
     SingupComponent,
     SingOutComponent,
+    MainPageComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, ApiSecurityService],
   exports: [
     SinginComponent,
     SingupComponent,
+    MainPageComponent,
     SingOutComponent,
   ]
 })
