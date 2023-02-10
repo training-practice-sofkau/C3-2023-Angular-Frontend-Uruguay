@@ -6,20 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./singin.component.scss']
 })
 export class SinginComponent {
-  constructor(){
-    this.defaultLogin()
-  }
 
   defaultLogin() {
+    if(!localStorage.getItem('key'))
     localStorage.setItem('key', 'false')
   }
 
   activeLogin(){
-    localStorage.getItem('key')
     localStorage.setItem('key', 'true')
-  }
-
-  logOut(){
-    localStorage.clear()
   }
 }
