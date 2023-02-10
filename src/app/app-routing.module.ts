@@ -5,8 +5,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { LoginComponent} from './login2/login.component';
 import { TransferComponent } from './transfer/transfer.component';
-import { SingupComponent } from './login2/singup/singup.component';
 import { LoginGuard } from './guard/login.guard';
+
 
 const appRoutes: Routes = [
   { path: 'account', component: AccountComponent,  canActivate: [LoginGuard] },

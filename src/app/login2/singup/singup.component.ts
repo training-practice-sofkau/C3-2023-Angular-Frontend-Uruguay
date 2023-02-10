@@ -39,12 +39,62 @@ export class SingupComponent implements OnInit {
 
     this.router.navigate(['account']);
 
-     let  persona =  this.formRegister?.value
-     console.log(this.formRegister?.value)
-
+    let  persona =  this.formRegister?.value
+    console.log(this.formRegister?.value)
     localStorage.setItem( 'persona', JSON.stringify(persona) )
 
   }
+
+
+
+
+
+
+  // async login(username: string, password: string) {
+  //   try {
+  //     const source$ = this.AuthService.post('http://localhost:3000/security/sign-up');
+  //     const res = await lastValueFrom(source$);
+  //     this.handleSuccessfulLogin(res);
+  //   } catch (error) {
+  //     console.error('Datos de inicio de sesión incorrectos');
+  //   }
+  // }
+
+  // handleSuccessfulLogin(res: customerInterface) {
+  //   const token = res.token;
+  //   const decoded: void = jwt_decode(token);
+  //   if (this.validateToken(token)) {
+  //     this.storeToken(token, decoded);
+  //     this.redirectToAccount();
+  //   } else {
+  //     console.error('Token inválido');
+  //   }
+  // }
+
+  // validateToken(token: string): boolean {
+  //   return typeof token === 'string' && token !== '';
+  // }
+
+  // storeToken(token: string, decoded: void) {
+  //   localStorage.setItem('token', token);
+  //   localStorage.setItem('account', JSON.stringify(decoded));
+  // }
+
+  // redirectToAccount() {
+  //   this.router.navigate(['account']);
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
