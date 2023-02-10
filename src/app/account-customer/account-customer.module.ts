@@ -6,14 +6,22 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 
+
 @NgModule({
   declarations: [
     MyAccountComponent,
     NewAccountComponent,
     ProfileComponent
+    
   ],
   imports: [
     CommonModule
+    
+  ],
+  exports:[
+
+    ProfileComponent
+
   ]
 })
 export class AccountCustomerModule { }

@@ -15,6 +15,9 @@ import { CustomerService } from './administrator/services/customer.service';
 import { DepositService } from './administrator/services/deposit.service';
 import { TransferService } from './administrator/services/transfer.service';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
+import { MyAccountComponent } from './account-customer/my-account/my-account.component';
+import { ProfileComponent } from './account-customer/profile/profile.component';
+import { AccountCustomerModule } from './account-customer/account-customer.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.compon
     MaterialModule,
     SharedModule,
     LoginModule,
+    AccountCustomerModule,
 
   ],
   providers: [AuthService, AccountService, CustomerService, DepositService,DepositService,TransferService],
