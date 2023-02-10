@@ -11,7 +11,9 @@ import { LoginResponseModel } from 'src/app/interfaces/login.response.interface'
 })
 export class AuthService {
 
-  constructor(private api: AppService, private cookie: CookieService) {}
+  public user: LoginResponseModel | undefined;
+
+  constructor(private api: AppService, private cookie: CookieService) { }
 
   isValid(token: string): Observable<JwtTokenModel> {
     const httpOptionsFinal = {
@@ -39,9 +41,11 @@ export class AuthService {
         'Access-Control-Allow-Origin': '*'
       })
     };
-    return this.api.http.post<LoginResponseModel>(
+    const response = this.api.http.post<LoginResponseModel>(
       this.api.baseurl + "/security/sign-in", body,
       httpOptionsFinal
-    );
+    )
+    response.subscribe((value) => this.user = value);
+    return response;
   }
 }
