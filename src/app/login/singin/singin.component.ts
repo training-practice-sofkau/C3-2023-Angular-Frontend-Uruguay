@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class SinginComponent {
 
+login(){
+
+  localStorage.setItem("logueado","todo ok")
+
+}
+
+
 }
