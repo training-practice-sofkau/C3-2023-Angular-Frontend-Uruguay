@@ -12,9 +12,19 @@ export class SinginComponent implements OnInit {
     this.defaultLogin()
   }
 
+  ngDoCheck() {
+    this.switch()
+  }
+
+  mostrar = localStorage.getItem('logged') === 'true'
+
+  switch() {
+    this.mostrar = !this.mostrar
+  }
+
   defaultLogin() {
     if (!(localStorage.getItem('logged')))
-    localStorage.setItem('logged', 'false')
+      localStorage.setItem('logged', 'false')
   }
 
   activeLogin() {
