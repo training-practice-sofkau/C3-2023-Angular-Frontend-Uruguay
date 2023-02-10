@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -21,6 +22,7 @@ export class SignInComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private router: Router,
     private authService: AuthService,
+
     ) {
     this.form = this.fb.group({
       username: ["", Validators.required],
@@ -56,12 +58,13 @@ export class SignInComponent implements OnInit {
    * Transition from login to Desktop ( after verify credentials )
    */
   transitionToDesktop() {
-    this.authService.setUSerStatus(true);
+
     this.loading = true;
+
     setTimeout(() => {
-
+      this.loading=false;
+      this.authService.authenticate();
       this.router.navigate(["desktop"]);
-
     }, 1500);
   }
 

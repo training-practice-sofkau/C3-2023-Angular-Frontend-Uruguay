@@ -7,16 +7,12 @@ import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../../app-routing.module';
-import { DesktopNavbarComponent } from './desktop-navbar/desktop-navbar.component';
-
-
-
 
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
-    DesktopNavbarComponent
+
   ],
   imports: [
     CommonModule,
@@ -24,6 +20,6 @@ import { DesktopNavbarComponent } from './desktop-navbar/desktop-navbar.componen
     AppRoutingModule,
     RouterModule
   ],
-  exports:[NavbarComponent, FooterComponent, RouterModule, DesktopNavbarComponent]
+  exports:[NavbarComponent, FooterComponent, RouterModule]
 })
 export class SharedModule { }

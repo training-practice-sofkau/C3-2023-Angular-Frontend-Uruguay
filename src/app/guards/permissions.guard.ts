@@ -11,7 +11,7 @@ export class PermissionsGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 
-    if (this.authService.getUserStatus()) {
+    if (this.authService.authenticated$) {
       return true;
     }
 
