@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <h2>Sing In</h2>
+      <mat-form-field>
+        <input matInput placeholder="Email" name="username" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" name="password" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="activeLogin()">Login</button>
+      <h3>¿No tienes una cuenta?</h3>
+      <button mat-raised-button color="primary">¡Regístrate gratis!</button>
+    </form>
+  </mat-card-content>
+</mat-card>

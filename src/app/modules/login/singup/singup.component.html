@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <h2>Sign Up</h2>
+      <mat-form-field>
+        <input matInput placeholder="Full Name" name="fullname" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" name="password" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label name="documentType" required>Document Type</mat-label>
+        <mat-select>
+          <mat-option value="one">CI</mat-option>
+          <mat-option value="two">Pasaporte</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Document" name="document" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" name="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone" name="phone" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Login</button>
+      <h3>¿Ya tienes una cuenta? </h3>
+      <button mat-raised-button color="primary">Sing In</button>
+    </form>
+  </mat-card-content>
+</mat-card>
