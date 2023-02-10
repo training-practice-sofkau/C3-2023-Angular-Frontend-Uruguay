@@ -1,1 +1,20 @@
-<p>deposit-list works!</p>
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">Deposit Id </th>
+        <th scope="col">Acoount Id </th>
+        <th scope="col">Amount</th>
+        <th scope="col">Date Time</th>
+
+      </tr>
+    </thead>
+    <tbody  *ngFor="let account of lisAccounts">
+      <tr>
+        <td>{{account.id}}</td>
+        <td>{{account.coustomer_id.fullName}}</td>
+        <td>{{account.account_type_id.name}}</td>
+        <td>{{account.balance}}</td>
+        <td>{{account.state}}</td>
+      </tr>
+    </tbody>
+</table>

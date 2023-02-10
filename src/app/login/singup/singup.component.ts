@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+
 
 @Component({
   selector: 'app-singup',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./singup.component.scss']
 })
 export class SingupComponent {
+
+
 
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-toolbar',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class ToolbarComponent {
 
+  constructor(private router : Router){}
+  
+  link(url : string ){
+    this.router.navigate([url]);
+  }
 }

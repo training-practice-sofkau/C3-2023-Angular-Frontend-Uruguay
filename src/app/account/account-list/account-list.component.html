@@ -1,1 +1,21 @@
-<p>account-list works!</p>
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">Account Id </th>
+        <th scope="col">Name Customer</th>
+        <th scope="col">Name Type Account</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let account of lisAccounts">
+      <tr>
+        <td>{{account.id}}</td>
+        <td>{{account.coustomer_id.fullName}}</td>
+        <td>{{account.account_type_id.name}}</td>
+        <td>{{account.balance}}</td>
+        <td>{{account.state}}</td>
+      </tr>
+    </tbody>
+</table>
+

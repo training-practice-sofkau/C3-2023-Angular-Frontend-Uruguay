@@ -1,15 +1,31 @@
-<p>
-  <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">e-Bank</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" (click)="link('/')" aria-current="page">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  (click)="link('/account/find-all')">Account</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="link('/customerList')">Customer</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="link('/transfer')">Transfer</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="link('/deposit')">Deposit</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
