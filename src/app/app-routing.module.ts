@@ -16,7 +16,8 @@ import { TransferListComponent } from './transfer/transfer-list/transfer-list.co
 
 const routes: Routes = [
    //Rutas de segurity 
-   {path:``,component: SinginComponent ,pathMatch: 'full'},
+   {path:``,redirectTo:`/singin`,pathMatch: 'full'},
+   {path:`singin`,component: SinginComponent},
    {path:`signUp`,component: SingupComponent,pathMatch: 'full'},
    {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
 
