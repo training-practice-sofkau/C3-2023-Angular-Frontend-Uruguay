@@ -1,33 +1,18 @@
 import { Component } from '@angular/core';
+import { ServiceLogIn } from 'src/app/global-service/service-login.service';
 
 @Component({
   selector: 'app-singin',
   templateUrl: './singin.component.html',
-  styleUrls: ['./singin.component.scss']
+  styleUrls: ['./singin.component.scss'],
+ 
 })
 export class SinginComponent {
 
-
-  
-  constructor() {
-    this.defaultLogged()
-  }
-
-  defaultLogged(){
-    localStorage.setItem('MyToken', 'false')
-  }
-
-
-  activeLogged(){
-    localStorage.getItem('MyToken')
-    localStorage.setItem('MyToken', 'true')
-  }
-
-  logOut(){
-    localStorage.clear()
-  }
+  constructor(public serviceLogIn : ServiceLogIn){}
 
   ngOnInit(): void {
+  
   }
 
 

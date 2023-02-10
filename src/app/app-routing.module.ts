@@ -12,10 +12,10 @@ const routes: Routes = [
   {path:  '', redirectTo: 'app-home', pathMatch:  'full' },
 
   {path: 'app-home', component: HomeComponent},
-  {path: 'app-user-profile', component: UserProfileComponent, }, // canActivate: [GuardLoginGuard ]
-  {path: 'app-my-accounts', component: MyAccountsComponent, }, //canActivate: [GuardLoginGuard ]
-  {path: 'app-view-transfers', component: ViewTransfersComponent, }, //canActivate: [GuardLoginGuard ]
-  {path: 'app-ejercicio', component: EjercicioComponent, }, //canActivate: [GuardLoginGuard ]
+  {path: 'app-user-profile', component: UserProfileComponent, canActivate: [GuardLoginGuard ]}, // 
+  {path: 'app-my-accounts', component: MyAccountsComponent, canActivate: [GuardLoginGuard ]}, //
+  {path: 'app-view-transfers', component: ViewTransfersComponent, canActivate: [GuardLoginGuard ]}, //
+  {path: 'app-ejercicio', component: EjercicioComponent, canActivate: [GuardLoginGuard ]}, //
 
   {path: '**', component: HomeComponent}
 

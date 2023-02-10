@@ -1,13 +1,16 @@
 
-<section class="form-register"  *ngIf="(true)">
+
+
+
+<section class="form-register"  *ngIf= "(serviceLogIn.switchLogIn)"  >
   <h4>Sign In</h4>
   <form>
     <input class="controls" type="text" id="tipo" name="tipo"  placeholder="Usuario">
     <input class="controls" type="text" id="nombre" name="nombre"  placeholder="Contraseña">
     
-    <button class="boton"  (click)="activeLogged()"   >Sing In</button>
-   
-    <p>No tienes una cuenta?</p> <a class= "link"  href="">Registrate!</a>
+    <button class="boton"  (click)="serviceLogIn.activeLogged()"   >Sign In</button>
+    
+    <p>No tienes una cuenta?</p> <a class= "link" type="submit"  (click)="serviceLogIn.eligeFormmulario()"  href="">Registrate!</a>
   </form>
 </section>
 

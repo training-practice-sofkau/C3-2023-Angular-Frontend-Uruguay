@@ -1,32 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceLogIn } from 'src/app/global-service/service-login.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [ServiceLogIn]
 })
 export class HomeComponent implements OnInit{
 
-  // public tituloHome = "Home";
-
-
-  constructor() {
-    this.defaultLogged()
-  }
-
-  defaultLogged(){
-    localStorage.setItem('MyToken', 'false')
-  }
-
-
-  activeLogged(){
-    localStorage.getItem('MyToken')
-    localStorage.setItem('MyToken', 'true')
-  }
-
-  logOut(){
-    localStorage.clear()
-  }
+  constructor(public serviceLogIn : ServiceLogIn){}
 
   ngOnInit(): void {
   }
