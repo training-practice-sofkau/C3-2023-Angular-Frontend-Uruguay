@@ -27,9 +27,10 @@ const routes: Routes = [
   path: 'components',
   loadChildren: () => import('../app/dashboard/components/components.module').then(m => m.ComponentsModule)
 },
-{ path: 'ejercicio', component: EjercicioComponent, canActivate: [GuardGuard] },
-{ path: 'transfer', component: TransferComponent, canActivate: [GuardGuard] },
-{ path: 'deposit', component: DepositComponent, canActivate: [GuardGuard] },
+{
+  path: 'transactions',
+  loadChildren: () => import('../app/dashboard/transaction/transaction.module').then(m => m.TransactionModule)
+},
 
 {
   path: '**',
