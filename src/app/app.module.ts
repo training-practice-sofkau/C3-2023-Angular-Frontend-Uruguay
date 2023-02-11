@@ -11,6 +11,7 @@ import { TransactionsModule } from './transactions/transactions.module';
 import { HomeComponent } from './shared/home/home.component';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio/ejercicio.component';
 import { ServiceLogIn } from './global-service/service-login.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ServiceLogIn } from './global-service/service-login.service';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
 
     MaterialModule,
     SharedModule,

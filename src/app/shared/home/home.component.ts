@@ -14,4 +14,9 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  ngDoCheck(){
+    this.serviceLogIn.eligeFormmulario()
+  }
+
+  
 }

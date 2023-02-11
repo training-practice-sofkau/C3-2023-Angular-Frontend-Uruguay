@@ -5,9 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ServiceLogIn {
 
-  
   constructor() {
-    this.defaultLogged()
+    // this.defaultLogged()
   }
 
   defaultLogged(){
@@ -15,7 +14,6 @@ export class ServiceLogIn {
       localStorage.setItem('MyToken', 'false')
     }   
   }
-
 
   activeLogged(){
     localStorage.getItem('MyToken')
@@ -26,16 +24,16 @@ export class ServiceLogIn {
     localStorage.clear()
   }
 
+  ngOnInit(): void {
+    
+  }
+
   //********************************************************/
   
   public valorForm : number = 0;
   public switchLogIn : boolean = true;
   public switchLogUp : boolean = false;
 
-  ngDoCheck(){
-    this.eligeFormmulario()
-  }
-  
   eligeFormmulario(){
 
     switch (this.valorForm){

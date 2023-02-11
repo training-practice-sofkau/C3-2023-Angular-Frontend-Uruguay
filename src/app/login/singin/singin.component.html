@@ -10,7 +10,7 @@
     
     <button class="boton"  (click)="serviceLogIn.activeLogged()"   >Sign In</button>
     
-    <p>No tienes una cuenta?</p> <a class= "link" type="submit"  (click)="serviceLogIn.eligeFormmulario()"  href="">Registrate!</a>
+    <p>No tienes una cuenta?</p> <a class= "link" (click)="(serviceLogIn.valorForm = 2)" >Registrate!</a>
   </form>
 </section>
 

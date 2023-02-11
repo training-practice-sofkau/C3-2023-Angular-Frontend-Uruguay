@@ -1,0 +1,138 @@
+
+
+.home {
+    width: 100%;
+    height: 120vh; //este valor marca el alto de mi fondo
+    background-image: url("https://images.unsplash.com/photo-1435575653489-b0873ec954e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+    background-size: cover;
+    background-position: center;
+  }
+
+  
+  .cover{
+    width: 100%;
+    height: 120vh; //este valor marca el alto de mi fondo
+    background-color: rgba(0, 0, 0, 0.36); //DE ESTA MANERA LA OPACIDAD SOLO SE LE HACE A ESTE ELEMENTO Y NO A LO QUE ESTA DENTRO DE EL
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+
+//**************************************************************************************************
+
+.container{
+    position: relative;
+    justify-content: center;
+    margin: auto;
+    margin-top: 150px;
+    color :#f5f6fa
+}
+
+
+body {
+    margin: 0;
+    padding-top: 40px;
+    color: #2e323c;
+    background: #f5f6fa;
+    position: relative;
+    height: 100%;
+}
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+    
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #fe6047;
+}
+.account-settings .about {
+    margin: 2rem 0 0 0;
+    text-align: center;
+}
+.account-settings .about h5 {
+    margin: 0 0 15px 0;
+    color: #5eaeef;
+    font-size: x-large;
+}
+
+
+.user-name {
+    color: #ffffff;
+    font-size: x-large;
+}
+
+
+.account-settings .about p {
+    font-size: 0.825rem;
+}
+.form-control {
+    border: 1px solid #cfd1d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: #ffffff;
+    color: #2e323c;
+}
+
+.card {
+    background: #212127;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.cabeza {
+    color: #5eaefff2;
+    font-size: x-large;
+    margin-top: 15px;
+}
+
+//**********************************************************************************************
+
+.text-right{
+    
+    display: flex;
+    justify-content: right;
+    
+}
+
+.boton {
+    width: 25%;
+    background: #fe6047;
+    border: none;
+    padding: 12px;
+    color: white;
+    //margin: 18px 0;
+    font-size: 16px;
+    
+    margin-left: 20px;
+    margin-top: 30px;
+    
+  }
+  
+  .boton:hover{
+    background-color: #5eaefff2;
+  }
+
