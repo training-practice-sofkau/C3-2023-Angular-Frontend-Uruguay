@@ -10,37 +10,34 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./customer-by-one-list.component.scss']
 })
 export class CustomerByOneListComponent implements OnInit {
-  customerId!: string; 
+  customerId: string = ""; 
   protected customer!: Customer; //lo que me traiga la api desde mi servicio se lo tengo que igual a mi varaible customer
   
-
   constructor(
     @Host() public service : CustomerService ,
     private readonly route : ActivatedRoute){}
 
-
   ngOnInit(): void {
   this.paramsCustomerId(); //igualo mi variable customerId con el parametro que me llega
   this.getOneCustomer(this.customerId);//le paso el customerId como parametro y me retorna el customer con ese id
+
+  this.service.customerOneObservable.subscribe(
+    (data : Customer) => { this.customer = data}
+  )
+  this.service.updateOneCustomer(this.customerId);
   }
 
-  paramsCustomerId():void{ // Capturo el parametro que se pasa por la r
+  paramsCustomerId():void{ // Capturo el parametro que se pasa por la rota
     this.route.params.subscribe(
       (params : Params) => {
         this.customerId = params['id']
       });
   }
 
+
 //Ahora este id es el que tengo enviar al servicio para traer el customer 
 getOneCustomer(id : string):void{
-  this.service.customerOneObservable.subscribe(
-    (data : Customer) => {
-      if(this.customer.id != data.id){
-        this.customer = data;
-      }
-    }
-  )
-  this.service.updateOneCustomer(this.customerId);
+  this.service.updateOneCustomer(id);
 }
   
 
