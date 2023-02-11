@@ -1,37 +1,42 @@
-
 <div style="text-align: center; height: 90%;">
   <div class="body">
     <div class="login">
+      <mat-card style="margin-top: 10px; background-color: rgb(95, 158, 160, .4) ;">
 
-      <mat-spinner *ngIf="loading" class="spinner" diameter="100" strokeWidth="15" color="accent" style="margin:50% auto;"> </mat-spinner>
+        <mat-spinner *ngIf="loading" class="spinner" diameter="100" strokeWidth="15" color="accent"
+          style="margin:50% auto;"> </mat-spinner>
 
-      <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="login()" style="padding: 10px;">
-        <div style="background-color: aquamarine;">
-          <h1>Welcome!</h1>
-          <h2>Please login</h2>
-        </div>
+        <form *ngIf="!loading" [formGroup]="signinForm" (ngSubmit)="login()" style="padding: 10px;">
+          <div style="background-color:rgb(138, 43, 226, .8);">
+            <h1>Welcome!</h1>
+            <h2>Please login</h2>
+          </div>
 
-        <img src="../../../../assets/img/shield.png" alt="login" width="50%" style="margin-top: 20px; margin-bottom: 20px;">
+          <img src="../../../../assets/img/shield.png" alt="login" width="50%"
+            style="margin-top: 20px; margin-bottom: 20px; ">
 
-        <div style="background-color:gray;">
-          <mat-form-field class="formFieldSize" appearance="fill" style="margin-top: 20px;">
-            <mat-label>e-Mail</mat-label>
-            <input type="text" matInput autocomplete="on" formControlName="username">
-          </mat-form-field>
+          <div style="background-color:gray;">
+            <mat-form-field class="formFieldSize" appearance="fill" style="margin-top: 20px;">
+              <mat-label>e-Mail</mat-label>
+              <input type="text" matInput autocomplete="on" formControlName="username">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="formFieldSize" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input [type]="hide ? 'password' : 'text'" matInput autocomplete="off" formControlName="password">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-hint *ngIf="!signinForm.value.password">Enter your password</mat-hint>
+            </mat-form-field>
+          </div>
           <br>
-          <mat-form-field class="formFieldSize" appearance="fill">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput autocomplete="on" formControlName="password">
-          </mat-form-field>
-        </div>
-        <br>
-        <button type="submit" class="signin-button" color="primary" [disabled]="form.invalid">Sign In</button>
-        <br>
-        <div class="foot-message">
-          <h3>Dont have an account yet? <a href="#" (click)="(appComp.toRegister())">Click Here!</a> </h3>
-        </div>
-      </form>
-
+          <button class="signin-button" type="submit" mat-raised-button color="primary"
+            [disabled]="signinForm.invalid">Sign In</button>
+          <br>
+          <div class="foot-message">
+            <h3>Dont have an account yet? <a href="#" (click)="(appComp.toRegister())">Click Here!</a> </h3>
+          </div>
+        </form>
+      </mat-card>
 
     </div>
 

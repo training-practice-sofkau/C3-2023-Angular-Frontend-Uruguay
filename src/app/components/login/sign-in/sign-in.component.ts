@@ -21,9 +21,10 @@ import { CustomerSignInModel } from '../../../interfaces/customer.interface';
 })
 export class SignInComponent implements OnInit {
 
-  form: FormGroup;
+  signinForm: FormGroup;
   loading = false;
   userIsLogged = false;
+  hide = true;
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +34,7 @@ export class SignInComponent implements OnInit {
     public appComp: AppComponent,
   ) {
 
-    this.form = this.fb.group({
+    this.signinForm = this.fb.group({
       username: ["", [Validators.email, Validators.required]],
       password: ["", [Validators.minLength(5), Validators.required]]
     });
@@ -46,8 +47,8 @@ export class SignInComponent implements OnInit {
    * User login authentication
    */
   login() {
-    const formUsername = this.form.value.username;
-    const formPassword = this.form.value.password;
+    const formUsername = this.signinForm.value.username;
+    const formPassword = this.signinForm.value.password;
 
     //TODO: verify credentials calling backend
 
@@ -56,19 +57,18 @@ export class SignInComponent implements OnInit {
       password: formPassword
     }
 
-    //const answer = this.authService.customerSignIn(userSignin);
+    const answer = this.authService.customerLogin(userSignin);
 
-    //console.log(this.authService.token);
+    console.log(answer);
 
-    if (formUsername == "admin" && formPassword == "1234") { // check for valid credentials
+    if (formUsername == "admin" && formPassword == "12345") { // check for valid credentials
 
       this.transitionToDesktop();
 
     } else {    // invalid credentials. Error
 
-
       this.messages.infoMsg("Username/Email or Password not valid! Try again", "", 2000);
-      this.form.reset();
+      this.signinForm.reset();
 
     }
   }

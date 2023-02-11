@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 
 // Interfaces
 import { CustomerSignUpModel } from '../interfaces/customer.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,13 @@ export class CustomerService {
     private http: HttpClient,
   ) { }
 
-  addNewCustomer(customer: CustomerSignUpModel) {
-    this.http.post(`${environment.API_URL}/security/signup`, customer)
+  addNewCustomer(customer: CustomerSignUpModel) : Observable<string> {
+
+    const answ = this.http.post<string>(`${environment.API_URL}/security/signup`, customer)
+
+    console.log(answ)
+
+    return answ;
   }
 
 }

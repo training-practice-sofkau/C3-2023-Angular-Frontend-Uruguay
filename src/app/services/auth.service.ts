@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+// Environment
 import { environment } from 'src/environments/environment';
-import { CustomerSignInModel, CustomerSignUpModel } from '../../app/interfaces/customer.interface';
+
+// Interfaces
+import { CustomerSignInModel } from '../../app/interfaces/customer.interface';
 
 
 @Injectable({
@@ -35,11 +40,14 @@ export class AuthService {
     return this.userIsLogged;
   }
 
-  async customerLogin(customer: CustomerSignInModel) {
+  customerLogin(customer: CustomerSignInModel) : Observable<Object> {
 
-    //this.http.post(`${environment.API_URL}/security/signin`, customer)
+    const response = this.http.post(`${environment.API_URL}/security/signin`, customer)
 
-    const response = await fetch(`${environment.API_URL}/security/signin`, {
+    console.log(response);
+
+    return response;
+    /* const response = await fetch(`${environment.API_URL}/security/signin`, {
       method:'POST',
       body: JSON.stringify(customer)
     });
@@ -48,7 +56,7 @@ export class AuthService {
     const {jwt_token} = await response.json();
 
     await console.log({jwt_token});
-
+ */
     /* fetch(`${environment.API_URL}/security/signin`,{
       method:'POST',
       headers: {
@@ -64,10 +72,6 @@ export class AuthService {
     }).then() */
 
 
-    //  .subscribe(
-    //    res => {
-    //      console.log(res);
-    //  })
   }
 
 

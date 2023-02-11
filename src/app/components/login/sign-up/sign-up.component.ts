@@ -11,6 +11,7 @@ import { MessengerService } from '../../../services/messenger.service';
 
 //Components
 import { AppComponent } from '../../../app.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,23 +20,27 @@ import { AppComponent } from '../../../app.component';
 })
 export class SignUpComponent implements OnInit {
 
+  signupForm: FormGroup;
   documentTypes: string[] = ["ID Card", "Passport ID"];
   defaultDocType: string = this.documentTypes[0];
   hide = true;
+  loading = false;
+
   //accountTypes: string[] = ["Saving", "Checks"];
-  signupForm: FormGroup;
 
   constructor(private fb: FormBuilder,
     private customerService: CustomerService,
     private router: Router,
     private messages: MessengerService,
-    public appComp: AppComponent) {
+    public appComp: AppComponent,
+    private authService: AuthService,
+    ) {
     this.signupForm = this.fb.group({
       documentType: ["ID Card", Validators.required],
       document: ["", Validators.required],
       fullname: ["", Validators.required],
       email: ["", [Validators.email, Validators.required]],
-      phone: ["", Validators.required],
+      phone: [""],
       password: ["", [Validators.minLength(5), Validators.required]]
     })
   }
@@ -58,8 +63,27 @@ export class SignUpComponent implements OnInit {
     }
 
     this.customerService.addNewCustomer(customer);
-    //nextAction = this.router.navigate(['/dashboard/usuarios']);
+
     this.messages.infoMsg("New Customer created successfully!", "", 2000);
+
+    this.transitionToDesktop();
   }
+
+/**
+   * Transition from login to Desktop ( after verify credentials )
+   */
+transitionToDesktop() {
+
+  this.loading = true;
+
+  setTimeout(() => {
+    this.loading = false;
+    this.authService.setUserStatus(true);
+    this.appComp.isInPublicZone = false;
+    this.router.navigate(["desktop"]);
+  }, 1500);
+}
+
+
 
 }
