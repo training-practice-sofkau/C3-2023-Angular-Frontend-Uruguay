@@ -23,9 +23,12 @@ const routes: Routes = [
   path: 'account',
   loadChildren: () => import('../app/dashboard/account/account.module').then(m => m.AccountModule)
 },
+{
+  path: 'components',
+  loadChildren: () => import('../app/dashboard/components/components.module').then(m => m.ComponentsModule)
+},
 { path: 'ejercicio', component: EjercicioComponent, canActivate: [GuardGuard] },
 { path: 'transfer', component: TransferComponent, canActivate: [GuardGuard] },
-{ path: 'search', component: SearchComponent, canActivate: [GuardGuard] },
 { path: 'deposit', component: DepositComponent, canActivate: [GuardGuard] },
 
 {
