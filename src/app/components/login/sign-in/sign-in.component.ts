@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
+// Services
+import { MessengerService } from '../../../services/messenger.service';
 import { AuthService } from '../../../services/auth.service';
+
+// Components
 import { AppComponent } from '../../../app.component';
+
+// Interfaces
 import { CustomerSignInModel } from '../../../interfaces/customer.interface';
+
 
 
 @Component({
@@ -21,15 +27,15 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _snackBar: MatSnackBar,
+    private messages: MessengerService,
     private router: Router,
     private authService: AuthService,
     public appComp: AppComponent,
   ) {
 
     this.form = this.fb.group({
-      username: ["", Validators.required, Validators.email],
-      password: ["", Validators.required]
+      username: ["", [Validators.email, Validators.required]],
+      password: ["", [Validators.minLength(5), Validators.required]]
     });
   }
 
@@ -60,7 +66,8 @@ export class SignInComponent implements OnInit {
 
     } else {    // invalid credentials. Error
 
-      this.errorMsg('Username/Email or Password not valid! Try again', '');
+
+      this.messages.infoMsg("Username/Email or Password not valid! Try again", "", 2000);
       this.form.reset();
 
     }
@@ -81,18 +88,7 @@ export class SignInComponent implements OnInit {
     }, 1500);
   }
 
-  /**
-   * Show a error message
-   * @param message message to be shown
-   * @param action text describing the next action
-   */
-  errorMsg(message: string, action: string | undefined) {
-    this._snackBar.open(message, action, {
-      duration: 5000,
-      horizontalPosition: "center",
-      verticalPosition: "top",
-    });
-  }
+
 }
 
 

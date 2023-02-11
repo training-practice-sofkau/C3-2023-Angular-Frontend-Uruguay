@@ -1,3 +1,62 @@
-<p>REGISTRO DE USUARIO</p>
+<div class="container">
+  <mat-toolbar>
+    <span>New Customer Area</span>
+  </mat-toolbar>
 
-<h1>Aca va el form de registro de nuevo usuario!</h1>
+  <mat-card style="margin-top: 10px;">
+    <form [formGroup]="signupForm" (ngSubmit)="createNewCustomer()" style="margin-top: 5%;"> <!--  -->
+      <mat-grid-list cols="1" rowHeight="70px">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label> Full Name: </mat-label>
+            <input matInput autocomplete="off" formControlName="fullname">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label> ID Document: </mat-label>
+            <input matInput autocomplete="off" formControlName="document">
+          </mat-form-field>
+
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label>Document Type: </mat-label>
+            <mat-select formControlName="documentType">
+              <mat-option *ngFor="let item of documentTypes" [value]="item"> {{item}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label>E-Mail:</mat-label>
+            <input matInput autocomplete="off" formControlName="email">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label>Phone: </mat-label>
+            <input matInput autocomplete="off" formControlName="phone">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label>Password: </mat-label>
+            <input [type]="hide ? 'password' : 'text'" matInput autocomplete="off" formControlName="password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-hint *ngIf="!signupForm.value.password" >Enter your password</mat-hint>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-raised-button (click)="appComp.toHome()" style="margin-right: 20px;">Cancel</button>
+          <button type="submit" [disabled]="signupForm.invalid" mat-raised-button color="primary">Register</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+</div>

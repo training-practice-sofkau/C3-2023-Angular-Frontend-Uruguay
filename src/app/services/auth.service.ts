@@ -35,7 +35,7 @@ export class AuthService {
     return this.userIsLogged;
   }
 
-  async customerSignIn(customer: CustomerSignInModel) {
+  async customerLogin(customer: CustomerSignInModel) {
 
     //this.http.post(`${environment.API_URL}/security/signin`, customer)
 
@@ -71,9 +71,7 @@ export class AuthService {
   }
 
 
-  customerSignUp(customer: CustomerSignUpModel) {
-    this.http.post(`${environment.API_URL}/security/signup`, customer)
-  }
+
 
 }
 
