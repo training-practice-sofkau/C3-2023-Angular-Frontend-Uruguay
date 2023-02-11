@@ -10,8 +10,8 @@ import { CustomerAccountModule } from './customer-account/customer-account.modul
 import { TransactionsModule } from './transactions/transactions.module';
 import { HomeComponent } from './shared/home/home.component';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio/ejercicio.component';
-import { ServiceLogIn } from './global-service/service-login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GlobalService } from './global-service/service-global.service';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     CustomerAccountModule,
     TransactionsModule
   ],
-  providers: [ServiceLogIn],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

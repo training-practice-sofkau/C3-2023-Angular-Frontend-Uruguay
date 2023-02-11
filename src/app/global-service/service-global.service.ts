@@ -1,26 +1,83 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { CustomerModel } from '../i-model/i-customer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceGlobalService {
+export class GlobalService {
 
 
-  private apiServeUrl = environment.apiBaseUrl; //Api a consumir
+   constructor() {
+    this.defaultLogged()
+  }
 
-  constructor(private http: HttpClient) {
+//*************************CONTROL VARIABLE LOCAL STORAGE*******************************/
 
-   }
+ defaultLogged(){
+   if(!localStorage.getItem('MyToken')){
+     localStorage.setItem('MyToken', 'false')
+   }   
+ }
 
-   public getCustomer(): Observable<CustomerModel[]> {
-      return this.http.get<CustomerModel[]> (this.apiServeUrl+"/customer/findall");
-   }
+ activeLogged(){
+   localStorage.getItem('MyToken')
+   localStorage.setItem('MyToken', 'true')
+ }
+
+ logOut(){
+   localStorage.clear()
+ }
+
+   //*************************CONTROL DE COMPONENTES USER*******************************/
+  
+  public valorCaseUser : number = 0;
+  public switchViewUser : boolean = true;
+  public switchUserUpdate : boolean = false;
+  
+
+  eligeViewUser(){
+
+    switch (this.valorCaseUser){
+
+      case 1 :
+        this.switchUserUpdate = true;
+        this.switchViewUser  = false;
+        console.log("Vista Usuario :" + this.switchUserUpdate);
+        break;
+
+      case 2 :
+        this.switchViewUser  = true;
+        this.switchUserUpdate = false;
+        console.log("vista Update Usuario :" + this.switchViewUser );
+        break;
+
+    }
+  }
 
 
+  //************************CONTROL DE COMPONENTES HOME-LOGIN ********************************/
+  
+  public valorCaseLogin : number = 0;
+  public switchLogIn : boolean = true;
+  public switchLogUp : boolean = false;
+
+  eligeLogin(){
+
+    switch (this.valorCaseLogin){
+
+      case 1 :
+        this.switchLogIn = true;
+        this.switchLogUp = false;
+        console.log("LogIn :" + this.switchLogIn);
+        break;
+
+      case 2 :
+        this.switchLogUp = true;
+        this.switchLogIn = false;
+        console.log("LogUp :" + this.switchLogUp);
+        break;
+
+    }
+  }
 
 
 }

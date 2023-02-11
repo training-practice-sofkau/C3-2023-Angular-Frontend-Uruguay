@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ServiceLogIn } from 'src/app/global-service/service-login.service';
+import { GlobalService } from 'src/app/global-service/service-global.service';
+
 
 @Component({
   selector: 'app-sing-out',
@@ -8,7 +9,7 @@ import { ServiceLogIn } from 'src/app/global-service/service-login.service';
 })
 export class SingOutComponent {
 
-  constructor(protected serviceLogIn : ServiceLogIn){}
+  constructor(public globalService : GlobalService){}
 
   ngOnInit(): void {
   
