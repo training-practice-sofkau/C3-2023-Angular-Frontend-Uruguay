@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../login/services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-// public mostrar = localStorage.getItem('key') === 'true'
+  constructor(public loginService: LoginService){}
+
+  ngDoCheck(){
+    this.loginService.eligeLogin()
+  }
 
 }

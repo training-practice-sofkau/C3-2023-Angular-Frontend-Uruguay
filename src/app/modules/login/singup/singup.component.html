@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf= "(loginService.switchLogUp)">
   <mat-card-content>
     <form>
       <h2>Sign Up</h2>
@@ -26,7 +26,7 @@
       </mat-form-field>
       <button type="submit" mat-raised-button color="primary">Login</button>
       <h3>¿Ya tienes una cuenta? </h3>
-      <button type="submit" mat-raised-button color="primary">Sing In</button>
+      <button type="submit" mat-raised-button color="primary" (click)="(loginService.valorCaseLogin = 1)">Sing In</button>
     </form>
   </mat-card-content>
 </mat-card>

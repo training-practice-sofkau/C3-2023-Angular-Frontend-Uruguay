@@ -5,6 +5,7 @@ import { SingupComponent } from './singup/singup.component';
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from './services/login.service';
 
 
 
@@ -23,6 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     SinginComponent,
     SingupComponent,
+
   ],
+  providers: [LoginService],
 })
 export class LoginModule { }
