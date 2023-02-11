@@ -26,7 +26,6 @@ import { LoginRouteModule } from './login-route.module';
     SinginComponent,
     SingupComponent,
     LoginRouteModule,
-
   ],
   providers: [LoginService],
 })
