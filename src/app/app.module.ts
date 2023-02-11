@@ -21,7 +21,7 @@ import { GlobalService } from './global-service/service-global.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, // MI RUTEO GENERAL POR AHORA  NOTA:TODOS LOS MODULOS VAN EN LOS IMPORTS
     BrowserAnimationsModule,
     HttpClientModule,
 

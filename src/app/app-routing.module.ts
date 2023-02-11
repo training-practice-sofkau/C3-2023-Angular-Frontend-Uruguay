@@ -14,8 +14,10 @@ const routes: Routes = [
   {path: 'app-home', component: HomeComponent},
   {path: 'app-user-profile', component: UserProfileComponent, canActivate: [GuardLoginGuard ]}, // 
   {path: 'app-my-accounts', component: MyAccountsComponent, canActivate: [GuardLoginGuard ]}, //
-  {path: 'app-view-transfers', component: ViewTransfersComponent, canActivate: [GuardLoginGuard ]}, //
-  {path: 'app-ejercicio', component: EjercicioComponent, canActivate: [GuardLoginGuard ]}, //
+  {path: 'app-ejercicio', component: EjercicioComponent, canActivate: [GuardLoginGuard ]},
+
+  //{path: 'app-view-transfers', component: ViewTransfersComponent, canActivate: [GuardLoginGuard ]},
+  {path: 'transactions', loadChildren:()=> import('./transactions/transactions.module').then(m => m.TransactionsModule)}, //child
 
   {path: '**', component: HomeComponent}
 
