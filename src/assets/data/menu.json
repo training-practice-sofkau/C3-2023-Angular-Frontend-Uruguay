@@ -4,10 +4,10 @@
     "redirect":"/desktop"
   },
   {
-    "nombre":"Operation",
-    "redirect":"/desktop/operation"
+    "nombre":"Profile",
+    "redirect":"/desktop/profile"
   },{
-    "nombre":"Administration",
+    "nombre":"",
     "redirect":"/desktop/administration"
   },{
     "nombre":"Management",

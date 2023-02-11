@@ -6,12 +6,14 @@ import { SharedModule } from '../shared/shared.module';
 import { DesktopComponent } from './desktop.component';
 import { DesktopRoutingModule } from './desktop-routing.module';
 import { ProfileComponent } from './profile/profile.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
     DesktopComponent,
-    ProfileComponent
+    ProfileComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,

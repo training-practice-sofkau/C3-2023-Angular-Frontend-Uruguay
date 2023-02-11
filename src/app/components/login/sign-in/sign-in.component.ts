@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../../services/auth.service';
 import { AppComponent } from '../../../app.component';
+import { CustomerSignInModel } from '../../../interfaces/Customer.interface';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -23,9 +25,10 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     public appComp: AppComponent,
-    ) {
+  ) {
+
     this.form = this.fb.group({
-      username: ["", Validators.required],
+      username: ["", Validators.required, Validators.email],
       password: ["", Validators.required]
     });
   }
@@ -37,16 +40,25 @@ export class SignInComponent implements OnInit {
    * User login authentication
    */
   login() {
-    const username = this.form.value.username;
-    const password = this.form.value.password;
+    const formUsername = this.form.value.username;
+    const formPassword = this.form.value.password;
 
     //TODO: verify credentials calling backend
 
-    if (username == "admin" && password == "1234") {     //dummy credentials only for testing
+    let userSignin: CustomerSignInModel = {
+      username: formUsername,
+      password: formPassword
+    }
+
+    const answer = this.authService.customerSignIn(userSignin);
+
+    console.log(this.authService.token);
+
+    if (false) { // check for valid credentials
 
       this.transitionToDesktop();
 
-    } else {    // credenciales no validas. Error
+    } else {    // invalid credentials. Error
 
       this.errorMsg('Username/Email or Password not valid! Try again', '');
       this.form.reset();
@@ -62,7 +74,7 @@ export class SignInComponent implements OnInit {
     this.loading = true;
 
     setTimeout(() => {
-      this.loading=false;
+      this.loading = false;
       this.authService.setUSerStatus(true);
       this.appComp.isInPublicZone = false;
       this.router.navigate(["desktop"]);

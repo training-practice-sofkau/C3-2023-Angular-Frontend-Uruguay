@@ -11,14 +11,13 @@ import { DesktopModule } from './components/desktop/desktop.module';
 
 //Components
 import { AppComponent } from './app.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserAnimationsModule,
