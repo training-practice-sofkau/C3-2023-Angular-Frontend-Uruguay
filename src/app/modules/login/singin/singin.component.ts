@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
-import { SignIn } from 'src/app/interfaces/sign-in.interface';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-singin',
@@ -10,7 +9,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class SinginComponent {
 
-  constructor (private api: ApiService, private formBuilder: FormBuilder) {}
+  constructor (private loginService: LoginService, private formBuilder: FormBuilder) {}
 
   loginForm = this.formBuilder.group({
     email: new FormControl(''),
@@ -37,7 +36,7 @@ export class SinginComponent {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value
     }
-    this.api.login(form).subscribe(data =>{
+    this.loginService.login(form).subscribe(data =>{
       console.log(data);
       this.activeLogin()
     })
