@@ -18,14 +18,13 @@ export class CustomerByOneListComponent implements OnInit {
     private readonly route : ActivatedRoute){}
 
   ngOnInit(): void {
-  this.paramsCustomerId(); //igualo mi variable customerId con el parametro que me llega
-  this.getOneCustomer(this.customerId);//le paso el customerId como parametro y me retorna el customer con ese id
-
-  this.service.customerOneObservable.subscribe(
-    (data : Customer) => { this.customer = data}
-  )
-  this.service.updateOneCustomer(this.customerId);
+    this.paramsCustomerId(); //igualo mi variable customerId con el parametro que me llega
+    this.updateOneCustomer(this.customerId);//le paso el customerId como parametro y me retorna el customer con ese id
+    this.getCustomer();//Me suscribo al emisor para traer su contenido que es un objeto customer y se lo igualo a mi variable 
+  
   }
+
+
 
   paramsCustomerId():void{ // Capturo el parametro que se pasa por la rota
     this.route.params.subscribe(
@@ -35,10 +34,19 @@ export class CustomerByOneListComponent implements OnInit {
   }
 
 
-//Ahora este id es el que tengo enviar al servicio para traer el customer 
-getOneCustomer(id : string):void{
-  this.service.updateOneCustomer(id);
-}
+  //Ahora este id es el que tengo enviar al servicio para traer el customer 
+  updateOneCustomer(id : string):void{
+    this.service.updateOneCustomer(id);
+  }
+
+  //Despues de que tengo el customer enotonces se lo igualo a mi varaible 
+  getCustomer(){
+    this.service.customerOneObservable.subscribe(
+      (data : Customer) => { this.customer = data}
+    )
+    this.service.updateOneCustomer(this.customerId);
+
+  }
   
 
 
