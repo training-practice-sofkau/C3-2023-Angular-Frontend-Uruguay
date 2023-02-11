@@ -14,6 +14,8 @@ export class UserAccountsComponent implements OnInit {
 
   UserAccountsList: AccountModel[] = [];
 
+  colors: string[] = [ "red", "blue", "emerald", "yellow", "lime", "green", "violet", "purple", "rose" ];
+
   constructor(private cookies: CookieService, public userAccountsService: UserAccountsService){}
 
   ngOnInit(): void {

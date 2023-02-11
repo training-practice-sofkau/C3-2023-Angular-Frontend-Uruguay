@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/login/services/auth.service';
 })
 export class ToolbarComponent {
 
+  mobileMenu: boolean = false;
   userDropdown: boolean = false;
   currentRoute: string = '';
 
@@ -30,6 +31,10 @@ export class ToolbarComponent {
 
   userDropdownSwitch(){
     this.userDropdown = !this.userDropdown;
+  }
+
+  mobileMenuSwitch(){
+    this.mobileMenu = !this.mobileMenu;
   }
 
 }
