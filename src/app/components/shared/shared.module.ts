@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,14 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
-  exports:[NavbarComponent, FooterComponent, RouterModule]
+  exports:[
+    NavbarComponent,
+    FooterComponent,
+    RouterModule,
+    HttpClientModule
+  ]
 })
 export class SharedModule { }

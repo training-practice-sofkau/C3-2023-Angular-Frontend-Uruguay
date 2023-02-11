@@ -7,13 +7,19 @@ import { DesktopComponent } from './desktop.component';
 import { DesktopRoutingModule } from './desktop-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { MainComponent } from './main/main.component';
+import { DepositComponent } from './deposit/deposit.component';
+import { TransferComponent } from './transfer/transfer.component';
+import { MovementsComponent } from './movements/movements.component';
 
 
 @NgModule({
   declarations: [
     DesktopComponent,
     ProfileComponent,
-    MainComponent
+    MainComponent,
+    DepositComponent,
+    TransferComponent,
+    MovementsComponent
   ],
   imports: [
     CommonModule,

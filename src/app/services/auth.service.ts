@@ -1,15 +1,15 @@
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { CustomerSignInModel, CustomerSignUpModel } from '../interfaces/Customer.interface';
-import { SigninResponseModel } from '../interfaces/responses.interface';
+import { CustomerSignInModel, CustomerSignUpModel } from '../../app/interfaces/customer.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  userIsValid: boolean = false;
+  userIsLogged: boolean = false;
   token: string = "";
 
   constructor(
@@ -23,8 +23,8 @@ export class AuthService {
    * Sets the status of the user ( login )
    * @param status boolean to set Status
    */
-  public setUSerStatus(status: boolean) {
-    this.userIsValid = status;
+  public setUserStatus(status: boolean) {
+    this.userIsLogged = status;
   }
 
   /**
@@ -32,7 +32,7 @@ export class AuthService {
    * @returns boolean with the status of the user
    */
   public getUserStatus(): boolean {
-    return this.userIsValid;
+    return this.userIsLogged;
   }
 
   async customerSignIn(customer: CustomerSignInModel) {

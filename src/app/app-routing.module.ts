@@ -19,7 +19,7 @@ const routes: Routes = [
       .then(x => x.DesktopModule), canActivate: [PermissionsGuard],
   },
 
-  { path: '**', redirectTo:"/", pathMatch:'full'}
+  //{ path: '**', redirectTo:"/", pathMatch:'full'}
 ]
 
 @NgModule({

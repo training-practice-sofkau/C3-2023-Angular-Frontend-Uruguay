@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../../services/auth.service';
 import { AppComponent } from '../../../app.component';
-import { CustomerSignInModel } from '../../../interfaces/Customer.interface';
+import { CustomerSignInModel } from '../../../interfaces/customer.interface';
 
 
 @Component({
@@ -50,11 +50,11 @@ export class SignInComponent implements OnInit {
       password: formPassword
     }
 
-    const answer = this.authService.customerSignIn(userSignin);
+    //const answer = this.authService.customerSignIn(userSignin);
 
-    console.log(this.authService.token);
+    //console.log(this.authService.token);
 
-    if (false) { // check for valid credentials
+    if (formUsername == "admin" && formPassword == "1234") { // check for valid credentials
 
       this.transitionToDesktop();
 
@@ -75,7 +75,7 @@ export class SignInComponent implements OnInit {
 
     setTimeout(() => {
       this.loading = false;
-      this.authService.setUSerStatus(true);
+      this.authService.setUserStatus(true);
       this.appComp.isInPublicZone = false;
       this.router.navigate(["desktop"]);
     }, 1500);

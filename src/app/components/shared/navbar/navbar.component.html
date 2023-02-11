@@ -14,9 +14,15 @@
     <span routerLink="/desktop" >Virtual Banking APP - User Desktop </span>
     <span class="spacer"></span>
 
-    <button class="desk-navbar-button" mat-raised-button routerLink="/profile">
+
+    <button class="desk-navbar-button" mat-raised-button *ngFor= "let item of desktopMenu" [routerLink]= 'item.redirect'>
+       {{ item.name }}
+       <mat-icon>assignment_ind</mat-icon>
+     </button>
+
+    <!-- <button class="desk-navbar-button" mat-raised-button routerLink="/desktop/profile">
       <mat-icon>assignment_ind</mat-icon> Profile
-    </button>
+    </button> -->
 
     <span class="spacer"></span>
     <button class="navbar-button" mat-fab extended color="accent" (click)="logout()">

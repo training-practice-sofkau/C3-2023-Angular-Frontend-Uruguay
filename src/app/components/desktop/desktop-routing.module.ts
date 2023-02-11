@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DesktopComponent } from './desktop.component';
+import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './profile/profile.component';
-
-
+import { DepositComponent } from './deposit/deposit.component';
+import { TransferComponent } from './transfer/transfer.component';
+import { MovementsComponent } from './movements/movements.component';
 
 const routes: Routes = [
   {
-    path: '',  component: DesktopComponent, title:"Desktop", pathMatch: 'full',
+    path: '',  component: DesktopComponent, title:"Desktop",
     children: [
-     { path: 'desktop', title:"Desktop",  component: DesktopComponent, pathMatch: 'full'},
-     { path: 'profile', title:"Customer details", component: ProfileComponent, pathMatch: 'full' },
-    //  { path: 'administration', title:"Administration", component: AdministrationComponent, pathMatch: 'full' },
-    //  { path: 'management', title:"Management", component: ManagementComponent, pathMatch: 'full' },
+     { path: '', title:"Desktop", component: MainComponent},
+     { path: 'desktop/profile', title:"Customer details", component: ProfileComponent},
+     { path: 'desktop/deposit', title:"New Deposit", component: DepositComponent },
+     { path: 'desktop/transfer', title:"New Tranfer", component: TransferComponent },
+     { path: 'desktop/movements', title:"Account Movements", component: MovementsComponent },
     ]
   }
 ]

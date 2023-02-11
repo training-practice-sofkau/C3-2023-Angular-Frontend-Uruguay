@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { filter, from, map } from 'rxjs';
-import { CustomerModel } from 'src/app/interfaces/Customer.interface';
+import { CustomerModel } from 'src/app/interfaces/customer.interface';
 import { baseCustomers } from '../customer-data/customer-data';
 
 @Component({
