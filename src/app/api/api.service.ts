@@ -53,9 +53,13 @@ export class ApiService {
     return this.http.get<Customer[]>
     (`${this.BASE_URL}/customer/all`,this.httpOptions)
   }
+
+  getOneCustomer(id : string):Observable<Customer>{
+    return this.http.get<Customer>(`${this.BASE_URL}/getInfo/${id}`,this.httpOptions);
+  }
   
-  sigUp(newCustomer: SignUpModel):Observable<SignUpModel>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
-    return this.http.post<SignUpModel>(`${this.BASE_URL}/singUp`,newCustomer);
+  sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
+    return this.http.post<string>(`${this.BASE_URL}/singUp`,newCustomer);
   }
   
   //--------------Deposit----------------------------

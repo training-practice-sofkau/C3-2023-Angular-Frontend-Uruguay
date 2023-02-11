@@ -8,23 +8,43 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CustomerService implements OnDestroy {
 
+  //get All customer
   protected newCustomerList : Customer[] = [];
-  public customerObservable: BehaviorSubject<Customer[]> = 
+  public customerAllObservable: BehaviorSubject<Customer[]> = 
   new BehaviorSubject<Customer[]>(this.newCustomerList);
   
+  //get One Customer
+  protected customer!: Customer;
+  public customerOneObservable : BehaviorSubject<Customer> = 
+  new BehaviorSubject<Customer>(this.customer);
+
   constructor(private apiService : ApiService){}
 
-
+//Para detener la emision de datos
   ngOnDestroy(): void {
-    this.customerObservable.unsubscribe();
+    this.customerAllObservable.unsubscribe();
+    this.customerOneObservable.unsubscribe();
   }
   
+  //Actualizando los datos de todos los customers
   updateCustomerList(){
-    if(this.customerObservable.observed && !this.customerObservable.closed){
+    if(this.customerAllObservable.observed && !this.customerAllObservable.closed){
       this.apiService.getAllCustomers().subscribe({
         next: (list) => {this.newCustomerList = list},
-        complete: () => {this.customerObservable.next(this.newCustomerList)}
+        complete: () => {this.customerAllObservable.next(this.newCustomerList)}
       });
     }
+  }
+  //Acutalizando los datos de un customer 
+  updateOneCustomer(id : string){
+    if(this.customerOneObservable.observed && !this.customerOneObservable.closed){
+      this.apiService.getOneCustomer(id).subscribe(
+        {
+          next : (value) => (this.customer = value),
+          complete: () => (this.customerOneObservable.next(this.customer))
+        });
+    }
+    
+
   }
 }

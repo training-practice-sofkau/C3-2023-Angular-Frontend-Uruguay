@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignUpModel } from './interfaces/signUpModel';
+import { DocumentTypeModel } from 'src/app/program-Funcional/interfaces/customerModel';
 
 
 @Component({
@@ -11,13 +12,27 @@ import { SignUpModel } from './interfaces/signUpModel';
 export class SingupComponent implements OnInit{
   
   public FormSignUp!: FormGroup;
+
+  documentType! : DocumentTypeModel ;
+  
+  customer : SignUpModel = { 
+    documentType :  {
+      name: "Cedula"
+    },
+    document: "11111111",
+    fullName: "Cristian Gonzalez",
+    email: "cristian@gmail.com",
+    phone: "091232323",
+    password: "123",
+    
+  }
   
   constructor(private formBuilder : FormBuilder){}
 
 
   ngOnInit(): void {
     this.FormSignUp = this.initForm();
-    this.upDateFromApi(); //para dar valores predeterminados al formularios  
+    //this.upDateFromApi(); //para dar valores predeterminados al formularios  
     //this.send();
   }
 
@@ -52,15 +67,6 @@ export class SingupComponent implements OnInit{
 
   
 
-  customer : SignUpModel = { 
-    documentType :  "Cedula",
-    document: "11111111",
-    fullName: "Cristian Gonzalez",
-    email: "cristian@gmail.com",
-    phone: "091232323",
-    password: "123",
-    
-  }
  
   //Enviar los datos recogido a la api 
   send():void{

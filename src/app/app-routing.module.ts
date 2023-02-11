@@ -13,16 +13,23 @@ import { CreateDepositComponent } from './deposit/create-deposit/create-deposit.
 import { DepositListComponent } from './deposit/deposit-list/deposit-list.component';
 import { TransferListComponent } from './transfer/transfer-list/transfer-list.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerByOneListComponent } from './customer/customer-by-one-list/customer-by-one-list.component';
+import { FindByOneIdComponent } from './components/find-by-one-id/find-by-one-id.component';
 
 const routes: Routes = [
-   //Rutas de segurity 
-   {path:``,redirectTo:`/singin`,pathMatch: 'full'},
-   {path:`singin`,component: SinginComponent},
-   {path:`signUp`,component: SingupComponent,pathMatch: 'full'},
-   {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
-
+  
+  //Rutas de segurity 
+  {path:``,redirectTo:`/singin`,pathMatch: 'full'},
+  {path:`singin`,component: SinginComponent},
+  {path:`signUp`,component: SingupComponent,pathMatch: 'full'},
+  {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
+ 
+  //buscador
+  {path:`search`,component :FindByOneIdComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
+  
    //Rutas de Customer
    {path:`customerList`,component :CustomerListComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
+   {path:`customerByOneList/:id`,component :CustomerByOneListComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},
    {path:`customer/documentType/create`,component:FindAllComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/ },
    
    //Rutas de Account

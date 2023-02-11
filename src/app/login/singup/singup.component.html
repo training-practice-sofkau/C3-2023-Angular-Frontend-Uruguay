@@ -4,6 +4,7 @@
     <section>
       <h1 style="margin: 15px;color:rgb(8, 82, 141);"> Registrarse</h1>
     </section>
+
     <!-- <div class="col-md-6">
     <label label for="inputDocumentType" class="form-label">Document Type</label>
         <select style="margin: 3px;" class="form-select" aria-label="Default select example">
@@ -19,7 +20,7 @@
       <input  formControlName="document" type="text"  class="form-control" id="inputDocument" placeholder="12345678">
       <div *ngIf="FormSignUp.get('document')?.touched && FormSignUp.get('document')?.errors?.['required']"
       class="alert alert-danger"> this field is required</div>
-      </div>
+    </div>
 
     <div class="col-md-6">
       <label for="inputFullname" class="form-label">Full name</label>

@@ -12,6 +12,7 @@ import { AccountModule } from './account/account.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerModule } from './customer/customer.module';
 import { FormsModule } from '@angular/forms';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     LoginModule, //no me esta andando por alguna razon 
     AccountModule,
     CustomerModule,
+    ComponentsModule,
     
   ],
   providers: [],

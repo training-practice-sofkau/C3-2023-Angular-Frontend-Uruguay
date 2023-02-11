@@ -1,7 +1,7 @@
 import { DocumentType } from "./documentType";
 
 export interface Customer {
-    id?: string;
+    id: string;
     documentType: DocumentType;//DocumentTypeModel , es un tipo de dato que nosotros creamos
     document: string;
     fullName: string;

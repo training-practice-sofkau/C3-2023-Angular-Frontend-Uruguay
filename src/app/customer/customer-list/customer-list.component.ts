@@ -21,7 +21,7 @@ export class CustomerListComponent implements OnInit {
 
   UpdateCustomerList():void{
 
-    this.customerService.customerObservable.subscribe(
+    this.customerService.customerAllObservable.subscribe(
       (data : Customer[]) => {
         if(this.listCustomer.length != data.length){
           this.listCustomer = data;
