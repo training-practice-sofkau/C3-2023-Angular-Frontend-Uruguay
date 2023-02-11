@@ -1,45 +1,68 @@
 
 <div style="margin-left: 30%;">
-  <form class="align-items-center"> 
+  <form (ngSubmit)="send()" [formGroup]="FormSignUp" class="align-items-center"> 
     <section>
       <h1 style="margin: 15px;color:rgb(8, 82, 141);"> Registrarse</h1>
     </section>
-    <div class="col-md-6">
-      <label for="inputDocumentType" class="form-label">Document Type</label>
+    <!-- <div class="col-md-6">
+    <label label for="inputDocumentType" class="form-label">Document Type</label>
         <select style="margin: 3px;" class="form-select" aria-label="Default select example">
           <option selected>Option </option>
           <option value="1">Cedula</option>
           <option value="2">Credencial</option>
           <option value="3">Pasaporte</option>
-      </select>
-    </div>
+        </select>
+    </div> -->
+
     <div class="col-md-6">
       <label for="inputDocument" class="form-label">Document</label>
-      <input type="text" class="form-control" id="inputDocument" placeholder="12345678">
-    </div>
+      <input  formControlName="document" type="text"  class="form-control" id="inputDocument" placeholder="12345678">
+      <div *ngIf="FormSignUp.get('document')?.touched && FormSignUp.get('document')?.errors?.['required']"
+      class="alert alert-danger"> this field is required</div>
+      </div>
+
     <div class="col-md-6">
       <label for="inputFullname" class="form-label">Full name</label>
-      <input type="text" class="form-control" id="inputFullname" placeholder="Exemplo: José Gervasio Artigas">
+      <input formControlName="fullName" type="text" class="form-control" id="inputFullname" placeholder="Exemplo: José Gervasio Artigas">
+      <div *ngIf="FormSignUp.get('fullName')?.touched && FormSignUp.get('fullName')?.errors?.['required']"
+      class="alert alert-danger"> this field is required</div>
     </div>
+
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Exemplo: Exemplo@gmail.com">
+      <input formControlName="email" type="email" class="form-control" id="inputEmail4" placeholder="Exemplo: Exemplo@gmail.com">
+      <div *ngIf="FormSignUp.get('email')?.touched && FormSignUp.get('email')?.errors?.['required'] && FormSignUp.get('document')?.errors?.['email']"
+      class="alert alert-danger"> this field is required</div>
     </div>
+
     <div class="col-md-6">
       <label for="inputPhone" class="form-label">Phone</label>
-      <input type="number" class="form-control" id="inputPhone" placeholder="Exemplo: 091234567">
+      <input  formControlName="phone" type="number" class="form-control" id="inputPhone" placeholder="Exemplo: 091234567">
+      <div *ngIf="FormSignUp.get('phone')?.touched && FormSignUp.get('phone')?.errors?.['required']"
+      class="alert alert-danger"> this field is required</div>
     </div>
+
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <input  formControlName="password" type="password" class="form-control" id="inputPassword4">
+      
+      <div *ngIf="FormSignUp.get('password')?.touched && FormSignUp.get('password')?.errors?.['required']"
+      class="alert alert-danger"> this field is required</div>
+
+      <div *ngIf="FormSignUp.get('password')?.touched && FormSignUp.get('password')?.errors?.['minlength']"
+      class="alert alert-danger"> La clave tiene que contener mas de 
+      {{FormSignUp.get('password')?.errors?.['minlength'].requiredLength}} caracteres</div>
+
     </div>
+
+    <label style="color: rgb(13, 13, 151);" for="terms">Accept terms</label>
+    <input style="margin: 2%;color: blue;" type="checkbox" formControlName="terms" id="terms">
+
     <a routerLink="/singin" style="margin: 10%;" >Sign in</a>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary" routerLink="/singin">Confirmar</button>
-      <button type="submit" style="margin: 20px;" class="btn btn-dark" routerLink="/singin">Cancelar</button>
+      <button [disabled]="FormSignUp.invalid" type="submit" class="btn btn-primary">Confirmar</button>
+      <button style="margin: 20px;" class="btn btn-dark" routerLink="/singin">Cancelar</button>
     </div>
 
   </form>
 </div>
-
-

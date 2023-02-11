@@ -4,6 +4,7 @@ import { Customer } from '../interface/customer';
 
 @Component({
   selector: 'app-customer-list',
+  providers:[CustomerService],
   templateUrl: './customer-list.component.html',
   styleUrls: ['./customer-list.component.scss']
 })
@@ -11,7 +12,7 @@ export class CustomerListComponent implements OnInit {
 
   listCustomer : Customer[] = [];
   
-  constructor(@Host() private customerService : CustomerService){}
+  constructor(@Host() public customerService : CustomerService){}
 
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { Account } from '../account/interfaces/account';
 import { CreateAccount } from '../account/interfaces/createAccount';
 import { Customer } from '../customer/interface/customer';
 import { Injectable } from '@angular/core';
+import { SignUpModel } from '../login/singup/interfaces/signUpModel';
 
 @Injectable({
   providedIn: 'root'
@@ -45,14 +46,18 @@ export class ApiService {
     return this.http.get<Account[]>
     (`${this.BASE_URL}/account/find-all`,this.httpOptions)
   }
-  
-  
   //--------------Customer----------------------------------------
   //(){}
+  
   getAllCustomers():Observable<Customer[]>{
     return this.http.get<Customer[]>
     (`${this.BASE_URL}/customer/all`,this.httpOptions)
   }
+  
+  sigUp(newCustomer: SignUpModel):Observable<SignUpModel>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
+    return this.http.post<SignUpModel>(`${this.BASE_URL}/singUp`,newCustomer);
+  }
+  
   //--------------Deposit----------------------------
   //--------------Transfer----------------------------
   //--------------Segurity----------------------------

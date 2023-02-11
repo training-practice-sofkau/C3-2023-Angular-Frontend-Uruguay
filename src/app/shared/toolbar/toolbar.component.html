@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <ng-container *ngIf="!isAdmin,else viewAdmin">
   <div class="container-fluid">
     <a class="navbar-brand" style="margin-left: 45%;color: rgb(5, 5, 106);" routerLink="">e-Bank</a>
@@ -7,9 +7,9 @@
     </button>
     
   </div>
-</ng-container>
-<button (click)="isAdmin = !isAdmin">Admin</button>
-<ng-template #viewAdmin>
+  </ng-container>
+  <button (click)="isAdmin = !isAdmin">Admin</button>
+  <ng-template #viewAdmin>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">

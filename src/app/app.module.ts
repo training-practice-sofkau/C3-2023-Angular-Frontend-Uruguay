@@ -10,6 +10,8 @@ import { MaterialModule } from './material/material.module';
 import { EjercicioComponent } from './program-Funcional/ejercicio/ejercicio.component';
 import { AccountModule } from './account/account.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomerModule } from './customer/customer.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
 
     MaterialModule,
     SharedModule,
-    LoginModule,
+    LoginModule, //no me esta andando por alguna razon 
     AccountModule,
+    CustomerModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
