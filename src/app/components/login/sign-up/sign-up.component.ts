@@ -12,6 +12,7 @@ import { MessengerService } from '../../../services/messenger.service';
 //Components
 import { AppComponent } from '../../../app.component';
 import { AuthService } from '../../../services/auth.service';
+import { LoginComponent } from '../login.component';
 
 @Component({
   selector: 'app-sign-up',

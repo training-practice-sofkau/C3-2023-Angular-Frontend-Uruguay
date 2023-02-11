@@ -1,12 +1,13 @@
 <div style="text-align: center; height: 90%;">
   <div class="body">
     <div class="login">
-      <mat-card style="margin-top: 10px; background-color: rgb(95, 158, 160, .4) ;">
 
-        <mat-spinner *ngIf="loading" class="spinner" diameter="100" strokeWidth="15" color="accent"
-          style="margin:50% auto;"> </mat-spinner>
+      <mat-spinner *ngIf="loading" class="spinner" diameter="100" strokeWidth="15" color="accent"
+        style="margin:50% auto;"> </mat-spinner>
 
-        <form *ngIf="!loading" [formGroup]="signinForm" (ngSubmit)="login()" style="padding: 10px;">
+      <mat-card *ngIf="!loading" style="margin-top: 10px; background-color: rgb(95, 158, 160, .4) ;">
+
+        <form [formGroup]="signinForm" (ngSubmit)="login()" style="padding: 10px;">
           <div style="background-color:rgb(138, 43, 226, .8);">
             <h1>Welcome!</h1>
             <h2>Please login</h2>

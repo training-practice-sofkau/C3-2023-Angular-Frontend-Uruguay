@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +14,7 @@ export class AppComponent  {
   isLoggingIn: boolean = false;
   isRegistering: boolean = false;
   isGoingHome: boolean = true;
+
 
   toLogin(){
     this.isLoggingIn = true;

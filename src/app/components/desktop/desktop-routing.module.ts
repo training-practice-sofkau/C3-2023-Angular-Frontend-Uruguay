@@ -7,21 +7,21 @@ import { DepositComponent } from './deposit/deposit.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { MovementsComponent } from './movements/movements.component';
 
-const routes: Routes = [
+export const desktopRoutes: Routes = [
   {
-    path: '',  component: DesktopComponent, title:"Desktop",
+    path: '', redirectTo:'desktop', pathMatch:"full" ,
     children: [
-     { path: '', title:"Desktop", component: MainComponent},
-     { path: 'desktop/profile', title:"Customer details", component: ProfileComponent},
-     { path: 'desktop/deposit', title:"New Deposit", component: DepositComponent },
-     { path: 'desktop/transfer', title:"New Tranfer", component: TransferComponent },
-     { path: 'desktop/movements', title:"Account Movements", component: MovementsComponent },
+      { path: '/desktop', title: "Desktop", component: DesktopComponent, pathMatch:"full"},
+      { path: '/desktop/profile', title: "Customer details", component: ProfileComponent, pathMatch:'prefix' },
+      { path: 'desktop/deposit', title: "New Deposit", component: DepositComponent, pathMatch:"full" },
+      { path: 'desktop/transfer', title: "New Tranfer", component: TransferComponent, pathMatch:"full" },
+      { path: 'desktop/movements', title: "Account Movements", component: MovementsComponent, pathMatch:"full" },
     ]
   }
 ]
 
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
+ @NgModule({
+  imports: [RouterModule.forChild(desktopRoutes)],
   exports: [RouterModule]
 })
 export class DesktopRoutingModule { }

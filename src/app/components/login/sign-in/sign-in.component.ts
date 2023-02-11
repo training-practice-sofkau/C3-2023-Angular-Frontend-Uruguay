@@ -11,6 +11,7 @@ import { AppComponent } from '../../../app.component';
 
 // Interfaces
 import { CustomerSignInModel } from '../../../interfaces/customer.interface';
+import { LoginComponent } from '../login.component';
 
 
 
@@ -35,8 +36,8 @@ export class SignInComponent implements OnInit {
   ) {
 
     this.signinForm = this.fb.group({
-      username: ["", [Validators.email, Validators.required]],
-      password: ["", [Validators.minLength(5), Validators.required]]
+      username: ["", ], //[Validators.email, Validators.required]],
+      password: ["", ] //[Validators.minLength(5), Validators.required]]
     });
   }
 
@@ -57,11 +58,10 @@ export class SignInComponent implements OnInit {
       password: formPassword
     }
 
-    const answer = this.authService.customerLogin(userSignin);
+    //const answer = this.authService.customerLogin(userSignin);
+    //console.log(answer);
 
-    console.log(answer);
-
-    if (formUsername == "admin" && formPassword == "12345") { // check for valid credentials
+    if (formUsername == "a" && formPassword == "1") { // check for valid credentials
 
       this.transitionToDesktop();
 

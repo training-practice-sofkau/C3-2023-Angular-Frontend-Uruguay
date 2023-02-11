@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../../../app.component';
 import { MenuService } from '../../../services/menu.service';
 import { MenuItem } from '../../../interfaces/menu.interface';
+import { LoginComponent } from '../../login/login.component';
 
 @Component({
   selector: 'app-navbar',
@@ -41,8 +42,9 @@ export class NavbarComponent implements OnInit {
    */
   logout(){
     this.authService.setUserStatus(false);
-    this.router.navigate(["/"]);
     this.appComp.isInPublicZone = true;
+    this.appComp.toHome();
+    this.router.navigate(["/"]);
   }
 
 

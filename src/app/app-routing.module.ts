@@ -6,6 +6,7 @@ import { PermissionsGuard } from './guards/permissions.guard';
 
 //Components
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -16,10 +17,10 @@ const routes: Routes = [
 
   {
     path: 'desktop', loadChildren: () => import('./components/desktop/desktop.module')
-      .then(x => x.DesktopModule), canActivate: [PermissionsGuard],
+      .then(x => x.DesktopModule),//canActivate: [PermissionsGuard],
   },
 
-  //{ path: '**', redirectTo:"/", pathMatch:'full'}
+  //{ path: '**', redirectTo:"/", pathMatch:'prefix'}
 ]
 
 @NgModule({

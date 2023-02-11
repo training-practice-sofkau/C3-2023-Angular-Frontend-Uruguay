@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './components/shared/shared.module';
 import { MaterialModule } from './components/shared/material/material.module';
 import { LoginModule } from './components/login/login.module';
-import { DesktopModule } from './components/desktop/desktop.module';
+
 
 //Components
 import { AppComponent } from './app.component';
@@ -24,7 +24,6 @@ import { AppComponent } from './app.component';
     SharedModule,
     AppRoutingModule,
     LoginModule,
-    DesktopModule,
   ],
   bootstrap: [AppComponent]
 })
