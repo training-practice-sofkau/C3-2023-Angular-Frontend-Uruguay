@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { DesktopComponent } from './desktop.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material/material.module';
+import { MainComponent } from './main/main.component';
 
 
 
 @NgModule({
   declarations: [
-    DesktopComponent
+    DesktopComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,
