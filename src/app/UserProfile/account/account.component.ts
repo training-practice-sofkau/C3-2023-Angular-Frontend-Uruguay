@@ -4,6 +4,7 @@ import { AccountService } from './services/account.service';
 import { CreateaccounttypeComponent } from '../../AccountMovement';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NewdepositComponent } from '../../AccountMovement';
+import { AccountTransfer } from '../../tools/interface/accountTransfer';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -16,6 +17,8 @@ export class AccountComponent implements OnInit {
     public customer: customerInterface | undefined
     public accountType: AccountTypeinterface | undefined
     public persona: AccountInterfaec | undefined
+    public account: AccountInterfaec | undefined
+    public accountUser: AccountTransfer[] = []
 
   getDataAccountType(){
     this.accountType = this.persona?.accountUser.accountType
@@ -29,13 +32,14 @@ export class AccountComponent implements OnInit {
   getDataAccount(){
 
 
-      const account = localStorage.getItem('account');
+    const account = localStorage.getItem('account');
     this.persona = account ? JSON.parse(account) : null
 
     this.AccountService.get(`http://localhost:3000/account/${this.persona?.accountUser.customer.id}`).subscribe(
       data => {
         console.log(data)
-        this.persona = data;
+        this.accountUser = data
+
       },
       error => {
         console.error(error);

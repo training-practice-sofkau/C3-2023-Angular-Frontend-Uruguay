@@ -6,13 +6,30 @@ import { CustomerComponent } from './customer.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { AccountComponent } from '../account/account.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AccountService } from '../';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: CustomerComponent,
+    children: [
+      {
+        path: 'unsubscribe',
+        component: UnsubscribeComponent
+      },
+      {
+        path: 'update',
+        component: UpdateCustomerComponent
+      }
+    ]
+  }
+];
 
 @NgModule({
-  imports: [CommonModule,FormsModule,ReactiveFormsModule, RouterModule, ],
-
-  declarations: [CustomerComponent,UnsubscribeComponent,UpdateCustomerComponent,],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule.forChild(routes)],
+  declarations: [CustomerComponent, UnsubscribeComponent, UpdateCustomerComponent],
   exports: [CustomerComponent],
-  providers:[AccountComponent]
+  providers: [AccountComponent, AccountService]
 })
 export class CustomerModule {}

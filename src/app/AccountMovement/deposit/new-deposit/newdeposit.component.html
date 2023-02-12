@@ -1,24 +1,24 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-      <h2>Nuevo Deposito</h2>
-      <form>
+      <h2>Deposito</h2>
+      <form [formGroup]="depositForm">
         <div class="form-group">
-          <label for="accountType">Selecione su tipo de cuenta </label>
-          <select class="form-control" formControlName="documentType" id="accountType">
+          <label for="accountType">Seleccione su tipo de cuenta </label>
+          <select class="form-control" formControlName="accountType" id="accountType">
             <option>Cuenta Pesos </option>
             <option>Cuenta Dolares</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="name">Motivo Deposito:</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <label for="depositReason">Motivo Deposito:</label>
+          <input type="text" class="form-control" formControlName="depositReason" id="depositReason">
         </div>
         <div class="form-group">
-          <label for="name">Saldo</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <label for="depositAmount">Saldo</label>
+          <input type="text" class="form-control" formControlName="depositAmount" id="depositAmount">
         </div>
-        <button type="submit" class="btn btn-primary">Validar</button>
+        <button type="submit"  (click)="submitForm()" class="btn btn-primary" [disabled]="!depositForm.valid">Validar</button>
       </form>
     </div>
   </div>

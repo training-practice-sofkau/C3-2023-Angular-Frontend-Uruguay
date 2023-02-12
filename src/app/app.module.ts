@@ -8,15 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { DepositModule } from './AccountMovement/deposit/deposit.module';
 import { DepositService } from './AccountMovement/deposit/services/deposit.service';
 import { TransferService } from './AccountMovement/transfer/services/transfer.service';
-import { TransferModule } from './AccountMovement/transfer/transfer.module';
 import { MaterialModule } from './tools/material/material.module';
-import { SharedModule } from '../app/shared/shared.module'
-import { Login2Module } from './userLogin-Register/login2/login.module';
+import { SharedModule } from '../app/shared'
 import { AuthService } from './userLogin-Register/login2/services/auth.service';
-import { AccountModule,  AccountService, CustomerModule, CustomerService } from './UserProfile';
+import {  AccountService,  CustomerService } from './UserProfile';
+import { AccountComponent } from './UserProfile/account/account.component';
 
 @NgModule({
 
@@ -31,19 +29,15 @@ import { AccountModule,  AccountService, CustomerModule, CustomerService } from 
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    Login2Module,
-    AccountModule,
-    DepositModule,
-    TransferModule,
-    CustomerModule,
-
     SharedModule,
+
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
 
 
   ],
-  providers: [AuthService, AccountService, DepositService, TransferService, CustomerService],
+  providers: [AuthService, AccountService, DepositService, TransferService, CustomerService, AccountComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,21 +1,28 @@
-
 <div style="display: flex; flex-direction: column; align-items: center;">
-  <h2 class="h3" >Registro de Transferencia </h2>
-
-<button (click)="openEditModal()" type="button" class="btn btn-primary" > Hacer Transferencia</button>
-
+  <h2 class="h3">Registro de transferencia</h2>
+  <button (click)="openEditModal()" type="button" class="btn btn-primary">Agregar transferencia</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID Transferencia</th>
+        <th scope="col">Usuario origen</th>
+        <th scope="col">Usuario destino</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Motivo</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transfer of transferList">
+        <th scope="row">{{ transfer.id }}</th>
+        <td>{{ transfer.income.customer.fullName }}</td>
+        <td>{{ transfer.outcome.customer.fullName }}</td>
+        <td>{{ transfer.transferAmount }}</td>
+        <td>{{ transfer.transferReason }}</td>
+        <td>{{ transfer.dateTime | date }}</td>
+        <td>{{ transfer.state ? 'Aprobada' : 'Rechazada' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

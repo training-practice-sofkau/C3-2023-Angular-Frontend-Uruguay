@@ -1,16 +1,27 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './account.component';
 import { CreateaccounttypeComponent } from '../../AccountMovement/create-account-type/createaccounttype.component'
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { CustomerComponent } from '../customer/customer.component';
 
-@NgModule({
-  imports: [CommonModule,RouterModule  ],
-  declarations: [AccountComponent, CreateaccounttypeComponent,   ],
-  exports: [AccountComponent],
-  providers: [CustomerComponent, CreateaccounttypeComponent],
+const accountRoutes: Routes = [
+  {
+    path: '',
+    component: AccountComponent
+  }
+];
 
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild(accountRoutes)
+  ],
+  declarations: [
+    AccountComponent,
+    CreateaccounttypeComponent
+  ],
+  exports: [AccountComponent],
+  providers: [CustomerComponent, CreateaccounttypeComponent]
 })
-export class AccountModule {}
+export class AccountModule { }
