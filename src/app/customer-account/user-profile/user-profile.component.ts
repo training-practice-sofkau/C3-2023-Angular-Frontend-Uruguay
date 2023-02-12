@@ -17,12 +17,9 @@ export class UserProfileComponent implements OnInit{
   public customers : CustomerModel[] = [];
   
   public user : Object = {};
-
   customer : CustomerModel = <CustomerModel> this.user;
 
   public id : string = "b85e0b60-3fc0-4dd4-8667-772713cdafd6";
-
-
 
 
   constructor  (public globalService: GlobalService,

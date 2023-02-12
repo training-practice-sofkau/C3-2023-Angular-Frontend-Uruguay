@@ -1,204 +1,96 @@
+<!--**************** Background y Transparencia *********************-->
+
+<section class="home">
+  <div class="cover">
+
+    <!--********************** CUSTOMER UPDATE ************************-->
+
+    <app-update-user></app-update-user>
 
 
-<!--Background y Transparencia-->
 
-<section class="home"> 
-  <div class="cover"> 
+    <!--************************* CUSTOMER VIEW *************************-->
+  <div class="container"  *ngIf="(globalService.switchViewUser)">
+    <section class="section about-section gray-bg" id="about" >
       
-
-
-<!--*****************CUSTOMER UPDATE*********************-->
-
-
-<div class="container"   *ngIf= "(globalService.switchUserUpdate)">
-  <div class="row gutters">
-  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-  <div class="card h-100">
-    <div class="card-body">
-      <div class="account-settings">
-        <div class="user-profile">
-          <div class="user-avatar">
-            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
-          </div>
-          <h5 class="user-name">Bruno Fernández</h5>
-          <h6 class="user-email">dlqq@outlook.com</h6>
-        </div>
-        <div class="about">
-          <h5>Bienvenido!</h5>
-          <p>Aquí podrás modificar todos tus datos.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-  <div class="card h-100">
-    <div class="card-body">
-      <div class="row gutters">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          <h6 class="cabeza">Datos Personales</h6>
-        </div>
-        
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <div class="form-group">
-            <label for="fullName">Nombre Completo</label>
-            <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
-          </div>
-        </div>
-
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <div class="form-group">
-            <label for="eMail">Tipo de Documento</label>
-            <input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
-          </div>
-        </div>
-
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <div class="form-group">
-            <label for="phone">Teléfono</label>
-            <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
-          </div>
-        </div>
-
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <div class="form-group">
-            <label for="website">Número de Documento</label>
-            <input type="url" class="form-control" id="website" placeholder="Website url">
-          </div>
-        </div>
-
-
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <div class="form-group">
-            <label for="sTate">Avatar</label>
-            <input type="text" class="form-control" id="sTate" placeholder="Url imagen">
-          </div>
-        </div>
-      </div>
-
-      <div class="row gutters">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          <h6 class="cabeza">Credenciales de Acceso</h6>
-        </div>
-
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <div class="form-group">
-            <label for="Street">Email</label>
-            <input type="name" class="form-control" id="Street" placeholder="Enter Street">
-          </div>
-        </div>
-        
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-          <div class="form-group">
-            <label for="sTate">Contraseña</label>
-            <input type="text" class="form-control" id="sTate" placeholder="Enter State">
-          </div>
-        </div>
-
-        
-       
-      </div>
-      <div class="row gutters">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          <div class="text-right">
-
-            <button class="boton"  (click)="(globalService.valorCaseUser = 2)"   >Cancelar</button>
-            <button class="boton"  (click)="true"   >Actualizar</button>
-           
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-  </div>
-
-<!--******************* CUSTOMER VIEW **********************-->
-
-
-
-<section class="section about-section gray-bg" id="about" *ngIf= "(globalService.switchViewUser)" >
-  <div class="container2"> 
-      <div class="row align-items-center flex-row-reverse">
+        <div class="row align-items-center flex-row-reverse">
           <div class="col-lg-6">
-              <div class="about-text go-to">
-                  <h3 class="dark-color">Mi Perfil</h3>
-                  
+            <div class="about-text go-to">
+              <h3 class="dark-color">Mi Perfil</h3>
 
-                  <div class="row about-list">
-                      <div class="col-md-6">
 
-                          <div class="media">
-                              <label>Nombre</label>
-                              <p>{{customer.fullName}}</p>
-                          </div>
+              <div class="row about-list">
+                <div class="col-md-6">
 
-                          <div class="media">
-                              <label>N° Documento</label>
-                              <p>{{customer.document}}</p>
-                          </div>
-                          
-                          <div class="media">
-                              <label>Tipo de Documento</label>
-                              <p>{{customer.documentType.name}}</p>
-                          </div>
-
-                      </div>
-                      <div class="col-md-6">
-                          <div class="media">
-                              <label>E-mail</label>
-                              <p>{{customer.email}}</p>
-                          </div>
-                          <div class="media">
-                              <label>Phone</label>
-                              <p>{{customer.phone}}</p>
-                          </div>
-                          
-                      </div>
+                  <div class="media">
+                    <label>Nombre</label>
+                    <p>{{customer.fullName}}</p>
                   </div>
+
+                  <div class="media">
+                    <label>N° Documento</label>
+                    <p>{{customer.document}}</p>
+                  </div>
+
+                  <div class="media">
+                    <label>Tipo de Documento</label>
+                    <p>{{customer.documentType.name}}</p>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="media">
+                    <label>E-mail</label>
+                    <p>{{customer.email}}</p>
+                  </div>
+                  <div class="media">
+                    <label>Phone</label>
+                    <p>{{customer.phone}}</p>
+                  </div>
+
+                </div>
               </div>
+            </div>
           </div>
           <div class="col-lg-6">
-              <div class="about-avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
-              </div>
+            <div class="about-avatar">
+              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+            </div>
           </div>
-      </div>
-<!--LO BLANCO-->
+        </div>
+        <!--LO BLANCO-->
 
-      <div class="counter">
+        <div class="counter">
           <div class="row">
 
-              <div class="col-6 col-lg-3">
-                  <div class="count-data text-center">
-                      <h6 class="count h2" data-to="500" data-speed="500">$ 500</h6>
-                      <p class="m-0px font-w-600">Cuenta Corriente</p>
-                  </div>
+            <div class="col-6 col-lg-3">
+              <div class="count-data text-center">
+                <h6 class="count h2" data-to="500" data-speed="500">$ 500</h6>
+                <p class="m-0px font-w-600">Cuenta Corriente</p>
               </div>
-              
-              <div class="col-6 col-lg-3">
-                  <div class="count-data text-center">
-                      <h6 class="count h2" data-to="850" data-speed="850">$ 850</h6>
-                      <p class="m-0px font-w-600">Caja de Ahorro</p>
-                  </div>
-              </div>                                          
+            </div>
+
+            <div class="col-6 col-lg-3">
+              <div class="count-data text-center">
+                <h6 class="count h2" data-to="850" data-speed="850">$ 850</h6>
+                <p class="m-0px font-w-600">Caja de Ahorro</p>
+              </div>
+            </div>
 
           </div>
-      </div>
-  </div>
+        </div>
 
-  <div class= "content-buttom">
-      <button class="boton2"  (click)="(globalService.valorCaseUser = 1)"   >Editar</button>
+        <div class="content-buttom">
+          <button class="boton" (click)="(globalService.valorCaseUser = 1)">Editar</button>
+        </div>
+
+
+    </section>
+  </div>   
+     
+
+
+    <!--FIN Background y Transparencia-->
+
   </div>
-  
 </section>
-
-
-<!--FIN Background y Transparencia-->
-
-  </div>
-</section>
-
-
-
