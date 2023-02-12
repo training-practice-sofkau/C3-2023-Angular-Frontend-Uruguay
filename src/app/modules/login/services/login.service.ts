@@ -4,7 +4,6 @@ import { ResponseI } from 'src/app/interfaces/response.interface';
 import { SignIn } from 'src/app/interfaces/sign-in.interface';
 import { ApiService } from '../../../services/api.service';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormControl } from '@angular/forms';
 import { CustomerModel, DocumentTypeModel } from 'src/app/interfaces/Customer.interface';
 import { AccountModel } from 'src/app/interfaces/account.interface';
 
@@ -23,7 +22,7 @@ export class LoginService {
 
   customerAccounts: AccountModel[] = [];
   
-  constructor(public api: ApiService, private http: HttpClient, private formBuilder: FormBuilder ) { }
+  constructor(public api: ApiService, private http: HttpClient ) { }
 
   login(form: SignIn): Observable<ResponseI>{
     let direction = this.api.url + "/security/signIn";
@@ -41,24 +40,6 @@ export class LoginService {
 
   activeLogin(){
     localStorage.setItem('key', 'true')
-  }
-
-  loginForm = this.formBuilder.group({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
-
-  onLogin(){
-    if( this.loginForm.controls.email.value && this.loginForm.controls.password.value){
-    let form = {
-      email: this.loginForm.controls.email.value,
-      password: this.loginForm.controls.password.value
-    }
-    this.login(form).subscribe(data =>{
-      console.log(data);
-      this.activeLogin()
-    })
-  }
   }
 
   //      Intercambio de componentes de signIn y signUp
@@ -82,7 +63,6 @@ export class LoginService {
         this.switchLogIn = false;
         console.log("LogUp :" + this.switchLogUp);
         break;
-
     }
   }
 }

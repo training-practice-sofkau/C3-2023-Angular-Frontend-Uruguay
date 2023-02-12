@@ -16,7 +16,7 @@ export class UserComponent {
   customer: CustomerModel = <CustomerModel>this.loginService.signedUpUser;
   accounts: AccountModel[] = <AccountModel[]>this.loginService.customerAccounts;
 
-  id: string = "f8cb6b09-4482-4506-9b5c-6ad828ee14c1"
+  id: string = "b878c94e-c38d-4fc1-be62-41e0e1d4c41c"
 
   constructor(
     private accountService: AccountService,

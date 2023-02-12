@@ -1,6 +1,6 @@
 <mat-card *ngIf= "(loginService.switchLogIn)">
   <mat-card-content>
-    <form [formGroup]="loginService.loginForm" (ngSubmit)="loginService.onLogin()">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <h2>Sing In</h2>
       <mat-form-field>
         <input matInput placeholder="Email" name="email" required formControlName="email">
