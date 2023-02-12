@@ -2,12 +2,12 @@
   <div class="flex flex-col rounded-t bg-white mb-0 p-5">
     <h1><span class="text-4xl"> Customer Information </span></h1>
 
-    <ul class="mb-2 text-xl">
-      <li class="mb-3">Full Name: Rodrigo Caraballo</li>
-      <li class="mb-3">Document Type: Rodrigo Caraballo</li>
-      <li class="mb-3">Document: Rodrigo Caraballo</li>
-      <li class="mb-3">Email: Rodrigo Caraballo</li>
-      <li class="mb-3">Phone: Rodrigo Caraballo</li>
+    <ul class="mb-2 text-xl" [(ngModel)]="customer">
+      <li class="mb-3">Full Name: {{customer.fullName}}</li>
+      <li class="mb-3">Document Type: {{customer.documentType.name}}</li>
+      <li class="mb-3">Document: {{customer.document}}</li>
+      <li class="mb-3">Email: {{customer.email}}</li>
+      <li class="mb-3">Phone: {{customer.phone}}</li>
     </ul>
 
     <div class="flex justify-end p-2 gap-2">
