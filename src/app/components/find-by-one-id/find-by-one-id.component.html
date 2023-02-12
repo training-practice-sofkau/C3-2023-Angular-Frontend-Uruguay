@@ -1,5 +1,12 @@
-<label style="margin: 2%;">Id</label>
-<form (ngsubmit)="onSubmit()" class="d-flex" [formGroup]="formCustomer" role="search">
-    <input class="form-control me-2"  formControlName="searchId"  type="search" placeholder="Search" aria-label="Search">
-    <button [disabled]="formCustomer.invalid" class="btn btn-outline-success" (click)="searchCustomerId()" type="submit">Search</button>
-</form>
+
+<div class="contenedor">
+    <form class="d-flex" [formGroup]="formCustomer" role="search">
+        <form [formGroup]="typeForm">
+            <select id="type" formControlName="type">
+                <option *ngFor="let t of types" [ngValue]="t">{{ t }}</option>
+            </select>
+        </form>
+        <input class="form-control me-2"  formControlName="searchId"  type="search" placeholder="Search" aria-label="Search">
+        <button [disabled]="formCustomer.invalid" class="btn btn-outline-success" (click)="searchCustomerId()" type="submit">Search</button>
+    </form>
+</div>

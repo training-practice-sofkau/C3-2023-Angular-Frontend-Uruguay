@@ -16,6 +16,8 @@ import { CustomerListComponent } from './customer/customer-list/customer-list.co
 import { CustomerByOneListComponent } from './customer/customer-by-one-list/customer-by-one-list.component';
 import { FindByOneIdComponent } from './components/find-by-one-id/find-by-one-id.component';
 import { UpdateComponent } from './customer/update/update.component';
+import { UpDateComponent } from './account/up-date/up-date.component';
+import { AccountByOneComponent } from './account/account-by-one/account-by-one.component';
 
 const routes: Routes = [
   
@@ -38,9 +40,10 @@ const routes: Routes = [
    {path:`account`,component: FindAllComponent,pathMatch: 'full'},
    {path:`account/create`,component: CreateAccountComponent,pathMatch: 'full'/*,canActivate:[AdminGuard] */},
    {path:`account/find-all`,component: AccountListComponent,pathMatch: 'full'},
+   {path:`accountEdit/:id`,component:UpDateComponent,pathMatch: 'full'},
    {path:`account/account-type/create`,component: CreateAccountTypeComponent,pathMatch: 'full'/*,canActivate:[AdminGuard] */},
-   {path:`account/customer/:customerId`,component: FindAllComponent,pathMatch: 'full'},
-   {path:`account/customer/:accountId`, component: FindAllComponent,pathMatch: 'full'},
+   {path:`account/customer/:customerId`,component: AccountByOneComponent,pathMatch: 'full'},
+   //{path:`account/customer/:accountId`, component: FindAllComponent,pathMatch: 'full'},
    {path:`account/account-type/find-all`,component: FindAllComponent,pathMatch: 'full'},
  
  

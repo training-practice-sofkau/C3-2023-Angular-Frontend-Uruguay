@@ -46,6 +46,10 @@ export class ApiService {
     return this.http.get<Account[]>
     (`${this.BASE_URL}/account/find-all`,this.httpOptions)
   }
+
+  getOneAccount(id : string):Observable<Account>{
+    return this.http.get<Account>(`${this.BASE_URL}/account/customer/${id}`,this.httpOptions);
+  }
   //--------------Customer----------------------------------------
   //(){}
   

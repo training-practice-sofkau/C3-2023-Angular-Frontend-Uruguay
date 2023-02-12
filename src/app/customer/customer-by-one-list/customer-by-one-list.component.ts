@@ -14,7 +14,7 @@ export class CustomerByOneListComponent implements OnInit {
   protected customer!: Customer; //lo que me traiga la api desde mi servicio se lo tengo que igual a mi varaible customer
   
   constructor(
-    @Host() public service : CustomerService ,
+    public service : CustomerService ,
     private readonly route : ActivatedRoute,
     private router : Router){}
 

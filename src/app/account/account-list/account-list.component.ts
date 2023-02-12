@@ -1,6 +1,7 @@
 import { Component, Host, OnInit } from "@angular/core";
 import { Account } from "../interfaces/account";
 import { AccountService } from "../services/account.service";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class AccountListComponent implements OnInit {
   
   lisAccounts : Account[] = [];
 //Host es para que se use el mismo arreglo 
-  constructor(@Host() public AccountService : AccountService ){} 
+  constructor(@Host() public AccountService : AccountService,
+  private router : Router){} 
 
   ngOnInit(): void {
     //Primero llamo el dato de la api atraves de mi servicio accountService
@@ -21,6 +23,9 @@ export class AccountListComponent implements OnInit {
     
   }
 
+  editar(id: string){
+    this.router.navigate([`accountEdit/${id}`]);
+  }
 
   updateListAccount():void{
 

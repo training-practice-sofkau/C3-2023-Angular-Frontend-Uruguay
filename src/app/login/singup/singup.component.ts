@@ -35,8 +35,6 @@ export class SingupComponent implements OnInit{
 
   ngOnInit(): void {
     this.FormSignUp = this.initForm();
-    //this.upDateFromApi(); //para dar valores predeterminados al formularios  
-    //this.send();
   }
 
 
@@ -53,23 +51,6 @@ export class SingupComponent implements OnInit{
         terms:['',[Validators.required,Validators.requiredTrue]],
       })
   }
-
-  //Funcion para actualizar la info del formulario 
-  // upDateFromApi():void{
-  //   const response = {
-  //     document:"",
-  //     fullName:"",
-  //     email:"",
-  //     phone:"",
-  //     password:"",
-
-  //     terms:false
-  //   }
-  //   this.FormSignUp.patchValue(response)
-  // }
-
-  
-
  
   //Enviar los datos recogido a la api 
   send():void{

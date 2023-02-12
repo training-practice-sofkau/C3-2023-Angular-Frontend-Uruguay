@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Host, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { SignUpModel } from 'src/app/login/singup/interfaces/signUpModel';
@@ -32,7 +32,7 @@ export class UpdateComponent implements OnInit{
   }
 
   constructor(
-    public customerService: CustomerService,
+    /* @Host()*/ public customerService: CustomerService,
     private formBuilder : FormBuilder,
     public  readonly activatedRoute: ActivatedRoute){}
 
@@ -52,6 +52,19 @@ export class UpdateComponent implements OnInit{
       this.customerService.updateOneCustomer(this.customerId);  
     }
   
+    initForm():FormGroup{
+      return this.formBuilder.group(
+        {
+          // documentType:[],
+          document:['',[Validators.required]],
+          fullName:['',[Validators.required]],
+          email:['',[Validators.required,Validators.email]],
+          phone:['',[Validators.required]],
+          password:['',[Validators.required,Validators.minLength(8)]],
+  
+          terms:['',[Validators.required,Validators.requiredTrue]],
+        })
+    }
     
     //Funcion para actualizar la info del formulario 
     upDateFromApi():void{
@@ -59,12 +72,12 @@ export class UpdateComponent implements OnInit{
         document:this.customerEdit.document,
         fullName:this.customerEdit.fullName,
         email:this.customerEdit.email,
-        phone:this.customerEdit.phone,
-        password:this.customerEdit.phone,
+        phone:parseInt(this.customerEdit.phone),
+        password:this.customerEdit.password,
         
-        terms:true
+        terms:false,
       }
-      this.FormUpDate.patchValue(response)
+      this.FormUpDate.patchValue(response);
     }
 
 
@@ -79,19 +92,6 @@ export class UpdateComponent implements OnInit{
       });
   }
 
-  initForm():FormGroup{
-    return this.formBuilder.group(
-      {
-        // documentType:[],
-        document:['',[Validators.required]],
-        fullName:['',[Validators.required]],
-        email:['',[Validators.required,Validators.email]],
-        phone:['',[Validators.required]],
-        password:['',[Validators.required,Validators.minLength(8)]],
-
-        terms:['',[Validators.required,Validators.requiredTrue]],
-      })
-  }
   
   saveEdit(){
     //Tengo que llamar desde el servico a mi funcion updateCustomer para consumir la api

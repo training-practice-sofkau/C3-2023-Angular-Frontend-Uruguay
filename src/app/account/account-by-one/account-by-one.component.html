@@ -1,0 +1,55 @@
+
+  <label style="margin-left: 42%;">Date of Account</label>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id </th>
+      <th scope="col">balance</th>
+      <th scope="col">state</th>
+      <th scope="col">Account type id</th>
+      <th scope="col">Account type name</th>
+      <th scope="col">Account type state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>{{account.id}}</td>
+        <td>{{account.balance}}</td>
+        <td>{{account.state}}</td>
+        <td>{{account.account_type_id.id}}</td>
+        <td>{{account.account_type_id.name}}</td>
+        <td>{{account.account_type_id.state}}</td>
+        <td>
+          <a class = "btn btn-outline-success" (click)="editar(account.id)" >Editar</a>
+        </td>
+    </tr>
+  </tbody>
+    <thead>
+      <tr>
+        <th scope="col">coustomer id</th>
+        <th scope="col">coustomer document type id</th>
+        <th scope="col">coustomer document type name</th>
+        <th scope="col">coustomer document type state</th>
+        <th scope="col">coustomer document</th>
+        <th scope="col">coustomer fullName</th>
+        <th scope="col">coustomer Email</th>
+        <th scope="col">coustomer Phone</th>
+        <th scope="col">coustomer Password</th>
+        <th scope="col">coustomer State</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{account.coustomer_id.id}}</td>
+          <td>{{account.coustomer_id.documentType.id}}</td>
+          <td>{{account.coustomer_id.documentType.name}}</td>
+          <td>{{account.coustomer_id.documentType.state}}</td>
+          <td>{{account.coustomer_id.fullName}}</td>
+          <td>{{account.coustomer_id.email}}</td>
+          <td>{{account.coustomer_id.phone}}</td>
+          <td>{{account.coustomer_id.password}}</td>
+          <td>{{account.coustomer_id.state}}</td>
+      </tr>
+    </tbody>
+
+  </table>

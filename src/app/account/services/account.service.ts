@@ -8,6 +8,12 @@ import { ApiService } from 'src/app/api/api.service';
 })
 export class AccountService implements OnDestroy {
 
+  //Un account 
+  protected newAccount!: Account ;
+  public observableAccountOne : BehaviorSubject<Account>
+   = new BehaviorSubject<Account>(this.newAccount); // le asigno un valor por defecto
+
+  //Una lista de acocunt
   protected newAccounts : Account[] = [];
   public observableAccount : BehaviorSubject<Account[]> = new BehaviorSubject<Account[]>(this.newAccounts); // le asigno un valor por defecto
 
@@ -16,6 +22,7 @@ export class AccountService implements OnDestroy {
   
   ngOnDestroy():void{
     this.observableAccount.unsubscribe();
+    this.observableAccountOne.unsubscribe();
   }
 
 
@@ -25,6 +32,16 @@ export class AccountService implements OnDestroy {
         next: (typeApi) => { this.newAccounts = typeApi },
         complete: () => {this.observableAccount.next(this.newAccounts);}
       });
+    }
+  }
+
+  updateOneAccount = (id : string) =>{
+    if(this.observableAccountOne.observed && !this.observableAccountOne.closed){
+      this.apiService.getOneAccount(id).subscribe(
+        {
+        next: (typeApi) => { this.newAccount = typeApi },
+        complete: () => {this.observableAccountOne.next(this.newAccount);}
+        });
     }
   }
 
