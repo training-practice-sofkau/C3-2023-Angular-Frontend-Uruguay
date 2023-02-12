@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import jwt_decode from 'jwt-decode';
 
 // Services
 import { MessengerService } from '../../../services/messenger.service';
-import { AuthService } from '../../../services/auth.service';
+import { CustomerService } from '../../../services/customer.service';
 
 // Components
 import { AppComponent } from '../../../app.component';
 
 // Interfaces
 import { CustomerSignInModel } from '../../../interfaces/customer.interface';
-import { LoginComponent } from '../login.component';
+import { SigninResponseModel, SigninTokenResponseModel } from '../../../interfaces/responses.interface';
+import { AuthService } from '../../../services/auth.service';
+
 
 
 
@@ -31,13 +34,14 @@ export class SignInComponent implements OnInit {
     private fb: FormBuilder,
     private messages: MessengerService,
     private router: Router,
+    private customerService: CustomerService,
     private authService: AuthService,
     public appComp: AppComponent,
   ) {
 
     this.signinForm = this.fb.group({
-      username: ["", ], //[Validators.email, Validators.required]],
-      password: ["", ] //[Validators.minLength(5), Validators.required]]
+      username: ["",], //[Validators.email, Validators.required]],
+      password: ["",] //[Validators.minLength(5), Validators.required]]
     });
   }
 
@@ -45,50 +49,77 @@ export class SignInComponent implements OnInit {
   }
 
   /**
-   * User login authentication
+   * User login from signin form
    */
   login() {
     const formUsername = this.signinForm.value.username;
     const formPassword = this.signinForm.value.password;
-
-    //TODO: verify credentials calling backend
 
     let userSignin: CustomerSignInModel = {
       username: formUsername,
       password: formPassword
     }
 
-    //const answer = this.authService.customerLogin(userSignin);
-    //console.log(answer);
+    this.loading = true;
 
-    if (formUsername == "a" && formPassword == "1") { // check for valid credentials
+    setTimeout(() => {
 
-      this.transitionToDesktop();
+      this.validateCredentials(userSignin);
 
-    } else {    // invalid credentials. Error
+    }, 1500);
 
-      this.messages.infoMsg("Username/Email or Password not valid! Try again", "", 2000);
-      this.signinForm.reset();
 
-    }
+  }
+
+  /**
+   * Checks the response from customerService and verifies
+   * that the credentials are valid
+   * sets in localstorage the data to be used later
+   * Redirect the user to desktop or back to login
+   */
+
+  validateCredentials(userSignin: CustomerSignInModel) {
+
+    this.customerService.customerSignin(userSignin)
+      .subscribe((signInResponse) => {
+        const responseValue = signInResponse as SigninResponseModel;
+
+        if (responseValue.status) {
+
+          const token = responseValue.token;
+          const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
+          const account = decoded.id;
+
+          localStorage.setItem('token', token);
+          localStorage.setItem('currentAccount', account);
+
+          this.transitionToDesktop(true);
+        }
+      });
+
+    this.transitionToDesktop(false);
   }
 
   /**
    * Transition from login to Desktop ( after verify credentials )
+   * or back to login form if wrong credentials are given
    */
-  transitionToDesktop() {
+  transitionToDesktop(result: boolean) {
 
-    this.loading = true;
+    if (result) { // login succesfull
 
-    setTimeout(() => {
-      this.loading = false;
       this.authService.setUserStatus(true);
-      this.appComp.isInPublicZone = false;
+      this.authService.isInPublicZone = false;
+      this.loading = false;
       this.router.navigate(["desktop"]);
-    }, 1500);
+
+    } else {    // invalid credentials. Error
+
+      this.loading = false;
+      this.messages.infoMsg("Username/Email or Password not valid! Try again", "", 2000);
+      this.signinForm.reset();
+    }
   }
-
-
 }
 
 

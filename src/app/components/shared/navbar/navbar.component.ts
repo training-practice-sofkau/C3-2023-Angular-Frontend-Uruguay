@@ -41,8 +41,9 @@ export class NavbarComponent implements OnInit {
    * and exit the desktop
    */
   logout(){
+    localStorage.clear();
     this.authService.setUserStatus(false);
-    this.appComp.isInPublicZone = true;
+    this.authService.isInPublicZone = true;
     this.appComp.toHome();
     this.router.navigate(["/"]);
   }

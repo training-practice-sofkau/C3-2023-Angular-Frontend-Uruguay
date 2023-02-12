@@ -1,12 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
-// Environment
-import { environment } from 'src/environments/environment';
-
-// Interfaces
-import { CustomerSignInModel } from '../../app/interfaces/customer.interface';
 
 
 @Injectable({
@@ -15,7 +8,8 @@ import { CustomerSignInModel } from '../../app/interfaces/customer.interface';
 export class AuthService {
 
   userIsLogged: boolean = false;
-  token: string = "";
+
+  isInPublicZone: boolean = true;
 
   constructor(
 
@@ -23,6 +17,22 @@ export class AuthService {
 
   ) { }
 
+
+  /**
+   * Sets the status of public area
+   * @param status boolean
+   */
+  public setIsPublicZone(status: boolean) {
+    this.isInPublicZone = status;
+  }
+
+  /**
+   *  Gets the status of public area
+   * @returns boolean
+   */
+  public getIsPublicZone(): boolean {
+    return this.isInPublicZone;
+  }
 
   /**
    * Sets the status of the user ( login )
@@ -39,43 +49,5 @@ export class AuthService {
   public getUserStatus(): boolean {
     return this.userIsLogged;
   }
-
-  customerLogin(customer: CustomerSignInModel) : Observable<Object> {
-
-    const response = this.http.post(`${environment.API_URL}/security/signin`, customer)
-
-    console.log(response);
-
-    return response;
-    /* const response = await fetch(`${environment.API_URL}/security/signin`, {
-      method:'POST',
-      body: JSON.stringify(customer)
-    });
-
-
-    const {jwt_token} = await response.json();
-
-    await console.log({jwt_token});
- */
-    /* fetch(`${environment.API_URL}/security/signin`,{
-      method:'POST',
-      headers: {
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify(customer)
-    })
-    .then( resp => {
-
-      const tok = resp.json();
-      console.log( tok );
-
-    }).then() */
-
-
-  }
-
-
-
-
 }
 

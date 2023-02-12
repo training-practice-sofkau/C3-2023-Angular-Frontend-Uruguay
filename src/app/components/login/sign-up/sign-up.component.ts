@@ -80,7 +80,7 @@ transitionToDesktop() {
   setTimeout(() => {
     this.loading = false;
     this.authService.setUserStatus(true);
-    this.appComp.isInPublicZone = false;
+    this.authService.isInPublicZone = false;
     this.router.navigate(["desktop"]);
   }, 1500);
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
 
-  constructor(){}
-
-  isInPublicZone:boolean = true;
+  constructor(
+    public authService: AuthService,
+  ){}
 
   isLoggingIn: boolean = false;
   isRegistering: boolean = false;
