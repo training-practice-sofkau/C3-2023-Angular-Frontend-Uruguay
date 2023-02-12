@@ -28,38 +28,25 @@
 
 
 
-
-<div class="d-flex align-items-center mt-3" style="background-color: rgba(255, 255, 255, 0.5);">
-  <div class="container">
-    <div class="d-flex flex-column align-items-center mt-3" style="width: 200px;">
-      <div class="card">
-        <img alt="fotoperfil" [src]="customer?.avatarUrl || 'https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg'" class="card-img-top rounded-circle mt-3" style="width: 100px; height: 100px;">
-        <div class="card-body d-flex flex-column">
-          <h4 class="card-title mt-3 text-center">Nombre: {{ customer?.fullName }}</h4>
-          <h6 class="card-subtitle mb-2 text-muted mt-3 text-center" style="font-size: smaller;">Id de Usuario: {{ customer?.id }}</h6>
-        </div>
-      </div>
+<div class="container mt-5">
+  <div class="card text-center" style="background-color: transparent;">
+    <img [src]=" customer?.avatarUrl || 'https://i.pinimg.com/474x/bd/f4/d3/bdf4d3fe1f9a17136319df951fe9b3e0.jpg'" class="rounded-circle mx-auto d-block mt-4" style="width: 10rem; height: 10rem;">
+    <div class="card-body">
+      <h4 class="card-title">Nombre: {{ customer?.fullName }}</h4>
+      <p class="card-text">Id de Usuario: {{ customer?.id }}</p>
+    </div>
+    <div class="btn-container d-flex justify-content-between mt-4">
+      <button (click)="openEditModal()" class="btn btn-primary mr-3">Agregar tipo de cuenta</button>
+      <button (click)="openEditModal2()" class="btn btn-primary">Agregar depósito</button>
+    </div>
+    <div class="mt-4">
+      <button [routerLink]="['/customer']" class="btn btn-danger">Cambios de cuenta</button>
     </div>
   </div>
 </div>
 
 
 
-  <div class="d-flex mt-3 justify-content-between">
-    <div class="d-flex flex-column align-items-start">
-      <div class="my-3">
-        <button (click)="openEditModal()" class="btn btn-primary">Agregar tipo de cuenta</button>
-      </div>
-      <div class="my-3">
-        <button (click)="openEditModal2()" class="btn btn-primary">Agregar depósito</button>
-      </div>
-    </div>
-    <div class="d-flex flex-column align-items-end">
-      <div class="my-3">
-        <button [routerLink]="['/customer']" class="btn btn-danger">Cambios de cuenta</button>
-      </div>
-    </div>
-  </div>
 
 <ng-template #content let-modal>
   <div class="modal-header">

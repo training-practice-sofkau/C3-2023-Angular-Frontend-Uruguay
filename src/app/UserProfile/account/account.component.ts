@@ -8,6 +8,7 @@ import { AccountTransfer } from '../../tools/interface/accountTransfer';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
+  styleUrls: ['../account/account.component.scss']
 })
 export class AccountComponent implements OnInit {
 

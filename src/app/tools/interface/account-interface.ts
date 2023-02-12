@@ -1,7 +1,7 @@
 import {customerInterface} from './customer-interface'
 import {AccountTypeinterface} from './Account-type-interface'
 
-export interface  AccountInterfaec  
+export interface  AccountInterfaec
 {accountUser:
   {
     customer: customerInterface;
