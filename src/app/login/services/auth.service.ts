@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from '../../api/api.service';
-import { CustomerModel, DocumentTypeModel } from '../../program-Funcional/interfaces/customerModel';
+import {  DocumentTypeModel } from '../../program-Funcional/interfaces/customerModel';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SignUpModel } from "../singup/interfaces/signUpModel";
+import { SignUpModel } from "../interfaces/signUpModel";
 
 
 @Injectable({

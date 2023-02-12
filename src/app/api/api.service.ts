@@ -4,7 +4,7 @@ import { Account } from '../account/interfaces/account';
 import { CreateAccount } from '../account/interfaces/createAccount';
 import { Customer } from '../customer/interface/customer';
 import { Injectable } from '@angular/core';
-import { SignUpModel } from '../login/singup/interfaces/signUpModel';
+import { SignUpModel } from '../login/interfaces/signUpModel';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +66,7 @@ export class ApiService {
     return this.http.get<DocumentType>(`${this.BASE_URL}/customer/document-type/find-id/${document}`,this.httpOptions);
   }
   
+  //Me tendria que retornar el token 
   sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
     return this.http.post<string>(`${this.BASE_URL}/singUp`,newCustomer);
   }

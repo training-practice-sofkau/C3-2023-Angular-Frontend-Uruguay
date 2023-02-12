@@ -6,6 +6,7 @@ import { MaterialModule } from "../material/material.module";
 import { SingOutComponent } from "./sing-out/sing-out.component";
 import { SinginComponent } from "./singin/singin.component";
 import { SingupComponent } from "./singup/singup.component";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SingupComponent } from "./singup/singup.component";
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports:[
     SinginComponent,

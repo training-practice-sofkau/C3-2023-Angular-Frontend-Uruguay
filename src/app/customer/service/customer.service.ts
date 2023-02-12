@@ -1,12 +1,18 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Customer } from '../interface/customer';
 import { ApiService } from 'src/app/api/api.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { SignUpModel } from '../../login/interfaces/signUpModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService implements OnDestroy {
+
+  //repito codigo para evitar errores con los modelos signUp y customer
+  protected tokenSignUp!: string;
+  public SignUpObservable : BehaviorSubject<string> = 
+  new BehaviorSubject<string>(this.tokenSignUp);
 
   //get Document Type
   protected documentType!: DocumentType;
@@ -29,8 +35,18 @@ export class CustomerService implements OnDestroy {
   ngOnDestroy(): void {
     this.customerAllObservable.unsubscribe();
     this.customerOneObservable.unsubscribe();
+    this.documentTypeObservable.unsubscribe();
+    this.SignUpObservable.unsubscribe();
   }
   
+  createSignUp(customer : SignUpModel){
+    if(this.SignUpObservable.observed && !this.SignUpObservable.closed){
+      this.apiService.sigUp(customer).subscribe({
+        next: (data) => (this.tokenSignUp = data),
+        complete: () => (this.SignUpObservable.next(this.tokenSignUp))
+      });
+    }
+  }
   //Actualizando los datos de todos los customers
   updateCustomerList():void{
     if(this.customerAllObservable.observed && !this.customerAllObservable.closed){

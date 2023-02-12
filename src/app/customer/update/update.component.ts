@@ -1,7 +1,7 @@
 import { Component, Host, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { SignUpModel } from 'src/app/login/singup/interfaces/signUpModel';
+import { SignUpModel } from 'src/app/login/interfaces/signUpModel';
 import { CustomerService } from '../service/customer.service';
 import { Customer } from '../interface/customer';
 

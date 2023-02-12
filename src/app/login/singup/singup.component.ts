@@ -1,6 +1,6 @@
 import { Component, Host, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SignUpModel } from './interfaces/signUpModel';
+import { SignUpModel } from '../interfaces/signUpModel';
 import { DocumentTypeModel } from 'src/app/program-Funcional/interfaces/customerModel';
 import { CustomerService } from '../../customer/service/customer.service';
 
@@ -14,7 +14,7 @@ export class SingupComponent implements OnInit{
   
   
 
-  public FormSignUp!: FormGroup;
+  public FormSignUp!: FormGroup; //this.signupForm.reset();//En caso de querer resetear por algun error enotonce se usa esta funcion
 
   documentType! : DocumentTypeModel ;
   
@@ -62,6 +62,7 @@ export class SingupComponent implements OnInit{
     //Buscar el document Type => Cedula,Pasaporte,Credencial  
   }
 
+  //Obtener una instancia de un document Type 
   getDocumentType(document:string){
     this.serviceCustomer.getDocumentType(document);
 
@@ -69,6 +70,21 @@ export class SingupComponent implements OnInit{
       (data : DocumentType)=> (this.documentType = data)
     );
   }
+
+  //Funcion para redirigirme al home si se ingresa satifactoriamente
+  // transitionToDesktop(result: boolean) {
+
+  //   if (result) { // login succesfull
+
+  //   } else {    // invalid credentials. Error
+
+  //     this.loading = false;
+  //     this.messages.infoMsg("Something went Wrong! Try again...", "", 2000);
+  //     this.signupForm.reset();
+  //   }
+  // }
+
+  
 
   
 
