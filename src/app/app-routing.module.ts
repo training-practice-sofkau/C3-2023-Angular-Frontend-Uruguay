@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
-import { SearchComponent } from './dashboard/components/search/search.component';
-import { GuardGuard } from './modules/shared/guards/guard.guard';
 import { PageNotFoundComponent } from './modules/shared/page-not-found/page-not-found.component';
-import { DepositComponent } from './dashboard/transaction/deposit/deposit.component';
-import { TransferComponent } from './dashboard/transaction/transfer/transfer.component';
+
 
 
 const routes: Routes = [

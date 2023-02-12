@@ -5,12 +5,24 @@ import { SignIn } from 'src/app/interfaces/sign-in.interface';
 import { ApiService } from '../../../services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { CustomerModel, DocumentTypeModel } from 'src/app/interfaces/Customer.interface';
+import { AccountModel } from 'src/app/interfaces/account.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  userLogged: boolean = false;
+
+  signedUpUsers: CustomerModel[] = [];
+
+  signedUpUser: Object = {};
+
+  documentTypes: DocumentTypeModel[] = [];
+
+  customerAccounts: AccountModel[] = [];
+  
   constructor(public api: ApiService, private http: HttpClient, private formBuilder: FormBuilder ) { }
 
   login(form: SignIn): Observable<ResponseI>{
