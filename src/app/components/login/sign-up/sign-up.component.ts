@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import jwt_decode from 'jwt-decode';
 //Interfaces
 import { CustomerSignUpModel } from '../../../interfaces/customer.interface';
 
@@ -12,14 +12,15 @@ import { MessengerService } from '../../../services/messenger.service';
 //Components
 import { AppComponent } from '../../../app.component';
 import { AuthService } from '../../../services/auth.service';
-import { LoginComponent } from '../login.component';
+import { SigninResponseModel, SigninTokenResponseModel } from 'src/app/interfaces/responses.interface';
+
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
 
   signupForm: FormGroup;
   documentTypes: string[] = ["ID Card", "Passport ID"];
@@ -35,7 +36,7 @@ export class SignUpComponent implements OnInit {
     private messages: MessengerService,
     public appComp: AppComponent,
     private authService: AuthService,
-    ) {
+  ) {
     this.signupForm = this.fb.group({
       documentType: ["ID Card", Validators.required],
       document: ["", Validators.required],
@@ -45,8 +46,6 @@ export class SignUpComponent implements OnInit {
       password: ["", [Validators.minLength(5), Validators.required]]
     })
   }
-
-  ngOnInit(): void { }
 
   /**
    * creates a new instance of Customer
@@ -63,28 +62,65 @@ export class SignUpComponent implements OnInit {
       accountTypeName: 'Saving'
     }
 
-    this.customerService.addNewCustomer(customer);
+    this.loading = true;
 
-    this.messages.infoMsg("New Customer created successfully!", "", 2000);
+    setTimeout(() => {
 
-    this.transitionToDesktop();
+      this.validateRegistration(customer);
+
+    }, 1500);
+
   }
 
-/**
-   * Transition from login to Desktop ( after verify credentials )
-   */
-transitionToDesktop() {
+  validateRegistration(customer: CustomerSignUpModel) {
 
-  this.loading = true;
+    this.customerService.addNewCustomer(customer)
+      .subscribe({
+        next: (signupResponse) => {
+          const responseValue: SigninResponseModel = signupResponse as unknown as SigninResponseModel;
 
-  setTimeout(() => {
-    this.loading = false;
-    this.authService.setUserStatus(true);
-    this.authService.isInPublicZone = false;
-    this.router.navigate(["desktop"]);
-  }, 1500);
-}
+          if (responseValue.status) {
 
+            this.messages.infoMsg("New Customer created successfully!", "", 2000);
+
+            const token = responseValue.token;
+            const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
+            const account = decoded.id;
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('currentAccount', account);
+
+            this.transitionToDesktop(true);
+          }
+
+        },
+        error: (e) => {
+          this.transitionToDesktop(false);
+        }
+      })
+  }
+
+
+  /**
+  * Transition from login to Desktop ( after verify credentials )
+  * or back to login form if wrong credentials are given
+  */
+  transitionToDesktop(result: boolean) {
+
+    if (result) { // login succesfull
+
+      this.authService.setUserStatus(true);
+      this.authService.isInPublicZone = false;
+      this.loading = false;
+      this.router.navigate(["desktop"]);
+
+    } else {    // invalid credentials. Error
+
+      this.loading = false;
+      this.messages.infoMsg("Something went Wrong! Try again...", "", 2000);
+      this.signupForm.reset();
+    }
+  }
 
 
 }

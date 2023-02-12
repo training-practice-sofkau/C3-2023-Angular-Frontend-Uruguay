@@ -23,13 +23,13 @@ export class CustomerService {
    * @param customer customer entity data
    * @returns validation token
    */
-  addNewCustomer(customer: CustomerSignUpModel) : Observable<string> {
+  addNewCustomer(customer: CustomerSignUpModel) {
 
-    const answ = this.http.post<string>(`${environment.API_URL}/security/signup`, customer)
+    const res = this.http.post<string>(`${environment.API_URL}/security/signup`, customer);
 
-    console.log(answ)
+    //console.log(res)
 
-    return answ;
+     return res;
   }
 
   /**
@@ -39,9 +39,7 @@ export class CustomerService {
 
     const res = this.http.post(`${environment.API_URL}/security/signin`, customer);
 
-    console.log(res)
-
-     return res;
+    return res;
 
    }
 
