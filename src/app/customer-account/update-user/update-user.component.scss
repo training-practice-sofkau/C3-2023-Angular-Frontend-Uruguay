@@ -1,21 +1,18 @@
 .container{
     position: relative;
     justify-content: center;
-    margin: auto;
-    margin-top: 100px;
-    color :#f5f6fa;
+    align-content: center;
+    margin-bottom: 250px;
     
 }
 
 
 body {
-    margin: 0;
-    padding-top: 40px;
     color: #2e323c;
     background: #f5f6fa;
     position: relative;
     height: 100%;
-   
+    
 }
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
@@ -29,9 +26,9 @@ body {
 .account-settings .user-profile .user-avatar img {
     width: 90px;
     height: 90px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 100px;
+    //-webkit-border-radius: 100px;
+    //-moz-border-radius: 100px;
+    //border-radius: 100px;
 }
 .account-settings .user-profile h5.user-name {
     margin: 0 0 0.5rem 0;
@@ -62,11 +59,9 @@ body {
 .account-settings .about p {
     font-size: 0.825rem;
 }
+
 .form-control {
-    border: 1px solid #cfd1d8;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    border-radius: 0px;
     font-size: .825rem;
     background: #ffffff;
     color: #2e323c;
@@ -74,12 +69,8 @@ body {
 
 .card {
     background: #212127;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin-bottom: 1rem;
     color: #ffffff;
+    border-radius: 0px;
 }
 
 .cabeza {
@@ -88,7 +79,7 @@ body {
     margin-top: 15px;
 }
 
-//**********************************************************************************************
+//****************BOTTOM************************************************
 
 .text-right{
     

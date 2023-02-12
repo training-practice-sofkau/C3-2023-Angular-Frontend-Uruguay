@@ -1,4 +1,4 @@
-
+/*
 .comienzo {
     text-align: center;
     font-size: 19px;
@@ -8,6 +8,7 @@
     margin-bottom: 30px;
   }
   
+
   .comienzo h1{
     font-size: 64px;
   }
@@ -35,6 +36,7 @@
     color: #f8faf8;
   }
   
+  */
   /***********************************************************/
   
   * {
@@ -47,9 +49,9 @@
     width: 500px;
     background: #212127;
     padding: 30px;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 150px;
+    //margin: auto;
+    //margin-top: 0px;
+    margin-bottom: 180px;
     font-family: Helvetica;
     color: white;
     box-shadow: 7px 13px 37px #000000;
@@ -81,6 +83,8 @@
   }
   
   
+  //********************BOTTOM****************************
+
   .form-register .boton {
     width: 100%;
     background: #fe6047;
