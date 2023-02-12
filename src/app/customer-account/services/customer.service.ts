@@ -15,8 +15,12 @@ export class CustomerService {
   constructor(private http: HttpClient) {}
 
 
-  public getCustomer(): Observable<CustomerModel[]> {
+  public getAllCustomers(): Observable<CustomerModel[]> {
     return this.http.get<CustomerModel[]> (this.apiServeUrl+"/customer/findall");
+  }
+
+  public getcustomerById(id : string): Observable<CustomerModel> {
+    return this.http.get<CustomerModel> (this.apiServeUrl+"/customer/find/"+id)
   }
 
   //***************************************************************** */

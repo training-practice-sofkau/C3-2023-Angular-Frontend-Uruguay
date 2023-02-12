@@ -6,6 +6,7 @@
   <div class="cover"> 
       
 
+
 <!--*****************CUSTOMER UPDATE*********************-->
 
 
@@ -115,8 +116,10 @@
 
 <!--******************* CUSTOMER VIEW **********************-->
 
-<section class="section about-section gray-bg" id="about"  *ngIf= "(globalService.switchViewUser)">
-  <div class="container2"   >
+
+
+<section class="section about-section gray-bg" id="about" *ngIf= "(globalService.switchViewUser)" >
+  <div class="container2"> 
       <div class="row align-items-center flex-row-reverse">
           <div class="col-lg-6">
               <div class="about-text go-to">
@@ -128,28 +131,28 @@
 
                           <div class="media">
                               <label>Nombre</label>
-                              <p>Bruno Fernandez</p>
+                              <p>{{customer.fullName}}</p>
                           </div>
 
                           <div class="media">
                               <label>N° Documento</label>
-                              <p>4280966-4</p>
+                              <p>{{customer.document}}</p>
                           </div>
                           
                           <div class="media">
                               <label>Tipo de Documento</label>
-                              <p>Cedula</p>
+                              <p>{{customer.documentType.name}}</p>
                           </div>
 
                       </div>
                       <div class="col-md-6">
                           <div class="media">
                               <label>E-mail</label>
-                              <p>info@domain.com</p>
+                              <p>{{customer.email}}</p>
                           </div>
                           <div class="media">
                               <label>Phone</label>
-                              <p>820-885-3321</p>
+                              <p>{{customer.phone}}</p>
                           </div>
                           
                       </div>
@@ -190,7 +193,6 @@
   </div>
   
 </section>
-
 
 
 <!--FIN Background y Transparencia-->
