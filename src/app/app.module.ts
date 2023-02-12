@@ -22,7 +22,7 @@ import { DesktopModule } from './components/desktop/desktop.module';
 @NgModule({
   declarations: [
     AppComponent,
-    DesktopComponent,
+
   ],
   imports: [
     BrowserAnimationsModule,

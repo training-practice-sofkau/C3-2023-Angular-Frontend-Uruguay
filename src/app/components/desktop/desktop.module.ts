@@ -15,7 +15,7 @@ import { MaterialModule } from '../shared/material/material.module';
     SharedModule,
     MaterialModule,
   ],
-  exports:[
+  exports: [
     DesktopComponent
   ]
 })
