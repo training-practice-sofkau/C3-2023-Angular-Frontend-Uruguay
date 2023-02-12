@@ -1,3 +1,17 @@
-<div>
-<p>{{customer.fullName}}</p>
+<div class="div">
+  <h2>Customer</h2>
+  <p>{{customer.id}}</p>
+  <p>{{customer.fullName}}</p>
+  <p>{{customer.document}}</p>
+  <p *ngIf="customer.documentType">{{customer.documentType.name}}</p>
+  <p>{{customer.email}}</p>
+  <p>{{customer.phone}}</p>
 </div>
+<div *ngFor="let index of accounts">
+  <h2>Account</h2>
+  <p>{{index.balance}}</p>
+  <p>{{index.id}}</p>
+  <p>{{index.accountType}}</p>
+  <p>{{index.state}}</p>
+</div>
+

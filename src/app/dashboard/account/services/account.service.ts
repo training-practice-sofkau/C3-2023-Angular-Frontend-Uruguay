@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { ApiService } from 'src/app/services/api.service';
+import { AccountModel } from '../../../interfaces/account.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class AccountService {
 
   public getcustomerById(id: string): Observable<CustomerModel> {
     return this.http.get<CustomerModel> (this.api.url + "/customer/getCustomer/" + id);
+  }
+
+  public getAllAccount(id: string):Observable<AccountModel[]> {
+    return this.http.get<AccountModel[]> (this.api.url + "/account/getByCustomerId/" + id);
   }
 
 }
