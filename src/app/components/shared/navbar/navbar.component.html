@@ -1,12 +1,15 @@
 <mat-toolbar color="primary" *ngIf="(authService.getUserStatus()) === false; else privateNavbar">
-  <span (click)="appComp.toHome()" >Virtual Banking APP</span>
+  <span routerLink="/" >Virtual Banking APP</span>
   <span class="spacer"></span>
-  <button class="navbar-button" mat-fab extended color="accent" (click)="appComp.toRegister()">
-    <mat-icon>assignment_ind</mat-icon> Sign Up
+
+  <button class="navbar-button" mat-fab extended color="accent" routerLink="/signup">
+    <mat-icon>assignment_ind</mat-icon> Register
   </button>
-  <button class="navbar-button" mat-fab extended color="accent" (click)="appComp.toLogin()">
+
+  <button class="navbar-button" mat-fab extended color="accent" routerLink="/signin">
     <mat-icon>login</mat-icon> Login
   </button>
+
 </mat-toolbar>
 
 <ng-template #privateNavbar>
@@ -15,10 +18,9 @@
     <span class="spacer"></span>
 
 
-    <button class="desk-navbar-button" mat-raised-button *ngFor= "let item of desktopMenu" [routerLink]= 'item.redirect'>
-       {{ item.name }}
-       <mat-icon>assignment_ind</mat-icon>
-     </button>
+    <button class="navbar-button" mat-fab extended color="accent" (click)="appComp.toRegister()">
+      <mat-icon>assignment_ind</mat-icon> Sign Up
+    </button>
 
     <span class="spacer"></span>
     <button class="navbar-button" mat-fab extended color="accent" (click)="logout()">

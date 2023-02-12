@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { MaterialModule } from '../shared/material/material.module';
-import { SharedModule } from '../shared/shared.module';
 import { DesktopComponent } from './desktop.component';
-import { ProfileComponent } from './profile/profile.component';
+import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../shared/material/material.module';
+
+
 
 @NgModule({
   declarations: [
-    DesktopComponent,
-    ProfileComponent
+    DesktopComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,
     SharedModule,
-
+    MaterialModule,
   ],
-
+  exports:[
+    DesktopComponent
+  ]
 })
 export class DesktopModule { }

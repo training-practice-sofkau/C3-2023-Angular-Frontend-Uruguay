@@ -13,11 +13,16 @@ import { LoginModule } from './components/login/login.module';
 
 //Components
 import { AppComponent } from './app.component';
+import { DesktopComponent } from './components/desktop/desktop.component';
+import { SigninModule } from './components/sign-in/sign-in.module';
+import { SignupModule } from './components/sign-up/sign-up.module';
+import { DesktopModule } from './components/desktop/desktop.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DesktopComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -27,6 +32,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     LoginModule,
     JwtModule,
+    SigninModule,
+    SignupModule,
+
   ],
   bootstrap: [AppComponent]
 })

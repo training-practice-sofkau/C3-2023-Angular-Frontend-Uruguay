@@ -4,16 +4,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import jwt_decode from 'jwt-decode';
 
 // Services
-import { MessengerService } from '../../../services/messenger.service';
-import { CustomerService } from '../../../services/customer.service';
+import { MessengerService } from '../../services/messenger.service';
+import { CustomerService } from '../../services/customer.service';
 
 // Components
-import { AppComponent } from '../../../app.component';
+import { AppComponent } from '../../app.component';
 
 // Interfaces
-import { CustomerSignInModel } from '../../../interfaces/customer.interface';
-import { SigninResponseModel, SigninTokenResponseModel } from '../../../interfaces/responses.interface';
-import { AuthService } from '../../../services/auth.service';
+import { CustomerSignInModel } from '../../interfaces/customer.interface';
+import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
+import { AuthService } from '../../services/auth.service';
 
 
 

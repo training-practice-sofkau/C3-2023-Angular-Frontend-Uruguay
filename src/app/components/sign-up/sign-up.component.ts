@@ -3,15 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 //Interfaces
-import { CustomerSignUpModel } from '../../../interfaces/customer.interface';
+import { CustomerSignUpModel } from '../../interfaces/customer.interface';
 
 //Services
-import { CustomerService } from '../../../services/customer.service';
-import { MessengerService } from '../../../services/messenger.service';
+import { CustomerService } from '../../services/customer.service';
+import { MessengerService } from '../../services/messenger.service';
 
 //Components
-import { AppComponent } from '../../../app.component';
-import { AuthService } from '../../../services/auth.service';
+import { AppComponent } from '../../app.component';
+import { AuthService } from '../../services/auth.service';
 import { SigninResponseModel, SigninTokenResponseModel } from 'src/app/interfaces/responses.interface';
 
 
