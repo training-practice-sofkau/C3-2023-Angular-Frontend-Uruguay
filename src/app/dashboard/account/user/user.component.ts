@@ -12,6 +12,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class UserComponent {
 
   customers: CustomerModel[] = <CustomerModel[]>this.loginService.signedUpUsers;
+  customer: CustomerModel = <CustomerModel>this.loginService.signedUpUser;
+
+  id: string = "d4a809aa-7053-4a8a-9a4f-cbb92a23b2a7"
 
   constructor(
     private accountService: AccountService,
@@ -19,12 +22,19 @@ export class UserComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getAllCustomer();
+    this.getCustomer();
   }
 
   public getAllCustomer(): void {
     this.accountService.getAllCustomers().subscribe({
     next: (response: CustomerModel[] ) =>{console.log(this.customers = response)},
+    error: (error:HttpErrorResponse)=> {alert(error.message)}
+    })
+  }
+
+  public getCustomer(): void {
+    this.accountService.getcustomerById(this.id).subscribe({
+    next: (response: CustomerModel ) =>{console.log(this.customer = response)},
     error: (error:HttpErrorResponse)=> {alert(error.message)}
     })
   }

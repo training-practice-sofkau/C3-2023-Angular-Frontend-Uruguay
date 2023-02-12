@@ -25,4 +25,8 @@ export class AccountService {
     return this.http.get<CustomerModel[]> (this.api.url + "/customer/getAll");
   }
 
+  public getcustomerById(id: string): Observable<CustomerModel> {
+    return this.http.get<CustomerModel> (this.api.url + "/customer/getCustomer/" + id);
+  }
+
 }
