@@ -13,6 +13,7 @@ export class AuthService {
   protected documentType: DocumentTypeModel = {
     name: "",
   };
+  
   protected newCustomer: SignUpModel = {
     documentType: this.documentType,//DocumentTypeModel , es un tipo de dato que nosotros creamos
     document: "",

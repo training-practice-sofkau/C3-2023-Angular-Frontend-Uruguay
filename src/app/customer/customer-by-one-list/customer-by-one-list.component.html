@@ -13,7 +13,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{customer.id}}</td>
+        <td>{{customer.id}}</td>
         <td>{{customer.documentType.name}}</td>
         <td>{{customer.document}}</td>
         <td>{{customer.fullName}}</td>
@@ -21,6 +21,9 @@
         <td>{{customer.phone}}</td>
         <td>{{customer.password}}</td>
         <td>{{customer.state}}</td>
+        <td>
+          <a class = "btn btn-outline-success" (click)="editar(customer.id)" >Editar</a>
+        </td>
     </tr>
   </tbody>
 </table>

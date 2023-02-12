@@ -26,7 +26,7 @@ import { ComponentsModule } from './components/components.module';
 
     MaterialModule,
     SharedModule,
-    LoginModule, //no me esta andando por alguna razon 
+    LoginModule,
     AccountModule,
     CustomerModule,
     ComponentsModule,

@@ -11,8 +11,6 @@ export class FindByOneIdComponent implements OnInit{
 
   public formCustomer!: FormGroup;
 
-  customerId:string  = ""; // esta variable la tengo que igual al input de mi search
-
   constructor(
     private readonly router : Router,
     private formBuilder : FormBuilder){}
@@ -20,6 +18,7 @@ export class FindByOneIdComponent implements OnInit{
 
   ngOnInit(): void {
     this.formCustomer = this.initForm();
+    
     
 
   }
@@ -37,9 +36,10 @@ export class FindByOneIdComponent implements OnInit{
 
   //Quiero hace una especia se switch para filtrar si es customer ,account o cualquier otra opcion y mandar a la ruta segun las condiciones
   searchCustomerId(){
-    this.customerId = this.formCustomer.value;
     //aplicar el swich con las condiciones por ejempo customer value = 1 
-    this.router.navigate([`customerByOneList/${this.customerId}`]);
+    //
+    this.router.navigate([`customerByOneList/${this.formCustomer.get('searchId')?.value}`]);
+
   }
 
 }

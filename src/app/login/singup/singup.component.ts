@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Host, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignUpModel } from './interfaces/signUpModel';
 import { DocumentTypeModel } from 'src/app/program-Funcional/interfaces/customerModel';
@@ -11,24 +11,27 @@ import { DocumentTypeModel } from 'src/app/program-Funcional/interfaces/customer
 })
 export class SingupComponent implements OnInit{
   
+  
+
   public FormSignUp!: FormGroup;
 
   documentType! : DocumentTypeModel ;
   
   customer : SignUpModel = { 
     documentType :  {
-      name: "Cedula"
+      name: ""
     },
-    document: "11111111",
-    fullName: "Cristian Gonzalez",
-    email: "cristian@gmail.com",
-    phone: "091232323",
-    password: "123",
+    document: "",
+    fullName: " ",
+    email: "",
+    phone: "",
+    password: "",
     
   }
   
   constructor(private formBuilder : FormBuilder){}
 
+  
 
   ngOnInit(): void {
     this.FormSignUp = this.initForm();
@@ -52,18 +55,18 @@ export class SingupComponent implements OnInit{
   }
 
   //Funcion para actualizar la info del formulario 
-  upDateFromApi():void{
-    const response = {
-      document:'55975866',
-      fullName:'cristian gonzalez',
-      email:'cris@gmail.com',
-      phone:'096123123',
-      password:'cris123123',
+  // upDateFromApi():void{
+  //   const response = {
+  //     document:"",
+  //     fullName:"",
+  //     email:"",
+  //     phone:"",
+  //     password:"",
 
-      terms:true
-    }
-    this.FormSignUp.patchValue(response)
-  }
+  //     terms:false
+  //   }
+  //   this.FormSignUp.patchValue(response)
+  // }
 
   
 

@@ -1,7 +1,7 @@
 import { Component, Host, OnInit } from '@angular/core';
 import { Customer } from '../interface/customer';
 import { CustomerService } from '../service/customer.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-by-one-list',
@@ -15,7 +15,8 @@ export class CustomerByOneListComponent implements OnInit {
   
   constructor(
     @Host() public service : CustomerService ,
-    private readonly route : ActivatedRoute){}
+    private readonly route : ActivatedRoute,
+    private router : Router){}
 
   ngOnInit(): void {
     this.paramsCustomerId(); //igualo mi variable customerId con el parametro que me llega
@@ -25,8 +26,8 @@ export class CustomerByOneListComponent implements OnInit {
   }
 
 
-
-  paramsCustomerId():void{ // Capturo el parametro que se pasa por la rota
+// Capturo el parametro que se pasa por la rota
+  paramsCustomerId():void{ 
     this.route.params.subscribe(
       (params : Params) => {
         this.customerId = params['id']
@@ -34,12 +35,12 @@ export class CustomerByOneListComponent implements OnInit {
   }
 
 
-  //Ahora este id es el que tengo enviar al servicio para traer el customer 
+//Ahora este id es el que tengo enviar al servicio para traer el customer 
   updateOneCustomer(id : string):void{
     this.service.updateOneCustomer(id);
   }
 
-  //Despues de que tengo el customer enotonces se lo igualo a mi varaible 
+//Despues de que tengo el customer enotonces se lo igualo a mi varaible 
   getCustomer(){
     this.service.customerOneObservable.subscribe(
       (data : Customer) => { this.customer = data}
@@ -48,6 +49,10 @@ export class CustomerByOneListComponent implements OnInit {
 
   }
   
+  //Redirecciono a este componente si apreta click en editar
+  editar(id : string){
+    this.router.navigate([`customerEdit/${id}`]);
+  }
 
 
 
