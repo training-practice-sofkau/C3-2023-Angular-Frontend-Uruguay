@@ -20,7 +20,7 @@ export class ApiService {
     headers : new HttpHeaders({
       //'Content-Type': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET',
+      'Access-Control-Allow-Methods': 'POST,GET',
       'Access-Control-Allow-Origin': '*'
     })
   }
@@ -60,6 +60,10 @@ export class ApiService {
 
   getOneCustomer(id : string):Observable<Customer>{
     return this.http.get<Customer>(`${this.BASE_URL}/customer/getInfo/${id}`,this.httpOptions);
+  }
+
+  getDocumentType(document : string):Observable<DocumentType>{
+    return this.http.get<DocumentType>(`${this.BASE_URL}/customer/document-type/find-id/${document}`,this.httpOptions);
   }
   
   sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign

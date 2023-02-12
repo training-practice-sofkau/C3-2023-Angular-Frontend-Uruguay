@@ -35,7 +35,7 @@ export class AccountService implements OnDestroy {
     }
   }
 
-  updateOneAccount = (id : string) =>{
+  updateOneAccount(id : string){
     if(this.observableAccountOne.observed && !this.observableAccountOne.closed){
       this.apiService.getOneAccount(id).subscribe(
         {
@@ -44,6 +44,18 @@ export class AccountService implements OnDestroy {
         });
     }
   }
+
+  // updateOneCustomer(id : string){
+  //   if(this.customerOneObservable.observed && !this.customerOneObservable.closed){
+  //     this.apiService.getOneCustomer(id).subscribe(
+  //       {
+  //         next : (value) => (this.customer = value),
+  //         complete: () => (this.customerOneObservable.next(this.customer))
+  //       });
+  //   }
+    
+
+  // }
 
   
 

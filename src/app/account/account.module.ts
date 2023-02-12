@@ -7,6 +7,7 @@ import { CreateAccountTypeComponent } from './create-account-type/create-account
 import { UpDateComponent } from './up-date/up-date.component';
 import { RouterModule } from '@angular/router';
 import { AccountByOneComponent } from './account-by-one/account-by-one.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,6 +22,9 @@ import { AccountByOneComponent } from './account-by-one/account-by-one.component
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+
   ],
   exports:[
     AccountListComponent,

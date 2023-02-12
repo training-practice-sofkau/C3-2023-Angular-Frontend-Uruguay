@@ -2,6 +2,7 @@ import { Component, Host, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignUpModel } from './interfaces/signUpModel';
 import { DocumentTypeModel } from 'src/app/program-Funcional/interfaces/customerModel';
+import { CustomerService } from '../../customer/service/customer.service';
 
 
 @Component({
@@ -29,7 +30,9 @@ export class SingupComponent implements OnInit{
     
   }
   
-  constructor(private formBuilder : FormBuilder){}
+  constructor(
+    private formBuilder : FormBuilder,
+    private serviceCustomer : CustomerService){}
 
   
 
@@ -41,7 +44,7 @@ export class SingupComponent implements OnInit{
   initForm():FormGroup{
     return this.formBuilder.group(
       {
-        // documentType:[],
+        documentType:['',[Validators.required]],
         document:['',[Validators.required]],
         fullName:['',[Validators.required]],
         email:['',[Validators.required,Validators.email]],
@@ -54,9 +57,20 @@ export class SingupComponent implements OnInit{
  
   //Enviar los datos recogido a la api 
   send():void{
-    console.log('form => ',this.FormSignUp.value);  
+    console.log('form => ',this.FormSignUp.value); 
+    //Setear todo los valores a una instancia de customer
+    //Buscar el document Type => Cedula,Pasaporte,Credencial  
   }
 
+  getDocumentType(document:string){
+    this.serviceCustomer.getDocumentType(document);
+
+    this.serviceCustomer.documentTypeObservable.subscribe(
+      (data : DocumentType)=> (this.documentType = data)
+    );
+  }
+
+  
 
 
 }

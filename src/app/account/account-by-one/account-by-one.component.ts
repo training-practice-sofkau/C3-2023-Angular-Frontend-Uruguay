@@ -5,17 +5,22 @@ import { Account } from '../interfaces/account';
 
 @Component({
   selector: 'app-account-by-one',
+  providers: [AccountService],
   templateUrl: './account-by-one.component.html',
   styleUrls: ['./account-by-one.component.scss']
 })
 export class AccountByOneComponent implements OnInit {
   
-  accountId: string = ""; 
+  accountId!: string ; 
   protected account! : Account;
 
-  constructor(public  accountservice : AccountService,
+  constructor(
+    public  accountservice : AccountService,
     private readonly route : ActivatedRoute,
-    private router :Router){}
+    private router :Router,){
+
+      
+    }
 
   ngOnInit(): void {
     this.paramsCustomerId();
@@ -41,12 +46,9 @@ export class AccountByOneComponent implements OnInit {
 
 //Despues de que tengo el customer enotonces se lo igualo a mi varaible 
   getAccount(){
-    this.accountservice.observableAccountOne
-    .subscribe(
-      (data : Account) => { this.account = data}
-    )
-    this.accountservice.updateOneAccount(this.accountId);
-
+    this.accountservice.observableAccountOne.subscribe(
+      (data : Account) => (this.account = data)
+    );
   }
   
   //Redirecciono a este componente si apreta click en editar
