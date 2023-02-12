@@ -12,13 +12,15 @@ import { CustomerService } from '../services/customer.service';
 })
 export class UserProfileComponent implements OnInit{
 
+
+
   public customers : CustomerModel[] = [];
   
   public user : Object = {};
 
   customer : CustomerModel = <CustomerModel> this.user;
 
-  public id : string = "67e8cf4f-727e-4ae7-a399-4457d7c4909d";
+  public id : string = "b85e0b60-3fc0-4dd4-8667-772713cdafd6";
 
 
 
@@ -26,10 +28,16 @@ export class UserProfileComponent implements OnInit{
   constructor  (public globalService: GlobalService,
                 public customerService :CustomerService) {}
 
+
   ngOnInit(): void {
-   // this.getAllCustomer()
+    this.getAllCustomer()
     this.getCustomer()
   }
+
+  ngDoCheck(){
+    this.globalService.eligeViewUser()
+  }
+
 
   //TRAE TODOS LOS CUSTOMERS
   public getAllCustomer(): void {
@@ -38,9 +46,9 @@ export class UserProfileComponent implements OnInit{
     error: (error:HttpErrorResponse)=> {alert(error.message)}
     })
   }
+
+
   
-
-
   //TRAE UN CUSTOMER SEGUN ID
   public getCustomer(): void {
     this.customerService.getcustomerById(this.id).subscribe({
@@ -49,8 +57,6 @@ export class UserProfileComponent implements OnInit{
     })
   }
 
-  ngDoCheck(){
-    this.globalService.eligeViewUser()
-  }
+  
 
 }
