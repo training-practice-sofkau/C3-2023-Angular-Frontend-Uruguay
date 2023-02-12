@@ -1,0 +1,13 @@
+<section class="form-register" *ngIf="generalService.switchSignUp">
+    <h4>Sign Up</h4>
+    <form>
+        <input class="controls" type="text" id="tipo" name="tipo" placeholder="Usuario">
+        <input class="controls" type="text" id="nombre" name="nombre" placeholder="Contraseña">
+        <input class="controls" type="text" id="telefono" name="telefono" placeholder="Telefono">
+        <input class="controls" type="text" id="correo" name="correo" placeholder="Correo">
+
+        <button class="boton" type="submit" (click)="generalService.activeLogin()">Login</button>
+        <p>No tienes una cuenta?</p>
+        <button class="boton" type="submit" (click)="(generalService.valorForm = 1)">Sign Up</button>
+    </form>
+</section>

@@ -1,12 +1,64 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-//import { Observable, throwError } from 'rxjs';
-//import { catchError, retry } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
+import { CustomerModel } from '../interfaces/Customer.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
 
-  constructor(private http: HttpClientModule) { }
+  //Swap entre signIn y signUp
+
+  public valorForm: number = 0;
+  public switchSignIn: boolean = true;
+  public switchSignUp: boolean = false;
+
+  eligeFormmulario() {
+
+    switch (this.valorForm) {
+
+      case 1:
+        this.switchSignIn = true;
+        this.switchSignUp = false;
+        console.log("LogIn :" + this.switchSignIn);
+        break;
+
+      case 2:
+        this.switchSignUp = true;
+        this.switchSignIn = false;
+        console.log("LogUp :" + this.switchSignUp);
+        break;
+    }
+  }
+
+  //Variable en localstorage para el login
+
+  ngOnInit(): void {
+    this.defaultLogin()
+  }
+
+  ngDoCheck() {
+    this.switch()
+  }
+
+  mostrar = localStorage.getItem('logged') === 'true'
+
+  switch() {
+    this.mostrar = !this.mostrar
+  }
+
+  defaultLogin() {
+    if (!(localStorage.getItem('logged')))
+      localStorage.setItem('logged', 'false')
+  }
+
+  activeLogin() {
+    localStorage.getItem('logged')
+    localStorage.setItem('logged', 'true')
+  }
+
+  logOut() {
+    localStorage.clear()
+  }
 }

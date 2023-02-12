@@ -1,32 +1,28 @@
-.example-spacer {
-  flex: 1 1 auto;
+mat-toolbar{
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.img-round{
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+}
+.main-icono{
+  height: auto;
+  width: auto;
+  background-color: #08084000;
+  border: none;
+}
+.menu-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.topnav {
-  background-color:  #212127;
-  overflow: hidden;
-}
-
-// / Style the links inside the navigation bar /
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-// / Change the color of links on hover /
-.topnav a:hover {
-  background-color: #4f8dcaf2 ;
+span{
   color: white;
 }
-
-// / Add a color to the active/current link /
-.topnav a.active{
-  background-color:  #fe6047; //  #ff664a   #fffa5a  #ff664a
-  color: rgb(248, 250, 248);
-  font-weight: 500;
-  //background:linear-gradient(to right, rgb(130,226,68), #6019e0);
+mat-toolbar{
+  background-color: #04042bf0
 }
