@@ -22,19 +22,6 @@ export class SinginComponent {
     password: new FormControl('')
   });
 
-  // onLogin() {
-  //   if (this.loginForm.controls.email.value && this.loginForm.controls.password.value) {
-  //     let form = {
-  //       email: this.loginForm.controls.email.value,
-  //       password: this.loginForm.controls.password.value
-  //     }
-  //     this.loginService.login(form).subscribe(data => {
-  //       console.log(data);
-  //       this.loginService.activeLogin()
-  //     })
-  //   }
-  // }
-
   onLogin() {
     if (this.loginForm.controls.email.value && this.loginForm.controls.password.value) {
       let form = {
@@ -42,13 +29,28 @@ export class SinginComponent {
         password: this.loginForm.controls.password.value
       }
       this.loginService.login(form).subscribe(data => {
-        let dataResponse: ResponseI = data;
-        if (dataResponse.status == "ok") {
-          localStorage.setItem("token", dataResponse.result);
-          this.router.navigate(['account']);
-        }
+        console.log(data);
+        localStorage.setItem('token', data);
+        this.loginService.activeLogin()
+        this.router.navigate(['account/user']);
       })
     }
   }
+
+  // onLogin() {
+  //   if (this.loginForm.controls.email.value && this.loginForm.controls.password.value) {
+  //     let form = {
+  //       email: this.loginForm.controls.email.value,
+  //       password: this.loginForm.controls.password.value
+  //     }
+  //     this.loginService.login(form).subscribe(data => {
+  //       let dataResponse: ResponseI = data;
+  //       if (dataResponse.status == "ok") {
+  //         localStorage.setItem("token", dataResponse.result);
+  //         this.router.navigate(['account']);
+  //       }
+  //     })
+  //   }
+  // }
 
 }

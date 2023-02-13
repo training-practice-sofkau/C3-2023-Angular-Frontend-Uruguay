@@ -24,9 +24,9 @@ export class LoginService {
   
   constructor(public api: ApiService, private http: HttpClient ) { }
 
-  login(form: SignIn): Observable<ResponseI>{
+  login(form: SignIn): Observable<string>{
     let direction = this.api.url + "/security/signIn";
-    return this.http.post<ResponseI>(direction, form);
+    return this.http.post(direction, form, { responseType: 'text'});
   }
 
   ngOnInit(): void {
