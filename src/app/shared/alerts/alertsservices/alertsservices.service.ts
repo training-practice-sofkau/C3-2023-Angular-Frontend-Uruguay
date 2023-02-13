@@ -14,7 +14,7 @@ export class AlertsService {
 
 
       public customerDate = localStorage.getItem('customer')
-      public customer: customerInterface = this.customerDate? JSON.parse(this.customerDate): null
+      public customer = this.customerDate? JSON.parse(this.customerDate): null
 
 
 
@@ -57,7 +57,7 @@ export class AlertsService {
         )
 
 
-        this.Put(`http://localhost:3000/customers/unsubscribe/${this.customer?.id}`).subscribe();
+        this.Post(`http://localhost:3000/customers/unsubscribe/${this.customer?.id}`).subscribe();
 
         localStorage.clear()
         this.router.navigate(['account']);
@@ -67,8 +67,8 @@ export class AlertsService {
   }
 
 
-  Put(url: string){
-    return this.http.put(url, true )
+  Post(url: string){
+    return this.http.post(url, true )
   }
 
 }
