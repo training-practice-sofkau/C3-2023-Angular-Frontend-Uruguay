@@ -17,10 +17,9 @@ export class MyAccountsComponent {
 
   public idUser : string = "7738fd3b-4763-49cd-b00a-2f77fb45615f";
   public cuenta : Object = {};
+
   account : AccountModel = <AccountModel> this.cuenta;
 
-  
-  
   
   
   constructor(public accountService: AccountService) {
@@ -36,7 +35,8 @@ export class MyAccountsComponent {
   public getAllAccountByIdUser(): void {
     this.accountService.getAccountById(this.idUser).subscribe({
     next: (response: AccountModel[] ) =>{console.log(this.accounts = response)},
-    error: (error:HttpErrorResponse)=> {alert(error.message)}
+    error: (error:HttpErrorResponse)=> {alert(error.message)},
+    complete: ()=> {console.log(this.accounts)}
     })
   }
 
