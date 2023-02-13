@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class SingOutComponent {
 
+  salir() {
+    localStorage.clear()
+
+  }
+
+
+
 }

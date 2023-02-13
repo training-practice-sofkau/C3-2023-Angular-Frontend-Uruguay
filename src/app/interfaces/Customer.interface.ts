@@ -1,4 +1,4 @@
-export interface CustomerModel {
+export interface CustomerInterface{
   id: string;
   documentType: DocumentTypeModel;
   document: string;
@@ -9,6 +9,7 @@ export interface CustomerModel {
   avatarUrl?: string;
   state: boolean;
   daletedAt?: Date | number;
+  token : string;
 }
 
 export interface DocumentTypeModel {
