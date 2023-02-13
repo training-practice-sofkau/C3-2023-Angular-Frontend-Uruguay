@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../tools'
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { SingOutComponent } from '../userLogin-Register/login2/sing-out/sing-out.component';
 import { ToolbarrComponent } from './toolbarr/toolbarr.component'
 
 

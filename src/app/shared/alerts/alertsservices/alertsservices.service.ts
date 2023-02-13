@@ -71,7 +71,7 @@ export class AlertsService {
 
 
   Post(url: string){
-    return this.http.post(url, true )
+    return this.http.post(url, '' )
   }
 
 }
