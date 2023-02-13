@@ -21,7 +21,7 @@ export class AccountHomeComponent {
   }
 
   getInput(): void {
-    if (this.inputValue.trim().length === 0) alert("Debes ingresar un valor")
+    if (this.inputValue.length === 0) alert("Debes ingresar un valor")
     this.service.getAccountById(this.inputValue)
     this.inputValue = ''
   }

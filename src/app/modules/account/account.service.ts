@@ -22,7 +22,7 @@ export class AccountService {
 
   getAccountById(id: string): void {
     this.http
-      .get<AccountModel[]>(`${this.url}/id/${id}`)
-      .subscribe(resp => this.accountById = resp)
+      .get<AccountModel>(`${this.url}/id/${id}`)
+      .subscribe(resp => this.accountById = [resp])
   }
 }
