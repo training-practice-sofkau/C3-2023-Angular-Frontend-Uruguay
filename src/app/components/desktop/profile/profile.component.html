@@ -2,11 +2,19 @@
   <div>
     <mat-card style="margin-top: 10px; width: auto; ">
       <h1>Profile</h1>
-      <mat-grid-list cols="2" rowHeight="40px">
+      <mat-grid-list cols="3" rowHeight="100px">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label>Session Id: </mat-label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-label>Session Id: {{token}} </mat-label>
+        </mat-grid-tile>
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-label>Account Id: </mat-label>
         </mat-grid-tile>
+
         <mat-grid-tile [colspan]="2" [rowspan]="1">
           <mat-label>{{data}}</mat-label>
         </mat-grid-tile>

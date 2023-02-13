@@ -10,12 +10,13 @@ import { from, map } from 'rxjs';
 export class ProfileComponent implements OnInit{
 
   data: string | null = "";
-
+  token: string | null =""
   show: string = "";
 
 
   ngOnInit(): void {
 
+    this.token = localStorage.getItem("token");
     this.data = localStorage.getItem("customer");
 
     if( this.data != null){
