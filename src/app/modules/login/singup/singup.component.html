@@ -1,0 +1,75 @@
+<div class="container">
+    <form>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            aria-describedby="emailHelp"
+            name="signup-email"
+            [(ngModel)]="email"
+            required>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="signup-password"
+            [(ngModel)]="password"
+            required>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Account type</label>
+          <select
+          class="form-select"
+          name="signup-account-type"
+          [(ngModel)]="accountTypeSelected">
+            <option *ngFor="let accType of listAccountTypes" [ngValue]="accType.id">{{accType.name}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Document type</label>
+          <select
+          class="form-select"
+          name="signup-document-type"
+          [(ngModel)]="documentTypeSelected">
+            <option *ngFor="let docType of listDocumentTypes" [ngValue]="docType.id">{{docType.name}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Document</label>
+          <input
+            type="text"
+            class="form-control"
+            name="signup-document"
+            [(ngModel)]="document">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Full name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="signup-full-name"
+            [(ngModel)]="fullName">
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Phone</label>
+          <input
+            type="tel"
+            class="form-control"
+            name="signup-phone"
+            [(ngModel)]="phone">
+        </div>
+
+        <button type="button" class="btn btn-success" (click)="signUp()">Sign up</button>
+
+    </form>
+</div>
