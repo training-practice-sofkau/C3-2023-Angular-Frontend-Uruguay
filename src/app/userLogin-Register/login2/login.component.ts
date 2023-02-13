@@ -97,6 +97,7 @@ export class LoginComponent {
       );
 
       const res = await lastValueFrom(source$);
+      console.log(res);
       this.handleSuccessfulLogin(res);
     } catch (error) {
       console.error('Datos de inicio de sesión incorrectos');

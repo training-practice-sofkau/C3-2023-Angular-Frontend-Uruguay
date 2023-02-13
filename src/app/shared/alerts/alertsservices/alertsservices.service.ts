@@ -13,13 +13,12 @@ export class AlertsService {
       }
 
 
-      public customerDate = localStorage.getItem('customer')
-      public customer = this.customerDate? JSON.parse(this.customerDate): null
 
 
 
-  async getPassword() {
-    const { value: password } = await Swal.fire({
+
+     async getPassword() {
+     const { value: password } = await Swal.fire({
       title: 'Ingrese  su Password',
       input: 'password',
       inputLabel: 'Password',
@@ -50,21 +49,25 @@ export class AlertsService {
       confirmButtonText: 'Si, Eliminar cuenta!'
     }).then((result) => {
       if (result.isConfirmed) {
+        const customerDate = localStorage.getItem('customer')
+        let customer:customerInterface  = customerDate? JSON.parse(customerDate): null
+        if (customer) {
+          this.Post(`http://localhost:3000/customers/unsubscribe/${customer.id}`).subscribe();
 
-        Swal.fire(
-          'BORRADO!',
-          'Exito'
-        )
+          Swal.fire(
+            'BORRADO!',
+            'Exito'
+          )
 
-
-        this.Post(`http://localhost:3000/customers/unsubscribe/${this.customer?.id}`).subscribe();
-
-        localStorage.clear()
-        this.router.navigate(['account']);
-
+          localStorage.clear()
+          this.router.navigate(['account']);
+        } else {
+          console.error("No se puede borrar la cuenta porque el cliente no está disponible");
+        }
       }
     })
   }
+
 
 
   Post(url: string){

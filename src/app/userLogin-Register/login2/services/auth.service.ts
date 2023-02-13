@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { customerInterface, AccountInterfaec} from '../../../tools';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+import { signUpInterface } from 'src/app/tools/interface/signUpInterface';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,14 +12,16 @@ export class AuthService {
   get(url: string){
     return this.http.get<AccountInterfaec>(url)
 }
-post(url: string, data: any){
+post(url: string, data: {}){
   return this.http.post<customerInterface>(url, data)
 }
 
-post2(url: string, data: any){
+post2(url: string, data: void){
   return this.http.post(url, data)
 }
-
+post3(url: string, data: signUpInterface){
+  return this.http.post(url, data)
+}
 register(email:string, password: string){
   return createUserWithEmailAndPassword(this.auth, email, password)
 }
