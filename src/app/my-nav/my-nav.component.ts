@@ -18,4 +18,9 @@ export class MyNavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  salir() {
+    localStorage.clear()
+
+  }
+
 }

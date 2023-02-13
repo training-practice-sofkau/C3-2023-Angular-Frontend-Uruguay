@@ -1,25 +1,75 @@
-<form action="#" method="get">
-  <div>
-    <label for="name">Nombre completo:</label>
-    <input type="text" id="name" name="name">
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="text-center mb-4">Registro</h2>
+            <form action="" id="formulario">
+              <div class="form-group">
+                <input
+                  name="document"
+                  [(ngModel)]="document"
+                  type="text"
+                  class="form-control" />
+                <label for="document">Documento</label>
+              </div>
+              <div class="form-group">
+                <input
+                  name="fullName"
+                  [(ngModel)]="fullName"
+                  type="text"
+                  id="nombre"
+                  class="form-control"
+                  autocomplete="off" />
+                <label for="nombre">Nombres</label>
+              </div>
+              <div class="form-group">
+                <input
+                  name="email"
+                  [(ngModel)]="email"
+                  type="email"
+                  id="typeEmailX"
+                  class="form-control" />
+                <label for="typeEmailX">Email</label>
+              </div>
+              <div class="form-group">
+                <input
+                  name="phone"
+                  [(ngModel)]="phone"
+                  type="text"
+                  id="telefono"
+                  class="form-control"
+                  autocomplete="off" />
+                <label for="telefono">Telefono</label>
+              </div>
+              <div class="form-group">
+                <input
+                  name="password"
+                  [(ngModel)]="password"
+                  type="password"
+                  id="typePasswordX"
+                  class="form-control" />
+                <label for="typePasswordX">Password</label>
+              </div>
+              <div class="d-flex justify-content-between">
+                <input
+                  class="btn btn-primary"
+                  type="button"
+                  id="enviar"
+                  (click)="sendData()"
+                  value="Enviar" />
+                <button
+                  type="reset"
+                  id="borrar"
+                  class="btn btn-secondary">
+                  Borrar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email">
-  </div>
-  <div>
-  <div>
-    <label for="phone">Telefono:</label>
-    <input type="number" id="phone" name="phone">
-  </div>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password">
-  </div>
-  <div>
-    <label for="password2">Confirmar Contraseña:</label>
-    <input type="password" id="password2" name="password2">
-  </div>
-
-  <button type="submit">Registrarse</button>
-</form>
-
+</section>
