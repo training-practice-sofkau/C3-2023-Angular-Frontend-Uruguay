@@ -25,8 +25,9 @@ export class ApiService {
     })
   }
   
-
-
+  
+  //--------------Segurity----------------------------
+  
   //--------------Account----------------------------
   //createAccount(){}
   //createAccountType(){}
@@ -68,12 +69,11 @@ export class ApiService {
   
   //Me tendria que retornar el token 
   sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
-    return this.http.post<string>(`${this.BASE_URL}/singUp`,newCustomer);
+    return this.http.post<string>(`${this.BASE_URL}/singUp`,newCustomer,this.httpOptions);
   }
   
   //--------------Deposit----------------------------
   //--------------Transfer----------------------------
-  //--------------Segurity----------------------------
   //getDeposit(){}
   //getTransfer(){}
   //getBalance

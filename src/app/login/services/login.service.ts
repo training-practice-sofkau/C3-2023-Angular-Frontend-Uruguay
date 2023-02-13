@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { enviroment } from "../../../enviroment/enviroment";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { SignIn, UserResponse } from '../interfaces/signInModel';
 @Injectable({
@@ -8,10 +8,20 @@ import { SignIn, UserResponse } from '../interfaces/signInModel';
 })
 export class LoginService {
 
+  httpOptions = {
+    headers : new HttpHeaders({
+      //'Content-Type': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'POST,GET',
+      'Access-Control-Allow-Origin': '*'
+    })
+  }
+  
+
   constructor(private http : HttpClient) { }
 
   logIn(UserData : SignIn):Observable<UserResponse | void>{
-    return this.http.post<UserResponse>(`${enviroment.API_URL}/security/singIn`,UserData)
+    return this.http.post<UserResponse>(`${enviroment.API_URL}/security/singIn`,UserData,this.httpOptions)
     .pipe(map((res: UserResponse) => {
       console.log(`Res =>`,res)
       //saveToke()
