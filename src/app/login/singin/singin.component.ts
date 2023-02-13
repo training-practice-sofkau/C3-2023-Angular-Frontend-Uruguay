@@ -24,7 +24,7 @@ public password:string = "";
 
 login(email: string, password: string) {
  console.log(email, password)
-  this.authService.post('http://localhost:3000/security/signin', {
+  this.authService.post('http://localhost:3000/security/singin', {
     email: email,
     password: password
   }).subscribe(res => {
@@ -34,9 +34,10 @@ login(email: string, password: string) {
       console.log(decoded);
     if (token && typeof token === 'string') {
       // Guardar el token en el almacenamiento local y redirigir al usuario a otra página
+     console.log(decoded)
       localStorage.setItem('token', token);
-      localStorage.setItem('account', JSON.stringify(decoded));
-      this.router.navigate(['account']);
+      localStorage.setItem('customer', JSON.stringify(decoded));
+
     } else {
       console.error('Token inválido');
     }
