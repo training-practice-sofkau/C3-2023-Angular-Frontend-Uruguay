@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountTypeinterface, AccountInterfaec, customerInterface} from '../../tools';
-import { AccountService } from './services/account.service';
-import { CreateaccounttypeComponent } from '../../AccountMovement';
+import { AccountService } from './services/account.service'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NewdepositComponent } from '../../AccountMovement';
 import { AccountTransfer } from '../../tools/interface/accountTransfer';
+import { CreateaccounttypeComponent, NewdepositComponent } from 'src/app/AccountMovement';
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -12,60 +12,33 @@ import { AccountTransfer } from '../../tools/interface/accountTransfer';
 })
 export class AccountComponent implements OnInit {
 
+  public customer: customerInterface | undefined
+  public accountType: AccountTypeinterface | undefined
+  public persona: AccountInterfaec | undefined
+  public account: AccountInterfaec | undefined
+  public accountUser: AccountTransfer[] = []
 
+  constructor(private accountService: AccountService, private modalService: NgbModal) {}
 
-  constructor(private AccountService: AccountService, private modalService: NgbModal, ) {}
-    public customer: customerInterface | undefined
-    public accountType: AccountTypeinterface | undefined
-    public persona: AccountInterfaec | undefined
-    public account: AccountInterfaec | undefined
-    public accountUser: AccountTransfer[] = []
-
-  getDataAccountType(){
-    const accountType = localStorage.getItem('accountype')
-
-    this.accountType = accountType ? JSON.parse(accountType): null
-    return this.accountType
-
-  }
-  getDatacustomer(){
-    const customerDate = localStorage.getItem('customer')
-    this.customer = customerDate ? JSON.parse(customerDate): null
-    return this.customer
-  }
-  getDataAccount(){
-
-
-    const account = localStorage.getItem('account');
-    this.persona = account ? JSON.parse(account) : null
-
-    this.AccountService.get(`http://localhost:3000/account/${this.persona?.accountUser.customer.id}`).subscribe(
-      data => {
-        console.log(data)
-        this.accountUser = data
-        this.customer = this.accountUser[0].customer
-        this.accountType = this.accountUser[0].accountType
-        localStorage.setItem('customer', JSON.stringify(this.customer))
-        localStorage.setItem('accountype', JSON.stringify(this.accountType ))
-      },
-      error => {
-        console.error(error);
-      }
-    );
-
-    return this.persona
-
-  }
-  getAccount(){
-    return this.persona
+  ngOnInit() {
+    this.persona = this.accountService.getDataAccount();
+    this.accountType = this.accountService.getDataAccountType();
+    this.customer = this.accountService.getDatacustomer();
+    this.accountUser = this.accountService.getaccountUser();
   }
 
-   ngOnInit() {
-    this.getDataAccount()
-    this.getDataAccountType()
-    this.getDatacustomer()
-  }
 
+
+
+  getAccount() {
+    return this.accountService.getDataAccount();
+  }
+  getDatacustomer() {
+    return this.accountService.getDatacustomer();
+  }
+  getDataAccountType() {
+    return this.accountService.getDataAccountType()
+  }
 
   openEditModal() {
     this.modalService.open(CreateaccounttypeComponent);
@@ -77,5 +50,3 @@ export class AccountComponent implements OnInit {
   }
 
 }
-
-

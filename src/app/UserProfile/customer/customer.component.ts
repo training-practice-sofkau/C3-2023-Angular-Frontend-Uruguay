@@ -28,18 +28,14 @@ export class CustomerComponent implements OnInit  {
     this.modalService.open(UpdateCustomerComponent);
   }
 
-
-
    ngOnInit(): void {
 
-     this.AccountComponent.getDataAccount()
+     this.AccountComponent.getAccount()
      this.customer =  this.AccountComponent.getDatacustomer()
      this.persona =  this.AccountComponent.getAccount()
      this.accountType = this.AccountComponent.getDataAccountType();
 
   }
-
-
 
   editMode = false;
 

@@ -9,6 +9,7 @@ import { lastValueFrom } from 'rxjs';
 import {AlertsService} from '../../../app/shared'
 import {  DecodedToken,AccountInterfaec,customerInterface } from '../../tools';
 import jwtDecode from 'jwt-decode';
+import { AccountService } from '../../UserProfile/account/services/account.service';
 
 @Component({
   selector: 'app-login2',
@@ -29,7 +30,8 @@ export class LoginComponent {
     public AlertsService: AlertsService,
     private AuthService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private AccountService: AccountService
   ) {}
 
   /**
@@ -147,6 +149,8 @@ export class LoginComponent {
 
   redirectToAccount() {
     this.router.navigate(['account']);
+    
+
   }
 
   /**
@@ -207,7 +211,7 @@ export class LoginComponent {
       );
       setTimeout(() => {
         this.router.navigate(['/account']);
-      }, 2000);
+      }, 5000);
     } catch (error) {
       console.error(error);
     }
