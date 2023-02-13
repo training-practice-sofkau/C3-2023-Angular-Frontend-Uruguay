@@ -4,6 +4,7 @@ import { NewTransferComponent } from './new-transfer/new-transfer.component';
 import { NewDepositComponent } from './new-deposit/new-deposit.component';
 import { ViewTransfersComponent } from './view-transfers/view-transfers.component';
 import { TransactionsRoutingModule } from './transactions-routing.module';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,10 @@ import { TransactionsRoutingModule } from './transactions-routing.module';
   ],
   imports: [
     CommonModule, //SIRVE PARA DIRECTIVAS DE ngIf ngFor y Pipes
-    TransactionsRoutingModule  //RUTAS PERESOSAS 
+    TransactionsRoutingModule,  //RUTAS PERESOSAS 
+    FormsModule,  
+    ReactiveFormsModule
+
   ]
 })
 export class TransactionsModule { }

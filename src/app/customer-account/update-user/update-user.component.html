@@ -1,8 +1,8 @@
 <!--*****************CUSTOMER UPDATE*********************-->
 
 
-<div class="container"   *ngIf= "(globalService.switchUserUpdate)">
-    <div class="row gutters">
+<div class="container"   *ngIf="(globalService.switchUserUpdate)">
+    <div class="row gutters" >
     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
     <div class="card h-100">
       <div class="card-body">
@@ -93,8 +93,8 @@
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="text-right">
   
-              <button class="boton"  (click)="(globalService.valorCaseUser = 2)"   >Cancelar</button>
-              <button class="boton"  (click)="true"   >Actualizar</button>
+              <button class="boton"  (click)="(globalService.valorCaseUser = 1)" >Cancelar</button>
+              <button class="boton"  (click)="true" >Actualizar</button>
              
             </div>
           </div>
@@ -103,4 +103,4 @@
     </div>
     </div>
     </div>
-    </div>
+</div>

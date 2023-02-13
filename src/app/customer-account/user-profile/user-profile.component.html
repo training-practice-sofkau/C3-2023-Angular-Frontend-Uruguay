@@ -6,13 +6,14 @@
     <!--********************** CUSTOMER UPDATE ************************-->
 
     <app-update-user></app-update-user>
+ 
 
 
 
     <!--************************* CUSTOMER VIEW *************************-->
-  <div class="container"  *ngIf="(globalService.switchViewUser)">
-    <section class="section about-section gray-bg" id="about" >
-      
+    <div class="container" *ngIf="(globalService.switchViewUser)">
+      <section class="section about-section gray-bg" id="about" >
+
         <div class="row align-items-center flex-row-reverse">
           <div class="col-lg-6">
             <div class="about-text go-to">
@@ -81,13 +82,13 @@
         </div>
 
         <div class="content-buttom">
-          <button class="boton" (click)="(globalService.valorCaseUser = 1)">Editar</button>
+          <button class="boton" (click)="(globalService.valorCaseUser = 2)">Editar</button>
         </div>
 
 
-    </section>
-  </div>   
-     
+      </section>
+    </div>
+
 
 
     <!--FIN Background y Transparencia-->

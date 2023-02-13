@@ -12,7 +12,7 @@ const routes : Routes = [
   {path: '',
   children: [
     {path: 'app-user-profile', component: UserProfileComponent},
-    {path: 'app-update-user', component: UpdateUserComponent },
+    {path: 'app-update-user', component: UpdateUserComponent }, //?
     {path: 'app-new-account', component: NewAccountComponent },
     {path: 'app-my-accounts', component: MyAccountsComponent},
     {path: '**', component: HomeComponent}

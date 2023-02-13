@@ -11,6 +11,7 @@ export class UpdateUserComponent {
 
 
   constructor  (public globalService: GlobalService,
-    public customerService :CustomerService) {}
+                public customerService :CustomerService) {}
+
 
 }

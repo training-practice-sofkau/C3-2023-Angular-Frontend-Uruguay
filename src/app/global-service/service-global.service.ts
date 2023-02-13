@@ -39,14 +39,14 @@ export class GlobalService {
     switch (this.valorCaseUser){
 
       case 1 :
-        this.switchUserUpdate = true;
-        this.switchViewUser  = false;
+        this.switchUserUpdate = false;
+        this.switchViewUser  = true;
         console.log("Vista Usuario :" + this.switchUserUpdate);
         break;
 
       case 2 :
-        this.switchViewUser  = true;
-        this.switchUserUpdate = false;
+        this.switchViewUser  = false;
+        this.switchUserUpdate = true;
         console.log("vista Update Usuario :" + this.switchViewUser );
         break;
 

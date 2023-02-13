@@ -15,7 +15,7 @@ export class MyAccountsComponent {
 
   public accounts : AccountModel[] = [];
 
-  public idUser : string = "b85e0b60-3fc0-4dd4-8667-772713cdafd6";
+  public idUser : string = "7738fd3b-4763-49cd-b00a-2f77fb45615f";
   public cuenta : Object = {};
   account : AccountModel = <AccountModel> this.cuenta;
 
@@ -39,5 +39,9 @@ export class MyAccountsComponent {
     error: (error:HttpErrorResponse)=> {alert(error.message)}
     })
   }
+
+  
+
+
 
 }
