@@ -30,7 +30,7 @@ export class EjercicioComponent {
     ).subscribe((name) => this.observadoN = name);
     return this.observadoN
   }
-
+/*
   //observer
   searchByphone(phone: number) {
     from(this.baseC).pipe(
@@ -39,7 +39,7 @@ export class EjercicioComponent {
     ).subscribe((name) => this.observado1 = name);
     return this.observado1
   }
-
+*/
 
   //observer
   filterCustomerByState() {

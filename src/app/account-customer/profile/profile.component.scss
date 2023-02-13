@@ -1,0 +1,37 @@
+.toolbar {
+    background-color: #4a7da7;
+    height: 80%;
+    width: 120px;
+    position: relative;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px ;
+    border: none;
+    border-radius: 50px;
+    position: fixed;
+    top: 10%;
+    bottom: 0;
+  }
+  
+  .toolbar-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 1.2s;
+  }
+  
+  .toolbar-item:hover {
+    transform: scale(1.1);
+  }
+  
+  .toolbar-item i {
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
