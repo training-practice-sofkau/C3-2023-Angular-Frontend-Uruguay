@@ -13,9 +13,10 @@ import { LoginModule } from './components/login/login.module';
 
 //Components
 import { AppComponent } from './app.component';
-import { DesktopComponent } from './components/desktop/desktop.component';
 import { SigninModule } from './components/sign-in/sign-in.module';
 import { SignupModule } from './components/sign-up/sign-up.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { DesktopComponent } from './components/desktop/desktop.component';
 import { DesktopModule } from './components/desktop/desktop.module';
 
 
@@ -25,6 +26,7 @@ import { DesktopModule } from './components/desktop/desktop.module';
 
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
@@ -32,9 +34,6 @@ import { DesktopModule } from './components/desktop/desktop.module';
     AppRoutingModule,
     LoginModule,
     JwtModule,
-    SigninModule,
-    SignupModule,
-
   ],
   bootstrap: [AppComponent]
 })

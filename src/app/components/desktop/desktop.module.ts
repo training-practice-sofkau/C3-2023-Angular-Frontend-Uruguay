@@ -6,6 +6,7 @@ import { MaterialModule } from '../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DesktopRoutingModule } from './desktop-routing.module';
 
 
 @NgModule({
@@ -16,11 +17,16 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   imports: [
     CommonModule,
+    DesktopRoutingModule,
     SharedModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
   ],
+  exports:[
+    DesktopComponent
+  ]
+
 
 })
 export class DesktopModule { }
