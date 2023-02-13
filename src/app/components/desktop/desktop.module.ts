@@ -4,13 +4,14 @@ import { DesktopComponent } from './desktop.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material/material.module';
 import { MainComponent } from './main/main.component';
-
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
     DesktopComponent,
-    MainComponent
+    MainComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +19,9 @@ import { MainComponent } from './main/main.component';
     MaterialModule,
   ],
   exports: [
-    DesktopComponent
+    DesktopComponent,
+    MainComponent,
+    ProfileComponent
   ]
 })
 export class DesktopModule { }

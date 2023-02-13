@@ -8,13 +8,12 @@ import { MainComponent } from './main/main.component';
 
 const desktopRoutes: Routes = [
 
-  {
-    path: '', component:DesktopComponent, redirectTo: "desktop", pathMatch: 'full',
-    children: [
-      { path: 'desktop', component: MainComponent, pathMatch: 'full' },
-      { path: 'desktop/profile', component: ProfileComponent, pathMatch: 'full' },
-    ]
-  },
+  { path: '', pathMatch: 'full' },
+  { path: '', component: MainComponent },
+  { path: 'desktop/profile', component: ProfileComponent },
+
+
+
 ]
 
 @NgModule({
