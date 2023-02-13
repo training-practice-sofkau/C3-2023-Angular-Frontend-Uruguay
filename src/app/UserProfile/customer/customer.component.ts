@@ -37,9 +37,10 @@ export class CustomerComponent implements OnInit  {
      this.persona =  this.AccountComponent.getAccount()
      this.accountType = this.AccountComponent.getDataAccountType();
 
-
-
   }
+
+
+
   editMode = false;
 
 
