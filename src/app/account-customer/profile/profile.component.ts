@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   public getInfoCust(): void {
 
     this.customerService.getAllCustomerById().subscribe({
-      next: (Response: CustomerModel) => { console.log(this.customer = Response) },
+      next: (Response: CustomerModel) => { this.customer = Response },
       error: (error: HttpErrorResponse) => { alert(error.message) }
 
     });
