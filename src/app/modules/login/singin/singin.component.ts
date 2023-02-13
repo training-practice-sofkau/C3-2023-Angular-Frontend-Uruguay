@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
-import { SignIn } from '../../../interfaces/sign-in.interface';
-import { ResponseI } from 'src/app/interfaces/response.interface';
 
 @Component({
   selector: 'app-singin',
@@ -18,8 +16,8 @@ export class SinginComponent {
   ) { }
 
   loginForm = this.formBuilder.group({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
   onLogin() {
@@ -36,21 +34,5 @@ export class SinginComponent {
       })
     }
   }
-
-  // onLogin() {
-  //   if (this.loginForm.controls.email.value && this.loginForm.controls.password.value) {
-  //     let form = {
-  //       email: this.loginForm.controls.email.value,
-  //       password: this.loginForm.controls.password.value
-  //     }
-  //     this.loginService.login(form).subscribe(data => {
-  //       let dataResponse: ResponseI = data;
-  //       if (dataResponse.status == "ok") {
-  //         localStorage.setItem("token", dataResponse.result);
-  //         this.router.navigate(['account']);
-  //       }
-  //     })
-  //   }
-  // }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DepositModel } from 'src/app/interfaces/deposit.interface';
 import { ApiService } from '../../../services/api.service';
@@ -18,8 +18,8 @@ export class DepositComponent {
   ) { }
 
   depositForm = this.formBuilder.group({
-    accountId: new FormControl(''),
-    amount: new FormControl('')
+    accountId: new FormControl('', Validators.required),
+    amount: new FormControl('', Validators.required)
   });
 
   depo(form: DepositModel): Observable<DepositModel> {
