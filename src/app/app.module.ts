@@ -8,6 +8,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { LoginModule } from './modules/login/login-module.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,8 @@ import { LoginModule } from './modules/login/login-module.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
+    HttpClientModule,
 
     MaterialModule,
     SharedModule,
