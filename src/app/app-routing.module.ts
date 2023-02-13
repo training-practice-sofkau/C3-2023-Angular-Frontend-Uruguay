@@ -18,8 +18,9 @@ const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'desktop', component: DesktopComponent, canActivate: [PermissionsGuard], },
+  { path: `desktop`, loadChildren: () => import('./components/desktop/desktop.module').then(x => x.DesktopModule), canActivate: [PermissionsGuard] },
 
+  //{ path: 'desktop', component: DesktopComponent, canActivate: [PermissionsGuard], },
   //{ path: `desktop`, loadChildren: () => import('./components/desktop/desktop.module').then(x => x.DesktopModule), canActivate: [PermissionsGuard] },
 
 

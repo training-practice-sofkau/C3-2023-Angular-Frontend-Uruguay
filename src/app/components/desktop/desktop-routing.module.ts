@@ -3,20 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DesktopComponent } from './desktop.component';
 import { ProfileComponent } from './profile/profile.component';
-import { MainComponent } from './main/main.component';
+import { DetailsComponent } from './details/details.component';
+
 
 
 const desktopRoutes: Routes = [
 
-  { path: '', pathMatch: 'prefix',
-  children:[
-    { path: '', component: DesktopComponent },
-    { path: 'desktop', component: MainComponent },
-    { path: 'profile', component: ProfileComponent },
-    //{ path: '**', redirectTo:'main' },
-  ]
-
-  },
+  { path: '', component: DesktopComponent, pathMatch: 'full', },
+  { path: 'desktop', component: DetailsComponent,   },
 
   //{ path: 'desktop/profile', component: ProfileComponent },
 
