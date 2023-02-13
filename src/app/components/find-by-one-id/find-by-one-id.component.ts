@@ -51,5 +51,6 @@ export class FindByOneIdComponent implements OnInit{
       this.router.navigate([`account/customer/${this.formCustomer.get('searchId')?.value}`]);
     }
     
+    
   }
 }

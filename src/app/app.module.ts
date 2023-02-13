@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerModule } from './customer/customer.module';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

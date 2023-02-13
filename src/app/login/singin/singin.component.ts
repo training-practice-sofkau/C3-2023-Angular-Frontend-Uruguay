@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SignIn, UserResponse } from '../interfaces/signInModel';
 import { AuthService } from '../services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { tokenUser } from '../interfaces/tokenModel';
 
 
 @Component({
@@ -11,17 +13,50 @@ import { AuthService } from '../services/auth.service';
 })
 export class SinginComponent implements OnInit {
   
-  token ! : string;
+  //token ! : string;
+  userSignIn!: SignIn ;
+  tokenUser : tokenUser = {
+    username : "",
+    password: "",
+    iat:""
+  } ;
+  public formLogin!: FormGroup ; 
 
-  constructor(private authService : AuthService){}
-  
+  constructor(private authService : AuthService,
+    private formBuilder : FormBuilder){}
+    
   ngOnInit(): void {
-    const userData: SignIn = {
-      username: `cris@gmail.com`,
-      password:`cris12344`,
-    };
-
+      
+    this.formLogin = this.initFormLogin();
+    //Enviar a la base de datos 
+  
+    //Despues reseteoo 
+    
   }
 
+  
+  initFormLogin():FormGroup{
+     return this.formBuilder.group(
+      {
+      username:['',[Validators.required]],
+      password:['',[Validators.required]],
+    });
+  }
 
+  signIn(){
+    this.userSignIn = this.formLogin.getRawValue();
+    this.authService.newSigIn(this.userSignIn);
+    this.formLogin.reset();
+    console.log(JSON.stringify(this.authService.getUserLocalStorage()));//username ,password,ita
+  
+    this.tokenUser = this.authService.getUserLocalStorage();
+
+  
+    console.log();
+    
+    this.authService.signOut();
+ 
+  }
+  
+  
 }
