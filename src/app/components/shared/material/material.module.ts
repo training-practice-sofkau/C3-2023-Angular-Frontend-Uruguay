@@ -9,8 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatProgressSpinnerModule, MatSpinner } from '@angular/material/progress-spinner';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatGridListModule} from '@angular/material/grid-list';
 
 
 const component = [
@@ -25,6 +26,7 @@ const component = [
   MatSidenavModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
+  MatGridListModule
 ];
 
 

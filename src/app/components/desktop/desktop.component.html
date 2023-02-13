@@ -1,4 +1,46 @@
+<div class="container" style="margin-top: 10px;">
+
+  <mat-toolbar style="background-color: rgba(136, 226, 212, 0.4); height: 40px; ">
+    <h1>Customer Area</h1>
+    <span class="spacer"></span>
+    <h2>Welcome {{ customerName }}</h2>
+  </mat-toolbar>
+
+  <mat-toolbar style="background-color: rgba(136, 226, 212, 0.4); height: 40px;">
+    <span class="spacer"></span>
+
+    <button class="menu-button" mat-fab extended color="primary" (click)="showMain()">
+      <mat-icon>home</mat-icon> Main
+    </button>
+
+    <button class="menu-button" mat-fab extended color="primary" (click)="showProfile()">
+      <mat-icon>settings_accessibility</mat-icon> Profile
+    </button>
+
+    <button class="menu-button" mat-fab extended color="primary">
+      <mat-icon> save_alt </mat-icon> Deposit
+    </button>
+
+    <button class="menu-button" mat-fab extended color="primary">
+      <mat-icon>ios_share</mat-icon> Transfer
+    </button>
+
+    <span class="spacer"></span>
+
+  </mat-toolbar>
+</div>
+
+<div>
+
+  <span *ngIf="showMainPage"> <app-details></app-details> </span>
+  <span *ngIf="showProfilePage"> <app-profile></app-profile> </span>
+
+</div>
+
+
+<!--
+
+<app-profile *ngIf="showProfilePage"></app-profile> -->
+
+
 <router-outlet></router-outlet>
-
-
-

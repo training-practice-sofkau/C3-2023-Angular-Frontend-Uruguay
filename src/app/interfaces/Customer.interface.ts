@@ -16,3 +16,20 @@ export interface DocumentTypeModel {
   name: string;
   state: boolean;
 }
+
+export interface CustomerSignInModel {
+  username: string;
+  password: string;
+}
+
+
+export interface CustomerSignUpModel {
+
+    documentType: string;
+    document: string;
+    fullname: string;
+    email: string;
+    phone: string;
+    password: string;
+    accountTypeName: string;
+}

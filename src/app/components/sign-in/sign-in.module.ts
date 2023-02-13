@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule  }   from '@angular/forms';
 
-import { LoginComponent } from './login.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { SignInComponent } from './sign-in.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent,
+    SignInComponent,
+
   ],
   imports: [
     CommonModule,
@@ -19,8 +20,9 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
   ],
   exports:[
-    LoginComponent,
+    SignInComponent,
+
   ]
 })
 
-export class LoginModule { }
+export class SigninModule { }

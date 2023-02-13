@@ -1,0 +1,19 @@
+[
+  {
+    "name":"Main",
+    "redirect":"desktop"
+  },
+  {
+    "name":"Profile",
+    "redirect":"desktop/profile"
+  },{
+    "name":"Deposit",
+    "redirect":"desktop/deposit"
+  },{
+    "name":"Transfer",
+    "redirect":"desktop/transfer"
+  },{
+    "name":"Movements",
+    "redirect":"desktop/movements"
+  }
+]

@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DesktopComponent } from './desktop.component';
-import { OperationComponent } from './operation/operation.component';
-import { AdministrationComponent } from './administration/administration.component';
-import { ManagementModule } from './management/management.module';
+import { ProfileComponent } from './profile/profile.component';
+import { MainComponent } from './main/main.component';
 
-const routes: Routes = [
-  {
-    path: '', component: DesktopComponent, pathMatch: "full",
-    children: [
-      { path: 'desktop/operation', component: OperationComponent },
-      { path: 'desktop/administration', component: AdministrationComponent },
-      //{ path: 'desktop/management', component: ManagementModule },
 
-    ]},
+const desktopRoutes: Routes = [
+
+  { path: '', pathMatch: 'prefix',
+  children:[
+    { path: '', component: DesktopComponent },
+    { path: 'desktop', component: MainComponent },
+    { path: 'profile', component: ProfileComponent },
+    //{ path: '**', redirectTo:'main' },
   ]
 
+  },
+
+  //{ path: 'desktop/profile', component: ProfileComponent },
+
+]
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(desktopRoutes)],
   exports: [RouterModule]
 })
 export class DesktopRoutingModule { }
