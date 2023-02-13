@@ -1,16 +1,17 @@
-<mat-card>
+<mat-card *ngIf= "(loginService.switchLogIn)">
   <mat-card-content>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <h2>Sing In</h2>
       <mat-form-field>
-        <input matInput placeholder="Email" name="username" required>
+        <input matInput placeholder="Email" name="email" required formControlName="email">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" name="password" required>
+        <input matInput type="password" placeholder="Password" name="password" required formControlName="password" >
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="activeLogin()">Login</button>
+      <button type="submit" mat-raised-button color="primary" (click)="loginService.activeLogin()">Login</button>
       <h3>¿No tienes una cuenta?</h3>
-      <button mat-raised-button color="primary">¡Regístrate gratis!</button>
+      <button type="submit" mat-raised-button color="primary" (click)="(loginService.valorCaseLogin = 2)">Regístrate Aquí</button>
     </form>
   </mat-card-content>
 </mat-card>
+

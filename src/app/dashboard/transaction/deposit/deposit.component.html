@@ -1,1 +1,7 @@
 <h2>deposit works!</h2>
+
+<form [formGroup]="depositForm" (ngSubmit)="deposit()">
+  <input matInput placeholder="AccountID" name="accountId" required formControlName="accountId">
+  <input matInput placeholder="Amount" name="amount" required formControlName="amount" type="number">
+  <button type="submit">depositar</button>
+</form>
