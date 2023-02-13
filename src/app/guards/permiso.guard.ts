@@ -19,7 +19,6 @@ export class PermisoGuard implements CanActivate {
           this.router.navigate(['/singin']);
 
         }
-        alert(`No tienes el perismo para acceder `)
         return true;
       }
 

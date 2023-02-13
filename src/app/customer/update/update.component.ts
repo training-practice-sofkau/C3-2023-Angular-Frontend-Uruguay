@@ -19,15 +19,13 @@ export class UpdateComponent implements OnInit{
   public FormUpDate!: FormGroup;
   
   customer : SignUpModel = { 
-    documentType :  {
-      name: ""
-    },
+    documentType : "",
+    accountTypeId: "",
     document: "",
     fullName: " ",
     email: "",
     phone: "",
     password: "",
-    
     
   }
 

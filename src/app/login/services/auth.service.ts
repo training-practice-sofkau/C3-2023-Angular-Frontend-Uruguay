@@ -8,7 +8,8 @@ import { UserResponse, SignIn } from '../interfaces/signInModel';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { tokenUser } from '../interfaces/tokenModel';
+import { tokenCustomer, tokenUser } from '../interfaces/tokenModel';
+import { Customer } from '../../customer/interface/customer';
 
 
 @Injectable({
@@ -21,15 +22,18 @@ export class AuthService {
   };
   
   protected newCustomer: SignUpModel = {
-    documentType: this.documentType,//DocumentTypeModel , es un tipo de dato que nosotros creamos
+    documentType: "",//DocumentTypeModel , es un tipo de dato que nosotros creamos
+    accountTypeId: "",
     document: "",
     fullName: "",
     email: "",
     phone: "",
     password: "",
   };
-
+  
+  helper = new JwtHelperService();
   user ! : SignIn;
+  customerSignUp! : SignUpModel;
   public signUpObservable: BehaviorSubject<SignUpModel> = 
   new BehaviorSubject<SignUpModel>(this.newCustomer);
   
@@ -42,8 +46,12 @@ export class AuthService {
       this.apiService.logIn(user).subscribe(
         (data) => sessionStorage.setItem('token',data));
     }
+
+    newSigUp(newCustomer : SignUpModel){
+      this.apiService.sigUp(newCustomer).subscribe(
+        (data) => sessionStorage.setItem('token',data));
+    }
     
-    helper = new JwtHelperService();
     
     hasUser():boolean{
       if(typeof sessionStorage.getItem('token') === 'string'){
@@ -57,6 +65,15 @@ export class AuthService {
       if(token ){
         const tokenUser : tokenUser | null= this.helper.decodeToken(token);
         if(tokenUser)  return tokenUser;
+      }
+        throw new Error("Token Vacio");
+    }
+
+    getCustomerLocalStorage():SignUpModel {
+      const token = sessionStorage.getItem('token');
+      if(token ){
+        const tokenCustomer : tokenCustomer | null= this.helper.decodeToken(token);
+        if(tokenCustomer)  return tokenCustomer;
       }
         throw new Error("Token Vacio");
     }

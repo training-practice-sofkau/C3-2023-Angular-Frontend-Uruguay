@@ -15,6 +15,17 @@
     </div>
 
     <div class="col-md-6">
+      <label label for="inputDocumentType" class="form-label">Account Type</label>
+          <select style="margin: 3px;" class="form-select" aria-label="Default select example" formControlName="accountTypeId">
+            <option value="1">Caja de ahorro en Pesos ($)</option>
+            <option value="2">Caja de ahorro en Dolares (US$)</option>
+            <option value="3">Caja corriente en Pesos ($)</option>
+            <option value="4">Caja corriente en Dolares (US$)</option>
+          </select>
+      </div>
+
+
+    <div class="col-md-6">
       <label for="inputDocument" class="form-label">Document</label>
       <input  formControlName="document" type="text"  class="form-control" id="inputDocument" placeholder="12345678">
       <div *ngIf="FormSignUp.get('document')?.touched && FormSignUp.get('document')?.errors?.['required']"
@@ -55,8 +66,8 @@
 
     </div>
 
-    <label style="color: rgb(13, 13, 151);" for="terms">Accept terms</label>
-    <input style="margin: 2%;color: blue;" type="checkbox" formControlName="terms" id="terms">
+    <!-- <label style="color: rgb(13, 13, 151);" for="terms">Accept terms</label>
+    <input style="margin: 2%;color: blue;" type="checkbox" formControlName="terms" id="terms"> -->
 
     <a routerLink="/singin" style="margin: 10%;" >Sign in</a>
     <div class="col-12">

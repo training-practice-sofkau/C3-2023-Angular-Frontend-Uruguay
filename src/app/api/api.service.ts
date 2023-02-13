@@ -32,8 +32,12 @@ export class ApiService {
   logIn(user : SignIn):Observable<string>{
     return this.http.post(`${this.BASE_URL}/security/singIn`,user,{responseType: 'text'});  
   }
-
- 
+  
+  //Me tendria que retornar el token 
+  sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
+    return this.http.post(`${this.BASE_URL}/security/singUp`,newCustomer,{responseType: 'text'});
+  }
+  
   // logOut():void{}
   // private readToken():void{ //Guardar el token en el local storage
 
@@ -89,10 +93,6 @@ export class ApiService {
     return this.http.get<DocumentType>(`${this.BASE_URL}/customer/document-type/find-id/${document}`,this.httpOptions);
   }
   
-  //Me tendria que retornar el token 
-  sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
-    return this.http.post<string>(`${this.BASE_URL}/singUp`,newCustomer,this.httpOptions);
-  }
   
   //--------------Deposit----------------------------
   //--------------Transfer----------------------------

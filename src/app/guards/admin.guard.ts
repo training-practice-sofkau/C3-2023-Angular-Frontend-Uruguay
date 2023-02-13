@@ -18,12 +18,7 @@ export class AdminGuard implements CanActivate {
         if(!this.authservice.hasUser()){
           this.router.navigate(['/singin']);
         }
-        alert(`No tienes el perismo para acceder `)
-        return false;
+        return true;
        }
-        
-        hasUser():boolean{
-          return false;
-        }
   
 }
