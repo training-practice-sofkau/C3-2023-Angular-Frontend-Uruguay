@@ -92,7 +92,7 @@ export class SignInComponent implements OnInit {
           const account = decoded.id;
 
           localStorage.setItem('token', token);
-          localStorage.setItem('currentAccount', account);
+          localStorage.setItem('customerID', account);
 
           this.transitionToDesktop(true);
         }
