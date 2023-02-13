@@ -1,0 +1,21 @@
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <h2 class="h3" >Registro de movimiento  </h2>
+
+<button (click)="openEditModal()" type="button" class="btn btn-primary" > Agregar deposito </button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID Depósito</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let deposit of depositList">
+      <th scope="row">{{ deposit.id }}</th>
+      <td>{{ deposit.amount }}</td>
+      <td>{{ deposit.date_time | date }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

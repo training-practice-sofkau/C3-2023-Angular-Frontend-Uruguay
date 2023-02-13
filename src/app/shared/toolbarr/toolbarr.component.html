@@ -1,0 +1,32 @@
+
+<p>
+  <mat-toolbar color="bg-red-500"  >
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/account']">
+        <mat-icon>account_circle</mat-icon>
+        <span>Account</span>
+      </button>
+      <button mat-menu-item [routerLink]="['/deposit']">
+        <mat-icon>account_circle</mat-icon>
+        <span>Deposit</span>
+      </button>
+      <button mat-menu-item [routerLink]="['/transfer']">
+        <mat-icon>account_circle</mat-icon>
+        <span>Transfer</span>
+      </button>
+      <button  (click)="singOut()"   mat-menu-item>
+        <mat-icon>clear</mat-icon>
+        <span>Sign out</span>
+      </button>
+    </mat-menu>
+
+
+    <span>Bank sofka</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+  </mat-toolbar>
+</p>
