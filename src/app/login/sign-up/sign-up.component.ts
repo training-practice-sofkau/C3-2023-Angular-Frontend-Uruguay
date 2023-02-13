@@ -61,7 +61,7 @@ export class SignupComponent {
           this.error.state = false;
           sessionStorage.setItem('token', answer.token);
           this.auth.loadCurrentUser();
-          this.router.navigate(["/"]);
+          this.router.navigate(["/dashboard/view"]);
         }
       })
     } else {
@@ -70,7 +70,7 @@ export class SignupComponent {
     //this.signupForm.controls.name.setValue("xd");
     //this.cookie.set('hola', 'xd');
     //this.signupForm.reset();
-    //this.router.navigate(['/dashboard']);
+    //this.router.navigate(['/dashboard/view']);
   }
 
   ngOnInit() {

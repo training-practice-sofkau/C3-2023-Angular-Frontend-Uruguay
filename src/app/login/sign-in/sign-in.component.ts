@@ -46,7 +46,7 @@ export class SigninComponent {
           this.error.state = false;
           (this.signinForm.controls.remember.value) ? this.cookie.set('token', answer.token) : sessionStorage.setItem('token', answer.token);
           this.auth.loadCurrentUser();
-          this.router.navigate(["/"]);
+          this.router.navigate(["/dashboard/view"]);
         }
       });
     } else {

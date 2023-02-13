@@ -26,7 +26,7 @@ export class UserAccountsComponent implements OnInit {
 
   toDeposit(i: number): void {
     this.cookie.set('currentAccount', this.UserAccountsList[i].id);
-    this.router.navigate(['/deposits']);
+    this.router.navigate(['/accounts/deposits']);
   }
 
 }

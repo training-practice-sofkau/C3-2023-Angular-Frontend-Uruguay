@@ -5,6 +5,8 @@ import { SignupComponent } from './sign-up/sign-up.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
+import { LoginRoutingModule } from './login-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,12 +17,18 @@ import { AuthService } from './services/auth.service';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    LoginRoutingModule
   ],
   providers: [
     AuthService,
+  ],
+  exports: [
+    SigninComponent,
+    SignupComponent
   ]
 })
 export class LoginModule { }

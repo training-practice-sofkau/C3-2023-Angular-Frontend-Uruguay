@@ -38,7 +38,7 @@ export class AuthGuard implements CanActivate {
   removeUserData(){
     this.cookie.deleteAll();
     sessionStorage.clear();
-    this.router.navigate(['/sign-up']);
+    this.router.navigate(['/login/sign-up']);
   }
 
 }
