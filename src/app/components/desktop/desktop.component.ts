@@ -26,7 +26,6 @@ export class DesktopComponent implements OnInit {
   ngOnInit(): void {
     this.currentAccount = loadCustomerID();
     this.customerService.getCustomerData(this.currentAccount);
-
     this.currentBalance = getCustomerBalance();
     this.customerName = ' Dear Customer ' //getCustomerName();
 

@@ -12,7 +12,7 @@ const desktopRoutes: Routes = [
   children:[
     { path: '', component: DesktopComponent },
     { path: 'desktop', component: MainComponent },
-    { path: 'desktop/profile', component: ProfileComponent },
+    { path: 'profile', component: ProfileComponent },
     //{ path: '**', redirectTo:'main' },
   ]
 
