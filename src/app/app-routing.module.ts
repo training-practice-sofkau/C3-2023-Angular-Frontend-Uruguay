@@ -14,8 +14,8 @@ import { PermissionsGuard } from './guards/permissions.guard';
 
 const routes: Routes = [
 
-  { path: '', component: LoginComponent, pathMatch: 'full' },
 
+  { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'desktop', component: DesktopComponent, canActivate: [PermissionsGuard], },

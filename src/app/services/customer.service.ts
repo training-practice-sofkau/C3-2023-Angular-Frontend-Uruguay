@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 // Interfaces
 import { CustomerSignInModel, CustomerSignUpModel, CustomerModel } from '../interfaces/customer.interface';
 import { Observable } from 'rxjs';
+import { SigninResponseModel, SigninTokenResponseModel } from '../interfaces/responses.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +23,15 @@ export class CustomerService {
    * @param customer customer entity data
    * @returns validation token
    */
-  addNewCustomer(customer: CustomerSignUpModel): Observable<string> {
+  addNewCustomer(customer: CustomerSignUpModel): Observable<SigninResponseModel> {
 
-    return this.http.post<string>(`${environment.API_URL}/security/signup`, customer);
+    return this.http.post<SigninResponseModel>(`${environment.API_URL}/security/signup`, customer);
   }
 
   /**
    * Makes a request to backend with customer credentials
    */
-  customerSignin(customer: CustomerSignInModel): Observable<any> {
+  customerSignin(customer: CustomerSignInModel): Observable<string> {
 
     return this.http.post<any>(`${environment.API_URL}/security/signin`, customer);
   }

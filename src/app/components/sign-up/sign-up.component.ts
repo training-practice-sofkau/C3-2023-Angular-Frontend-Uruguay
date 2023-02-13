@@ -52,7 +52,9 @@ export class SignUpComponent {
    * ready to be sent to back for registration
    */
   createNewCustomer() {
-    const customer: CustomerSignUpModel = {
+    const customer: CustomerSignUpModel = this.signupForm.getRawValue();
+
+    /* {
       documentType: this.signupForm.value.documentType,
       document: this.signupForm.value.document,
       fullname: this.signupForm.value.fullname,
@@ -60,7 +62,8 @@ export class SignUpComponent {
       phone: this.signupForm.value.phone,
       password: this.signupForm.value.password,
       accountTypeName: 'Saving'
-    }
+    } */
+    customer.accountTypeName="Saving"
 
     this.loading = true;
 

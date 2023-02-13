@@ -8,11 +8,17 @@ import { MainComponent } from './main/main.component';
 
 const desktopRoutes: Routes = [
 
-  { path: '', pathMatch: 'full' },
-  { path: '', component: MainComponent },
-  { path: 'desktop/profile', component: ProfileComponent },
+  { path: '', pathMatch: 'prefix',
+  children:[
+    { path: '', component: DesktopComponent },
+    { path: 'desktop', component: MainComponent },
+    { path: 'desktop/profile', component: ProfileComponent },
+    //{ path: '**', redirectTo:'main' },
+  ]
 
+  },
 
+  //{ path: 'desktop/profile', component: ProfileComponent },
 
 ]
 

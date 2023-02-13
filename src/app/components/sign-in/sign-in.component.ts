@@ -14,6 +14,7 @@ import { AppComponent } from '../../app.component';
 import { CustomerSignInModel } from '../../interfaces/customer.interface';
 import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
 import { AuthService } from '../../services/auth.service';
+import jwtDecode from 'jwt-decode';
 
 
 
@@ -80,25 +81,29 @@ export class SignInComponent implements OnInit {
     this.customerService.customerSignin(userSignin)
       .subscribe({
         next: (signInResponse) => {
-        const responseValue = signInResponse as SigninResponseModel;
 
-        if (responseValue.status) {
+          const responseValue: SigninResponseModel = signInResponse as unknown as SigninResponseModel;
 
-          const token = responseValue.token;
-          const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
-          const account = decoded.id;
+          if (responseValue.status) {
 
-          localStorage.setItem('token', token);
-          localStorage.setItem('customerID', account);
+            const token = responseValue.token;
+            const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
+            const account = decoded.id;
 
-          this.transitionToDesktop(true);
-        }
-      },
-        error: (e) =>{
+            localStorage.setItem('token', token);
+            localStorage.setItem('customerID', account);
+
+            this.transitionToDesktop(true);
+          }
+        },
+        error: (e) => {
           this.transitionToDesktop(false);
-        }
+        },
+        complete: () => {
+
+        },
       })
-    }
+  }
 
 
   /**

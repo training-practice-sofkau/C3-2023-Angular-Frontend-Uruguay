@@ -11,6 +11,10 @@ import { CustomerService } from '../../services/customer.service';
 
 export class DesktopComponent implements OnInit {
 
+  showMainPage: boolean = true;
+  showProfilePage: boolean = false;
+
+
   currentAccount: string = "";
   currentBalance: number = 0;
   customerName: string = '';
@@ -26,6 +30,18 @@ export class DesktopComponent implements OnInit {
     this.currentBalance = getCustomerBalance();
     this.customerName = ' Dear Customer ' //getCustomerName();
 
+    this.showMain();
+  }
+
+
+  showMain(){
+    this.showMainPage = true;
+    this.showProfilePage = false;
+  }
+
+  showProfile(){
+    this.showMainPage = false;
+    this.showProfilePage = true;
   }
 
 }
