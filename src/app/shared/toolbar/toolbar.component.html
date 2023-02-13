@@ -33,7 +33,7 @@
               </div>
 
               <div id="userDropdown" *ngIf="userDropdown === true" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" tabindex="-1">
-                <a routerLinkActive="bg-gray-100" class="block px-4 py-2 text-sm hover:bg-gray-200 text-gray-700 text-center" role="menuitem" tabindex="-1" id="user-menu-item-0">Tu perfil</a>
+                <a routerLink="/app-profile" routerLinkActive="bg-gray-100" (click)="userDropdownSwitch()" class="block px-4 py-2 text-sm hover:bg-gray-200 text-gray-700 text-center" role="menuitem" tabindex="-1" id="user-menu-item-0">Tu perfil</a>
                 <a routerLinkActive="bg-gray-100" class="block px-4 py-2 text-sm hover:bg-gray-200 text-gray-700 text-center" role="menuitem" tabindex="-1" id="user-menu-item-1">Opciones</a>
                 <a (click)="this.logout()" class="block px-4 py-2 text-sm hover:bg-gray-200 text-gray-700 text-center" role="menuitem" tabindex="-1" id="user-menu-item-2">Cerrar sesión</a>
               </div>
@@ -79,7 +79,7 @@
           </button>
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <a class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Tu perfil</a>
+          <a routerLink="/app-profile" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Tu perfil</a>
           <a class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Opciones</a>
           <a (click)="this.logout()" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Cerrar sesión</a>
         </div>

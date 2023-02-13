@@ -7,6 +7,7 @@ import { SharedModule } from "../shared/shared.module";
 import { LastMovementsCustomerComponent } from './view/lists/last-movements-customer/last-movements-customer.component';
 import { CurrencyComponent } from './view/lists/currency/currency.component';
 import { MonthlyExpensesComponent } from './view/lists/monthly-expenses/monthly-expenses.component';
+import { ProfileComponent } from './customer/profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { MonthlyExpensesComponent } from './view/lists/monthly-expenses/monthly-
         UserAccountsComponent,
         LastMovementsCustomerComponent,
         CurrencyComponent,
-        MonthlyExpensesComponent
+        MonthlyExpensesComponent,
+        ProfileComponent
     ],
     exports: [
         ViewComponent,
