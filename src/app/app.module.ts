@@ -11,19 +11,15 @@ import { CustomerModule } from './customer/customer.module';
 import { DepositModule } from './deposit/deposit.module';
 import { TransferModule } from './transfer/transfer.module';
 import { SharedModule } from './shared/shared.module';
-import { AccountService } from './account/services/account.service';
-import { CustomerService } from './customer/services/customer.service';
-import { TransferService } from './transfer/services/transfer.service';
-import { DepositService } from './deposit/services/deposit.service';
-import { AuthService } from './login/services/auth.service';
-import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServiceService } from './service/service.service';
 
 @NgModule({
     declarations: [
         AppComponent,
-        EjercicioComponent
     ],
-    providers: [AccountService, CustomerService, TransferService, DepositService, AuthService],
+    providers: [ServiceService],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
@@ -31,6 +27,9 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.compon
         BrowserAnimationsModule,
         MaterialModule,
         SharedModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class AppModule { }
