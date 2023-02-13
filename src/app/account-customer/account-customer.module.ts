@@ -23,8 +23,8 @@ import { AccountRouteModule } from './account-customer-routes.module';
   ],
   exports:[
     AccountRouteModule,
-    ProfileComponent
-
+    ProfileComponent,
+    AccountRouteModule
   ],
   providers:[ CustomerService ]
 })
