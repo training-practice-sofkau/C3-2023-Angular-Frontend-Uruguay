@@ -21,6 +21,12 @@ import { AppRoutingModule } from '../app.routing.module';
     CommonModule,
     MaterialModule,
   ],
-  exports:[ToolbarComponent, FooterComponent, UpComponent, CustomersTableComponent, AccountsTableComponent]
+  exports:[
+    ToolbarComponent,
+    FooterComponent,
+    UpComponent,
+    CustomersTableComponent,
+    AccountsTableComponent
+  ]
 })
 export class SharedModule { }

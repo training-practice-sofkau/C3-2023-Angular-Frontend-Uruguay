@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomerModel } from './interfaces/customer.interface';
 import { AccountModel } from './interfaces/account.interface';
+import { DepositCreateModel } from './interfaces/deposit.create.interface';
+import { DepositResponseModel } from './interfaces/deposit.response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +59,17 @@ export class AppService {
     };
     return this.http.get<CustomerModel>(
       this.baseurl + "/customer/get-by-id",
+      httpOptions
+    );
+  }
+
+  createDeposit(data: DepositCreateModel): Observable<DepositResponseModel> {
+    const body = data;
+    const httpOptions = {
+      headers: this.httpheaders
+    };
+    return this.http.post<DepositResponseModel>(
+      this.baseurl + "/deposit/create", body,
       httpOptions
     );
   }
