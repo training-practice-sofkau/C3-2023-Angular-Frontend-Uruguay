@@ -1,16 +1,15 @@
-<!-- <div *ngIf="customer">
-  <p>Account Balance: {{  }}</p>
-  <p>Account Type: {{ customer.accountType.name }}</p>
-  <p>ID: {{ customer.id }}</p>
-  <p>Name: {{ customer.accountUser.customer.name }}</p>
-  <hr>
-  <p>Document: {{ customer.accountUser.document }}</p>
-  <p>Document Type: {{ customer.accountUser.documentType }}</p>
-  <p>Email: {{ customer.accountUser.email }}</p>
-  <p>Full Name: {{ customer.accountUser.fullName }}</p>
-  <p>Phone: {{ customer.accountUser.phone }}</p>
-  <p>State: {{ customer.accountUser.documentType.state }}</p>
-</div> -->
-
+<hr>
+<h3>Informacion de usuario:</h3>
+<p>Id de usuario: {{customer.accountUser.customer.id}}
+<p>Documento: {{ customer.accountUser.customer.document}}</p>
+<p>Id Tipo de documento: {{ customer.accountUser.customer.documentType.id}}</p>
+<p>Estado del documento: {{ customer.accountUser.customer.documentType.state}}</p>
 <p>Nombre: {{ customer.accountUser.customer.fullName}}</p>
 <p>Email: {{ customer.accountUser.customer.email}}</p>
+<p>Telefono: {{ customer.accountUser.customer.phone}}</p>
+<hr>
+<h3>Informacion de cuenta:</h3>
+<p>AccountType: {{ customer.accountUser.accountType.name}}</p>
+<p>Id de tipo de cuenta: {{ customer.accountUser.accountType.id}}</p>
+<p>Balance: {{ customer.accountUser.accountType.balance}}</p>
+
