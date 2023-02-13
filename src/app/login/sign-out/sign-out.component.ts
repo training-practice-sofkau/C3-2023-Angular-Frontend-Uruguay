@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServiceService } from '../../service/service.service';
 
 @Component({
   selector: 'app-sign-out',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class SignOutComponent {
 
+  constructor(private service: ServiceService,
+    private router: Router) {}
+
+    signOut() {
+      this.service.signOut();
+    }
 }

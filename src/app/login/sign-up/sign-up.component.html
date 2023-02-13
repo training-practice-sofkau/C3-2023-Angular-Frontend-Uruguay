@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-      <form>
+      <form [formGroup]="formUser">
         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
           User Information
         </h6>
@@ -26,7 +26,7 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Email address
               </label>
-              <input type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="sofka@example.com">
+              <input formControlName="email" type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="sofka@example.com">
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -34,7 +34,7 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Full Name
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Carlos Example">
+              <input formControlName="fullName" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Carlos Example">
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -42,7 +42,7 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Document Type
               </label>
-              <select class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+              <select formControlName="documentType" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                 <option value="National ID">National ID</option>
                 <option value="Passport ID">Passport ID</option>
               </select>
@@ -53,7 +53,7 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Document
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="12345678">
+              <input formControlName="document" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="12345678">
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Password
               </label>
-              <input type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="·············">
+              <input formControlName="password" type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="·············">
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -71,7 +71,7 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Confirm Password
               </label>
-              <input type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="·············">
+              <input formControlName="confirmPassword" type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="·············">
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -79,10 +79,10 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Phone
               </label>
-              <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="09X XXX XXX">
+              <input formControlName="phone" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="09X XXX XXX">
             </div>
           </div>
-              <input type="submit" class="border-0 mt-[27px] ml-[15rem] py-2 bg-pink-500 text-white active:bg-pink-600 font-bold uppercase rounded text-sm shadow focus:outline-none focus:ring h-[3.2rem] w-32 ease-linear transition-all duration-150" value="Register">
+              <input type="submit" class="border-0 mt-[27px] ml-[15rem] py-2 bg-pink-500 text-white active:bg-pink-600 font-bold uppercase rounded text-sm shadow focus:outline-none focus:ring h-[3.2rem] w-32 ease-linear transition-all duration-150" value="Register" (click)="signUp()">
         </div>
       </form>
     </div>
