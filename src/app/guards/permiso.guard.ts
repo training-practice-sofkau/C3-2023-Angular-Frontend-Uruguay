@@ -6,8 +6,7 @@ import { AuthService } from '../login/services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
-
+export class PermisoGuard implements CanActivate {
   constructor(private authservice : AuthService,
     private router : Router){}
 
@@ -15,15 +14,15 @@ export class AdminGuard implements CanActivate {
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         
+        
         if(!this.authservice.hasUser()){
           this.router.navigate(['/singin']);
+
         }
         alert(`No tienes el perismo para acceder `)
-        return false;
-       }
-        
-        hasUser():boolean{
-          return false;
-        }
-  
-}
+        return true;
+      }
+
+      }
+      
+    

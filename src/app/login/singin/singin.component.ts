@@ -3,6 +3,7 @@ import { SignIn, UserResponse } from '../interfaces/signInModel';
 import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { tokenUser } from '../interfaces/tokenModel';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,13 +24,14 @@ export class SinginComponent implements OnInit {
   public formLogin!: FormGroup ; 
 
   constructor(private authService : AuthService,
-    private formBuilder : FormBuilder){}
+    private formBuilder : FormBuilder,
+    private router : Router ){}
     
   ngOnInit(): void {
       
     this.formLogin = this.initFormLogin();
     //Enviar a la base de datos 
-  
+    
     //Despues reseteoo 
     
   }
@@ -43,19 +45,14 @@ export class SinginComponent implements OnInit {
     });
   }
 
-  signIn(){
+  signIn(){ // Tiene un error que al principio no me lee el token 
     this.userSignIn = this.formLogin.getRawValue();
     this.authService.newSigIn(this.userSignIn);
-    this.formLogin.reset();
-    console.log(JSON.stringify(this.authService.getUserLocalStorage()));//username ,password,ita
-  
     this.tokenUser = this.authService.getUserLocalStorage();
+    console.log(this.tokenUser);
 
-  
-    console.log();
     
-    this.authService.signOut();
- 
+    this.router.navigate(["/home"]);
   }
   
   

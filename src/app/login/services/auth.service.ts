@@ -52,22 +52,20 @@ export class AuthService {
       return false;
     }
 
-    getUserLocalStorage(){
-      //Me trasnforma el token en un objeto (customer)
+    getUserLocalStorage():tokenUser {
       const token = sessionStorage.getItem('token');
-      if(token){
-        const tokenUser : tokenUser | null = this.helper.decodeToken(token);
+      if(token ){
+        const tokenUser : tokenUser | null= this.helper.decodeToken(token);
         if(tokenUser)  return tokenUser;
       }
-      throw new Error('token vacio');
+        throw new Error("Token Vacio");
     }
-    
 
-  signOut () {
-    sessionStorage.removeItem('token');
-    this.router.navigate(['/singin']);
-  }
-//
+    signOut () {
+      sessionStorage.removeItem('token');
+      this.router.navigate(['/singin']);
+    }
+  //
   // setToken(token: string){
   //   this.cookies.set('token',token);
   // }

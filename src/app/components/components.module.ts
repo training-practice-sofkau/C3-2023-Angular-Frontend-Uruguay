@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormControl, FormsModule } from '@angular/forms';
 import { FindAllComponent } from './find-all/find-all.component';
 import { FindByOneIdComponent } from './find-by-one-id/find-by-one-id.component';
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -11,6 +12,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     FindAllComponent,
     FindByOneIdComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { RouterModule } from '@angular/router';
   exports : [
     FindAllComponent,
     FindByOneIdComponent,
+    HomeComponent
   ]
 })
 export class ComponentsModule { }
