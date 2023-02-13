@@ -17,19 +17,14 @@ export class CustomerService {
     private http: HttpClient,
   ) { }
 
-
   /**
    * Makes a request to Backend to register a new customer
    * @param customer customer entity data
    * @returns validation token
    */
-  addNewCustomer(customer: CustomerSignUpModel) {
+  addNewCustomer(customer: CustomerSignUpModel): Observable<string> {
 
-    const res = this.http.post<string>(`${environment.API_URL}/security/signup`, customer);
-
-    //console.log(res)
-
-    return res;
+    return this.http.post<string>(`${environment.API_URL}/security/signup`, customer);
   }
 
   /**
@@ -37,29 +32,21 @@ export class CustomerService {
    */
   customerSignin(customer: CustomerSignInModel): Observable<any> {
 
-    const res = this.http.post(`${environment.API_URL}/security/signin`, customer);
-
-    return res;
-
+    return this.http.post<any>(`${environment.API_URL}/security/signin`, customer);
   }
 
   getCustomerData(id: string) {
-
-    console.log( id)
 
     this.http.get(`${environment.API_URL}/customer/id`)
       .subscribe({
         next: (response) => {
 
           const responseValue = response as CustomerModel;
-
-          console.log(responseValue + ' - ' + id)
-
-          //localStorage.setItem("customer", JSON.stringify(responseValue));
+          localStorage.setItem("customer", JSON.stringify(responseValue));
 
         },
         error: (e) => {
-            console.log("Something went wrong, no customer data available!");
+          console.log("Something went wrong, no customer data available!");
         }
       })
   }

@@ -24,7 +24,7 @@ export class DesktopComponent implements OnInit {
     this.customerService.getCustomerData(this.currentAccount);
 
     this.currentBalance = getCustomerBalance();
-    this.customerName = getCustomerName();
+    this.customerName = ' Dear Customer ' //getCustomerName();
 
   }
 

@@ -67,8 +67,6 @@ export class SignInComponent implements OnInit {
       this.validateCredentials(userSignin);
 
     }, 1500);
-
-
   }
 
   /**
@@ -77,7 +75,6 @@ export class SignInComponent implements OnInit {
    * sets in localstorage the data to be used later
    * Redirect the user to desktop or back to login
    */
-
   validateCredentials(userSignin: CustomerSignInModel) {
 
     this.customerService.customerSignin(userSignin)
