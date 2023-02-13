@@ -5,6 +5,7 @@ import { NewAccountComponent } from './new-account/new-account.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule } from '@angular/router';
 import { CustomerService } from './services/customer.service';
+import { AccountRouteModule } from './account-customer-routes.module';
 
 
 
@@ -16,11 +17,12 @@ import { CustomerService } from './services/customer.service';
     
   ],
   imports: [
-    CommonModule
-    
+    CommonModule,
+   
+
   ],
   exports:[
-
+    AccountRouteModule,
     ProfileComponent
 
   ],

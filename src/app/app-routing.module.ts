@@ -18,14 +18,27 @@ const routes: Routes = [
   
   { path: '', redirectTo:'/SignIn', pathMatch:"full"}, 
 
-  { path: 'Myaccount', component: MyAccountComponent},
+  //{ path: 'Myaccount', component: MyAccountComponent},
   { path: 'SignIn', component: SinginComponent  }, 
   { path: 'SignUp', component: SingupComponent}, 
  // { path: 'profile', component: ProfileComponent, canActivate:[GuardsGuard]}, 
   { path: 'ejercicio', component: EjercicioComponent, canActivate:[GuardsGuard]}, 
   { path: 'Home', component: HomeComponent}, 
-  { path: 'profile', component: CustomerProfileComponent}, 
+  //{ path: 'profile', component: CustomerProfileComponent}, 
+
+  {path: 'account-customer', 
+  loadChildren:()=> import('./account-customer/account-customer.module')
+  .then(m => m.AccountCustomerModule)}, //child
   
+  {path: 'movements', 
+  loadChildren:()=> import('./movements/movements.module')
+  .then(m => m.MovementsModule)}, //child
+
+  {path: 'administrator', 
+  loadChildren:()=> import('./administrator/administrator.module')
+  .then(m => m.AdministratorModule)}, //child
+
+
   { path: '**', component: NotfoundComponent}, 
   
 
