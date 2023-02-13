@@ -1,29 +1,29 @@
-<div class="table w-full ...">
-  <div class="table-header-group ...">
-    <div class="table-row">
-      <div class="table-cell text-left ...">ID</div>
-      <div class="table-cell text-left ...">Nombre</div>
-      <div class="table-cell text-left ...">Documento</div>
-      <div class="table-cell text-left ...">Tipo de documento</div>
-      <div class="table-cell text-left ...">Email</div>
-      <div class="table-cell text-left ...">Telefono</div>
-      <div class="table-cell text-left ...">Avatar</div>
-      <div class="table-cell text-left ...">Estado</div>
-    </div>
-  </div>
-  <div class="table-row-group">
-    <div class="table-row" *ngFor="let customer of CustomerList">
-      <div class="table-cell text-left align-middle ...">{{customer.id}}</div>
-      <div class="table-cell text-left align-middle ...">{{customer.fullName}}</div>
-      <div class="table-cell text-left align-middle ...">{{customer.document}}</div>
-      <div class="table-cell text-left align-middle ...">{{customer.documentType.name}}</div>
-      <div class="table-cell text-left align-middle ...">{{customer.email}}</div>
-      <div class="table-cell text-left align-middle ...">{{customer.phone}}</div>
-      <div class="table-cell text-left align-middle ...">
+<table class="table-auto border border-collapse rounded-lg w-full mx-auto">
+  <caption></caption>
+  <thead class="bg-gray-800">
+    <tr class="text-white text-left">
+      <th class="table-cell py-3">ID</th>
+      <th class="table-cell py-3">Nombre</th>
+      <th class="table-cell py-3">Documento</th>
+      <th class="table-cell py-3">Tipo de documento</th>
+      <th class="table-cell py-3">Email</th>
+      <th class="table-cell py-3">Telefono</th>
+      <th class="table-cell py-3">Avatar</th>
+      <th class="table-cell py-3">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of CustomerList" class="transition duration-300 ease-in-out hover:bg-gray-100 border-hidden text-left whitespace-nowrap">
+      <td class="table-cell py-3">{{customer.fullName}}</td>
+      <td class="table-cell py-3">{{customer.document}}</td>
+      <td class="table-cell py-3">{{customer.documentType.name}}</td>
+      <td class="table-cell py-3">{{customer.email}}</td>
+      <td class="table-cell py-3">{{customer.phone}}</td>
+      <td class="table-cell py-3">
         <img *ngIf="customer?.avatarUrl" class="h-8 w-8 rounded-full" src="{{customer?.avatarUrl}}" alt="">
         <b *ngIf="!customer?.avatarUrl" class="text-lg"> No tiene </b>
-      </div>
-      <div class="table-cell ...">{{customer.state}}</div>
-    </div>
-  </div>
-</div>
+      </td>
+      <td class="table-cell py-3">{{customer.state}}</td>
+    </tr>
+  </tbody>
+</table>

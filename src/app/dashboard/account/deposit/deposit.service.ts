@@ -2,13 +2,13 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, asyncScheduler } from 'rxjs';
 import { AppService } from 'src/app/app.service';
 import { AccountModel } from 'src/app/interfaces/account.interface';
-import { AuthService } from '../../../../login/services/auth.service';
 import { AuthGuard } from 'src/app/login/guards/auth.guard';
+import { AuthService } from 'src/app/login/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserAccountsService implements OnDestroy {
+export class DepositService implements OnDestroy {
 
   protected newUserDataAccounts: AccountModel[] = [];
   public userAccountsEmitter: BehaviorSubject<AccountModel[]> = new BehaviorSubject<AccountModel[]>(this.newUserDataAccounts);
@@ -31,4 +31,5 @@ export class UserAccountsService implements OnDestroy {
       asyncScheduler.schedule(this.updateUserAccountsTable, 100);
     }
   }
+
 }

@@ -1,22 +1,23 @@
-<div class="table w-full ...">
-  <div class="table-header-group ...">
-    <div class="table-row">
-      <div class="table-cell text-left ...">ID</div>
-      <div class="table-cell text-left ...">Nombre del cliente</div>
-      <div class="table-cell text-left ...">Correo del cliente</div>
-      <div class="table-cell text-left ...">Balance</div>
-      <div class="table-cell text-left ...">Tipo de cuenta</div>
-      <div class="table-cell text-left ...">Estado</div>
-    </div>
-  </div>
-  <div class="table-row-group">
-    <div class="table-row" *ngFor="let account of AccountsList">
-      <div class="table-cell text-left align-middle ...">{{account.id}}</div>
-      <div class="table-cell text-left align-middle ...">{{account.customer.fullName}}</div>
-      <div class="table-cell text-left align-middle ...">{{account.customer.email}}</div>
-      <div class="table-cell text-left align-middle ...">{{account.balance}}</div>
-      <div class="table-cell text-left align-middle ...">{{account.accountType.name}}</div>
-      <div class="table-cell text-left align-middle ...">{{account.state}}</div>
-    </div>
-  </div>
-</div>
+<table class="table-auto border border-collapse rounded-lg w-full mx-auto">
+  <caption></caption>
+  <thead class="bg-gray-800">
+    <tr class="text-white text-left">
+      <th class="py-3">ID</th>
+      <th class="py-3">Nombre del cliente</th>
+      <th class="py-3">Correo del cliente</th>
+      <th class="py-3">Balance</th>
+      <th class="py-3">Tipo de cuenta</th>
+      <th class="py-3">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of AccountsList" class="transition duration-300 ease-in-out hover:bg-gray-100 border-hidden text-left whitespace-nowrap">
+      <td class="py-3">{{account.id}}</td>
+      <td class="py-3">{{account.customer.fullName}}</td>
+      <td class="py-3">{{account.customer.email}}</td>
+      <td class="py-3">{{account.balance}}</td>
+      <td class="py-3">{{account.accountType.name}}</td>
+      <td class="py-3">{{account.state}}</td>
+    </tr>
+  </tbody>
+</table>

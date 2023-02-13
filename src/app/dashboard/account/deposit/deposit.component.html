@@ -1,0 +1,40 @@
+<div class="container items-center justify-between">
+  <div class="bg-gray-100 max-w-7xl mx-auto py-6">
+    <div class="bg-white shadow rounded-lg">
+      <div class="px-4 py-2">
+        <div class="text-2xl font-medium text-gray-900">Deposito</div>
+      </div>
+      <div class="border-t border-gray-200 bg-gray-50 px-4 py-2">
+
+        <div class="w-full flex items-center justify-center">
+          <div class="lg:flex items-center space-x-16">
+              <div class="w-5/6 md:w-3/4 lg:w-2/3 xl:w-[500px] 2xl:w-[550px] mt-8 mx-auto px-16 py-8 rounded-lg">
+                  <!-- <h2 class="text-center text-2xl font-bold tracking-wide text-gray-800">Iniciar sesión</h2> -->
+                  <form class="my-8 text-sm" [formGroup]="depositForm" (ngSubmit)="this.onSubmit()">
+                    <div class="flex flex-col my-4" *ngIf="!this.cookie.get('currentAccount')">
+                      <label for="account" class="text-gray-700">Cuenta:</label>
+                      <select type="text" name="account" id="account" formControlName="account" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" required>
+                        <option *ngFor="let option of UserAccountsList; index as i" value="{{i}}">Caja de {{option.accountType.name.toLowerCase()}}</option>
+                      </select>
+                    </div>
+                    <div class="flex flex-col my-4">
+                        <label for="monto" class="text-gray-700">Monto a depositar:</label>
+                        <input type="number" name="monto" id="monto" formControlName="monto" class="mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 rounded text-sm text-gray-900" placeholder="Introduce el monto para depositar" required>
+                    </div>
+                    <div *ngIf="this.error.state" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                      <span class="font-medium">Error:</span> {{error.description}}
+                    </div>
+                    <div *ngIf="this.info.state" class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+                      <span class="font-medium">Error:</span> {{info.description}}
+                    </div>
+                    <div class="my-4 flex items-center justify-end space-x-4">
+                      <button type="submit" class="bg-blue-600 hover:bg-blue-700 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Depositar</button>
+                    </div>
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SinginComponent } from './sing-in/sing-in.component';
-import { SingupComponent } from './sing-up/sing-up.component';
-import { SingOutComponent } from './sing-out/sing-out.component';
+import { SigninComponent } from './sign-in/sign-in.component';
+import { SignupComponent } from './sign-up/sign-up.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
@@ -11,9 +10,8 @@ import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
-    SinginComponent,
-    SingupComponent,
-    SingOutComponent,
+    SigninComponent,
+    SignupComponent,
   ],
   imports: [
     CommonModule,
