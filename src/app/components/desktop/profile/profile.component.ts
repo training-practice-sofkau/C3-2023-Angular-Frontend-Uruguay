@@ -23,11 +23,9 @@ export class ProfileComponent implements OnInit{
     }
   }
 
-
-
   extractCustomerData(data: string) {
 
-    this.show = {...JSON.parse(data)};
+    this.show = JSON.parse(data);
 
     console.log(this.show);
   }
