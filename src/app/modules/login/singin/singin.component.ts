@@ -43,8 +43,8 @@ export class SinginComponent {
       }
       this.loginService.login(form).subscribe(data => {
         let dataResponse: ResponseI = data;
-        if (dataResponse.result == "ok") {
-          localStorage.setItem("token", dataResponse.result.token);
+        if (dataResponse.status == "ok") {
+          localStorage.setItem("token", dataResponse.result);
           this.router.navigate(['account']);
         }
       })
