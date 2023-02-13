@@ -22,8 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    loadChildren: () => import('../app/consults/consults.module')
-      .then(m => m.ConsultsModule)
+    loadChildren: () => import('../app/modules/account/account.module')
+      .then(m => m.AccountModule)
   },
   {
     path: 'transfer',

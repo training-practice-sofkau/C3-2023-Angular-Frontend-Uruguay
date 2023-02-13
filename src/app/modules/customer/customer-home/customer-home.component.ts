@@ -8,9 +8,7 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerHomeComponent {
 
-  constructor(
-    private service: CustomerService
-  ) { }
+  constructor(private service: CustomerService) { }
 
   searchCustomers() {
     this.service.getCustomers()

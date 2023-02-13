@@ -1,1 +1,28 @@
-<p>get-account works!</p>
+<div *ngFor="let account of result">
+    <pre>
+        Customer ID: {{account.customer}}
+        Account ID: {{account.id}}
+        Balance: {{account.balance}}
+    </pre>
+</div>
+
+<!--         id: {{account.id}}
+            Customer:
+            id: {{account.customer.id}}
+                docId: {{account.customer.documentType.id}}
+                docName: {{account.customer.documentType.name}}
+                docState: {{account.customer.documentType.state}}
+            doc: {{account.customer.document}}
+            name: {{account.customer.fullName}}
+            email: {{account.customer.email}}
+            phone: {{account.customer.phone}}
+            pass: {{account.customer.password}}
+            avatar: {{account.customer.avatarUrl}}
+            state: {{account.customer.state}}
+            deleted: {{account.customer.daletedAt}}
+            Account Type: {{account.accountType.id}}
+            name: {{account.accountType.name}}
+            state: {{account.accountType.state}}
+        balance: {{account.balance}}
+        state: {{account.state}}
+        deletedAt?: {{account.deletedAt}} -->

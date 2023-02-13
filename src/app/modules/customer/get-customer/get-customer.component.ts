@@ -10,6 +10,6 @@ export class GetCustomerComponent {
   constructor(private service: CustomerService){}
 
   get result(){
-    return this.service.customerResult
+    return this.service.allCustomers
   }
 }

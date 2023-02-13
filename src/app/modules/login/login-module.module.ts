@@ -5,6 +5,7 @@ import { SingupComponent } from './singup/singup.component';
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../../material/material.module';
 import { LoginComponent } from './login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +19,8 @@ import { LoginComponent } from './login.component';
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     SinginComponent,

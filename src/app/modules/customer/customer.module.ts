@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GetCustomerComponent } from './get-customer/get-customer.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { CustomerRoutingModule } from './customer-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { CustomerRoutingModule } from './customer-routing.module';
   ],
   imports: [
     CommonModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    FormsModule
   ]
 })
 export class CustomerModule { }
