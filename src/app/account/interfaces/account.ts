@@ -3,10 +3,10 @@ import { AccountType } from "./accountType";
 
 
 export interface Account{
-    id ?: string;
+    id : string;
     coustomer_id: Customer;
     account_type_id: AccountType;
-    balance?: number;
-    state?: boolean;
-    delete_at?: Date;
+    balance: number;
+    state: boolean;
+    delete_at: Date | undefined;
 }

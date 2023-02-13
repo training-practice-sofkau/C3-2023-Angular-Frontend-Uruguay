@@ -1,20 +1,24 @@
 <h1 class="text-lg-center"> Create Type Account </h1>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Name Type Account</span>
-    <input type="text" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
+<div class="contenedor">
+  <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Name Type Account</span>
+      <input type="text" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
 
-<div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-      <label class="form-check-label" for="invalidCheck">
-        Agree to terms and conditions
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
+  <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit" routerLink="account/account-type/create" routerLinkActive="router-link-active" >Confirm</button>
-  </div>
+    <a routerLink="/account/create">Create Account</a>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit" routerLink="account/account-type/create" routerLinkActive="router-link-active" >Confirm</button>
+    </div>
+</div>

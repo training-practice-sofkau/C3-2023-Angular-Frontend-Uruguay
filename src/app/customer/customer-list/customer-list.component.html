@@ -11,13 +11,19 @@
         <th scope="col">Password</th>
       </tr>
     </thead>
-    <tbody  *ngFor="let account of lisAccounts">
+    <tbody  *ngFor="let customer of listCustomer">
       <tr>
-        <td>{{account.id}}</td>
-        <td>{{account.coustomer_id.fullName}}</td>
-        <td>{{account.account_type_id.name}}</td>
-        <td>{{account.balance}}</td>
-        <td>{{account.state}}</td>
+        <td>{{customer.id}}</td>
+        <td>{{customer.documentType.name}}</td>
+        <td>{{customer.document}}</td>
+        <td>{{customer.fullName}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.password}}</td>
+        <td>
+          <a class = "btn btn-outline-success" (click)="editar(customer.id)" >Editar</a>
+        </td>
+
       </tr>
     </tbody>
 </table>

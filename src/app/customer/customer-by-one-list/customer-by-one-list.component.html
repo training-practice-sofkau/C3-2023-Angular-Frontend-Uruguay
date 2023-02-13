@@ -1,0 +1,30 @@
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id </th>
+        <th scope="col">Name documentType</th>
+        <th scope="col">Document</th>
+        <th scope="col">fullName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Password</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{customer.id}}</td>
+          <td>{{customer.documentType.name}}</td>
+          <td>{{customer.document}}</td>
+          <td>{{customer.fullName}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.password}}</td>
+          <td>{{customer.state}}</td>
+          <td>
+            <a class = "btn btn-outline-success" (click)="editar(customer.id)" >Editar</a>
+          </td>
+      </tr>
+    </tbody>
+  </table>

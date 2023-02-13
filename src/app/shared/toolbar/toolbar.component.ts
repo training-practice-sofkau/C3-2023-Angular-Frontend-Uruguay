@@ -1,5 +1,4 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 
 @Component({
@@ -7,11 +6,18 @@ import { Router } from "@angular/router";
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit {
 
-  constructor(private router : Router){}
-  
-  link(url : string ){
-    this.router.navigate([url]);
+  isAdmin = false;
+  @Output() toolbarAdmin = new EventEmitter<void>();
+
+  constructor(){}
+
+  ngOnInit(): void {}
+
+  onToolbarAdmin():void{
+    this.toolbarAdmin.emit();
   }
+  
+
 }
