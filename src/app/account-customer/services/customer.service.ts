@@ -15,6 +15,13 @@ export class CustomerService {
 
 
   
+
+  public getAllCustomerById(): Observable <CustomerModel>{
+
+    return this.httpClient.get<CustomerModel>(this.api + "/customer/getCustomerInfo/3a13fd85-65c2-4374-9921-48f4ccec4c1e" )
+   
+     }
+
   public getAllCustomer(): Observable <CustomerModel[]>{
 
     return this.httpClient.get<CustomerModel[]>(this.api + "/customer/getCustomers" )

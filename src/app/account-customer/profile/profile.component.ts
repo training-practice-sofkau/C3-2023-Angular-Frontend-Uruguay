@@ -13,15 +13,27 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ProfileComponent implements OnInit {
 
 
-
+  customer: CustomerModel | undefined
   customers: CustomerModel[] = [];
 
   constructor(public customerService: CustomerService) { }
 
   ngOnInit(): void {
-    this.getAllCust();
+    this.getInfoCust();
 
   }
+
+
+  public getInfoCust(): void {
+
+    this.customerService.getAllCustomerById().subscribe({
+      next: (Response: CustomerModel) => { console.log(this.customer = Response) },
+      error: (error: HttpErrorResponse) => { alert(error.message) }
+
+    });
+  }
+
+
 
   public getAllCust(): void {
 
