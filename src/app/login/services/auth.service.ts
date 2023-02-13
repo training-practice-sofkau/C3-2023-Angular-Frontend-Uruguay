@@ -1,8 +1,12 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnDestroy } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import {  DocumentTypeModel } from '../../program-Funcional/interfaces/customerModel';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { SignUpModel } from "../interfaces/signUpModel";
+import { UserResponse, SignIn } from '../interfaces/signInModel';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -23,13 +27,16 @@ export class AuthService {
     password: "",
   };
 
-  public signUpObservable: BehaviorSubject<SignUpModel> = new BehaviorSubject<SignUpModel>(this.newCustomer);
+  public signUpObservable: BehaviorSubject<SignUpModel> = 
+  new BehaviorSubject<SignUpModel>(this.newCustomer);
   
-  constructor(public apiService : ApiService) { }
+  constructor(
+    private apiService : ApiService,) { }
 
-  signUp(customer: SignUpModel):Observable<string>{//Me tendria que retornar el token
-    return this.apiService.sigUp(customer);
-  }
+
+
+
+
 
 
   

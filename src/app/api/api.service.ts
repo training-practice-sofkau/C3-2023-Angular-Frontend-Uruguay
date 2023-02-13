@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Account } from '../account/interfaces/account';
-import { CreateAccount } from '../account/interfaces/createAccount';
 import { Customer } from '../customer/interface/customer';
 import { Injectable } from '@angular/core';
 import { SignUpModel } from '../login/interfaces/signUpModel';
+import { SignIn, UserResponse } from '../login/interfaces/signInModel';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,38 @@ export class ApiService {
     })
   }
   
-  
-  //--------------Segurity----------------------------
+  token! : string;
+ //--------------Segurity----------------------------
+  logIn(email :string , pass:string):Observable<UserResponse>{
+    const body = {
+      username: email,
+      password: pass
+    }
+    return this.http.post<UserResponse>(`${this.BASE_URL}/security/singIn`,body,this.httpOptions);
+      
+      
+    // .pipe(map((res: UserResponse) => {
+    //   console.log(`Res =>`,res)
+    //   //saveToke()
+    // }),
+    // catchError((err) => this.handlerError(err))
+    // );
+  }
+  // logOut():void{}
+  // private readToken():void{ //Guardar el token en el local storage
+
+  // }
+  // private saveToken():void{ // para guardar el token
+
+  // }
+  // private handlerError(err:any):Observable<never>{
+  //   let errorMensaje = `A ocurrido un Error`;
+  //   if(err){
+  //     errorMensaje = `Error : code ${err.message}`
+  //   } 
+  //   window.alert(errorMensaje);
+  //   return throwError(errorMensaje);
+  // }
   
   //--------------Account----------------------------
   //createAccount(){}

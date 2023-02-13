@@ -1,7 +1,7 @@
 export type Roles = 'CLIENTE' | 'ADMIN'; //COMO UN ENUM 
 
 export interface SignIn{
-    email : string;
+    username : string;
     password : string;
 }
 

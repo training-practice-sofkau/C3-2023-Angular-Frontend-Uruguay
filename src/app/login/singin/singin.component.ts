@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../services/login.service';
-import { SignIn } from '../interfaces/signInModel';
+import { SignIn, UserResponse } from '../interfaces/signInModel';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
   selector: 'app-singin',
-  providers:[LoginService],
+  providers:[AuthService],
   templateUrl: './singin.component.html',
   styleUrls: ['./singin.component.scss']
 })
 export class SinginComponent implements OnInit {
   
-  constructor(private loginService : LoginService){}
+  token ! : string;
+
+  constructor(private authService : AuthService){}
   
   ngOnInit(): void {
     const userData: SignIn = {
-      email : `cris@gmail.com`,
+      username: `cris@gmail.com`,
       password:`cris12344`,
     };
-    this.loginService.logIn(userData).subscribe((data)=>(console.log(`login`)));
-    
+
   }
+
 
 }
