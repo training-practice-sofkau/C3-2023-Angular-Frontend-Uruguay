@@ -1,0 +1,16 @@
+<div *ngFor="let customer of result">
+    <pre>
+        id: {{customer.id}}
+            docId: {{customer.documentType.id}}
+            docName: {{customer.documentType.name}}
+            docState: {{customer.documentType.state}}
+        doc: {{customer.document}}
+        name: {{customer.fullName}}
+        email: {{customer.email}}
+        phone: {{customer.phone}}
+        pass: {{customer.password}}
+        avatar: {{customer.avatarUrl}}
+        state: {{customer.state}}
+        deleted: {{customer.daletedAt}}
+    </pre>
+</div>
