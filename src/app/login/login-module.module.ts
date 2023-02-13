@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
 import { SignInComponent, SignOutComponent, SignUpComponent } from './';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -14,6 +16,10 @@ import { SignInComponent, SignOutComponent, SignUpComponent } from './';
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [SignInComponent,
     SignOutComponent,

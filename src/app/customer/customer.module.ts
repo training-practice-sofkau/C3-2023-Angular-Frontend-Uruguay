@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerChangePasswordComponent, CustomerInfoComponent, ModifyCustomerComponent } from './';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,8 @@ import { CustomerChangePasswordComponent, CustomerInfoComponent, ModifyCustomerC
     ModifyCustomerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [CustomerChangePasswordComponent,
     CustomerInfoComponent,

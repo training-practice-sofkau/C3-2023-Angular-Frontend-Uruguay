@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import * as path from 'path';
-import { CustomerChangePasswordComponent } from './customer/customer-change-password/customer-change-password.component';
-import { PermissionsGuard } from './customer/guards/permissions.guard';
-import { LoggedGuard } from './customer/guards/logged.guard';
+import { LoggedGuard, PermissionsGuard } from './guards';
 
 const routes: Routes = [
   {

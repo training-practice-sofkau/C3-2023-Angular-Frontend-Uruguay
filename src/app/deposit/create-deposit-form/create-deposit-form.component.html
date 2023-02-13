@@ -2,20 +2,20 @@
   <div class="flex flex-col rounded-t bg-white mb-0 p-5">
     <h1 class="text-center">Make a Deposit</h1>
 
-    <form action="">
-      <select name="" id="" class="px-4 py-2 shadow rounded-sm mb-5 w-full">
-        <option value="" class="text-2xl rounded-sm ">Cuenta 1</option>
+      <p class="text-center">Select One ID</p>
+      <select name="ids" id="" class="px-4 py-2 shadow rounded-sm mb-5 w-full" [(ngModel)]="selectedId">
+        <option class="text-2xl rounded-sm" >Select an Account</option>
+        <option class="text-2xl rounded-sm" *ngFor="let account of accounts">{{account.id}}</option>
       </select>
 
       <div>
       <p class="text-xl">Amount</p>
-      <input type="number" placeholder="200" class="w-full border rounded-sm p-2 mb-2">
+      <input type="number" name="amount" placeholder="200" class="w-full border rounded-sm p-2 mb-2" [(ngModel)]="amount">
     </div>
 
     <div class="flex justify-end mt-2">
-      <button class="bg-blue-600 text-white p-2 rounded border border-gray-300 mr-4 hover:bg-blue-400">Confirm</button>
+      <input type="submit" class="bg-blue-600 text-white p-2 rounded border border-gray-300 mr-4 hover:bg-blue-400" value="Confirm" (click)="createDeposit()">
     </div>
 
-  </form>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomerService } from '../../customer/services/customer.service';
+import { ServiceService } from '../../service/service.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,12 +8,12 @@ import { CustomerService } from '../../customer/services/customer.service';
 })
 export class ToolbarComponent {
 
-  constructor(private customerService: CustomerService) {
+  constructor(private service: ServiceService) {
 
   }
 
   isLogged(): boolean {
-    if(this.customerService.hasUser()) {
+    if(this.service.hasUser()) {
       return true;
     }
 

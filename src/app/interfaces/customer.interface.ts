@@ -9,6 +9,7 @@ export interface CustomerModel {
   avatarUrl?: string;
   state: boolean;
   daletedAt?: Date | number;
+  token: string;
 }
 
 export interface DocumentTypeModel {
