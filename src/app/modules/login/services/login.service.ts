@@ -29,6 +29,11 @@ export class LoginService {
     return this.http.post(direction, form, { responseType: 'text'});
   }
 
+  signUp(form: SignIn): Observable<string>{
+    let direction = this.api.url + "/security/signUp";
+    return this.http.post(direction, form, { responseType: 'text'});
+  }
+
   ngOnInit(): void {
     this.defaultLogin()
   }
