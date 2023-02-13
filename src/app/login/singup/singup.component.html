@@ -2,7 +2,7 @@
 
 
 
-<section class="form-register"  *ngIf= "(serviceLogIn.switchLogUp)" >
+<section class="form-register"  *ngIf= "(globalService.switchLogUp)" >
   <h4>Sign Up</h4>
   <form>
     <input class="controls" type="text" id="tipo" name="tipo"  placeholder="Usuario">
@@ -16,6 +16,9 @@
      
     <button class="boton"  (click)="true"  >Sign Up</button>
    
-    <p>Ya estás registrado?</p> <a class= "link"  href="">Ingresar!</a>
+    <p>Ya estás registrado?</p> <a class= "link" (click)="(globalService.valorCaseLogin = 1)" >Ingresar!</a>
   </form>
 </section>
+
+<!--Nota: Saque el "href=" ya que este si esta vacio te redirige a la propia pagina en la que estoy.
+Esto hacia que se restablecieran las variables buleanas de control-->

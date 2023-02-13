@@ -7,7 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
 import { LoginModule } from '../login/login-module.module';
-import { ServiceLogIn } from '../global-service/service-login.service';
+import { GlobalService } from '../global-service/service-global.service';
 
 
 
@@ -29,6 +29,6 @@ import { ServiceLogIn } from '../global-service/service-login.service';
     FooterComponent,
     HomeComponent
    ],
-   providers: [ServiceLogIn],
+   providers: [GlobalService],
 })
 export class SharedModule { }

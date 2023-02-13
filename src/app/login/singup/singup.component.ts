@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ServiceLogIn } from 'src/app/global-service/service-login.service';
+import { GlobalService } from 'src/app/global-service/service-global.service';
+
 
 @Component({
   selector: 'app-singup',
@@ -8,6 +9,6 @@ import { ServiceLogIn } from 'src/app/global-service/service-login.service';
 })
 export class SingupComponent {
   
-  constructor(public serviceLogIn : ServiceLogIn){}
+  constructor(public globalService : GlobalService){}
 
 }

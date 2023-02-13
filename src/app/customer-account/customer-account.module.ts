@@ -4,18 +4,20 @@ import { MyAccountsComponent } from './my-accounts/my-accounts.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { CustomerAccountRoutingModule } from './customer-account-routing.module';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [  //TODAS ESTAS DECLARACIONES INDICAN QUE ESTOS COMPONENTES SON PARTE DE CUSTOMER-ACCOUNT.MODULE
     MyAccountsComponent,
     UserProfileComponent,
     NewAccountComponent,
     UpdateUserComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, //SIRVE PARA DIRECTIVAS DE ngIf ngFor y Pipes
+    CustomerAccountRoutingModule //RUTAS PERESOSAS 
   ]
 })
 export class CustomerAccountModule { }

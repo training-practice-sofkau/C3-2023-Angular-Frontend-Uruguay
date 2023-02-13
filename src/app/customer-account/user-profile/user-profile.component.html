@@ -1,1 +1,97 @@
-<h2>Usuario</h2>
+<!--**************** Background y Transparencia *********************-->
+
+<section class="home">
+  <div class="cover">
+
+    <!--********************** CUSTOMER UPDATE ************************-->
+
+    <app-update-user></app-update-user>
+ 
+
+
+
+    <!--************************* CUSTOMER VIEW *************************-->
+    <div class="container" *ngIf="(globalService.switchViewUser)">
+      <section class="section about-section gray-bg" id="about" >
+
+        <div class="row align-items-center flex-row-reverse">
+          <div class="col-lg-6">
+            <div class="about-text go-to">
+              <h3 class="dark-color">Mi Perfil</h3>
+
+
+              <div class="row about-list">
+                <div class="col-md-6">
+
+                  <div class="media">
+                    <label>Nombre</label>
+                    <p>{{customer.fullName}}</p>
+                  </div>
+
+                  <div class="media">
+                    <label>N° Documento</label>
+                    <p>{{customer.document}}</p>
+                  </div>
+
+                  <div class="media">
+                    <label>Tipo de Documento</label>
+                    <p>{{customer.documentType.name}}</p>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="media">
+                    <label>E-mail</label>
+                    <p>{{customer.email}}</p>
+                  </div>
+                  <div class="media">
+                    <label>Phone</label>
+                    <p>{{customer.phone}}</p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="about-avatar">
+              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+            </div>
+          </div>
+        </div>
+        <!--LO BLANCO-->
+
+        <div class="counter">
+          <div class="row">
+
+            <div class="col-6 col-lg-3">
+              <div class="count-data text-center">
+                <h6 class="count h2" data-to="500" data-speed="500">$ 500</h6>
+                <p class="m-0px font-w-600">Cuenta Corriente</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+              <div class="count-data text-center">
+                <h6 class="count h2" data-to="850" data-speed="850">$ 850</h6>
+                <p class="m-0px font-w-600">Caja de Ahorro</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="content-buttom">
+          <button class="boton" (click)="(globalService.valorCaseUser = 2)">Editar</button>
+        </div>
+
+
+      </section>
+    </div>
+
+
+
+    <!--FIN Background y Transparencia-->
+
+  </div>
+</section>

@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceLogIn } from 'src/app/global-service/service-login.service';
+import { GlobalService } from 'src/app/global-service/service-global.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [ServiceLogIn]
+  providers: [GlobalService]
 })
 export class HomeComponent implements OnInit{
 
-  constructor(public serviceLogIn : ServiceLogIn){}
+  constructor(public globalService: GlobalService){}
 
   ngOnInit(): void {
   }
 
+  ngDoCheck(){
+    this.globalService.eligeLogin()
+  }
+
+  
 }

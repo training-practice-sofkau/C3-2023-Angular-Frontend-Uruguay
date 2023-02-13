@@ -12,13 +12,14 @@ const routes: Routes = [
   {path:  '', redirectTo: 'app-home', pathMatch:  'full' },
 
   {path: 'app-home', component: HomeComponent},
-  {path: 'app-user-profile', component: UserProfileComponent, canActivate: [GuardLoginGuard ]}, // 
-  {path: 'app-my-accounts', component: MyAccountsComponent, canActivate: [GuardLoginGuard ]}, //
-  {path: 'app-view-transfers', component: ViewTransfersComponent, canActivate: [GuardLoginGuard ]}, //
-  {path: 'app-ejercicio', component: EjercicioComponent, canActivate: [GuardLoginGuard ]}, //
+
+  {path: 'app-ejercicio', component: EjercicioComponent, canActivate: [GuardLoginGuard ]},
+
+  {path: 'transactions', loadChildren:()=> import('./transactions/transactions.module').then(m => m.TransactionsModule)}, //child
+
+  {path: 'customer-account', loadChildren:()=> import('./customer-account/customer-account.module').then(m => m.CustomerAccountModule)}, //child
 
   {path: '**', component: HomeComponent}
-
 
 ];
 
