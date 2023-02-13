@@ -15,9 +15,17 @@ import { CustomerService } from './administrator/services/customer.service';
 import { DepositService } from './administrator/services/deposit.service';
 import { TransferService } from './administrator/services/transfer.service';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
-import { MyAccountComponent } from './account-customer/my-account/my-account.component';
-import { ProfileComponent } from './account-customer/profile/profile.component';
 import { AccountCustomerModule } from './account-customer/account-customer.module';
+import { HomeComponent } from './pages/home/home.component';
+//import { PagesModule } from './pages/pages.module';
+import { CustomerComponent } from './administrator/customer/customer.component';
+import { CustomerProfileComponent } from './pages/customer-profile/customer-profile.component';
+import {HttpClientModule} from  '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+
+
+
 
 @NgModule({
   declarations: [
@@ -26,6 +34,11 @@ import { AccountCustomerModule } from './account-customer/account-customer.modul
     NewTransaccionComponent,
     ViewTransferComponent,
     EjercicioComponent,
+   HomeComponent,
+   CustomerComponent,
+   CustomerProfileComponent,
+  
+
   ],
   imports: [
     BrowserModule,
@@ -36,9 +49,12 @@ import { AccountCustomerModule } from './account-customer/account-customer.modul
     SharedModule,
     LoginModule,
     AccountCustomerModule,
+    //PagesModule
+    HttpClientModule,
+    FormsModule
 
   ],
-  providers: [AuthService, AccountService, CustomerService, DepositService,DepositService,TransferService],
+  providers: [AuthService, AccountService, CustomerService, DepositService, DepositService, TransferService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

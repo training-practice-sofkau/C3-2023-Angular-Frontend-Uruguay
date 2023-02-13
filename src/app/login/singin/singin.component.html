@@ -1,25 +1,33 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
-      <!-- Tabs Titles -->
-      <h2 class="active"> Sign In </h2>
-      <h2 class="inactive underlineHover" [routerLink]="['/SignUp']">Sign Up </h2>
-  
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ficonos-gratis%2Fbanco_14105848.htm&psig=AOvVaw1zUeIwndIK_rlCusgIoBUk&ust=1676038555963000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCPjh0qfQiP0CFQAAAAAdAAAAABAE" id="icon" alt="User Icon" />
-      </div>
-  
-      <!-- Login Form -->
-      <form (ngSubmit)="login()">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="submit" class="fadeIn fourth" value="Log In">
-      </form>
-  
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
-      </div>
-  
+        <!-- Tabs Titles -->
+        <h2 class="active"> Sign In </h2>
+        <h2 class="inactive underlineHover" [routerLink]="['/SignUp']">Sign Up </h2>
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ficonos-gratis%2Fbanco_14105848.htm&psig=AOvVaw1zUeIwndIK_rlCusgIoBUk&ust=1676038555963000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCPjh0qfQiP0CFQAAAAAdAAAAABAE"
+                id="icon" alt="User Icon" />
+        </div>
+
+        <!--(ngModel)]="login" (ngModel)]="password" Login Form 
+    form (ngSubmit)="login(login,password)"-->
+        <form >
+            <div class="form-group">
+                <input [(ngModel)]="username" type="text" id="username" class="fadeIn second" name="username"
+                    placeholder="username">
+            </div>
+            <div class="form-group">
+             <input [(ngModel)]="password" type="text" id="password" class="fadeIn third"
+                name="password" placeholder="password">
+            </div>
+            <input type="submit" (click)="login(username,password)" class="fadeIn fourth" value="Log In">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+
     </div>
-  </div>
+</div>

@@ -7,6 +7,12 @@ import { SingupComponent } from './login/singup/singup.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
 import { GuardsGuard } from './login/guards/guards.guard';
+import { HomeComponent } from './pages/home/home.component';
+import { CustomerComponent } from './administrator/customer/customer.component';
+import { CustomerProfileComponent } from './pages/customer-profile/customer-profile.component';
+
+
+
 
 const routes: Routes = [
   
@@ -15,8 +21,10 @@ const routes: Routes = [
   { path: 'Myaccount', component: MyAccountComponent},
   { path: 'SignIn', component: SinginComponent  }, 
   { path: 'SignUp', component: SingupComponent}, 
-  { path: 'profile', component: ProfileComponent, canActivate:[GuardsGuard]}, 
+ // { path: 'profile', component: ProfileComponent, canActivate:[GuardsGuard]}, 
   { path: 'ejercicio', component: EjercicioComponent, canActivate:[GuardsGuard]}, 
+  { path: 'Home', component: HomeComponent}, 
+  { path: 'profile', component: CustomerProfileComponent}, 
   
   { path: '**', component: NotfoundComponent}, 
   

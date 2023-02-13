@@ -5,8 +5,8 @@ import { SingupComponent } from './singup/singup.component';
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
-
-
+import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MaterialModule,
     RouterModule,
-  ]
+    FormsModule
+  ],
+  exports:[SinginComponent,SingupComponent]
 })
 export class LoginModule { }

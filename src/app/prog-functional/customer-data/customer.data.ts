@@ -3,7 +3,7 @@ import { CustomerModel } from "src/app/interfaces/customer.interface";
 
 
 export const baseCustomers: Array<CustomerModel> = [
-  {
+ /* {
     id: "asd12a1s2s",
     documentType: {
       id: "a1s5s5e",
@@ -58,5 +58,5 @@ export const baseCustomers: Array<CustomerModel> = [
     phone: 100,
     password: "aaaa222",
     state: true,
-  },
+  },*/
 ]

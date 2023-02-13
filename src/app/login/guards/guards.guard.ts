@@ -17,12 +17,14 @@ export class GuardsGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (localStorage.getItem('token')) {
+      //this.router.navigate(['/login']);
       return true;
+      
     }
 
     //hacer if de check 
     // si es true return true
-    //this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);this.router.navigate(['/login']);
     return true;
   }
 }
