@@ -1,6 +1,6 @@
 export interface DocumentTypeInterface
  {
-  name: string;
+     name: string;
     id: string;
     state: boolean;
  }

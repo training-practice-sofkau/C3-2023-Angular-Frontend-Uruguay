@@ -1,8 +1,9 @@
 
 export interface  DepositInterface
 {
-  id: string,
+  accountId: string|undefined,
   amount: number,
   date_time: number | Date,
   state: true
+  id: string|undefined
 }

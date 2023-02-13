@@ -5,20 +5,20 @@
       <form [formGroup]="depositForm">
         <div class="form-group">
           <label for="accountType">Seleccione su tipo de cuenta </label>
-          <select class="form-control" formControlName="accountType" id="accountType">
-            <option>Cuenta Pesos </option>
-            <option>Cuenta Dolares</option>
+          <select class="form-control" formControlName="accountType" id="accountType" (change)="updateSelectedAccount($event)">
+            <option *ngFor="let account of accounts" [value]="account.id">{{account.accountType.name  }}</option>
           </select>
+
+
+
+
         </div>
-        <div class="form-group">
-          <label for="depositReason">Motivo Deposito:</label>
-          <input type="text" class="form-control" formControlName="depositReason" id="depositReason">
-        </div>
+      
         <div class="form-group">
           <label for="depositAmount">Saldo</label>
           <input type="text" class="form-control" formControlName="depositAmount" id="depositAmount">
         </div>
-        <button type="submit"  (click)="submitForm()" class="btn btn-primary" [disabled]="!depositForm.valid">Validar</button>
+        <button type="submit"  (click)="createdeposit()" class="btn btn-primary" [disabled]="!depositForm.valid">Validar</button>
       </form>
     </div>
   </div>

@@ -13,28 +13,28 @@ import { customerInterface } from 'src/app/tools';
   templateUrl: './update-customer.component.html',
 })
 export class UpdateCustomerComponent {
-constructor(private modalService: NgbModal, private formBuilder: FormBuilder,private router: Router, private AuthService: AuthService, private AccountComponent: AccountComponent){}
+constructor( private formBuilder: FormBuilder,private router: Router, private AuthService: AuthService, private AccountComponent: AccountComponent){}
+public customerDate = localStorage.getItem('customer')
+public customer: customerInterface = this.customerDate? JSON.parse(this.customerDate): null
 
-public customer: customerInterface | undefined
-
-  formEdit = this.formBuilder.group({
-    documentType: this.formBuilder.group({
-      name: ['', Validators.required],
-    }),
-    document: ['', Validators.required],
-    fullName: ['', Validators.required],
-    email: ['', Validators.required],
-    phone: ['', Validators.required],
-    password: ['', Validators.required],
-    avatarUrl: ['', Validators.required],
-    state: [true, Validators.required]
+formEdit = this.formBuilder.group({
+  documentType: this.formBuilder.group({
+  name: [this.customer?.documentType?.name || 'Cedula', Validators.required],
+  }),
+  document: [this.customer?.document || '', Validators.required],
+  fullName: [this.customer?.fullName || '', Validators.required],
+  email: [this.customer?.email || '', Validators.required],
+  phone: [this.customer?.phone || '', Validators.required],
+  password: [this.customer?.password || '', Validators.required],
+  avatarUrl: [this.customer?.avatarUrl || '', Validators.required],
+  state: [this.customer?.state || true, Validators.required]
   });
 
 
   ngOnInit(): void {
+    const customerDate = localStorage.getItem('customer');
 
-    this.customer =  this.AccountComponent.getDatacustomer()
-
+    this.customer = customerDate? JSON.parse(customerDate) : this.customer;
 
  }
 
@@ -44,10 +44,9 @@ public customer: customerInterface | undefined
     console.log('save changes');
     let  persona =  this.formEdit?.value
      console.log(this.formEdit?.value)
-    localStorage.setItem( 'customer', JSON.stringify(persona) )
     this.AuthService.post(`http://localhost:3000/customers/${this.customer?.id}`, persona)
     .subscribe(response => {
-      console.log(response);
+      console.log(response.documentType.name);
       this.router.navigate(['account']);
     })
 

@@ -22,12 +22,15 @@ export class AccountComponent implements OnInit {
     public accountUser: AccountTransfer[] = []
 
   getDataAccountType(){
-    this.accountType = this.persona?.accountUser.accountType
+    const accountType = localStorage.getItem('accountype')
+
+    this.accountType = accountType ? JSON.parse(accountType): null
     return this.accountType
 
   }
   getDatacustomer(){
-    this.customer = this.persona?.accountUser.customer
+    const customerDate = localStorage.getItem('customer')
+    this.customer = customerDate ? JSON.parse(customerDate): null
     return this.customer
   }
   getDataAccount(){
@@ -40,22 +43,17 @@ export class AccountComponent implements OnInit {
       data => {
         console.log(data)
         this.accountUser = data
-
+        this.customer = this.accountUser[0].customer
+        this.accountType = this.accountUser[0].accountType
+        localStorage.setItem('customer', JSON.stringify(this.customer))
+        localStorage.setItem('accountype', JSON.stringify(this.accountType ))
       },
       error => {
         console.error(error);
       }
     );
 
-    localStorage.setItem('account', JSON.stringify(this.persona))
-    this.customer = this.persona?.accountUser.customer
-    this.accountType = this.persona?.accountUser.accountType
-    localStorage.setItem('customer', JSON.stringify(this.customer))
-    localStorage.setItem('accountype', JSON.stringify(this.accountType ))
-
     return this.persona
-
-
 
   }
   getAccount(){

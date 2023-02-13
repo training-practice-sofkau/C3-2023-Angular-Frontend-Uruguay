@@ -5,7 +5,7 @@ import { TransferComponent } from './transfer.component';
 import { NewTransferComponent } from './new-transfer/new-transfer.component';
 import { GethistoryComponent } from './gethistory/gethistory.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -29,7 +29,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [FormsModule, CommonModule, RouterModule.forChild(routes)],
+  imports: [FormsModule, CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,
+  ],
   declarations: [
     TransferComponent,
     DeleteComponent,

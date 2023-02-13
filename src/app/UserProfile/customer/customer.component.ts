@@ -10,6 +10,8 @@ import {AlertsService} from './../../shared'
 
   selector: 'app-customer',
   templateUrl: './customer.component.html',
+  entryComponents: [UpdateCustomerComponent]
+
 })
 export class CustomerComponent implements OnInit  {
   constructor(private modalService: NgbModal, private AccountComponent: AccountComponent, private AlertsService: AlertsService) { }

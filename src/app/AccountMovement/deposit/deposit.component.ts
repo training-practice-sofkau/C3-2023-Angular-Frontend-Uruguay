@@ -24,10 +24,11 @@ export class DepositComponent {
     const customerId = localStorage.getItem('account');
     this.customer =  customerId ? JSON.parse(customerId) : null
 
-    const url = `http://localhost:3000/deposit/${this.customer?.accountUser.id}`;
+    const url = `http://localhost:3000/deposit/${this.customer?.accountUser.customer.id}`;
     this.depositService.get(url).subscribe(
       data => {
         this.depositList = data;
+        console.log(this.depositList)
       },
       error => {
         console.error(error);

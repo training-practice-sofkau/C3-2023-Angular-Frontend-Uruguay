@@ -251,7 +251,7 @@ export class LoginComponent {
           avatarUrl: decodedToken.picture || 'fotoperfil',
           token: '',
           documentType: {
-            name: '',
+            name: 'Cedula',
             id: '',
             state: true,
           },

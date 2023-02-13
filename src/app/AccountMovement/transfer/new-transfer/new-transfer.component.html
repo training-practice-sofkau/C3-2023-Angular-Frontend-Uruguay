@@ -1,16 +1,27 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-      <form>
+      <form [formGroup]="transferForm">
         <div class="form-group">
-          <label for="destinationAccount">Transferencia a:</label>
-          <input type="text" class="form-control" id="destinationAccount" name="destinationAccount">
+          <label for="incomeAccount">Cuenta de ingreso:</label>
+          <select class="form-control" id="incomeAccount" formControlName="incomeAccount" (change)="updateSelectedIncomeAccount($event)">
+            <option *ngFor="let account of accounts" [value]="account.id">{{ account.accountType.name }}</option>
+          </select>
         </div>
         <div class="form-group">
-          <label for="amount">Monto:</label>
-          <input type="text" class="form-control" id="amount" name="amount">
+          <label for="outcomeAccount">Cuenta de destino:</label>
+          <input type="text" class="form-control" id="outcomeAccount" formControlName="outcomeAccount" >
+
         </div>
-        <button type="submit" class="btn btn-primary">Validar</button>
+        <div class="form-group">
+          <label for="transferAmount">Monto:</label>
+          <input type="text" class="form-control" id="transferAmount" formControlName="transferAmount">
+        </div>
+        <div class="form-group">
+          <label for="transferReason">Razón:</label>
+          <input type="text" class="form-control" id="transferReason" formControlName="transferReason">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="createTransfer()">Crear transferencia</button>
       </form>
     </div>
   </div>

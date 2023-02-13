@@ -1,4 +1,6 @@
+import { AccountInterfaec } from './account-interface';
 import { AccountTransfer } from './accountTransfer';
+import { NewTransferInterface } from './newTransernterface';
 export interface  TransferInterface
 {
   income: AccountTransfer,
@@ -9,4 +11,5 @@ export interface  TransferInterface
   dateTime: Date | number;
   state: true  | false;
   deletedAt: Date | number
+
 }

@@ -49,6 +49,8 @@
 
 
 <ng-template #content let-modal>
+  <app-createaccounttype>
+
   <div class="modal-header">
     <h4 class="modal-title">Registro</h4>
     <button
@@ -60,8 +62,8 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <div class="modal-body">
-    <app-createaccounttype></app-createaccounttype>
   </div>
   <div class="modal-footer">
     <button
@@ -72,4 +74,6 @@
       Cerrar
     </button>
   </div>
+</app-createaccounttype>
+
 </ng-template>
