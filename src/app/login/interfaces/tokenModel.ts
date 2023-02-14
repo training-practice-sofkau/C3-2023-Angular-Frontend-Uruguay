@@ -5,7 +5,7 @@ export interface tokenUser {
 } 
 
 export interface tokenCustomer {
-    documentType: string,
+    documentTypeId: string,
     accountTypeId: string;
     document: string,
     fullName: string,

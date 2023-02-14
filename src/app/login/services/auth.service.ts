@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { SignUpModel } from "../interfaces/signUpModel";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserResponse, SignIn } from '../interfaces/signInModel';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, NumberValueAccessor } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { tokenCustomer, tokenUser } from '../interfaces/tokenModel';
@@ -22,7 +22,7 @@ export class AuthService {
   };
   
   protected newCustomer: SignUpModel = {
-    documentType: "",//DocumentTypeModel , es un tipo de dato que nosotros creamos
+    documentTypeId: "",//DocumentTypeModel , es un tipo de dato que nosotros creamos
     accountTypeId: "",
     document: "",
     fullName: "",
@@ -61,21 +61,25 @@ export class AuthService {
     }
 
     getUserLocalStorage():tokenUser {
+      
       const token = sessionStorage.getItem('token');
       if(token ){
         const tokenUser : tokenUser | null= this.helper.decodeToken(token);
         if(tokenUser)  return tokenUser;
       }
         throw new Error("Token Vacio");
+      
     }
 
-    getCustomerLocalStorage():SignUpModel {
+    getCustomerLocalStorage():tokenCustomer{
       const token = sessionStorage.getItem('token');
       if(token ){
         const tokenCustomer : tokenCustomer | null= this.helper.decodeToken(token);
         if(tokenCustomer)  return tokenCustomer;
       }
-        throw new Error("Token Vacio");
+      throw new Error("token vacio : este error me aprece aunque tenga el token")
+      
+        
     }
 
     signOut () {

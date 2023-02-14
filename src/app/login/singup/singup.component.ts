@@ -19,7 +19,7 @@ export class SingupComponent implements OnInit{
   public FormSignUp!: FormGroup; 
   
   customer : SignUpModel = {  
-    documentType: "",
+    documentTypeId: "",
     accountTypeId:"",
     document: "",
     fullName: " ",
@@ -29,7 +29,7 @@ export class SingupComponent implements OnInit{
     
   }
   customerRegistrado : SignUpModel = {  
-    documentType: "",
+    documentTypeId: "",
     accountTypeId: "",
     document: "",
     fullName: " ",
@@ -54,15 +54,22 @@ export class SingupComponent implements OnInit{
   send():void{
     this.customer = this.FormSignUp.getRawValue();
     this.authService.newSigUp(this.customer);
+
     this.customerRegistrado = this.authService.getCustomerLocalStorage();
     console.log(this.customerRegistrado);
+  
+    sessionStorage.removeItem('token');
+    this.router.navigate(['/singin']);
+    
+   
+    
   }
 
 
   initForm():FormGroup{
     return this.formBuilder.group(
       {
-        documentType:['',[Validators.required]],
+        documentTypeId:['',[Validators.required]],
         accountTypeId:['',[Validators.required]],
         document:['',[Validators.required]],
         fullName:['',[Validators.required]],

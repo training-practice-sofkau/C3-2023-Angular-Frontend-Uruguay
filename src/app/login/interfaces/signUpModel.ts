@@ -1,5 +1,5 @@
 export interface SignUpModel{
-    documentType: string;
+    documentTypeId: string;
     accountTypeId: string;
     document: string;
     fullName: string;
