@@ -14,20 +14,20 @@ export class LoginService {
   userLogged: boolean = false;
 
   private apiServeUrl = environment.apiBaseUrl;
-  
+
 
   constructor(private http: HttpClient) { 
-    this.defaultLogged()
+    this.defaultLogin()
   }
 
 
-  defaultLogged(){
+  defaultLogin(){
     if(!localStorage.getItem('MyToken')){
       localStorage.setItem('MyToken', 'false')
     }   
   }
  
-  activeLogged(){
+  activeLogin(){
     localStorage.getItem('MyToken')
     localStorage.setItem('MyToken', 'true')
   }

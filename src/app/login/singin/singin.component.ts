@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/global-service/service-global.service';
-import { FormBuilder, FormControl, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { SignIn } from 'src/app/i-model/i-signIn';
 import { LoginService } from '../services/login.service';
 import { HttpErrorResponse } from '@angular/common/http';
