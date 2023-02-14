@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AccountDashboardComponent, AccountInfoComponent } from './';
 import { AccountBtnsComponent } from './account-btns/account-btns.component';
 import { FormsModule } from '@angular/forms';
+import { AccountRoutingModule } from './account-routing.module';
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [AccountDashboardComponent,
     AccountInfoComponent,

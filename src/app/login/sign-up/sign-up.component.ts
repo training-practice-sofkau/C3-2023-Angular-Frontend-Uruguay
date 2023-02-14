@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SignUpModel } from '../../interfaces/sign-up.interface';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from '../../service/service.service';
 import { Router } from '@angular/router';
 
@@ -12,13 +12,26 @@ import { Router } from '@angular/router';
 export class SignUpComponent {
 
   formUser = this.fb.group({
-    documentType: [''],
-    document: [''],
-    fullName: [''],
-    email: [''],
-    phone: [''],
-    password: [''],
-    confirmPassword: ['']
+    documentType: this.fb.nonNullable.control('',
+    {validators: [Validators.required]}),
+
+    document: this.fb.nonNullable.control('',
+    {validators: [Validators.required]}),
+
+    fullName: this.fb.nonNullable.control('',
+    {validators: [Validators.required]}),
+
+    email: this.fb.nonNullable.control('',
+    {validators: [Validators.required]}),
+
+    phone: this.fb.nonNullable.control('',
+    {validators: [Validators.required]}),
+
+    password: this.fb.nonNullable.control('',
+    {validators: [Validators.required]}),
+
+    confirmPassword: this.fb.nonNullable.control('',
+    {validators: [Validators.required]})
   });
 
   constructor(private service: ServiceService,
@@ -26,21 +39,13 @@ export class SignUpComponent {
     private router: Router) {}
 
   signUp () {
-    if(this.formUser.controls.documentType.value && this.formUser.controls.document.value && this.formUser.controls.fullName.value &&
-      this.formUser.controls.email.value && this.formUser.controls.phone.value && this.formUser.controls.password.value) {
+    if(this.formUser.valid) {
 
-        const user: SignUpModel = {
-          documentType: this.formUser.controls.documentType.value,
-          document: this.formUser.controls.document.value,
-          fullname: this.formUser.controls.fullName.value,
-          email: this.formUser.controls.email.value,
-          phone: this.formUser.controls.phone.value,
-          password: this.formUser.controls.password.value,
-        }
+        const user: SignUpModel = this.formUser.getRawValue();
 
 
         this.service.signUp(user)
-        this.router.navigate(['/dashboard'])
+        setTimeout(() => this.router.navigate(['/dashboard']), 200)
       }
   }
 }

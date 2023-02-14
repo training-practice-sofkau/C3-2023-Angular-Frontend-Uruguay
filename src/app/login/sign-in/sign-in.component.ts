@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SignInModel } from '../../interfaces/sign-in.interface';
-import { FormControl, FormBuilder } from '@angular/forms';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ServiceService } from '../../service/service.service';
 import { Router } from '@angular/router';
 
@@ -16,20 +16,19 @@ export class SignInComponent {
     private router: Router) {}
 
     formUser =  this.fb.group({
-      username: [''],
-      password: ['']
+      username: this.fb.nonNullable.control('',
+      {validators: [Validators.required]}),
+      password: this.fb.nonNullable.control('',
+      {validators: [Validators.required]})
     })
 
   login() {
-    if(this.formUser.controls.username.value && this.formUser.controls.password.value) {
+    if(this.formUser.valid) {
 
-      const user: SignInModel = {
-        username: this.formUser.controls.username.value,
-        password: this.formUser.controls.password.value
-      }
+      const user: SignInModel = this.formUser.getRawValue()
 
       this.service.signIn(user);
-      this.router.navigate(['/dashboard'])
+      setTimeout(() => this.router.navigate(['/dashboard']), 200)
     }
 
   }
