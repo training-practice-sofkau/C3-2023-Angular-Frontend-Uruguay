@@ -13,5 +13,4 @@ export class CustomerHomeComponent {
   searchCustomers() {
     this.service.getCustomers()
   }
-
 }
