@@ -46,14 +46,20 @@ export class SinginComponent implements OnInit {
   }
 
   signIn(){ // Tiene un error que al principio no me lee el token 
-    this.userSignIn = this.formLogin.getRawValue();
-    this.authService.newSigIn(this.userSignIn);
-    this.tokenUser = this.authService.getUserLocalStorage();
-    console.log(this.tokenUser);
+     this.userSignIn = this.formLogin.getRawValue();
+    // this.authService.newSigIn(this.userSignIn);
+    // this.tokenUser = this.authService.getUserLocalStorage();
+    // console.log(this.tokenUser);
+    this.authService.register(this.userSignIn)
+    .then(data => console.log(data))
+    .catch(error => console.log(error)  
+    );
 
     
-    this.router.navigate(["/home"]);
+    //this.router.navigate(["/home"]);
   }
+
+  
   
   
 }

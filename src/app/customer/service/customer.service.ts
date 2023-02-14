@@ -3,6 +3,7 @@ import { Customer } from '../interface/customer';
 import { ApiService } from 'src/app/api/api.service';
 import { BehaviorSubject } from 'rxjs';
 import { SignUpModel } from '../../login/interfaces/signUpModel';
+import { upDateCustomerModel } from '../interface/upDateCustomer';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,11 @@ export class CustomerService implements OnDestroy {
   public customerAllObservable: BehaviorSubject<Customer[]> = 
   new BehaviorSubject<Customer[]>(this.newCustomerList);
   
+  //customer update
+  protected upDateCus!: upDateCustomerModel;
+  public upDateObservable : BehaviorSubject<upDateCustomerModel> = 
+  new BehaviorSubject<upDateCustomerModel>(this.upDateCus);
+  
   //get One Customer
   protected customer!: Customer;
   public customerOneObservable : BehaviorSubject<Customer> = 
@@ -37,6 +43,16 @@ export class CustomerService implements OnDestroy {
     this.customerOneObservable.unsubscribe();
     this.documentTypeObservable.unsubscribe();
     this.SignUpObservable.unsubscribe();
+    this.upDateObservable.unsubscribe();
+  }
+ 
+
+  upDateCustomer(customer : upDateCustomerModel,idCustomer : string){
+    this.apiService.upDateCustomer(customer,idCustomer).subscribe({
+      next:(data) => (this.upDateCus = data),
+      complete: () => (this.upDateObservable.next(this.upDateCus))
+    }
+    );
   }
   
   createSignUp(customer : SignUpModel){

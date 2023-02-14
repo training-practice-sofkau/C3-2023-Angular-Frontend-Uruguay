@@ -1,15 +1,14 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import {  DocumentTypeModel } from '../../program-Funcional/interfaces/customerModel';
 import { BehaviorSubject } from 'rxjs';
 import { SignUpModel } from "../interfaces/signUpModel";
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { UserResponse, SignIn } from '../interfaces/signInModel';
-import { FormBuilder, NumberValueAccessor } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { SignIn } from '../interfaces/signInModel';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { tokenCustomer, tokenUser } from '../interfaces/tokenModel';
-import { Customer } from '../../customer/interface/customer';
+import { Auth,createUserWithEmailAndPassword } from "@angular/fire/auth";
 
 
 @Injectable({
@@ -17,6 +16,18 @@ import { Customer } from '../../customer/interface/customer';
 })
 export class AuthService {
   
+  constructor(
+    private apiService : ApiService,
+    private cookies : CookieService,
+    private router : Router,
+    private Auth : Auth) { }
+
+
+register(user : SignIn){
+  return createUserWithEmailAndPassword(this.Auth,user.username,user.password);
+}
+
+
   protected documentType: DocumentTypeModel = {
     name: "",
   };
@@ -37,10 +48,6 @@ export class AuthService {
   public signUpObservable: BehaviorSubject<SignUpModel> = 
   new BehaviorSubject<SignUpModel>(this.newCustomer);
   
-  constructor(
-    private apiService : ApiService,
-    private cookies : CookieService,
-    private router : Router) { }
     
     newSigIn(user : SignIn){
       this.apiService.logIn(user).subscribe(
@@ -86,13 +93,6 @@ export class AuthService {
       sessionStorage.removeItem('token');
       this.router.navigate(['/singin']);
     }
-  //
-  // setToken(token: string){
-  //   this.cookies.set('token',token);
-  // }
-  // getToken(){
-  //   this.cookies.get('token');
-  // }
 
 
 
