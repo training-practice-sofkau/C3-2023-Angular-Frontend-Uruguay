@@ -6,31 +6,23 @@ import { MessengerService } from '../services/messenger.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PermissionsGuard implements CanActivate, OnInit {
+export class PermissionsGuard implements CanActivate{
 
   constructor(
     private readonly authService: AuthService,
     private messages: MessengerService,
   ){}
 
-  loggedUser: boolean = false;
 
-  private onUserStatusChange: Subscription | undefined;
-
-  ngOnInit() {
-
-    this.onUserStatusChange = this.authService.loggedUser.subscribe(
-      currentStatus => this.loggedUser = currentStatus);
-  }
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 
-    if (this.loggedUser) {
+    if (this.authService.getUserAccessPermits()) {
       return true;
     }
 
-    this.messages.infoMsg("You don't have permission to access that page!", "", 2000);
+    this.messages.infoMsg("You don't have permission to access that page!", "", 5000);
     return false;
   }
 

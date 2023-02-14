@@ -11,6 +11,9 @@ import { BehaviorSubject, from } from 'rxjs';
 export class AuthService {
 
 
+  usarHasAccess: boolean = false;
+
+
   loggedUser: BehaviorSubject<boolean> = new BehaviorSubject(false);
   publicZone: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
@@ -44,6 +47,17 @@ export class AuthService {
    */
   registerWithFirebase(email: string, pass: string){
     return from(createUserWithEmailAndPassword(this.auth, email, pass))
+  }
+
+
+  // Returns access permits to desktop for current user
+  getUserAccessPermits() : boolean {
+    return this.usarHasAccess;
+  }
+
+  // Sets access permits to desktop for current user
+  setUserAccessPermits(status: boolean) {
+    this.usarHasAccess = status;
   }
 
 

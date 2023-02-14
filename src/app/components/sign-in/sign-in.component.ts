@@ -122,6 +122,7 @@ export class SignInComponent {
 
       this.authService.setUserLogStatus(true);
       this.authService.setPublicZoneStatus(false);
+      this.authService.setUserAccessPermits(true);
       this.loading = false;
       this.router.navigate(["desktop"]);
 
