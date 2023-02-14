@@ -32,15 +32,6 @@ export class SignupComponent {
 
   constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private auth: AuthService) {}
 
-  redirect(url: string) {
-    this.router.navigate(["/" + url]);
-  }
-
-  catchError(error: ErrorTypes){
-    this.error.state = true;
-    this.error.description = error;
-  }
-
   onSubmit(): void {
     if (this.signupForm.valid && this.signupForm.controls.read.value && this.signupForm.controls.email.value){
       let answer: LoginResponseModel;
@@ -64,13 +55,16 @@ export class SignupComponent {
           this.router.navigate(["/dashboard/view"]);
         }
       })
-    } else {
-      this.catchError(ErrorTypes.invalid)
-    }
-    //this.signupForm.controls.name.setValue("xd");
-    //this.cookie.set('hola', 'xd');
-    //this.signupForm.reset();
-    //this.router.navigate(['/dashboard/view']);
+    } else this.catchError(ErrorTypes.invalid)
+  }
+
+  redirect(url: string) {
+    this.router.navigate(["/" + url]);
+  }
+
+  catchError(error: ErrorTypes){
+    this.error.state = true;
+    this.error.description = error;
   }
 
   ngOnInit() {
