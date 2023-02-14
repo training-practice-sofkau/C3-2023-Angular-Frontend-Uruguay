@@ -1,13 +1,22 @@
 <section class="form-register" *ngIf="generalService.switchSignUp">
     <h4>Sign Up</h4>
-    <form>
-        <input class="controls" type="text" id="tipo" name="tipo" placeholder="Usuario">
-        <input class="controls" type="text" id="nombre" name="nombre" placeholder="Contraseña">
-        <input class="controls" type="text" id="telefono" name="telefono" placeholder="Telefono">
-        <input class="controls" type="text" id="correo" name="correo" placeholder="Correo">
+    <form [formGroup]="signUpForm" (ngSubmit)="postSignUp()">
+        <input formControlName="fullName" class="controls" type="text" id="fullName" name="fullName" placeholder="Nombre Completo">
+        <input formControlName="phone" class="controls" type="text" id="phone" name="phone" placeholder="Telefono">
+        <input formControlName="email" class="controls" type="email" id="email" name="email" placeholder="Correo">
+        <input formControlName="password" class="controls" type="password" id="password" name="password" placeholder="Contraseña">
+        <select formControlName="documentTypeId" name="documentTypeId" id="documentTypeId">
+            <option value="Cedula">Cedula</option>
+            <option value="Pasaporte">Pasaporte</option>
+        </select>
+        <input formControlName="document" class="controls" type="text" id="document" name="document" placeholder="Numero de documento">
+        <select formControlName="accountTypeId" name="accountTypeId" id="accountTypeId">
+            <option value="Caja de ahorros">Caja de ahorros</option>
+            <option value="Cuenta Corriente">Cuenta corriente</option>
+        </select>
 
-        <button class="boton" type="submit" (click)="generalService.activeLogin()">Login</button>
-        <p>No tienes una cuenta?</p>
-        <button class="boton" type="submit" (click)="(generalService.valorForm = 1)">Sign Up</button>
+        <button class="boton" type="submit" (click)="generalService.activeLogin()">Sign Up!</button>
+        <p>Ya tienes una cuenta?</p>
+        <button class="boton" type="submit" (click)="(generalService.valorForm = 1)">Sign In</button>
     </form>
 </section>
