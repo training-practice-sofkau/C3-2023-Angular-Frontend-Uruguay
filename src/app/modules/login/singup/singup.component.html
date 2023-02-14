@@ -8,13 +8,13 @@
       <mat-form-field>
         <input matInput type="password" placeholder="Password" name="password" required formControlName="password">
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <!-- <mat-form-field appearance="fill">
         <mat-label name="documentTypeName" required>Document Type</mat-label>
         <mat-select>
           <mat-option value="one">CI</mat-option>
           <mat-option value="two">Pasaporte</mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
       <mat-form-field>
         <input matInput placeholder="Document Type" name="documentTypeName" required formControlName="documentTypeName">
       </mat-form-field>
@@ -31,8 +31,27 @@
         <input matInput placeholder="Account Type" name="accountTypeName" required formControlName="accountTypeName">
       </mat-form-field>
       <button type="submit" mat-raised-button color="primary">Login</button>
+      <div class="content">
+      <div class="row">
+        <div class="col-md-3">
+          <button (click)="onClick()" butt class="btn btn-outline-dark" href="/users/googleauth" role="button" style="text-transform:none" >
+            <img  width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+            Login with Google
+          </button>
+        </div>
+      </div>
+      </div>
       <h3>¿Ya tienes una cuenta? </h3>
       <button type="submit" mat-raised-button color="primary" (click)="(loginService.valorCaseLogin = 1)">Sing In</button>
     </form>
   </mat-card-content>
 </mat-card>
+
+<link   rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous">
+</script>

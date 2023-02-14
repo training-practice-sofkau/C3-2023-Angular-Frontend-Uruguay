@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ResponseI } from 'src/app/interfaces/response.interface';
 import { SignIn } from 'src/app/interfaces/sign-in.interface';
 import { ApiService } from '../../../services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { CustomerModel, DocumentTypeModel } from 'src/app/interfaces/Customer.interface';
 import { AccountModel } from 'src/app/interfaces/account.interface';
+import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,11 @@ export class LoginService {
   documentTypes: DocumentTypeModel[] = [];
 
   customerAccounts: AccountModel[] = [];
-  
-  constructor(public api: ApiService, private http: HttpClient ) { }
+
+  constructor(public api: ApiService,
+              private http: HttpClient,
+              private auth: Auth,
+    ) { }
 
   login(form: SignIn): Observable<string>{
     let direction = this.api.url + "/security/signIn";
@@ -45,6 +48,10 @@ export class LoginService {
 
   activeLogin(){
     localStorage.setItem('key', 'true')
+  }
+
+  loginWithGoogle(){
+    return signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
   //      Intercambio de componentes de signIn y signUp

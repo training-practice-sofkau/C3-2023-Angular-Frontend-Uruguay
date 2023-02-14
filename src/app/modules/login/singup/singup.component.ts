@@ -52,4 +52,15 @@ export class SingupComponent {
       })
     }
   }
+
+
+  onClick(){
+    this.loginService.loginWithGoogle()
+    .then(response =>{
+      console.log(response);
+      this.loginService.activeLogin()
+      this.router.navigate(['account/user']);
+    })
+    .catch(error => console.log(error))
+  }
 }
