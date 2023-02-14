@@ -4,17 +4,27 @@
 
 <section class="form-register"  *ngIf= "(globalService.switchLogUp)" >
   <h4>Sign Up</h4>
-  <form>
-    <input class="controls" type="text" id="tipo" name="tipo"  placeholder="Usuario">
-    <input class="controls" type="text" id="nombre" name="nombre"  placeholder="Tipo de documento">
-    <input class="controls" type="text" id="nombre" name="nombre"  placeholder="N° Documento">
-    <input class="controls" type="text" id="nombre" name="nombre"  placeholder="Nombre Completo">
-    <input class="controls" type="text" id="nombre" name="nombre"  placeholder="Teléfono">
-    <input class="controls" type="text" id="nombre" name="nombre"  placeholder="e-mail">
-    <input class="controls" type="text" id="nombre" name="nombre"  placeholder="Contraseña">
-    <input class="controls" type="text" id="nombre" name="nombre"  placeholder="img Avatar">
-     
-    <button class="boton"  (click)="true"  >Sign Up</button>
+  <form [formGroup]="signUpForm" (ngSubmit)="postSignUp()">
+    <input class="controls" formControlName="fullName"  type="text" id="fullName" name="fullName"  placeholder="Nombre Completo">
+
+      <select class="controls2" formControlName="documentTypeName" name="documentTypeName" id="documentTypeName">
+        <option class="controls" value="" disabled selected hidden>Tipo de Documento</option>   
+        <option class="controls" value="Cedula de Identidad" >Cedula de Identidad</option>
+        <option class="controls" value="Pasaporte Internacional">Pasaporte Internacional</option>
+      </select>
+
+    <input class="controls" formControlName="document" type="text" id="document" name="nombre"  placeholder="N° Documento">
+    <input class="controls" formControlName="phone" type="text" id="phone" name="nombre"  placeholder="Teléfono">
+    <input class="controls" formControlName="email" type="email" id="email" name="nombre"  placeholder="e-mail">
+    <input class="controls" formControlName="password" type="text" id="password" name="nombre"  placeholder="Contraseña">
+
+      <select class="controls2" formControlName="accountTypeName" name="accountTypeName" id="accountTypeName" >
+        <option class="controls" value="" disabled selected hidden>Tipo de Cuenta</option>    
+        <option class="controls" value="Caja de Ahorro" >Caja de Ahorro</option>
+        <option class="controls" value="Cuenta Corriente">Cuenta Corriente</option>
+      </select>
+
+    <button class="boton" type="submit"  (click)="true"  >Sign Up</button>
    
     <p>Ya estás registrado?</p> <a class= "link" (click)="(globalService.valorCaseLogin = 1)" >Ingresar!</a>
   </form>

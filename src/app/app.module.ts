@@ -12,6 +12,7 @@ import { HomeComponent } from './shared/home/home.component';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio/ejercicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GlobalService } from './global-service/service-global.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,12 +25,15 @@ import { GlobalService } from './global-service/service-global.service';
     AppRoutingModule, // MI RUTEO GENERAL POR AHORA  NOTA:TODOS LOS MODULOS VAN EN LOS IMPORTS
     BrowserAnimationsModule,
     HttpClientModule,
+    
 
     MaterialModule,
     SharedModule,
     LoginModule,
     CustomerAccountModule,
-    TransactionsModule
+    TransactionsModule,
+    FormsModule,
+    
   ],
   providers: [GlobalService],
   bootstrap: [AppComponent]
