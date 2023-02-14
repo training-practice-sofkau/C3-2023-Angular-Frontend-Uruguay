@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerChangePasswordComponent, CustomerInfoComponent, ModifyCustomerComponent } from './';
 import { FormsModule } from '@angular/forms';
+import { CustomerRoutingModule } from './customer-routing.module';
 
 
 
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [CustomerChangePasswordComponent,
     CustomerInfoComponent,
