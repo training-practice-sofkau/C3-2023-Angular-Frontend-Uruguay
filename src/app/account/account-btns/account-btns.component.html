@@ -9,17 +9,21 @@
         </div>
 
         <div class="flex flex-col justify-center gap-2" *ngIf="isCreatingAccount">
-          <p class="text-xl">Select the type of account</p>
+          <form [formGroup]="formAccAdd">
 
-          <select name="" id="" class="px-4 py-2 shadow rounded-sm mb-3 w-full text-xl">
-            <option value="" class="text-xl rounded-sm ">Saving Account</option>
-            <option value="" class="text-xl rounded-sm ">Checking Account</option>
-          </select>
+            <p class="text-xl">Select the type of account</p>
 
-          <div class="flex flex-row mx-auto gap-4">
-            <a class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-center text-xl" (click)="isCreatingAccount = !isCreatingAccount"> BACK </a>
-            <a class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-center text-xl" (click)="isCreatingAccount = !isCreatingAccount"> CREATE </a>
-          </div>
+            <select name="accountType" id="" class="px-4 py-2 shadow rounded-sm mb-3 w-full text-xl" formControlName="accountType">
+              <option class="text-xl rounded-sm ">Saving Account</option>
+              <option class="text-xl rounded-sm ">Checking Account</option>
+            </select>
+
+            <div class="flex flex-row mx-auto gap-4">
+              <button class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-center text-xl" (click)="isCreatingAccount = !isCreatingAccount"> BACK </button>
+              <button class="shadow rounded px-8 py-3 hover:bg-blue-600 hover:text-white text-center text-xl" (click)="createAdditionalAccount()"> CREATE </button>
+            </div>
+
+          </form>
         </div>
 
       </div>
