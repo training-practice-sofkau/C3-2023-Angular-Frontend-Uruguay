@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CustomerModel } from 'src/app/interfaces/Customer.interface';
 import { ApiService } from 'src/app/services/api.service';
 import { AccountModel } from '../../../interfaces/account.interface';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +22,33 @@ export class AccountService {
     private api: ApiService,
   ) { }
 
+  helper = new JwtHelperService();
+
+  getCustomerFromLocalStorage() {
+    const token = localStorage.getItem('token')
+
+    if(token != null) {
+      const user: CustomerModel | null = this.helper.decodeToken(token);
+      if(user){
+        return user;
+      }
+    }
+    throw new Error('')
+  }
+
 
   public getAllCustomers(): Observable<CustomerModel[]> {
     return this.http.get<CustomerModel[]> (this.api.url + "/customer/getAll");
   }
 
-  public getcustomerById(id: string): Observable<CustomerModel> {
-    return this.http.get<CustomerModel> (this.api.url + "/customer/getCustomer/" + id);
+  public getcustomerById(): Observable<CustomerModel> {
+    const user: CustomerModel = this.getCustomerFromLocalStorage();
+    return this.http.get<CustomerModel> (this.api.url + "/customer/getCustomer/" + user.id);
+  }
+
+  public getcustomerByEmail(): Observable<CustomerModel> {
+    const user: CustomerModel = this.getCustomerFromLocalStorage();
+    return this.http.get<CustomerModel>(this.api.url + "/customer/getCustomerByEmail/" + user.email);
   }
 
   public getAllAccount(id: string):Observable<AccountModel[]> {

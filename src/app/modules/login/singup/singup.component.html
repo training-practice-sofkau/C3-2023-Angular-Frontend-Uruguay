@@ -1,28 +1,34 @@
 <mat-card *ngIf= "(loginService.switchLogUp)">
   <mat-card-content>
-    <form>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
       <h2>Sign Up</h2>
       <mat-form-field>
-        <input matInput placeholder="Full Name" name="fullname" required>
+        <input matInput placeholder="Full Name" name="fullName" required formControlName="fullName">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" name="password" required>
+        <input matInput type="password" placeholder="Password" name="password" required formControlName="password">
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label name="documentType" required>Document Type</mat-label>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label name="documentTypeName" required>Document Type</mat-label>
         <mat-select>
           <mat-option value="one">CI</mat-option>
           <mat-option value="two">Pasaporte</mat-option>
         </mat-select>
+      </mat-form-field> -->
+      <mat-form-field>
+        <input matInput placeholder="Document Type" name="documentTypeName" required formControlName="documentTypeName">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Document" name="document" required>
+        <input matInput placeholder="Document" name="document" required formControlName="document">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Email" name="email" required>
+        <input matInput placeholder="Email" name="email" required formControlName="email">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Phone" name="phone" required>
+        <input matInput placeholder="Phone" name="phone" required formControlName="phone">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Account Type" name="accountTypeName" required formControlName="accountTypeName">
       </mat-form-field>
       <button type="submit" mat-raised-button color="primary">Login</button>
       <h3>¿Ya tienes una cuenta? </h3>
