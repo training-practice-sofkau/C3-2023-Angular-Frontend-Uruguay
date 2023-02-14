@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/cor
 import { AccountModel } from '../../interfaces/account.model';
 import { ServiceService } from '../../service/service.service';
 import { AccountInfoService } from '../../service/account-info.service';
+import { AccountsListService } from '../../service/accounts-list.service';
 
 @Component({
   selector: 'app-account-info',
@@ -14,11 +15,19 @@ export class AccountInfoComponent implements OnInit {
   accounts!: AccountModel[];
 
   constructor(private service: ServiceService,
-    private accountInfo: AccountInfoService) {
+    private accountInfo: AccountInfoService,
+    private accountList: AccountsListService) {
   }
 
   ngOnInit(): void {
     this.setAccounts();
+    this.accountList.accountsSource
+    .subscribe(accounts => {
+      this.accounts = accounts;
+      console.log(this.accounts);
+
+    })
+
   }
 
   setAccounts() {
