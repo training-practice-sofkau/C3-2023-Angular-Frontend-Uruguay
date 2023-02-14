@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/enviroments';
+import { environment } from 'src/environments/environment';
 import { SignUpModel } from '../interfaces/sign-up.interface';
-import { SignInModel } from '../interfaces/sign-in.interface';
+import { SignInModel, SignInGoogleModel } from '../interfaces/sign-in.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CustomerModel } from '../interfaces/customer.interface';
 import { AccountModel } from '../interfaces/account.model';
@@ -13,6 +13,7 @@ import { DepositModel } from '../interfaces/deposit.model';
 import { map } from 'rxjs';
 import { CreateTransferModel } from '../interfaces/create-transfer.dto';
 import { TransferModel } from '../interfaces/transfer.model';
+import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ import { TransferModel } from '../interfaces/transfer.model';
 export class ServiceService {
 
   constructor(private http: HttpClient,
-    private router: Router) { }
+    private router: Router,
+    private authgoogle: Auth) { }
 
     // AuthService
 
@@ -34,6 +36,16 @@ export class ServiceService {
     this.http.post(`${environment.apiBase}/security/signIn`, customer, {responseType: 'text'})
     .subscribe(resp => sessionStorage.setItem('jwt', resp));
 
+  }
+
+  loginGoogle (customer: SignInGoogleModel) {
+    this.http.post(`${environment.apiBase}/security/signInGoogle`, customer, {responseType: 'text'})
+    .subscribe(resp => sessionStorage.setItem('jwt', resp));
+
+  }
+
+  signInGoogle() {
+    return signInWithPopup(this.authgoogle, new GoogleAuthProvider());
   }
 
   signOut () {
@@ -73,6 +85,9 @@ export class ServiceService {
     return this.http.get<CustomerModel>(`${environment.apiBase}/customer/find/${user.id}`)
   }
 
+  checkEmail(email: string) {
+    return this.http.get<boolean>(`${environment.apiBase}/customer/check-email/${email}`)
+  }
 
   //Account Service
 
@@ -84,6 +99,30 @@ export class ServiceService {
     const user = this.getUserFromLocalStorage();
 
     return this.http.get<AccountModel[]>(`${environment.apiBase}/account/find-by-customer/${user.id}`)
+  }
+
+  createSavingAccount() {
+    const user = this.getUserFromLocalStorage()
+
+    this.http.post<AccountModel>(`${environment.apiBase}/account/create-additional-saving-account`, {customerId: user.id})
+    .subscribe()
+  }
+
+  createCheckingAccount() {
+    const user = this.getUserFromLocalStorage()
+
+    this.http.post<AccountModel>(`${environment.apiBase}/account/create-additional-checking-account`, {customerId: user.id})
+    .subscribe();
+  }
+
+  changeAccountType(id: string) {
+    this.http.patch<AccountModel>(`${environment.apiBase}/account/change-account-type/${id}`, null)
+    .subscribe()
+  }
+
+  deleteAccount(id: string) {
+    this.http.delete(`${environment.apiBase}/account/soft-delete/${id}`)
+    .subscribe()
   }
 
   //Deposit Service
