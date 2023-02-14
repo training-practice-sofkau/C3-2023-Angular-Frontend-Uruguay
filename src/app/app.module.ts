@@ -9,6 +9,9 @@ import { LoginModule } from './modules/login/login-module.module';
 import { MaterialModule } from './modules/material/material.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -26,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     SharedModule,
     LoginModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
 
 
   ],
