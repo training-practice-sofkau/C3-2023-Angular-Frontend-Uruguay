@@ -15,10 +15,6 @@ import { Route, Router } from '@angular/router';
 })
 export class SinginComponent {
 
-  /*
-  email: string | undefined ;
-  password: string | undefined;
-  */
 
   constructor(public globalService :GlobalService,
               private formBuilder : FormBuilder,
@@ -52,13 +48,6 @@ export class SinginComponent {
 
     }
   }
-
-  /*
-  login() {
-    console.log(this.email);
-    console.log(this.password);
-  }
-*/
 
 
 }
