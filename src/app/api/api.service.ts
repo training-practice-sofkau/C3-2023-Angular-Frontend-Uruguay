@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { SignUpModel } from '../login/interfaces/signUpModel';
 import { SignIn, UserResponse } from '../login/interfaces/signInModel';
 import { CookieService } from 'ngx-cookie-service';
+import { upDateCustomerModel } from '../customer/interface/upDateCustomer';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,10 @@ export class ApiService {
 
   getDocumentType(document : string):Observable<DocumentType>{
     return this.http.get<DocumentType>(`${this.BASE_URL}/customer/document-type/find-id/${document}`,this.httpOptions);
+  }
+  
+  upDateCustomer(customer : upDateCustomerModel,idCustomer : string):Observable<upDateCustomerModel>{
+    return this.http.put<upDateCustomerModel>(`${this.BASE_URL}/customer/update/${idCustomer}`,customer);
   }
   
   

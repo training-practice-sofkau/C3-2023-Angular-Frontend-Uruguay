@@ -54,33 +54,34 @@ export class UpdateComponent implements OnInit{
       return this.formBuilder.group(
         {
           // documentType:[],
+          documentTypeId:['',[Validators.required]],
+          accountTypeId:['',[Validators.required]],
           document:['',[Validators.required]],
           fullName:['',[Validators.required]],
           email:['',[Validators.required,Validators.email]],
           phone:['',[Validators.required]],
           password:['',[Validators.required,Validators.minLength(8)]],
-  
-          terms:['',[Validators.required,Validators.requiredTrue]],
+
         })
     }
     
     //Funcion para actualizar la info del formulario 
     upDateFromApi():void{
       const response = {
+        documentTypeId: this.customerEdit.documentType.id,
         document:this.customerEdit.document,
         fullName:this.customerEdit.fullName,
         email:this.customerEdit.email,
         phone:parseInt(this.customerEdit.phone),
         password:this.customerEdit.password,
-        
-        terms:false,
       }
       this.FormUpDate.patchValue(response);
     }
 
 
   send():void{
-    console.log('form => ',this.FormUpDate.value);  
+    console.log('form => ',this.FormUpDate.value); 
+     
   }
 
   paramsCustomerId():void{ 
@@ -92,7 +93,7 @@ export class UpdateComponent implements OnInit{
 
   
   saveEdit(){
-    //Tengo que llamar desde el servico a mi funcion updateCustomer para consumir la api
+    
   }
   
 

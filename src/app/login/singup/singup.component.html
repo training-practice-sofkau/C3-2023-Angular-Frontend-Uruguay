@@ -12,6 +12,9 @@
           <option value="2">Credencial</option>
           <option value="3">Pasaporte</option>
         </select>
+        <div *ngIf="FormSignUp.get('documentTypeId')?.touched && FormSignUp.get('documentTypeId')?.errors?.['required']"
+        class="alert alert-danger"> this field is required</div>
+        
     </div>
 
     <div class="col-md-6">
@@ -22,6 +25,10 @@
             <option value="3">Caja corriente en Pesos ($)</option>
             <option value="4">Caja corriente en Dolares (US$)</option>
           </select>
+
+          <div *ngIf="FormSignUp.get('accountTypeId')?.touched && FormSignUp.get('accountTypeId')?.errors?.['required']"
+      class="alert alert-danger"> this field is required</div>
+
       </div>
 
 
@@ -42,8 +49,12 @@
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
       <input formControlName="email" type="email" class="form-control" id="inputEmail4" placeholder="Exemplo: Exemplo@gmail.com">
-      <div *ngIf="FormSignUp.get('email')?.touched && FormSignUp.get('email')?.errors?.['required'] && FormSignUp.get('document')?.errors?.['email']"
+      
+      <div *ngIf="FormSignUp.get('email')?.touched && FormSignUp.get('email')?.errors?.['required']"
       class="alert alert-danger"> this field is required</div>
+
+      <div *ngIf="FormSignUp.get('email')?.touched && FormSignUp.get('email')?.errors?.['email']"
+      class="alert alert-danger"> Is required a type email</div>
     </div>
 
     <div class="col-md-6">
