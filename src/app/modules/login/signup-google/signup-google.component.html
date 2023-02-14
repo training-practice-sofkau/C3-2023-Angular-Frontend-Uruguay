@@ -1,6 +1,6 @@
 <mat-card *ngIf= "(loginService.switchLogUp)">
   <mat-card-content>
-    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+    <form [formGroup]="signUpFormGoogle" (ngSubmit)="onSignUpGoogle()">
       <h2>Sign Up</h2>
       <mat-form-field>
         <input matInput placeholder="Full Name" name="fullName" required formControlName="fullName">

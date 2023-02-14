@@ -16,7 +16,7 @@ export class SignupGoogleComponent {
     private router: Router,
   ) { }
 
-  signUpForm = this.formBuilder.group({
+  signUpFormGoogle = this.formBuilder.group({
     fullName: this.loginService.fullName,
     email: this.loginService.email,
     phone: this.formBuilder.nonNullable.control('', { validators: [Validators.required] }),
@@ -26,23 +26,23 @@ export class SignupGoogleComponent {
     accountTypeName: this.formBuilder.nonNullable.control('', { validators: [Validators.required] }),
   });
 
-  onSignUp() {
-    if (this.signUpForm.controls.documentTypeName.value
-      && this.signUpForm.controls.document.value
+  onSignUpGoogle() {
+    if (this.signUpFormGoogle.controls.documentTypeName.value
+      && this.signUpFormGoogle.controls.document.value
       && this.loginService.fullName
       && this.loginService.email
-      && this.signUpForm.controls.phone.value
-      && this.signUpForm.controls.password.value
+      && this.signUpFormGoogle.controls.phone.value
+      && this.signUpFormGoogle.controls.password.value
     ) {
 
       const form: SignUpModel = {
-        documentTypeName: this.signUpForm.controls.documentTypeName.value,
-        document: this.signUpForm.controls.document.value,
+        documentTypeName: this.signUpFormGoogle.controls.documentTypeName.value,
+        document: this.signUpFormGoogle.controls.document.value,
         fullName: this.loginService.fullName,
         email: this.loginService.email,
-        phone: this.signUpForm.controls.phone.value,
-        password: this.signUpForm.controls.password.value,
-        accountTypeName: this.signUpForm.controls.accountTypeName.value,
+        phone: this.signUpFormGoogle.controls.phone.value,
+        password: this.signUpFormGoogle.controls.password.value,
+        accountTypeName: this.signUpFormGoogle.controls.accountTypeName.value,
       }
       this.loginService.signUp(form).subscribe(data => {
         console.log(data);
