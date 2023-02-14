@@ -1,12 +1,12 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { AppService } from 'src/app/app.service';
 import { Observable, Subject } from 'rxjs';
 import { JwtTokenModel } from 'src/app/interfaces/token.interface';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
 import { CustomerModel } from 'src/app/interfaces/customer.interface';
 import { SignInModel } from 'src/app/interfaces/signin.interface';
+import { UserDataService } from 'src/app/dashboard/services/user-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class AuthService {
   currentUser: LoginResponseModel | undefined;
   currentUserEmitter: Subject<LoginResponseModel> = new Subject<LoginResponseModel>();
 
-  constructor(private api: AppService, private cookie: CookieService) {
+  constructor(private api: AppService, private userData: UserDataService) {
     this.currentUserEmitter.subscribe((value) => this.currentUser = value);
     this.loadCurrentUser();
   }
@@ -56,8 +56,8 @@ export class AuthService {
 
   loadCurrentUser(): void {
     let user: CustomerModel;
-    const token: string = this.cookie.get('token') || sessionStorage.getItem('token') as string;
-    if (token && token.length > 4){
+    const token: string = this.userData.get('token');
+    if (token !== "null"){
       this.isValid(token).subscribe({
         next:(value) => {
           this.api.getCustomerById(value.customer.id).subscribe({

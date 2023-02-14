@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DocumentTypeListModel } from 'src/app/interfaces/document.list.interface';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
@@ -30,7 +29,7 @@ export class SignupComponent {
     read: new FormControl(false)
   });
 
-  constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private auth: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private auth: AuthService) {}
 
   onSubmit(): void {
     if (this.signupForm.valid && this.signupForm.controls.read.value && this.signupForm.controls.email.value){

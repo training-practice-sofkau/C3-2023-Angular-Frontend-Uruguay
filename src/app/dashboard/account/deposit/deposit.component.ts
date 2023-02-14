@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 import { AccountModel } from 'src/app/interfaces/account.interface';
 import { ErrorTypes } from 'src/app/interfaces/error-type.interface';
 import { DepositService } from './deposit.service';
 import { AppService } from 'src/app/app.service';
 import { InfoTypes } from 'src/app/interfaces/info-type.interface';
+import { UserDataService } from '../../services/user-data.service';
 
 @Component({
   selector: 'app-deposit',
@@ -25,7 +25,7 @@ export class DepositComponent implements OnInit {
     monto: new FormControl("")
   });
 
-  constructor(private formBuilder: FormBuilder, protected cookie: CookieService, private depositService: DepositService, private api: AppService) {}
+  constructor(private formBuilder: FormBuilder, protected userData: UserDataService, private depositService: DepositService, private api: AppService) {}
 
   ngOnInit(): void {
     this.depositService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (this.UserAccountsList.length !== data.length) this.UserAccountsList = data });
@@ -45,14 +45,14 @@ export class DepositComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if(this.depositForm.controls.monto.value && (this.depositForm.controls.account.value || this.cookie.check("currentAccount"))){
+    if(this.depositForm.controls.monto.value && (this.depositForm.controls.account.value || this.userData.check("currentAccount"))){
       let account: string = "";
       if (this.depositForm.controls.account.value) account = this.UserAccountsList[+this.depositForm.controls.account.value].id;
-      if (this.cookie.check("currentAccount")) account = this.cookie.get("currentAccount");
+      if (this.userData.check("currentAccount")) account = this.userData.get("currentAccount");
       if (typeof +this.depositForm.controls.monto.value == "number" && +this.depositForm.controls.monto.value > 0 && account){
         this.api.createDeposit({ accountId: account, balance: +this.depositForm.controls.monto.value}).subscribe({
-          error: () => { this.catchError(ErrorTypes.notfound); },
-          complete: () => { this.catchInfo(InfoTypes.createDeposit); }
+          error: () => { this.catchError( ErrorTypes.notfound) },
+          complete: () => { this.catchInfo( InfoTypes.createDeposit) }
         })
       } else this.catchError(ErrorTypes.morethan0);
     } this.catchError(ErrorTypes.invalid);

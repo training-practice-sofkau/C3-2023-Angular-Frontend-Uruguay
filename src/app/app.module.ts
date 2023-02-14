@@ -9,7 +9,6 @@ import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AccountModule } from './dashboard/account/account.module';
@@ -34,7 +33,6 @@ import { PageNotFoundModule } from './404/page-not-found.module';
     MaterialModule,
     HttpClientModule,
   ],
-  providers: [CookieService],
   bootstrap: [AppComponent],
   exports: [
     AppComponent,
