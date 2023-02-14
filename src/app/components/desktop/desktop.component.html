@@ -9,19 +9,19 @@
   <mat-toolbar style="background-color: rgba(136, 226, 212, 0.4); height: 40px;">
     <span class="spacer"></span>
 
-    <button class="menu-button" mat-fab extended color="primary" (click)="showMain()">
+    <button class="menu-button" mat-fab extended color="primary" (click)="showMain()" > <!--  -->
       <mat-icon>home</mat-icon> Main
     </button>
 
-    <button class="menu-button" mat-fab extended color="primary" (click)="showProfile()">
+    <button class="menu-button" mat-fab extended color="primary" (click)="showProfile()" > <!--  -->
       <mat-icon>settings_accessibility</mat-icon> Profile
     </button>
 
-    <button class="menu-button" mat-fab extended color="primary">
+    <button class="menu-button" mat-fab extended color="primary" (click)="makeDeposit()">
       <mat-icon> save_alt </mat-icon> Deposit
     </button>
 
-    <button class="menu-button" mat-fab extended color="primary">
+    <button class="menu-button" mat-fab extended color="primary" (click)="makeTransfer()">
       <mat-icon>ios_share</mat-icon> Transfer
     </button>
 
@@ -34,9 +34,9 @@
 
   <span *ngIf="showMainPage"> <app-details></app-details> </span>
   <span *ngIf="showProfilePage"> <app-profile></app-profile> </span>
-
+  <span *ngIf="showDepositPage"> <app-deposit></app-deposit> </span>
+  <span *ngIf="showTransferPage"> <app-transfer></app-transfer> </span>
 </div>
-
 
 <!--
 

@@ -16,14 +16,19 @@
           <mat-label>Amount</mat-label>
         </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-label>----</mat-label>
-        </mat-grid-tile><mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-label>Savings</mat-label>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-label>Balance: $ {{0.00}}</mat-label>
-        </mat-grid-tile>
+        <span *ngFor="let account of accounts">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-label>{{account.id}}</mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-label>{{account.accountTypeId.name}}</mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-label>{{account.balance}}</mat-label>
+          </mat-grid-tile>
+        </span>
 
       </mat-grid-list>
     </mat-card>

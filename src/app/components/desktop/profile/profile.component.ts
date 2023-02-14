@@ -1,41 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerModel } from '../../../interfaces/customer.interface';
-import { from, map } from 'rxjs';
+
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
 
-  data: string | null = "";
-  token: string | null =""
+
+  token: string | null = ""
   show: string = "";
 
+  data = localStorage.getItem("customer");
+
+  customerData: any = ""; //{} = {} as CustomerModel;
 
   ngOnInit(): void {
 
     this.token = localStorage.getItem("token");
     this.data = localStorage.getItem("customer");
 
-    if( this.data != null){
-        this.extractCustomerData(this.data);
+    if (this.data != null) {
+      this.customerData =  JSON.parse(this.data)
+
+
+      console.log(this.customerData as CustomerModel)
     }
+
+
   }
 
-  extractCustomerData(data: string) {
 
-    this.show = JSON.parse(data);
-
-    console.log(this.show);
-  }
 
 
 }
 
 
 
+function extractCustomerData(data: string): string {
+
+  return JSON.parse(data) ;
+}
 
 
 

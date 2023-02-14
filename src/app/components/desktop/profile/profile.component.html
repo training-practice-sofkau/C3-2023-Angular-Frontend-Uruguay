@@ -1,26 +1,52 @@
 <div class="container" style="margin-top: 10px;">
   <div>
-    <mat-card style="margin-top: 10px; width: auto; ">
-      <h1>Profile</h1>
-      <mat-grid-list cols="3" rowHeight="100px">
-
+    <mat-card style="margin: 10px auto; width: 60%; background-color: rgba(65, 66, 62, 0.6);">
+      <h1 style="color:antiquewhite "> Profile</h1>
+      <mat-grid-list cols="3" rowHeight="70px">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-label>Session Id: </mat-label>
+          <mat-label class="datalabel">Account Id: </mat-label>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-label>Session Id: {{token}} </mat-label>
+          <mat-label class="datafield">{{customerData.Id}}</mat-label>
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-label>Account Id: </mat-label>
+          <mat-label class="datalabel">Full Name: </mat-label>
         </mat-grid-tile>
-
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-label>{{data}}</mat-label>
+          <mat-label class="datafield">{{customerData.fullname}}</mat-label>
         </mat-grid-tile>
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label class="datalabel">Document Id: </mat-label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-label class="datafield">{{customerData.document}}</mat-label>
+        </mat-grid-tile>
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label class="datalabel">Document Type: </mat-label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-label class="datafield">{{customerData.documentType.name}}</mat-label>
+        </mat-grid-tile>
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label class="datalabel">Phone: </mat-label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-label class="datafield">{{customerData.phone}}</mat-label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-label class="datalabel">E-Mail: </mat-label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-label class="datafield">{{customerData.email}}</mat-label>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="3" [rowspan]="3">
+          <mat-label style="font-size: x-small;">Session ID: {{token}}</mat-label>
+        </mat-grid-tile>
       </mat-grid-list>
     </mat-card>
   </div>

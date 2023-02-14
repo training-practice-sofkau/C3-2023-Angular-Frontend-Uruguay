@@ -8,6 +8,7 @@ import { CustomerSignInModel, CustomerSignUpModel, CustomerModel } from '../inte
 import { Observable } from 'rxjs';
 import { SigninResponseModel, SigninTokenResponseModel } from '../interfaces/responses.interface';
 import { getLocaleExtraDayPeriodRules } from '@angular/common';
+import { AccountModel } from '../interfaces/account.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -53,8 +54,21 @@ export class CustomerService {
             console.log("Something went wrong, no customer data available!");
           }
         })
+  }
 
+  getCustomerAccounts( id: string) {
 
+     this.http.get<AccountModel>(`${environment.API_URL}/account/customer/${id}`, {})
+     .subscribe({
+      next: (response) => {
 
+        const responseValue = response as unknown as AccountModel;
+
+        localStorage.setItem("accounts", JSON.stringify(responseValue));
+      },
+      error: (e) => {
+        console.log("Something went wrong, no customer data available!");
+      }
+    })
   }
 }

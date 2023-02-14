@@ -15,7 +15,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 3 - Day 4] - Angular (API consumption and lazy loading)
+[Workshop Week 4 - Day 1] - Angular ( Forms )
 
 # Body of the delivery
 What is being delivered?
@@ -35,25 +35,13 @@ What difficulty did you have?
 ## Workshop
 The following are the guidelines that should be taken into account for the development of the workshop to be submitted:
 
-+ Make a TODO list
-
-1. Import module httpClientModule.
-2. Inject the HttpClient into the services.
-
-3. Load the modules using lazy loading.
-4. Show customer information ( GET ) WITH TOKEN.
-5. Show customer account information ( GET ).
-6. You must be able to make a Deposit (POST).
-7. Login (Sign-in).
-
-## Extra
-1. Do an update of whatever type.
-2. Make any delete.
+1. Do signIn signUp, coding at least a reactive signUp form.
 
 ## More information about forms
 [Reactive forms](https://www.youtube.com/watch?v=sYVHJ0SPt6M)
 [Login consumo de API](https://www.youtube.com/watch?v=a07vRDN7cZw)
 [Motivación](https://www.youtube.com/watch?v=O5wCbxUTI9U)
 
-## Important note
-Do not forget that for this workshop, you should make at least 10 commits properly documented (title and message body).
+## inportant note
+Do not forget that for this workshop, you should make at least 2 commits properly documented (title and message body).
+ 
