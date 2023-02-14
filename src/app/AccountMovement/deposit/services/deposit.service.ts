@@ -16,6 +16,7 @@ export class DepositService {
 get2(url: string){
   return this.http.get<AccountTransfer[]>(url)
 }
+
 post(url: string, data: DepositInterface){
   return this.http.post<DepositInterface>(url, data)
 }

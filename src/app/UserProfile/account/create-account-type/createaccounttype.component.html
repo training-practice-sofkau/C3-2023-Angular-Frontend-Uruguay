@@ -13,7 +13,7 @@
           <label     for="name">Nombre para su cuenta :</label>
           <input  (input)="updateName($event)" type="text" class="form-control" id="name" name="name">
         </div>
-        <button (click)="createAccount()" class="btn btn-primary">Validar</button>
+        <button (click)="this.AccountService.createAccount()" class="btn btn-primary">Validar</button>
       </form>
     </div>
   </div>
