@@ -15,7 +15,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```bash
 # Title of the delivery
-[Workshop Week 4 - Day 1] - Angular ( Formularios )
+[Workshop Week 4 - Day 2] - Angular ( Firebase y State Management )
 
 # Body of the delivery
 ¿Qué está entregando?
@@ -38,12 +38,16 @@ Tambien pueden agregar imagenes de la estructura donde se hicieron modificacione
 ## Workshop
 The following are the guidelines that should be taken into account for the development of the workshop to be submitted:
 
-1. Do signIn signUp, coding at least a reactive signUp.
+1. Do signIn signUp using firebase.
+2. Implement State management ( hacer un servicio RxJS ).
+
+> Servicios Compartidos, RxJs y patrones reactivos o Librerías de manejo de estados ( NGXS o NGRX )
+
+
 
 ## More information about forms
-[Reactive forms](https://www.youtube.com/watch?v=sYVHJ0SPt6M)
-[Login consumo de API](https://www.youtube.com/watch?v=a07vRDN7cZw)
-[Motivación](https://www.youtube.com/watch?v=O5wCbxUTI9U)
+[State Management](https://www.youtube.com/watch?v=I317BhehZKM&t=182s)
+[El Mejor](https://www.youtube.com/watch?v=LJdIMyI0a4Y)
 
 ## inportant note
 Do not forget that for this workshop, you should make at least 2 commits properly documented (title and message body).
