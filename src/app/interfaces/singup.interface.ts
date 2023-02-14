@@ -13,7 +13,4 @@ export interface SignUpModel {
     balance?: number;
 
 
- 
-
-
 }

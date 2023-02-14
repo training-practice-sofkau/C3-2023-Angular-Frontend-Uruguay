@@ -3,12 +3,9 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/account-customer/services/customer.service';
-import { CustomerModel } from 'src/app/interfaces/customer.interface';
-
 import { AuthService } from '../services/auth.service';
-import { TypeAccountComponent } from '../../administrator/type-account/type-account.component';
 import { SignUpModel } from '../../interfaces/singup.interface';
-import { AccountCustomerModule } from '../../account-customer/account-customer.module';
+
 
 @Component({
   selector: 'app-singup',
@@ -57,9 +54,10 @@ export class SingupComponent {
 
   register(document: string, email: string, password: string, fullname: string, phone: string, typeAcc: string, TypeDoc: string) {
    
+    console.log(this.signUp)
     this.signUp = {
       documentTypeId: "64e40ae6-5374-4ac5-8498-1beac191d535",
-      document:"13456789",
+      document:document,
       fullName: fullname,
       email: email,
       phone: phone,
@@ -68,6 +66,8 @@ export class SingupComponent {
 
     };
   
+console.log(this.signUp)
+
     this.customerService.createUser(this.signUp).subscribe({
       next: token => {
         localStorage.setItem('token', "tokentest");
@@ -82,8 +82,6 @@ export class SingupComponent {
   }
    
 }
-   
-   
    
    
    
