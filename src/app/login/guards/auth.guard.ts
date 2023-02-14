@@ -12,13 +12,13 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private userData: UserDataService, private security: AuthService) {}
 
   canActivate(): boolean {
-    const token: string = this.userData.get('token');
-    if (token !== "null"){
+    if (this.userData.check('token')){
+      const token: string = this.userData.get('token');
       this.updateStat(token);
       return true;
     } else {
       this.userData.clear();
-      this.router.navigate(['/login/sign-up']);
+      this.router.navigate(['/']);
       return false;
     }
   }
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
       next: (value) => { this.validateToken(value) },
       error: () => {
         this.userData.clear();
-        this.router.navigate(['/login/sign-up']);
+        this.router.navigate(['/']);
       }
     });
   }
@@ -36,7 +36,7 @@ export class AuthGuard implements CanActivate {
   validateToken(token: JwtTokenModel){
     if (Date.now() <= token.exp && token.customer.id) {
       this.userData.clear();
-      this.router.navigate(['/login/sign-up']);
+      this.router.navigate(['/']);
     }
   }
 

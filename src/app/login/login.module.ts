@@ -8,8 +8,6 @@ import { AuthService } from './services/auth.service';
 import { LoginRoutingModule } from './login-routing.module';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     SigninComponent,

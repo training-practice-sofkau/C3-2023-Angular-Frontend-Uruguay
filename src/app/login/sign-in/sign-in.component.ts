@@ -5,6 +5,8 @@ import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
 import { ErrorTypes } from 'src/app/interfaces/error-type.interface';
 import { UserDataService } from 'src/app/dashboard/services/user-data.service';
+import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -39,6 +41,27 @@ export class SigninComponent {
     } else {
       this.catchError(ErrorTypes.invalid)
     }
+  }
+
+  googleLogin() {
+    this.auth.toGoogleLogin()
+      .then(response => {
+        let answer: LoginResponseModel;
+        if (response.user.email){
+          console.log(response.user.email)
+          this.auth.loginGoogle(response.user.email).subscribe({
+            next: (value) => { answer = value; },
+            error: () => { this.catchError(ErrorTypes.notfound) },
+            complete: () => {
+              this.error.state = false;
+              (this.signinForm.controls.remember.value) ? this.userData.set('token', answer.token, true) : this.userData.set('token', answer.token);
+              this.auth.loadCurrentUser();
+              this.router.navigate(["/dashboard/view"]);
+            }
+          });
+        }
+      })
+      .catch(error => console.log(error))
   }
 
   redirect(url: string) {

@@ -9,10 +9,10 @@ export class UserDataService {
   constructor(private cookie: CookieService) { }
 
   get(key: string) : string {
-    let answer: string = '';
+    let answer: string = "";
     if (this.cookie.check(key)) answer = this.cookie.get(key);
-    if (sessionStorage.getItem(key)) answer = sessionStorage.getItem(key) || 'null';
-    if (answer !== 'null' || ''){
+    if (sessionStorage.getItem(key)) answer = sessionStorage.getItem(key) || "null";
+    if (answer !== "null" || ""){
       return answer;
     } else throw new Error;
   }
@@ -26,10 +26,10 @@ export class UserDataService {
   }
 
   check(key: string) : boolean {
-    let answer: string = '';
+    let answer: string | null = null;
     if (this.cookie.check(key)) answer = this.cookie.get(key);
-    if (sessionStorage.getItem(key)) answer = sessionStorage.getItem(key) || 'null';
-    if (answer !== 'null' || ''){
+    if (sessionStorage.getItem(key)) answer = sessionStorage.getItem(key);
+    if (answer !== null){
       return true;
     } else return false;
   }
