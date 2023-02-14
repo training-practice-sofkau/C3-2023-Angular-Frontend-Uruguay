@@ -34,7 +34,8 @@ export class SingupComponent {
 
   postSignUp() {
     if (this.signUpForm) {
-      const form: SignUpModel = {
+
+      const dataRegister: SignUpModel = {
 
         fullName: this.signUpForm.controls["fullName"].value,
         documentTypeName: this.signUpForm.controls.documentTypeName.value,
@@ -43,10 +44,10 @@ export class SingupComponent {
         email: this.signUpForm.controls["email"].value,
         password: this.signUpForm.controls["password"].value,
         accountTypeName: this.signUpForm.controls.accountTypeName.value,
-        
+
       }
-      this.loginService.signUp(form)
-      this.routes.navigate(["/customer"])
+      this.loginService.signUp(dataRegister)
+      this.routes.navigate(['/customer-account/app-user-profile'])
     }
   }
   
