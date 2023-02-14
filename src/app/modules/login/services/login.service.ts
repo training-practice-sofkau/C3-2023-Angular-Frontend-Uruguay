@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { CustomerModel, DocumentTypeModel } from 'src/app/interfaces/Customer.interface';
 import { AccountModel } from 'src/app/interfaces/account.interface';
 import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,13 @@ export class LoginService {
 
   customerAccounts: AccountModel[] = [];
 
+  email = ''
+  fullName = ''
+
   constructor(public api: ApiService,
               private http: HttpClient,
               private auth: Auth,
+              private router: Router,
     ) { }
 
   login(form: SignIn): Observable<string>{
@@ -52,6 +57,18 @@ export class LoginService {
 
   loginWithGoogle(){
     return signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+
+  onClick(){
+    this.loginWithGoogle()
+    .then(response =>{
+      console.log(response);
+      if(response.user.email) this.email = response.user.email
+      if(response.user.displayName) this.fullName = response.user.displayName
+      console.log(this.email)
+      this.router.navigate(['login/signupgoogle']);
+    })
+    .catch(error => console.log(error))
   }
 
   //      Intercambio de componentes de signIn y signUp

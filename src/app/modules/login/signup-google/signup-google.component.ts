@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SignUpModel } from 'src/app/interfaces/sign-up.interface';
-import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
+import { SignUpModel } from 'src/app/interfaces/sign-up.interface';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.scss']
+  selector: 'app-signup-google',
+  templateUrl: './signup-google.component.html',
+  styleUrls: ['./signup-google.component.scss']
 })
-export class SingupComponent {
+export class SignupGoogleComponent {
 
   constructor(private formBuilder: FormBuilder,
     public loginService: LoginService,
@@ -17,8 +17,8 @@ export class SingupComponent {
   ) { }
 
   signUpForm = this.formBuilder.group({
-    fullName: this.formBuilder.nonNullable.control('', { validators: [Validators.required] }),
-    email: this.formBuilder.nonNullable.control('', { validators: [Validators.required, Validators.email] }),
+    fullName: this.loginService.fullName,
+    email: this.loginService.email,
     phone: this.formBuilder.nonNullable.control('', { validators: [Validators.required] }),
     password: this.formBuilder.nonNullable.control('', { validators: [Validators.required] }),
     documentTypeName: this.formBuilder.nonNullable.control('', { validators: [Validators.required] }),
@@ -29,8 +29,8 @@ export class SingupComponent {
   onSignUp() {
     if (this.signUpForm.controls.documentTypeName.value
       && this.signUpForm.controls.document.value
-      && this.signUpForm.controls.fullName.value
-      && this.signUpForm.controls.email.value
+      && this.loginService.fullName
+      && this.loginService.email
       && this.signUpForm.controls.phone.value
       && this.signUpForm.controls.password.value
     ) {
@@ -38,8 +38,8 @@ export class SingupComponent {
       const form: SignUpModel = {
         documentTypeName: this.signUpForm.controls.documentTypeName.value,
         document: this.signUpForm.controls.document.value,
-        fullName: this.signUpForm.controls.fullName.value,
-        email: this.signUpForm.controls.email.value,
+        fullName: this.loginService.fullName,
+        email: this.loginService.email,
         phone: this.signUpForm.controls.phone.value,
         password: this.signUpForm.controls.password.value,
         accountTypeName: this.signUpForm.controls.accountTypeName.value,
@@ -52,4 +52,5 @@ export class SingupComponent {
       })
     }
   }
+
 }
