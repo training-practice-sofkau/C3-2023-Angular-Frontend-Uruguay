@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import jwt_decode from 'jwt-decode';
@@ -21,7 +21,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
 
   signinForm: FormGroup;
   loading = false;
@@ -34,16 +34,12 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private customerService: CustomerService,
     private authService: AuthService,
-    //public appComp: AppComponent,
   ) {
 
     this.signinForm = this.fb.group({
       username: ["", [Validators.email, Validators.required]],
-      password: ["", [Validators.minLength(5), Validators.required]]
+      password: ["", [Validators.minLength(6), Validators.required]]
     });
-  }
-
-  ngOnInit(): void {
   }
 
   /**
@@ -68,12 +64,12 @@ export class SignInComponent implements OnInit {
   }
 
   loginWithGoogle(){
-    this.authService.loginWithGoogle()
+    this.authService.loginWithFirebase()
       .then(googleResp => {
         const token = googleResp.user.getIdToken();
         //const decoded = jwt_decode(token) ;
 
-        console.log(token + " - " );
+        console.log(token + " TOKEN ");
       })
       .catch(error => console.log(error));
 
@@ -124,8 +120,8 @@ export class SignInComponent implements OnInit {
 
     if (result) { // login succesfull
 
-      this.authService.setUserStatus(true);
-      this.authService.isInPublicZone = false;
+      this.authService.setUserLogStatus(true);
+      this.authService.setPublicZoneStatus(false);
       this.loading = false;
       this.router.navigate(["desktop"]);
 

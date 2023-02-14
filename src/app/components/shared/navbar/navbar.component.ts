@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../../../app.component';
 import { MenuService } from '../../../services/menu.service';
 import { MenuItem } from '../../../interfaces/menu.interface';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 
 
@@ -16,36 +17,30 @@ import { MenuItem } from '../../../interfaces/menu.interface';
 })
 export class NavbarComponent implements OnInit {
 
-  desktopMenu: MenuItem[] = [];
+  loggedUser: boolean = false;
 
+  private onUserStatusChange: Subscription | undefined;
 
   constructor(
     public authService: AuthService,
     private router: Router,
     public appComp: AppComponent,
-    private menuService: MenuService,
   ) { }
 
 
-  ngOnInit(): void {
-    this.loadDesktopMenuItems();
-  }
+  ngOnInit() {
 
-  /**
-   * Load the items of the desktop menu
-   */
-  loadDesktopMenuItems() {
-    this.menuService.getDesktopMenu().subscribe(data => this.desktopMenu = data);
+    this.onUserStatusChange = this.authService.loggedUser.subscribe(
+      currentStatus => this.loggedUser = currentStatus);
   }
-
   /**
    * Set the conditions to end the user service
    * and exit the desktop
    */
-  logout(){
+  logout() {
     localStorage.clear();
-    this.authService.setUserStatus(false);
-    this.authService.isInPublicZone = true;
+    this.authService.setUserLogStatus(false);
+    this.authService.setPublicZoneStatus(true);
     this.appComp.toHome();
     this.router.navigate(["/"]);
   }

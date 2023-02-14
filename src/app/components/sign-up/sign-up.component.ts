@@ -60,14 +60,13 @@ export class SignUpComponent {
 
     const email = this.signupForm.get('email')?.value;
     const pass = this.signupForm.get('password')?.value;
-console.log(customer)
 
      this.authService.registerWithFirebase(email, pass)
       .subscribe(() => {
         this.loading = true;
-        //setTimeout(() => {
+        setTimeout(() => {
           this.validateRegistration(customer);
-        //}, 1500);
+        }, 1500);
       })
   }
 
@@ -92,10 +91,6 @@ console.log(customer)
 
             this.transitionToDesktop(true);
           }
-
-        },
-        error: (e) => {
-          this.transitionToDesktop(false);
         }
       })
   }
@@ -109,17 +104,18 @@ console.log(customer)
 
     if (result) { // login succesfull
 
-      this.authService.setUserStatus(true);
-      this.authService.isInPublicZone = false;
+      this.authService.setUserLogStatus(true);
+      this.authService.setPublicZoneStatus(false);
       this.loading = false;
       this.router.navigate(["desktop"]);
 
-    } else {    // invalid credentials. Error
+    }
+    /*  else {    // invalid credentials. Error
 
       this.loading = false;
       this.messages.infoMsg("Something went Wrong! Try again...", "", 2000);
       this.signupForm.reset();
-    }
+    } */
   }
 
 

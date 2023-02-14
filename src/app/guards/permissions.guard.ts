@@ -1,21 +1,36 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { CanActivate, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { MessengerService } from '../services/messenger.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PermissionsGuard implements CanActivate {
+export class PermissionsGuard implements CanActivate, OnInit {
 
-  constructor(private readonly authService: AuthService){}
+  constructor(
+    private readonly authService: AuthService,
+    private messages: MessengerService,
+  ){}
+
+  loggedUser: boolean = false;
+
+  private onUserStatusChange: Subscription | undefined;
+
+  ngOnInit() {
+
+    this.onUserStatusChange = this.authService.loggedUser.subscribe(
+      currentStatus => this.loggedUser = currentStatus);
+  }
+
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 
-    if (this.authService.getUserStatus()) {
+    if (this.loggedUser) {
       return true;
     }
 
-    alert("You don't have permission to access that page.");
+    this.messages.infoMsg("You don't have permission to access that page!", "", 2000);
     return false;
   }
 
