@@ -23,19 +23,6 @@ export class SigninComponent {
 
   constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private auth: AuthService) {}
 
-  redirect(url: string) {
-    this.router.navigate(["/" + url]);
-  }
-
-  switchPassword(){
-    this.show = !this.show;
-  }
-
-  catchError(error: ErrorTypes){
-    this.error.state = true;
-    this.error.description = error;
-  }
-
   onSubmit(): void {
     if (this.signinForm.valid && this.signinForm.controls.email.value && this.signinForm.controls.password.value){
       let answer: LoginResponseModel;
@@ -52,5 +39,18 @@ export class SigninComponent {
     } else {
       this.catchError(ErrorTypes.invalid)
     }
+  }
+
+  redirect(url: string) {
+    this.router.navigate(["/" + url]);
+  }
+
+  switchPassword(){
+    this.show = !this.show;
+  }
+
+  catchError(error: ErrorTypes){
+    this.error.state = true;
+    this.error.description = error;
   }
 }
