@@ -17,11 +17,11 @@
       <mat-icon>settings_accessibility</mat-icon> Profile
     </button>
 
-    <button class="menu-button" mat-fab extended color="primary">
+    <button class="menu-button" mat-fab extended color="primary" (click)="makeDeposit()">
       <mat-icon> save_alt </mat-icon> Deposit
     </button>
 
-    <button class="menu-button" mat-fab extended color="primary">
+    <button class="menu-button" mat-fab extended color="primary" (click)="makeTransfer()">
       <mat-icon>ios_share</mat-icon> Transfer
     </button>
 
@@ -34,7 +34,8 @@
 
   <span *ngIf="showMainPage"> <app-details></app-details> </span>
   <span *ngIf="showProfilePage"> <app-profile></app-profile> </span>
-
+  <span *ngIf="showDepositPage"> <app-deposit></app-deposit> </span>
+  <span *ngIf="showTransferPage"> <app-transfer></app-transfer> </span>
 </div>
 
 <!--

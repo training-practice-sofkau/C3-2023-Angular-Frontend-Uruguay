@@ -13,6 +13,8 @@ export class DesktopComponent implements OnInit {
 
   showMainPage: boolean = true;
   showProfilePage: boolean = false;
+  showDepositPage: boolean = false;
+  showTransferPage: boolean = false;
 
 
   currentAccount: string = "";
@@ -42,11 +44,30 @@ export class DesktopComponent implements OnInit {
 
     this.showMainPage = true;
     this.showProfilePage = false;
+    this.showDepositPage = false;
+    this.showTransferPage = false;
   }
 
   showProfile(){
     this.showMainPage = false;
     this.showProfilePage = true;
+    this.showDepositPage = false;
+    this.showTransferPage = false;
+  }
+
+  makeDeposit(){
+
+    this.showMainPage = false;
+    this.showProfilePage = false;
+    this.showDepositPage = true;
+    this.showTransferPage = false;
+  }
+
+  makeTransfer(){
+    this.showMainPage = false;
+    this.showProfilePage = false;
+    this.showDepositPage = false;
+    this.showTransferPage = true;
   }
 
 }
