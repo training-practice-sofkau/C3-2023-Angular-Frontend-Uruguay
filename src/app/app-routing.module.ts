@@ -18,6 +18,8 @@ import { FindByOneIdComponent } from './components/find-by-one-id/find-by-one-id
 import { UpdateComponent } from './customer/update/update.component';
 import { UpDateComponent } from './account/up-date/up-date.component';
 import { AccountByOneComponent } from './account/account-by-one/account-by-one.component';
+import { HomeComponent } from './components/home/home.component';
+import { PermisoGuard } from './guards/permiso.guard';
 
 const routes: Routes = [
   
@@ -25,7 +27,8 @@ const routes: Routes = [
   {path:``,redirectTo:`/singin`,pathMatch: 'full'},
   {path:`singin`,component: SinginComponent},
   {path:`signUp`,component: SingupComponent,pathMatch: 'full'},
-  {path:`signOut`,component: SingupComponent,pathMatch: 'full'},
+  {path:`signOut`,component: SingupComponent,pathMatch: 'full',},
+  {path:`home`,component: HomeComponent,pathMatch: 'full',canActivate:[PermisoGuard]},
   
   //buscador
   {path:`search`,component :FindByOneIdComponent,pathMatch: 'full'/*,canActivate:[AdminGuard]*/},

@@ -5,6 +5,7 @@ import { Customer } from '../customer/interface/customer';
 import { Injectable } from '@angular/core';
 import { SignUpModel } from '../login/interfaces/signUpModel';
 import { SignIn, UserResponse } from '../login/interfaces/signInModel';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class ApiService {
 
   BASE_URL = "http://localhost:3000";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private cookies : CookieService) { }
 
   httpOptions = {
     headers : new HttpHeaders({
@@ -27,21 +29,15 @@ export class ApiService {
   
   token! : string;
  //--------------Segurity----------------------------
-  logIn(email :string , pass:string):Observable<UserResponse>{
-    const body = {
-      username: email,
-      password: pass
-    }
-    return this.http.post<UserResponse>(`${this.BASE_URL}/security/singIn`,body,this.httpOptions);
-      
-      
-    // .pipe(map((res: UserResponse) => {
-    //   console.log(`Res =>`,res)
-    //   //saveToke()
-    // }),
-    // catchError((err) => this.handlerError(err))
-    // );
+  logIn(user : SignIn):Observable<string>{
+    return this.http.post(`${this.BASE_URL}/security/singIn`,user,{responseType: 'text'});  
   }
+  
+  //Me tendria que retornar el token 
+  sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
+    return this.http.post(`${this.BASE_URL}/security/singUp`, newCustomer, {responseType: 'text'} );
+  }
+  
   // logOut():void{}
   // private readToken():void{ //Guardar el token en el local storage
 
@@ -97,10 +93,6 @@ export class ApiService {
     return this.http.get<DocumentType>(`${this.BASE_URL}/customer/document-type/find-id/${document}`,this.httpOptions);
   }
   
-  //Me tendria que retornar el token 
-  sigUp(newCustomer: SignUpModel):Observable<string>{ // pasarle el string del documentType.id porque en el backend verifica si es strign
-    return this.http.post<string>(`${this.BASE_URL}/singUp`,newCustomer,this.httpOptions);
-  }
   
   //--------------Deposit----------------------------
   //--------------Transfer----------------------------

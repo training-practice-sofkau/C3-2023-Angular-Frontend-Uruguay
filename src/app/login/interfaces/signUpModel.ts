@@ -1,8 +1,6 @@
-import { DocumentTypeModel } from '../../program-Funcional/interfaces/customerModel';
-
 export interface SignUpModel{
-
-    documentType: DocumentTypeModel;
+    documentTypeId: string;
+    accountTypeId: string;
     document: string;
     fullName: string;
     email: string;

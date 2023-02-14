@@ -6,7 +6,8 @@ import { MaterialModule } from "../material/material.module";
 import { SingOutComponent } from "./sing-out/sing-out.component";
 import { SinginComponent } from "./singin/singin.component";
 import { SingupComponent } from "./singup/singup.component";
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -28,5 +29,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SingupComponent,
     SingOutComponent,
   ],
+  providers:[CookieService],
 })
 export class LoginModule { }
