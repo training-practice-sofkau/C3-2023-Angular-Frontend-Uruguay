@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Observable, Subject } from 'rxjs';
 import { JwtTokenModel } from 'src/app/interfaces/token.interface';

@@ -5,7 +5,6 @@ import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
 import { ErrorTypes } from 'src/app/interfaces/error-type.interface';
 import { UserDataService } from 'src/app/dashboard/services/user-data.service';
-import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 
 
 @Component({
