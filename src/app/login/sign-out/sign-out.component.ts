@@ -14,5 +14,6 @@ export class SignOutComponent {
 
     signOut() {
       this.service.signOut();
+      setTimeout(() => this.router.navigate(['/login']), 200)
     }
 }
