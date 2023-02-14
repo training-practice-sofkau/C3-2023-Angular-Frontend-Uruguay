@@ -104,15 +104,13 @@ export class ServiceService {
   createSavingAccount() {
     const user = this.getUserFromLocalStorage()
 
-    this.http.post<AccountModel>(`${environment.apiBase}/account/create-additional-saving-account`, {customerId: user.id})
-    .subscribe()
+    return this.http.post<AccountModel>(`${environment.apiBase}/account/create-additional-saving-account`, {customerId: user.id})
   }
 
   createCheckingAccount() {
     const user = this.getUserFromLocalStorage()
 
-    this.http.post<AccountModel>(`${environment.apiBase}/account/create-additional-checking-account`, {customerId: user.id})
-    .subscribe();
+    return this.http.post<AccountModel>(`${environment.apiBase}/account/create-additional-checking-account`, {customerId: user.id})
   }
 
   changeAccountType(id: string) {
