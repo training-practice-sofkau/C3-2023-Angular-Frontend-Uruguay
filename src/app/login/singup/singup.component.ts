@@ -68,16 +68,6 @@ export class SingupComponent {
 
     };
   
-  /*
-  document: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  password: string;
-  accountTypeId: string;
-  documentTypeName: string;
-  balance?: number;
-*/
     this.customerService.createUser(this.signUp).subscribe({
       next: token => {
         localStorage.setItem('token', "tokentest");
