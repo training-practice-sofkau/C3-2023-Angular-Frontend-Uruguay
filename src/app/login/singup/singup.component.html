@@ -6,8 +6,6 @@
   <h4>Sign Up</h4>
   <form [formGroup]="signUpForm" (ngSubmit)="postSignUp()">
     <input class="controls" formControlName="fullName"  type="text" id="fullName" name="fullName"  placeholder="Nombre Completo">
-    <input class="controls" formControlName="documentTypeName" type="text" id="documentTypeName" name="documentTypeName"  placeholder="Tipo de documento">
-
 
       <select class="controls2" formControlName="documentTypeName" name="documentTypeName" id="documentTypeName">
         <option class="controls" value="" disabled selected hidden>Tipo de Documento</option>   
@@ -15,13 +13,10 @@
         <option class="controls" value="Pasaporte Internacional">Pasaporte Internacional</option>
       </select>
 
-
     <input class="controls" formControlName="document" type="text" id="document" name="nombre"  placeholder="N° Documento">
     <input class="controls" formControlName="phone" type="text" id="phone" name="nombre"  placeholder="Teléfono">
     <input class="controls" formControlName="email" type="email" id="email" name="nombre"  placeholder="e-mail">
     <input class="controls" formControlName="password" type="text" id="password" name="nombre"  placeholder="Contraseña">
-
-  <!--  <input class="controls" formControlName="accountTypeName" type="text" id="accountType" name="nombre"  placeholder="Tipo de cuenta"> -->
 
       <select class="controls2" formControlName="accountTypeName" name="accountTypeName" id="accountTypeName" >
         <option class="controls" value="" disabled selected hidden>Tipo de Cuenta</option>    
@@ -29,7 +24,7 @@
         <option class="controls" value="Cuenta Corriente">Cuenta Corriente</option>
       </select>
 
-    <button class="boton"  (click)="true"  >Sign Up</button>
+    <button class="boton" type="submit"  (click)="true"  >Sign Up</button>
    
     <p>Ya estás registrado?</p> <a class= "link" (click)="(globalService.valorCaseLogin = 1)" >Ingresar!</a>
   </form>

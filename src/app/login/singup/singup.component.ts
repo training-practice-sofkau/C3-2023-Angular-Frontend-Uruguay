@@ -38,16 +38,21 @@ export class SingupComponent {
       const dataRegister: SignUpModel = {
 
         fullName: this.signUpForm.controls["fullName"].value,
-        documentTypeName: this.signUpForm.controls.documentTypeName.value,
+        //documentTypeName: this.signUpForm.controls.documentTypeName.value,
+        documentTypeName: this.signUpForm.controls["documentTypeName"].value, //?
         document: this.signUpForm.controls["document"].value,
         phone: this.signUpForm.controls["phone"].value,
         email: this.signUpForm.controls["email"].value,
         password: this.signUpForm.controls["password"].value,
-        accountTypeName: this.signUpForm.controls.accountTypeName.value,
+        accountTypeName: this.signUpForm.controls["documentTypeName"].value, //?
+       // accountTypeName: this.signUpForm.controls.accountTypeName.value, 
 
       }
-      this.loginService.signUp(dataRegister)
-      this.routes.navigate(['/customer-account/app-user-profile'])
+
+      this.loginService.signUp(dataRegister).subscribe(data =>{console.log(data);
+      localStorage.setItem('Token', data);
+      this.loginService.activeLogin();
+      this.routes.navigate(['/customer-account/app-user-profile'])});    
     }
   }
   
