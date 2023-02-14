@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SigninModel } from '../../interfaces/signin.interface';
-import { Observable } from 'rxjs';
+import { SignInModel } from '../../interfaces/signin.interface';
+import { SignUpModel } from 'src/app/interfaces/signup.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,15 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  signIn(signIn: SigninModel): Observable<SigninModel> {
-    return this.http
-      .post<SigninModel>(`${this.url}/signin`, signIn)
+  signIn(signIn: SignInModel) {
+    this.http
+      .post(`${this.url}/signin`, signIn, {responseType: 'text'})
+      .subscribe(token => localStorage.setItem("token", token))
   }
 
+  signUp(signUp: SignUpModel){
+    this.http
+      .post(`${this.url}/signup`, signUp, {responseType: 'text'})
+      .subscribe(token => localStorage.setItem("token", token))
+  }
 }

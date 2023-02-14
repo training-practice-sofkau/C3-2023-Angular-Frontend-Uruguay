@@ -7,8 +7,7 @@ import { CustomerModel } from 'src/app/interfaces/Customer.interface';
   providedIn: 'root'
 })
 export class CustomerService {
-  //apikey en realidad deberia ir en una .env(o algo asi)
-  //private apiKey: string = 'asdf'
+
   private url: string = 'http://localhost:3000/customer'
 
   //Almacenar la consulta (pedida mas abajo)

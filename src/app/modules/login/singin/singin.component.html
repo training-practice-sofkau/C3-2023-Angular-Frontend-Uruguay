@@ -1,6 +1,6 @@
 <section class="form-register" *ngIf="generalService.switchSignIn">
     <h4>Sign In</h4>
-    <form [formGroup]="signinForm" (ngSubmit)="postSignin()">
+    <form [formGroup]="signInForm" (ngSubmit)="postSignIn()">
         <input 
             class="controls" 
             type="email" 
@@ -11,8 +11,8 @@
             type="password" 
             placeholder="password"
             formControlName="password">
-        <button class="boton" type="submit" (click)="generalService.activeLogin()">Login</button>
+        <button class="boton" type="submit" (click)="generalService.activeLogin()">Sign In</button>
         <p>Aun no tenes cuenta con nosotros?</p>
-        <button class="boton" (click)="(generalService.valorForm = 2)">Registrarse</button>
+        <button class="boton" (click)="(generalService.valorForm = 2)">Sign Up!</button>
     </form>
 </section>
