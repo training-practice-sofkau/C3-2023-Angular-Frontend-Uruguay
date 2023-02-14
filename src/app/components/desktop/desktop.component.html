@@ -9,11 +9,11 @@
   <mat-toolbar style="background-color: rgba(136, 226, 212, 0.4); height: 40px;">
     <span class="spacer"></span>
 
-    <button class="menu-button" mat-fab extended color="primary" (click)="showMain()">
+    <button class="menu-button" mat-fab extended color="primary" (click)="showMain()" > <!--  -->
       <mat-icon>home</mat-icon> Main
     </button>
 
-    <button class="menu-button" mat-fab extended color="primary" (click)="showProfile()">
+    <button class="menu-button" mat-fab extended color="primary" (click)="showProfile()" > <!--  -->
       <mat-icon>settings_accessibility</mat-icon> Profile
     </button>
 
@@ -36,7 +36,6 @@
   <span *ngIf="showProfilePage"> <app-profile></app-profile> </span>
 
 </div>
-
 
 <!--
 
