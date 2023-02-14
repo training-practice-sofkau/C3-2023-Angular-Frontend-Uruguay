@@ -1,59 +1,64 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container padding-bottom-3x mb-2">
+<div class="content">
+  <div class="container padding-bottom-3x mb-2">
     <div class="row">
-        <div class="col-lg-4">
-            <aside class="user-info-wrapper">
-                <div class="user-cover" style="background-image: url(https://bootdey.com/img/Content/bg1.jpg);">
-                </div>
-                <div class="user-info">
-                    <div class="user-avatar">
-                        <a class="edit-avatar" href="#"></a><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User"></div>
-                    <div class="user-data">
-                        <h4>Name: </h4><span >{{customer.fullName}}</span>
-                        <h4>Document Type: </h4><span *ngIf="customer.documentType">{{customer.documentType.name}}</span>
-                        <h4>Document: </h4><span>{{customer.document}}</span>
-                        <h4>Email: </h4><span>{{customer.email}}</span>
-                        <h4>Phone: </h4><span>{{customer.phone}}</span>
-                    </div>
-                </div>
-            </aside>
-            <nav class="list-group">
-                <a class="list-group-item with-badge" href="#"><i class="fa fa-user"></i>Profile</a>
-                <a class="list-group-item" href="#"><i class=" fa fa-th"></i>Accounts</a>
-                <a class="list-group-item" href="#"><i class="fa fa-map"></i>Transfer</a>
-                <a class="list-group-item with-badge active" href="#"><i class="fa fa-map"></i>Deposit</a>
-            </nav>
-        </div>
-        <div class="col-lg-8">
-            <div class="padding-top-2x mt-2 hidden-lg-up"></div>
-            <!-- Wishlist Table-->
-            <div class="table-responsive wishlist-table margin-bottom-none">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Accounts</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let index of accounts">
-                            <td>
-                                <div class="product-item">
-                                    <div class="product-info">
-                                        <h4 class="product-title"><a href="#">Tipo de Cuenta: </a><br><a>{{index.accountTypeId.name}}</a></h4>
-                                        <div class="text-lg text-medium text-muted"><a>Balance: </a>{{index.balance}}</div>
-                                        <div class="text-lg text-medium text-muted"><a>ID: </a>{{index.id}}</div>
-                                        <div>State:
-                                            <div class="d-inline text-success">{{index.state}}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="icon-cross"></i></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+      <div class="col-lg-4">
+        <aside class="user-info-wrapper">
+          <div class="user-cover" style="background-image: url(https://bootdey.com/img/Content/bg1.jpg);">
+          </div>
+          <div class="user-info">
+            <div class="user-avatar">
+              <a class="edit-avatar" href="#"></a><img src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                alt="User">
             </div>
+            <div class="user-data">
+              <h4>Name: </h4><span>{{customer.fullName}}</span>
+              <h4>Document Type: </h4><span>{{customer.documentType.name}}</span>
+              <h4>Document: </h4><span>{{customer.document}}</span>
+              <h4>Email: </h4><span>{{customer.email}}</span>
+              <h4>Phone: </h4><span>{{customer.phone}}</span>
+            </div>
+          </div>
+        </aside>
+        <nav class="list-group">
+          <a class="list-group-item with-badge" href="#"><i class="fa fa-user"></i>Profile</a>
+          <a class="list-group-item" href="#"><i class=" fa fa-th"></i>Accounts</a>
+          <a class="list-group-item" href="#"><i class="fa fa-map"></i>Transfer</a>
+          <a class="list-group-item with-badge" href="#"><i class="fa fa-map"></i>Deposit</a>
+        </nav>
+      </div>
+      <div class="col-lg-8">
+        <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+        <!-- Wishlist Table-->
+        <div class="table-responsive wishlist-table margin-bottom-none">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Accounts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let index of accounts">
+                <td>
+                  <div class="product-item">
+                    <div class="product-info">
+                      <h4 class="product-title"><a href="#">Tipo de Cuenta: </a><br><a>{{index.accountTypeId.name}}</a>
+                      </h4>
+                      <div class="text-lg text-medium text-muted"><a>Balance: </a>{{index.balance}}</div>
+                      <div class="text-lg text-medium text-muted"><a>ID: </a>{{index.id}}</div>
+                      <div>State:
+                        <div class="d-inline text-success">{{index.state}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title=""
+                    data-original-title="Remove item"><i class="icon-cross"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
