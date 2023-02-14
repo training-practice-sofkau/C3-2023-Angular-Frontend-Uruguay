@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { SigninModel } from 'src/app/interfaces/signin.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { SignInModel } from 'src/app/interfaces/signin.interface';
 import { ServicesService } from 'src/app/services/services.service';
 import { LoginService } from '../login.service';
 
@@ -14,20 +16,22 @@ export class SinginComponent {
   constructor(
     protected generalService: ServicesService,
     private service: LoginService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private router: Router) { }
 
-  signinForm = this.fb.group({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+  signInForm: FormGroup = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required]
   })
 
-  postSignin() {
-    if (this.signinForm.controls.email.value && this.signinForm.controls.password.value) {
-      let form: SigninModel = {
-        email: this.signinForm.controls.email.value,
-        password: this.signinForm.controls.password.value
+  postSignIn() {
+    if (this.signInForm.controls["email"].value && this.signInForm.controls["password"].value) {
+      const form: SignInModel = {
+        email: this.signInForm.controls["email"].value,
+        password: this.signInForm.controls["password"].value
       }
-      this.service.signIn(form).subscribe(data => { console.log(data) })
+      this.service.signIn(form)
+      this.router.navigate(["/customer"])
     }
   }
 }
