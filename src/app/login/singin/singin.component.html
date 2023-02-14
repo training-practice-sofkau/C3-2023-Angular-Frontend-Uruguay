@@ -4,12 +4,18 @@
 
 <section class="form-register" *ngIf="(globalService.switchLogIn)">
   <h4>Sign In</h4>
-  <form>
-    <input class="controls" type="text" id="tipo" name="tipo" placeholder="Usuario">
-    <input class="controls" type="text" id="nombre" name="nombre" placeholder="Contraseña">
+  <form [formGroup]="signInForm" (ngSubmit)="postSignIn()">
 
-    <button class="boton" (click)="globalService.activeLogged()">Sign In</button>
+    <input class="controls" type="email" id="email" name="email" formControlName="username" placeholder="Email">
+    <input class="controls"  type="password" id="password" name="password"  formControlName="password"  placeholder="Contraseña">
+
+    <button class="boton" type="submit" (click)="true" >Sign In</button>
 
     <p>No tienes una cuenta?</p> <a class="link" (click)="(globalService.valorCaseLogin = 2)">Registrate!</a>
   </form>
 </section>
+
+
+
+
+<!-- <button class="boton" (click)="globalService.activeLogged()">Sign In</button> -->

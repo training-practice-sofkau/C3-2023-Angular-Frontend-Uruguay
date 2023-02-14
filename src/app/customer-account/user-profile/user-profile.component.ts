@@ -19,7 +19,7 @@ export class UserProfileComponent implements OnInit{
   public user : Object = {};
   customer : CustomerModel = <CustomerModel> this.user;
 
-  public id : string = "7738fd3b-4763-49cd-b00a-2f77fb45615f";
+  public id : string = "09007808-a040-4e28-9eb6-5977350d26d4";
 
 
   constructor  (public globalService: GlobalService,
@@ -53,10 +53,6 @@ export class UserProfileComponent implements OnInit{
     error: (error:HttpErrorResponse)=> {alert(error.message)}
     })
   }
-
-
  
-  
-  
 
 }

@@ -15,7 +15,7 @@ export class MyAccountsComponent {
 
   public accounts : AccountModel[] = [];
 
-  public idUser : string = "7738fd3b-4763-49cd-b00a-2f77fb45615f";
+  public idUser : string = "09007808-a040-4e28-9eb6-5977350d26d4";
   public cuenta : Object = {};
 
   account : AccountModel = <AccountModel> this.cuenta;

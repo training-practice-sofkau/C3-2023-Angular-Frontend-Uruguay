@@ -10,7 +10,7 @@ export class GlobalService {
     this.defaultLogged()
   }
 
-//*************************CONTROL VARIABLE LOCAL STORAGE*******************************/
+//************************CONTROL VARIABLE LOCAL STORAGE*********************/
 
  defaultLogged(){
    if(!localStorage.getItem('MyToken')){
@@ -26,8 +26,7 @@ export class GlobalService {
  logOut(){
    localStorage.clear()
  }
-
-   //*************************CONTROL DE COMPONENTES USER*******************************/
+   //*********************CONTROL DE COMPONENTES USER*************************/
   
   public valorCaseUser : number = 0;
   public switchViewUser : boolean = true;
@@ -54,7 +53,7 @@ export class GlobalService {
   }
 
 
-  //************************CONTROL DE COMPONENTES HOME-LOGIN ********************************/
+  //********************CONTROL DE COMPONENTES HOME-LOGIN *********************/
   
   public valorCaseLogin : number = 0;
   public switchLogIn : boolean = true;
