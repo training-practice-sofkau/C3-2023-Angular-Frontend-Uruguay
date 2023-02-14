@@ -22,7 +22,7 @@ import { CustomerComponent } from './administrator/customer/customer.component';
 import { CustomerProfileComponent } from './pages/customer-profile/customer-profile.component';
 import {HttpClientModule} from  '@angular/common/http'
 import { FormsModule } from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+
 
 
 

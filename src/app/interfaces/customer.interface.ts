@@ -3,7 +3,7 @@
 export interface CustomerModel {
    
   id: string;
-  documentType: DocumentTypeModel;
+  documentTypeId: DocumentTypeModel;
   document: string;
   fullName: string;
   email: string;

@@ -13,24 +13,37 @@
     <h1>Formulario de Registro</h1>
     <form>
       <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" required>
+      <input [(ngModel)]="fullname" type="text" id="fullname" name="fullname">
 
       <label for="documento">Documento:</label>
-      <input type="text" id="documento" name="documento" required>
+      <input [(ngModel)]="document" type="text" id="document" name="document" >
 
-      <label for="tipo">Tipo de documento:</label>
-      <select id="tipo" name="tipo">
+      <label for="tipoDoc">Tipo de documento:</label>
+      <select [(ngModel)]="typeDoc" id="tipoDoc" name="tipoDoc">
         <option value="cedula">Cedula</option>
         <option value="pasaporte">Pasaporte</option>
       </select>
 
-      <label for="telefono">Telefono:</label>
-      <input type="tel" id="telefono" name="telefono" required>
+      <label for="phone">Telefono:</label>
+      <input [(ngModel)]="phone" type="tel" id="phone" name="phone">
+
+      <label for="tipoAcc">Tipo de Cuenta:</label>
+      <select [(ngModel)]="typeAcc" id="typeAcc" name="tipoAcc">
+        <option value="Caja Ahorro">Caja ahorro</option>
+        <option value="Cuenta Dolares">Cuenta Dolares</option>
+      </select>
+
+      <label for="email">Email:</label>
+      <input [(ngModel)]="email" type="text" id="email" name="email" required>
+
+      <label for="password">Passowrd:</label>
+      <input [(ngModel)]="password" type="text" id="password" name="password" required>
 
       <div class="buttons">
         <input type="button" value="Atrás">
-        <input type="submit" value="Registrar">
+        <input (click)="register(email,password,typeDoc,typeAcc,fullname,phone,document)" type="submit" value="Registrar">
       </div>
+
     </form>
   </div>
 </body>

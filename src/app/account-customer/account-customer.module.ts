@@ -24,7 +24,7 @@ import { AccountRouteModule } from './account-customer-routes.module';
   exports:[
     AccountRouteModule,
     ProfileComponent,
-    AccountRouteModule
+    
   ],
   providers:[ CustomerService ]
 })
