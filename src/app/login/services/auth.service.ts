@@ -33,6 +33,7 @@ loginFire(user: SignIn){
 singOut(){
   return signOut(this.Auth);
 }
+
 loginGoogle(){
   return signInWithPopup(this.Auth, new GoogleAuthProvider());
 }
@@ -89,6 +90,7 @@ loginGoogle(){
       
     }
 
+    
     getCustomerLocalStorage():tokenCustomer{
       const token = sessionStorage.getItem('token');
       if(token ){
