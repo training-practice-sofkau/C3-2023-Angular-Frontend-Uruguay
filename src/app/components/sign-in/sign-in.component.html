@@ -29,14 +29,20 @@
               <mat-hint *ngIf="!signinForm.value.password">Enter your password</mat-hint>
             </mat-form-field>
           </div>
-          <br>
-          <button class="signin-button" type="submit" mat-raised-button color="primary"
-            [disabled]="signinForm.invalid">Sign In</button>
-          <br>
-          <div class="foot-message">
-            <h3>Dont have an account yet? <a href="#" (click)="(appComp.toRegister())">Click Here!</a> </h3>
+          <div style="margin-top: 10px;">
+            <button class="signin-button" type="submit" mat-raised-button color="primary"
+              [disabled]="signinForm.invalid">Sign In</button>
           </div>
         </form>
+        <div style="margin-top: 10px;">
+          <button class="btn btn-info" (click)="loginWithGoogle()"> Login with Google </button>
+        </div>
+        <div class="foot-message">
+          <h3>Dont have an account yet? <a href="/signup">Click Here!</a> </h3>
+        </div>
+
+
+
       </mat-card>
 
     </div>

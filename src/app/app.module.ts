@@ -18,6 +18,9 @@ import { SignupModule } from './components/sign-up/sign-up.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { DesktopComponent } from './components/desktop/desktop.component';
 import { DesktopModule } from './components/desktop/desktop.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -34,6 +37,8 @@ import { DesktopModule } from './components/desktop/desktop.module';
     AppRoutingModule,
     LoginModule,
     JwtModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
   ],
   bootstrap: [AppComponent]
 })

@@ -10,7 +10,7 @@ import { CustomerService } from '../../services/customer.service';
 import { MessengerService } from '../../services/messenger.service';
 
 //Components
-import { AppComponent } from '../../app.component';
+
 import { AuthService } from '../../services/auth.service';
 import { SigninResponseModel, SigninTokenResponseModel } from 'src/app/interfaces/responses.interface';
 
@@ -24,21 +24,21 @@ export class SignUpComponent {
 
   signupForm: FormGroup;
   documentTypes: string[] = ["ID Card", "Passport ID"];
+  accountTypes: string[] = ["Saving", "Checks"];
   defaultDocType: string = this.documentTypes[0];
   hide = true;
   loading = false;
 
-  //accountTypes: string[] = ["Saving", "Checks"];
 
   constructor(private fb: FormBuilder,
     private customerService: CustomerService,
     private router: Router,
     private messages: MessengerService,
-    public appComp: AppComponent,
     private authService: AuthService,
   ) {
     this.signupForm = this.fb.group({
       documentType: ["ID Card", Validators.required],
+      accountType: ["Saving", Validators.required],
       document: ["", Validators.required],
       fullname: ["", Validators.required],
       email: ["", [Validators.email, Validators.required]],
@@ -61,9 +61,9 @@ export class SignUpComponent {
       email: this.signupForm.value.email,
       phone: this.signupForm.value.phone,
       password: this.signupForm.value.password,
-      accountTypeName: 'Saving'
+      accountType: this.signupForm.value.accountType,
     } */
-    customer.accountTypeName="Saving"
+
 
     this.loading = true;
 

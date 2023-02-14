@@ -36,6 +36,15 @@
             </mat-form-field>
           </mat-grid-tile>
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label>Account Type: </mat-label>
+            <mat-select formControlName="documentType">
+              <mat-option *ngFor="let item of accountTypes" [value]="item"> {{item}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
           <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field class="datafield">
               <mat-label>E-Mail:</mat-label>
@@ -60,7 +69,7 @@
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <button class="signup-button" mat-raised-button (click)="appComp.toHome()"
+            <button class="signup-button" mat-raised-button routerLink="/"
               style="margin-right: 20px;">Cancel</button>
             <button class="signup-button" type="submit" [disabled]="signupForm.invalid" mat-raised-button
               color="warn">Register</button>

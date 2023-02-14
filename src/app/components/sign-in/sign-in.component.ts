@@ -8,15 +8,12 @@ import { MessengerService } from '../../services/messenger.service';
 import { CustomerService } from '../../services/customer.service';
 
 // Components
-import { AppComponent } from '../../app.component';
+
 
 // Interfaces
 import { CustomerSignInModel } from '../../interfaces/customer.interface';
 import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
 import { AuthService } from '../../services/auth.service';
-import jwtDecode from 'jwt-decode';
-
-
 
 
 @Component({
@@ -37,12 +34,12 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private customerService: CustomerService,
     private authService: AuthService,
-    public appComp: AppComponent,
+    //public appComp: AppComponent,
   ) {
 
     this.signinForm = this.fb.group({
-      username: ["",], //[Validators.email, Validators.required]],
-      password: ["",] //[Validators.minLength(5), Validators.required]]
+      username: ["", [Validators.email, Validators.required]],
+      password: ["", [Validators.minLength(5), Validators.required]]
     });
   }
 
@@ -69,6 +66,19 @@ export class SignInComponent implements OnInit {
 
     }, 1500);
   }
+
+  loginWithGoogle(){
+    this.authService.loginWithGoogle()
+      .then(googleResp => {
+        const token = googleResp.user.getIdToken();
+        //const decoded = jwt_decode(token) ;
+
+        console.log(token + " - " );
+      })
+      .catch(error => console.log(error));
+
+  }
+
 
   /**
    * Checks the response from customerService and verifies

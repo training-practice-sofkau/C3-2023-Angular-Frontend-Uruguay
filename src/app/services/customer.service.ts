@@ -6,8 +6,7 @@ import { environment } from '../../environments/environment';
 // Interfaces
 import { CustomerSignInModel, CustomerSignUpModel, CustomerModel } from '../interfaces/customer.interface';
 import { Observable } from 'rxjs';
-import { SigninResponseModel, SigninTokenResponseModel } from '../interfaces/responses.interface';
-import { getLocaleExtraDayPeriodRules } from '@angular/common';
+import { SigninResponseModel } from '../interfaces/responses.interface';
 import { AccountModel } from '../interfaces/account.interface';
 
 @Injectable({
