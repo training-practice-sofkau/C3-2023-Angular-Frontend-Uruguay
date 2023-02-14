@@ -60,7 +60,10 @@ export class SingupComponent implements OnInit{
   
     sessionStorage.removeItem('token');
     this.router.navigate(['/singin']);
-    
+
+    //Yatengo en el servicio para registrarme , faltan los datos restantes a parte del correo y contrasenia
+    // this.authService.register(this.customer) Me da error proque tengo que modificar mi registro al firebase porque solo
+    //esta con el correo
    
     
   }

@@ -50,13 +50,18 @@ export class SinginComponent implements OnInit {
     // this.authService.newSigIn(this.userSignIn);
     // this.tokenUser = this.authService.getUserLocalStorage();
     // console.log(this.tokenUser);
-    this.authService.register(this.userSignIn)
-    .then(data => console.log(data))
-    .catch(error => console.log(error)  
-    );
+    this.authService.loginFire(this.userSignIn)
+    .then( data => {
+      console.log(data)
+      this.router.navigate(["/home"]) 
+      })
+    .catch(err => (console.log(err))); 
+  }
 
-    
-    //this.router.navigate(["/home"]);
+  google(){
+    return this.authService.loginGoogle()
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
   }
 
   

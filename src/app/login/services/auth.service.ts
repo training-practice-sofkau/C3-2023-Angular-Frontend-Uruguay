@@ -8,7 +8,7 @@ import { SignIn } from '../interfaces/signInModel';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { tokenCustomer, tokenUser } from '../interfaces/tokenModel';
-import { Auth,createUserWithEmailAndPassword } from "@angular/fire/auth";
+import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut ,signInWithPopup, GoogleAuthProvider} from "@angular/fire/auth";
 
 
 @Injectable({
@@ -23,8 +23,18 @@ export class AuthService {
     private Auth : Auth) { }
 
 
-register(user : SignIn){
+registerFire(user : SignIn){ //esto es para registrarse pero tengo que pasarle los demas valores
   return createUserWithEmailAndPassword(this.Auth,user.username,user.password);
+}
+
+loginFire(user: SignIn){
+  return signInWithEmailAndPassword(this.Auth,user.username,user.password);
+}
+singOut(){
+  return signOut(this.Auth);
+}
+loginGoogle(){
+  return signInWithPopup(this.Auth, new GoogleAuthProvider());
 }
 
 
@@ -44,6 +54,7 @@ register(user : SignIn){
   
   helper = new JwtHelperService();
   user ! : SignIn;
+  private token!: string;
   customerSignUp! : SignUpModel;
   public signUpObservable: BehaviorSubject<SignUpModel> = 
   new BehaviorSubject<SignUpModel>(this.newCustomer);
@@ -58,8 +69,8 @@ register(user : SignIn){
       this.apiService.sigUp(newCustomer).subscribe(
         (data) => sessionStorage.setItem('token',data));
     }
-    
-    
+
+
     hasUser():boolean{
       if(typeof sessionStorage.getItem('token') === 'string'){
         return true;
