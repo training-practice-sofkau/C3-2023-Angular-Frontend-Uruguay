@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-view',
@@ -8,10 +8,10 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ViewComponent implements OnInit {
 
-  constructor(protected cookie: CookieService) {}
+  constructor(protected userData: UserDataService) {}
 
   ngOnInit(): void {
-    this.cookie.delete('currentAccount');
+    this.userData.delete('currentAccount');
   }
 
 }

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
 import { ErrorTypes } from 'src/app/interfaces/error-type.interface';
+import { UserDataService } from 'src/app/dashboard/services/user-data.service';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -21,7 +22,46 @@ export class SigninComponent {
     remember: new FormControl(false)
   });
 
-  constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private auth: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private userData: UserDataService, private router: Router, private auth: AuthService) {}
+
+  onSubmit(): void {
+    if (this.signinForm.valid && this.signinForm.controls.email.value && this.signinForm.controls.password.value){
+      let answer: LoginResponseModel;
+      this.auth.login(this.signinForm.controls.email.value, this.signinForm.controls.password.value).subscribe({
+        next: (value) => { answer = value; },
+        error: () => { this.catchError(ErrorTypes.notfound) },
+        complete: () => {
+          this.error.state = false;
+          (this.signinForm.controls.remember.value) ? this.userData.set('token', answer.token, true) : this.userData.set('token', answer.token);
+          this.auth.loadCurrentUser();
+          this.router.navigate(["/dashboard/view"]);
+        }
+      });
+    } else {
+      this.catchError(ErrorTypes.invalid)
+    }
+  }
+
+  googleLogin() {
+    this.auth.toGoogleLogin()
+      .then(response => {
+        let answer: LoginResponseModel;
+        if (response.user.email){
+          console.log(response.user.email)
+          this.auth.loginGoogle(response.user.email).subscribe({
+            next: (value) => { answer = value; },
+            error: () => { this.catchError(ErrorTypes.notfound) },
+            complete: () => {
+              this.error.state = false;
+              (this.signinForm.controls.remember.value) ? this.userData.set('token', answer.token, true) : this.userData.set('token', answer.token);
+              this.auth.loadCurrentUser();
+              this.router.navigate(["/dashboard/view"]);
+            }
+          });
+        }
+      })
+      .catch(error => console.log(error))
+  }
 
   redirect(url: string) {
     this.router.navigate(["/" + url]);
@@ -34,23 +74,5 @@ export class SigninComponent {
   catchError(error: ErrorTypes){
     this.error.state = true;
     this.error.description = error;
-  }
-
-  onSubmit(): void {
-    if (this.signinForm.valid && this.signinForm.controls.email.value && this.signinForm.controls.password.value){
-      let answer: LoginResponseModel;
-      this.auth.login(this.signinForm.controls.email.value, this.signinForm.controls.password.value).subscribe({
-        next: (value) => { answer = value; },
-        error: () => { this.catchError(ErrorTypes.notfound) },
-        complete: () => {
-          this.error.state = false;
-          (this.signinForm.controls.remember.value) ? this.cookie.set('token', answer.token) : sessionStorage.setItem('token', answer.token);
-          this.auth.loadCurrentUser();
-          this.router.navigate(["/"]);
-        }
-      });
-    } else {
-      this.catchError(ErrorTypes.invalid)
-    }
   }
 }

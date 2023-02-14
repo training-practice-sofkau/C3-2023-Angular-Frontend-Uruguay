@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router,NavigationEnd  } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { UserDataService } from 'src/app/dashboard/services/user-data.service';
 import { AuthService } from 'src/app/login/services/auth.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class ToolbarComponent {
   userDropdown: boolean = false;
   currentRoute: string = '';
 
-  constructor(private router: Router, private cookie: CookieService, protected auth: AuthService) {
+  constructor(private router: Router, private userData: UserDataService, protected auth: AuthService) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd){
         this.currentRoute = event.url;
@@ -23,9 +23,8 @@ export class ToolbarComponent {
   }
 
   logout(){
-    sessionStorage.clear();
-    this.cookie.deleteAll();
-    this.router.navigate(["/sign-in"]);
+    this.userData.clear();
+    this.router.navigate(["/login/sign-up"]);
     this.userDropdown = !this.userDropdown;
   }
 

@@ -6,7 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { UpComponent } from './up/up.component';
 import { CustomersTableComponent } from './customers-table/customers-table.component';
 import { AccountsTableComponent } from './accounts-table/accounts-table.component';
-import { AppRoutingModule } from '../app.routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,9 @@ import { AppRoutingModule } from '../app.routing.module';
     AccountsTableComponent
   ],
   imports: [
-    AppRoutingModule,
     CommonModule,
     MaterialModule,
+    RouterModule
   ],
   exports:[
     ToolbarComponent,

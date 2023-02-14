@@ -1,12 +1,13 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { AppService } from 'src/app/app.service';
 import { Observable, Subject } from 'rxjs';
 import { JwtTokenModel } from 'src/app/interfaces/token.interface';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
 import { CustomerModel } from 'src/app/interfaces/customer.interface';
 import { SignInModel } from 'src/app/interfaces/signin.interface';
+import { UserDataService } from 'src/app/dashboard/services/user-data.service';
+import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
   currentUser: LoginResponseModel | undefined;
   currentUserEmitter: Subject<LoginResponseModel> = new Subject<LoginResponseModel>();
 
-  constructor(private api: AppService, private cookie: CookieService) {
+  constructor(private api: AppService, private userData: UserDataService, private gauth: Auth) {
     this.currentUserEmitter.subscribe((value) => this.currentUser = value);
     this.loadCurrentUser();
   }
@@ -54,10 +55,21 @@ export class AuthService {
     );
   }
 
+  loginGoogle(email: string): Observable<LoginResponseModel> {
+    const httpOptions = {
+      headers: this.api.httpheaders,
+      params: new HttpParams().set("email", email)
+    };
+    return this.api.http.get<LoginResponseModel>(
+      this.api.baseurl + "/security/sign-in-google",
+      httpOptions
+    );
+  }
+
   loadCurrentUser(): void {
     let user: CustomerModel;
-    const token: string = this.cookie.get('token') || sessionStorage.getItem('token') as string;
-    if (token && token.length > 4){
+    if (this.userData.check('token')){
+      const token: string = this.userData.get('token');
       this.isValid(token).subscribe({
         next:(value) => {
           this.api.getCustomerById(value.customer.id).subscribe({
@@ -67,6 +79,10 @@ export class AuthService {
         }
       });
     }
+  }
+
+  toGoogleLogin() {
+    return signInWithPopup(this.gauth, new GoogleAuthProvider());
   }
 
 }

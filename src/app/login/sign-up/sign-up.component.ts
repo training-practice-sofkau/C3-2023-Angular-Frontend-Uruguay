@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DocumentTypeListModel } from 'src/app/interfaces/document.list.interface';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { LoginResponseModel } from 'src/app/interfaces/login.response.interface';
@@ -30,16 +29,7 @@ export class SignupComponent {
     read: new FormControl(false)
   });
 
-  constructor(private formBuilder: FormBuilder, private cookie: CookieService, private router: Router, private auth: AuthService) {}
-
-  redirect(url: string) {
-    this.router.navigate(["/" + url]);
-  }
-
-  catchError(error: ErrorTypes){
-    this.error.state = true;
-    this.error.description = error;
-  }
+  constructor(private formBuilder: FormBuilder, private router: Router, private auth: AuthService) {}
 
   onSubmit(): void {
     if (this.signupForm.valid && this.signupForm.controls.read.value && this.signupForm.controls.email.value){
@@ -61,16 +51,19 @@ export class SignupComponent {
           this.error.state = false;
           sessionStorage.setItem('token', answer.token);
           this.auth.loadCurrentUser();
-          this.router.navigate(["/"]);
+          this.router.navigate(["/dashboard/view"]);
         }
       })
-    } else {
-      this.catchError(ErrorTypes.invalid)
-    }
-    //this.signupForm.controls.name.setValue("xd");
-    //this.cookie.set('hola', 'xd');
-    //this.signupForm.reset();
-    //this.router.navigate(['/dashboard']);
+    } else this.catchError(ErrorTypes.invalid)
+  }
+
+  redirect(url: string) {
+    this.router.navigate(["/" + url]);
+  }
+
+  catchError(error: ErrorTypes){
+    this.error.state = true;
+    this.error.description = error;
   }
 
   ngOnInit() {

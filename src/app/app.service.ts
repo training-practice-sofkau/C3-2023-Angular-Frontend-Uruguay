@@ -5,13 +5,14 @@ import { CustomerModel } from './interfaces/customer.interface';
 import { AccountModel } from './interfaces/account.interface';
 import { DepositCreateModel } from './interfaces/deposit.create.interface';
 import { DepositResponseModel } from './interfaces/deposit.response.interface';
+import { environment } from './environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  baseurl = "http://localhost:3000/api";
+  baseurl = environment.apiUrl;
 
   constructor(public http: HttpClient) {}
 
