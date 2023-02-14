@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SinginComponent } from './singin/singin.component';
 
+
 import { SingOutComponent } from './sing-out/sing-out.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

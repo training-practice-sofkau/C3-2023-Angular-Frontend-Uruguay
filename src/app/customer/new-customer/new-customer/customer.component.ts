@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AccountInterface } from '../../interface/account.interface';
 
 @Component({
   selector: 'app-new-customer',
@@ -7,11 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  data = localStorage.getItem('customer');
-  customer = this.data ? JSON.parse(this.data) : null;
+  constructor(private http: HttpClient ){}
+
+
+  usuario! : AccountInterface 
+
+
 
   ngOnInit() {
-    console.log(this.customer);
+    console.log(this.usuario);
   }
+
+  getDataAccount(){
+
+
+    const account = localStorage.getItem('customer');
+  this.usuario = account ? JSON.parse(account) : null
+
+  this.http.get(`http://localhost:3000/account/${this.usuario?.accountUser.customer.id}`).subscribe(
+    data => {
+      console.log(data)
+      this.usuario = data as AccountInterface;
+    },
+    error => {
+      console.error(error);
+    }
+  );
+
+  localStorage.setItem('customer', JSON.stringify(this.usuario))
+
+
+ return this.usuario
+
+}
 }
 

@@ -5,66 +5,30 @@
         <div class="card">
           <div class="card-body">
             <h2 class="text-center mb-4">Registro</h2>
-            <form action="" id="formulario">
+            <form [formGroup]="myForm" (ngSubmit)="sendData()">
               <div class="form-group">
-                <input
-                  name="document"
-                  [(ngModel)]="document"
-                  type="text"
-                  class="form-control" />
+                <input formControlName="document" type="text" class="form-control" />
                 <label for="document">Documento</label>
               </div>
               <div class="form-group">
-                <input
-                  name="fullName"
-                  [(ngModel)]="fullName"
-                  type="text"
-                  id="nombre"
-                  class="form-control"
-                  autocomplete="off" />
+                <input formControlName="fullName" type="text" id="nombre" class="form-control" autocomplete="off" />
                 <label for="nombre">Nombres</label>
               </div>
               <div class="form-group">
-                <input
-                  name="email"
-                  [(ngModel)]="email"
-                  type="email"
-                  id="typeEmailX"
-                  class="form-control" />
+                <input formControlName="email" type="email" id="typeEmailX" class="form-control" />
                 <label for="typeEmailX">Email</label>
               </div>
               <div class="form-group">
-                <input
-                  name="phone"
-                  [(ngModel)]="phone"
-                  type="text"
-                  id="telefono"
-                  class="form-control"
-                  autocomplete="off" />
+                <input formControlName="phone" type="text" id="telefono" class="form-control" autocomplete="off" />
                 <label for="telefono">Telefono</label>
               </div>
               <div class="form-group">
-                <input
-                  name="password"
-                  [(ngModel)]="password"
-                  type="password"
-                  id="typePasswordX"
-                  class="form-control" />
+                <input formControlName="password" type="password" id="typePasswordX" class="form-control" />
                 <label for="typePasswordX">Password</label>
               </div>
               <div class="d-flex justify-content-between">
-                <input
-                  class="btn btn-primary"
-                  type="button"
-                  id="enviar"
-                  (click)="sendData()"
-                  value="Enviar" />
-                <button
-                  type="reset"
-                  id="borrar"
-                  class="btn btn-secondary">
-                  Borrar
-                </button>
+                <input class="btn btn-primary" type="submit" id="enviar" value="Enviar" [disabled]="!myForm.valid" />
+                <button type="reset" id="borrar" class="btn btn-secondary">Borrar</button>
               </div>
             </form>
           </div>
