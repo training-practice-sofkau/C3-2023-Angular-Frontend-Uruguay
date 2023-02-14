@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
+import { HotToastService } from '@ngneat/hot-toast';
+
+
 //Interfaces
 import { CustomerSignUpModel } from '../../interfaces/customer.interface';
+import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
 
 //Services
 import { CustomerService } from '../../services/customer.service';
 import { MessengerService } from '../../services/messenger.service';
-
-//Components
-
 import { AuthService } from '../../services/auth.service';
-import { SigninResponseModel, SigninTokenResponseModel } from 'src/app/interfaces/responses.interface';
 
 
 @Component({
@@ -26,7 +26,8 @@ export class SignUpComponent {
   documentTypes: string[] = ["ID Card", "Passport ID"];
   accountTypes: string[] = ["Saving", "Checks"];
   defaultDocType: string = this.documentTypes[0];
-  hide = true;
+  hidePass = true;
+  hideConfirmPass = true
   loading = false;
 
 
@@ -38,13 +39,16 @@ export class SignUpComponent {
   ) {
     this.signupForm = this.fb.group({
       documentType: ["ID Card", Validators.required],
-      accountType: ["Saving", Validators.required],
+      accountTypeName: ["Saving", Validators.required],
       document: ["", Validators.required],
       fullname: ["", Validators.required],
       email: ["", [Validators.email, Validators.required]],
       phone: [""],
-      password: ["", [Validators.minLength(5), Validators.required]]
-    })
+      password: ["", [Validators.minLength(6), Validators.required]],
+      confirmPassword: ["", [Validators.minLength(6), Validators.required]]
+    },
+      { validators: passwordsMatchValidator() }
+    );
   }
 
   /**
@@ -54,26 +58,19 @@ export class SignUpComponent {
   createNewCustomer() {
     const customer: CustomerSignUpModel = this.signupForm.getRawValue();
 
-    /* {
-      documentType: this.signupForm.value.documentType,
-      document: this.signupForm.value.document,
-      fullname: this.signupForm.value.fullname,
-      email: this.signupForm.value.email,
-      phone: this.signupForm.value.phone,
-      password: this.signupForm.value.password,
-      accountType: this.signupForm.value.accountType,
-    } */
+    const email = this.signupForm.get('email')?.value;
+    const pass = this.signupForm.get('password')?.value;
+console.log(customer)
 
-
-    this.loading = true;
-
-    setTimeout(() => {
-
-      this.validateRegistration(customer);
-
-    }, 1500);
-
+     this.authService.registerWithFirebase(email, pass)
+      .subscribe(() => {
+        this.loading = true;
+        //setTimeout(() => {
+          this.validateRegistration(customer);
+        //}, 1500);
+      })
   }
+
 
   validateRegistration(customer: CustomerSignUpModel) {
 
@@ -126,4 +123,18 @@ export class SignUpComponent {
   }
 
 
+}
+
+function passwordsMatchValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+
+    if (password && confirmPassword && password != confirmPassword) {
+      return {
+        passwordsDontMatch: true
+      }
+    }
+    return null;
+  }
 }

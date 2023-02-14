@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +22,11 @@ export class AuthService {
 
 
   loginWithGoogle() {
-
     return signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
+
+  registerWithFirebase(email: string, pass: string){
+    return from(createUserWithEmailAndPassword(this.auth, email, pass))
   }
 
   /**
