@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 import { Router } from '@angular/router';
@@ -10,15 +11,18 @@ import { SingUpService } from './singup.service';
   templateUrl: './singup.component.html',
   styleUrls: ['./singup.component.scss'],
 })
-export class singupComponent {
+export class singupComponent  implements OnInit {
   documentTypeId: string;
   document: string;
   fullName: string;
   email: string;
   phone: string;
   password: string;
+  myForm!: FormGroup;
 
-  constructor(private readonly  singUpService:SingUpService , private router: Router) {
+  constructor(private readonly  singUpService:SingUpService , private router: Router,
+    private fb: FormBuilder) {
+
     this.documentTypeId = '';
     this.document = '';
     this.fullName = '';
@@ -27,15 +31,27 @@ export class singupComponent {
     this.password = '';
   }
 
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      document: ['', Validators.required],
+      fullName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+
   sendData(): void {
     const user = new newCustomerModel(
       this.documentTypeId,
-      this.document,
-      this.fullName,
-      this.email,
-      this.phone,
-      this.password
+    this.myForm.value.document,
+    this.myForm.value.fullName,
+    this.myForm.value.email,
+    this.myForm.value.phone,
+    this.myForm.value.password
     );
+console.log(user)
     this.singUpService.createUser(user).subscribe({
       next: token => {
         localStorage.setItem('token', "tokentest");

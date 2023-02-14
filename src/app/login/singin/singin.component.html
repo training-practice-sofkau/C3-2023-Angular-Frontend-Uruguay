@@ -1,17 +1,13 @@
-<!-- (ngSubmit)="login(login:string,password:string)" -->
-<form >
-
+<form [formGroup]="myForm" (ngSubmit)="login()">
   <div class="form-group">
-    <label for="text">email:</label>
-    <input [(ngModel)]="email" type="text" id="email" name="email">
+    <label for="email">Email:</label>
+    <input formControlName="email" type="email" id="email" name="email">
   </div>
+
   <div class="form-group">
     <label for="password">Contraseña:</label>
-    <input [(ngModel)]="password" type="password" id="password" name="password">
+    <input formControlName="password" type="password" id="password" name="password">
   </div>
 
-
-
-  <button type="submit" (click)="login(email,password)" >Ingresar</button>
+  <button type="submit" [disabled]="myForm.invalid">Ingresar</button>
 </form>
-

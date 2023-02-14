@@ -8,6 +8,7 @@ import { HelpComponent } from './help/help.component';
 import { LoginGuard } from './login/guard.guard';
 import { SingOutComponent } from './login/sing-out/sing-out.component';
 import { singupComponent } from './login/singup/singup.component';
+import { CustomerComponent } from './customer/new-customer/new-customer/customer.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: "createaccount", component: CreateAccountComponent, canActivate: [LoginGuard]},
   {path: "createdeposit", component:CreateDepositComponent, canActivate: [LoginGuard]},
   {path: "help", component: HelpComponent},
-  {path: "salir", component: SingOutComponent}
+  {path: "salir", component: SingOutComponent},
+  { path: 'customer', component: CustomerComponent, }
 ];
 
 @NgModule({

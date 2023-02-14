@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { AuthService } from '../services/auth.service';
@@ -12,39 +12,58 @@ import { AuthService } from '../services/auth.service';
 })
 export class SinginComponent {
 
+  myForm!: FormGroup;
 
+constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
 
-constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
+  this.myForm = this.formBuilder.group({
+    name: '',
+    email: '',
+  });
+}
 
 
 public email:string = "";
 public password:string = "";
 
 
+ngOnInit() {
+  this.myForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new F('', Validators.required)
+  });
+}
 
 login(email: string, password: string) {
- console.log(email, password)
-  this.authService.post('http://localhost:3000/security/signin', {
+  this.doLogin(email, password);
+}
+
+doLogin(email: string, password: string) {
+  this.authService.post('http://localhost:3000/security/singin', {
     email: email,
     password: password
   }).subscribe(res => {
     const token = res.token;
-
-    const decoded: {} = jwtDecode(token);
-      console.log(decoded);
-    if (token && typeof token === 'string') {
-      // Guardar el token en el almacenamiento local y redirigir al usuario a otra página
-      localStorage.setItem('token', token);
-      localStorage.setItem('account', JSON.stringify(decoded));
-      this.router.navigate(['account']);
-    } else {
-      console.error('Token inválido');
-    }
+    this.saveToken(token);
   }, error => {
     console.error('Incorrecto');
   });
-
 }
+
+saveToken(token: string) {
+  const decoded: {} = jwtDecode(token);
+  console.log(decoded);
+  if (token && typeof token === 'string') {
+    localStorage.setItem('token', token);
+    localStorage.setItem('customer', JSON.stringify(decoded));
+  } else {
+    console.error('Token inválido');
+  }
+}
+
+
+
+
 
   formLogin = this.formBuilder.group({
     username: [''],
@@ -52,6 +71,6 @@ login(email: string, password: string) {
   });
 
 
-}
 
+}
 
