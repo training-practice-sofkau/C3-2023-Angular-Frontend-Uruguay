@@ -34,6 +34,8 @@ export class CustomerService {
     return this.httpClient.get<CustomerModel>(this.api + "/customer/" + id)
     }
 
+
+    //
     public registerCustomer (sigUp: SignUpModel): Observable <SignUpModel>{
 
 return this.httpClient.get<SignUpModel>(this.api + "/security/newUser" )

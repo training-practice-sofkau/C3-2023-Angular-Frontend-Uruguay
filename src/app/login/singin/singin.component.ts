@@ -1,10 +1,11 @@
 import { Component, ErrorHandler } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import jwtDecode from 'jwt-decode';
 import { signOut } from 'firebase/auth';
 import { Auth } from '@angular/fire/auth';
+import { SignInModel } from 'src/app/interfaces/signIn.Interface';
 
 @Component({
   selector: 'app-singin',
@@ -21,21 +22,39 @@ constructor(
   //private jwt_decode: jwtDecode
   )
 {}
+signInM: SignInModel | undefined
 
+signInForm = this.formBuilder.group({
+  email: this.formBuilder.nonNullable.control('',
+  { validators: [Validators.required, Validators.email] }),
+  password: this.formBuilder.nonNullable.control('',
+    { validators: [Validators.required] }),
+
+});
+/*
 public username:string = "";
 public password:string = "";
-
+*/
 
 //capturar datos del input y pasarlos por parametros
 
-login(username: string, password: string) {
+login() {
   
   //console.log(username + " " + password)
   
-  this.serviceCom.post('http://localhost:3000/security/signin', {
-    username: username,
-    password: password
-  }).subscribe(res => {
+  console.log(this.signInM)
+  
+  this.signInM = {
+    email: this.signInForm.controls["email"].value,
+    password: this.signInForm.controls["password"].value,
+  };
+
+
+  this.serviceCom.post('http://localhost:3000/security/signin', this.signInM)
+  .subscribe(res => {
+    //username: username,
+    //password: password
+//).subscribe(res => {
 
 
     const token = res.token;
