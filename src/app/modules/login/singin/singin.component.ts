@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SinginComponent {
 
-  constructor(protected loginService: LoginService,
+  constructor(public loginService: LoginService,
     private formBuilder: FormBuilder,
     private router: Router,
   ) { }

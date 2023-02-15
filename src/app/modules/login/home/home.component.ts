@@ -12,4 +12,8 @@ export class HomeComponent {
   constructor(public loginService: LoginService,
     private app: AppComponent){}
 
+    ngDoCheck(){
+      this.loginService.eligeLogin()
+    }
+
 }

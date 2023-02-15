@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SingupComponent {
 
   constructor(private formBuilder: FormBuilder,
-    protected loginService: LoginService,
+    public loginService: LoginService,
     private router: Router,
   ) { }
 

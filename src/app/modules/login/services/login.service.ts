@@ -50,7 +50,9 @@ export class LoginService {
   }
 
   defaultLogin() {
-    localStorage.setItem('key', 'false');
+    if(!localStorage.getItem('MyToken')){
+      localStorage.setItem('MyToken', 'false')
+    } 
   }
 
   activeLogin(){

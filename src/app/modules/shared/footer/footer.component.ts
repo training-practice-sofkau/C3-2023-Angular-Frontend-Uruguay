@@ -12,14 +12,10 @@ export class FooterComponent implements OnInit {
   status: boolean = true;
 
   constructor( protected loginService: LoginService,
-              private app: AppComponent
   ) {}
 
   ngOnInit(): void {
-    this.loginService.currentStatusEmitter.subscribe({
-      next: (data) => { this.status = data },
-      complete: () => { console.log(this.status) }
-    })
+    this.loginService.currentStatusEmitter.subscribe((data) =>  this.status = data)
   }
 
 }
