@@ -6,12 +6,16 @@
   <div *ngIf="!loading">
     <mat-toolbar style="background-color: rgb(100, 149, 237, .4); ">
       <h1>New Customer</h1>
+      <span class="spacer"></span>
+
+       <button class="signin-button" mat-raised-button color="warn" style="margin: 20px auto; " (click)="registerWithGoogle()"> Get data from Google Account </button>
+
     </mat-toolbar>
 
-    <mat-card style="margin-top: 10px; background-color: rgb(95, 158, 160, .4) ;">
+    <mat-card style="margin-top: 20px; background-color: rgb(95, 158, 160, .4) ;">
 
-      <form [formGroup]="signupForm" (ngSubmit)="createNewCustomer()" style="margin-top: 5%;">
-        <mat-grid-list cols="1" rowHeight="70px">
+      <form [formGroup]="signupForm" (ngSubmit)="createNewCustomer()" style="margin-top: 30px;">
+        <mat-grid-list cols="2" rowHeight="70px">
 
           <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field class="datafield">
@@ -36,6 +40,15 @@
             </mat-form-field>
           </mat-grid-tile>
 
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field class="datafield">
+            <mat-label>Account Type: </mat-label>
+            <mat-select formControlName="accountTypeName">
+              <mat-option *ngFor="let item of accountTypes" [value]="item"> {{item}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
           <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field class="datafield">
               <mat-label>E-Mail:</mat-label>
@@ -53,15 +66,29 @@
           <mat-grid-tile [colspan]="1" [rowspan]="1">
             <mat-form-field class="datafield">
               <mat-label>Password: </mat-label>
-              <input [type]="hide ? 'password' : 'text'" matInput autocomplete="off" formControlName="password">
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <input [type]="hidePass ? 'password' : 'text'" matInput autocomplete="off" formControlName="password">
+              <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
               <mat-hint *ngIf="!signupForm.value.password">Enter your password</mat-hint>
             </mat-form-field>
           </mat-grid-tile>
 
           <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <button class="signup-button" mat-raised-button (click)="appComp.toHome()"
-              style="margin-right: 20px;">Cancel</button>
+            <mat-form-field class="datafield">
+              <mat-label>Confirm Password: </mat-label>
+              <input [type]="hideConfirmPass ? 'password' : 'text'" matInput autocomplete="off" formControlName="confirmPassword">
+              <mat-icon matSuffix (click)="hideConfirmPass = !hideConfirmPass">{{hideConfirmPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-hint *ngIf="!signupForm.value.confirmPassword">Re-enter your password. </mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <mat-error *ngIf="signupForm.errors?.['passwordsDontMatch']">  Passwords should match </mat-error>
+          </mat-grid-tile>
+
+
+          <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <!-- <button class="signup-button" mat-raised-button routerLink="/"
+              style="margin-right: 20px;">Cancel</button> -->
             <button class="signup-button" type="submit" [disabled]="signupForm.invalid" mat-raised-button
               color="warn">Register</button>
           </mat-grid-tile>

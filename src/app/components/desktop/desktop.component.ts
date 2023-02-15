@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DesktopService } from 'src/app/services/desktop.service';
 import { CustomerService } from '../../services/customer.service';
 
 
@@ -25,10 +26,11 @@ export class DesktopComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-
+    private deskService: DesktopService,
   ) { }
 
   ngOnInit(): void {
+
     this.currentAccount = loadCustomerID();
     this.customerService.getCustomerData(this.currentAccount);
     this.customerService.getCustomerAccounts(loadCustomerID()) ;
@@ -36,7 +38,10 @@ export class DesktopComponent implements OnInit {
     this.currentBalance = getCustomerBalance();
     this.customerName = getCustomerName();
 
+
+    this.deskService.updateUserAccounts();
     this.showMain();
+
   }
 
 

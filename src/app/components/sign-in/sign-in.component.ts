@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import jwt_decode from 'jwt-decode';
@@ -8,13 +8,12 @@ import { MessengerService } from '../../services/messenger.service';
 import { CustomerService } from '../../services/customer.service';
 
 // Components
-import { AppComponent } from '../../app.component';
+
 
 // Interfaces
 import { CustomerSignInModel } from '../../interfaces/customer.interface';
 import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
 import { AuthService } from '../../services/auth.service';
-import jwtDecode from 'jwt-decode';
 
 
 
@@ -24,7 +23,7 @@ import jwtDecode from 'jwt-decode';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
 
   signinForm: FormGroup;
   loading = false;
@@ -37,16 +36,12 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private customerService: CustomerService,
     private authService: AuthService,
-    public appComp: AppComponent,
   ) {
 
     this.signinForm = this.fb.group({
-      username: ["",], //[Validators.email, Validators.required]],
-      password: ["",] //[Validators.minLength(5), Validators.required]]
+      username: ["", [Validators.email, Validators.required]],
+      password: ["", [Validators.minLength(6), Validators.required]]
     });
-  }
-
-  ngOnInit(): void {
   }
 
   /**
@@ -71,6 +66,30 @@ export class SignInComponent implements OnInit {
   }
 
   /**
+   * Gets the User information from Google API and checks that the email
+   * has a registered account in the database
+   * If so, stores the relevant data in localStorage and redirects
+   * to Customer area
+   */
+  loginWithGoogle() {
+    this.authService.loginWithFirebase()
+      .then(result => {
+
+        const user = result.user;
+
+        this.customerService.findCustomerByEmail(user.email)
+          .subscribe(
+            userData => {
+
+              localStorage.setItem('customerID', userData.id);
+              this.transitionToDesktop(true);
+            })
+
+      }).catch(error => { console.log(error) })
+  }
+
+
+  /**
    * Checks the response from customerService and verifies
    * that the credentials are valid
    * sets in localstorage the data to be used later
@@ -90,7 +109,7 @@ export class SignInComponent implements OnInit {
             const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
             const account = decoded.id;
 
-            localStorage.setItem('token', token);
+            //localStorage.setItem('token', token);
             localStorage.setItem('customerID', account);
 
             this.transitionToDesktop(true);
@@ -98,10 +117,7 @@ export class SignInComponent implements OnInit {
         },
         error: (e) => {
           this.transitionToDesktop(false);
-        },
-        complete: () => {
-
-        },
+        }
       })
   }
 
@@ -114,8 +130,9 @@ export class SignInComponent implements OnInit {
 
     if (result) { // login succesfull
 
-      this.authService.setUserStatus(true);
-      this.authService.isInPublicZone = false;
+      this.authService.setUserLogStatus(true);
+      this.authService.setPublicZoneStatus(false);
+      this.authService.setUserAccessPermits(true);
       this.loading = false;
       this.router.navigate(["desktop"]);
 

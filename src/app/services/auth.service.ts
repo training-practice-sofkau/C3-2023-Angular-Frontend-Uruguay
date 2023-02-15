@@ -1,53 +1,55 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Auth, signInWithPopup, GoogleAuthProvider, } from '@angular/fire/auth';
+import { BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  userIsLogged: boolean = false;
+  provider = new GoogleAuthProvider();
 
-  isInPublicZone: boolean = true;
+  userHasAccess: boolean = false;
+
+  loggedUser: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  publicZone: BehaviorSubject<boolean> = new BehaviorSubject(true);
+
+
+  setUserLogStatus(status: boolean) {
+    this.loggedUser.next(status);
+  }
+
+  setPublicZoneStatus(status: boolean) {
+    this.publicZone.next(status);
+  }
+
 
   constructor(
-
-    private http: HttpClient,
+    private auth: Auth,
 
   ) { }
 
 
-  /**
-   * Sets the status of public area
-   * @param status boolean
-   */
-  public setIsPublicZone(status: boolean) {
-    this.isInPublicZone = status;
-  }
 
   /**
-   *  Gets the status of public area
-   * @returns boolean
+   * Used to login with Firebase
+   * @returns Promise Token
    */
-  public getIsPublicZone(): boolean {
-    return this.isInPublicZone;
+  loginWithFirebase() {
+
+    return signInWithPopup(this.auth, this.provider)
   }
 
-  /**
-   * Sets the status of the user ( login )
-   * @param status boolean to set Status
-   */
-  public setUserStatus(status: boolean) {
-    this.userIsLogged = status;
+
+  // Returns access permits to desktop for current user
+  getUserAccessPermits(): boolean {
+    return this.userHasAccess;
   }
 
-  /**
-   * return the status of the user ( login )
-   * @returns boolean with the status of the user
-   */
-  public getUserStatus(): boolean {
-    return this.userIsLogged;
+  // Sets access permits to desktop for current user
+  setUserAccessPermits(status: boolean) {
+    this.userHasAccess = status;
   }
 }
 

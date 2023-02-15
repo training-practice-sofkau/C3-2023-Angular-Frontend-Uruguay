@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 import { AppComponent } from '../../../app.component';
-import { MenuService } from '../../../services/menu.service';
-import { MenuItem } from '../../../interfaces/menu.interface';
-
-
-
 
 @Component({
   selector: 'app-navbar',
@@ -16,41 +11,31 @@ import { MenuItem } from '../../../interfaces/menu.interface';
 })
 export class NavbarComponent implements OnInit {
 
-  desktopMenu: MenuItem[] = [];
-
+  loggedUser!: boolean ;
 
   constructor(
     public authService: AuthService,
     private router: Router,
     public appComp: AppComponent,
-    private menuService: MenuService,
   ) { }
 
 
-  ngOnInit(): void {
-    this.loadDesktopMenuItems();
-  }
+  ngOnInit() {
 
-  /**
-   * Load the items of the desktop menu
-   */
-  loadDesktopMenuItems() {
-    this.menuService.getDesktopMenu().subscribe(data => this.desktopMenu = data);
+    this.authService.loggedUser.subscribe(currentStatus => this.loggedUser = currentStatus);
   }
 
   /**
    * Set the conditions to end the user service
    * and exit the desktop
    */
-  logout(){
+  logout() {
     localStorage.clear();
-    this.authService.setUserStatus(false);
-    this.authService.isInPublicZone = true;
+    this.authService.setUserLogStatus(false);
+    this.authService.setPublicZoneStatus(true);
+    this.authService.setUserAccessPermits(false);
     this.appComp.toHome();
     this.router.navigate(["/"]);
   }
-
-
-
 
 }

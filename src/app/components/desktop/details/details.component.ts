@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../../../services/customer.service';
 import { AccountModel } from '../../../interfaces/account.interface';
+import { DesktopService } from '../../../services/desktop.service';
 
 @Component({
   selector: 'app-details',
@@ -9,32 +9,25 @@ import { AccountModel } from '../../../interfaces/account.interface';
 })
 export class DetailsComponent implements OnInit {
 
+  accounts!: AccountModel[] ;
 
+  constructor(
+    private deskService: DesktopService,
 
+  ){}
 
-  accounts: AccountModel[] = [];
-  data = localStorage.getItem("accounts");
 
 
   ngOnInit(): void {
 
-    //this.data = localStorage.getItem("accounts");
 
-    if (this.data != null) {
-      this.accounts =  JSON.parse(this.data)
-    }
 
-    if(this.accounts != null){
-      this.getAccountsInfo();
-    }
+    this.deskService.accounts.subscribe(value => this.accounts = value);
+
+    console.log(this.accounts)
 
   }
 
-  getAccountsInfo(){
-
-
-
-  }
 }
 
 

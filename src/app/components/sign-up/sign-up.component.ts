@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
+
 //Interfaces
 import { CustomerSignUpModel } from '../../interfaces/customer.interface';
+import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
 
 //Services
 import { CustomerService } from '../../services/customer.service';
 import { MessengerService } from '../../services/messenger.service';
-
-//Components
-import { AppComponent } from '../../app.component';
 import { AuthService } from '../../services/auth.service';
-import { SigninResponseModel, SigninTokenResponseModel } from 'src/app/interfaces/responses.interface';
+
 
 
 @Component({
@@ -24,27 +23,30 @@ export class SignUpComponent {
 
   signupForm: FormGroup;
   documentTypes: string[] = ["ID Card", "Passport ID"];
-  defaultDocType: string = this.documentTypes[0];
-  hide = true;
-  loading = false;
+  accountTypes: string[] = ["Saving", "Checks"];
 
-  //accountTypes: string[] = ["Saving", "Checks"];
+  hidePass = true;
+  hideConfirmPass = true
+  loading = false;
 
   constructor(private fb: FormBuilder,
     private customerService: CustomerService,
     private router: Router,
     private messages: MessengerService,
-    public appComp: AppComponent,
     private authService: AuthService,
   ) {
     this.signupForm = this.fb.group({
       documentType: ["ID Card", Validators.required],
+      accountTypeName: ["Saving", Validators.required],
       document: ["", Validators.required],
       fullname: ["", Validators.required],
       email: ["", [Validators.email, Validators.required]],
       phone: [""],
-      password: ["", [Validators.minLength(5), Validators.required]]
-    })
+      password: ["", [Validators.minLength(6), Validators.required]],
+      confirmPassword: ["", [Validators.minLength(6), Validators.required]]
+    },
+      { validators: passwordsMatchValidator() }
+    );
   }
 
   /**
@@ -54,26 +56,26 @@ export class SignUpComponent {
   createNewCustomer() {
     const customer: CustomerSignUpModel = this.signupForm.getRawValue();
 
-    /* {
-      documentType: this.signupForm.value.documentType,
-      document: this.signupForm.value.document,
-      fullname: this.signupForm.value.fullname,
-      email: this.signupForm.value.email,
-      phone: this.signupForm.value.phone,
-      password: this.signupForm.value.password,
-      accountTypeName: 'Saving'
-    } */
-    customer.accountTypeName="Saving"
-
-    this.loading = true;
-
-    setTimeout(() => {
-
-      this.validateRegistration(customer);
-
-    }, 1500);
+    this.validateRegistration(customer);
 
   }
+
+  registerWithGoogle() {
+
+    //this gets Google account info and sets it on the form ( user needs to complete all data to register )
+    this.authService.loginWithFirebase()
+      .then(result => {
+
+        const user = result.user;
+
+        this.signupForm.controls['email'].setValue(result.user.email);
+        this.signupForm.controls['fullname'].setValue(result.user.displayName);
+        this.signupForm.controls['phone'].setValue(result.user.phoneNumber);
+
+      }).catch (error => { })
+    }
+
+
 
   validateRegistration(customer: CustomerSignUpModel) {
 
@@ -90,15 +92,13 @@ export class SignUpComponent {
             const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
             const account = decoded.id;
 
+            console.log('account: ' + account + ' - ' + token)
+
             localStorage.setItem('token', token);
             localStorage.setItem('currentAccount', account);
 
             this.transitionToDesktop(true);
           }
-
-        },
-        error: (e) => {
-          this.transitionToDesktop(false);
         }
       })
   }
@@ -112,18 +112,28 @@ export class SignUpComponent {
 
     if (result) { // login succesfull
 
-      this.authService.setUserStatus(true);
-      this.authService.isInPublicZone = false;
+      this.authService.setUserLogStatus(true);
+      this.authService.setPublicZoneStatus(false);
+      this.authService.setUserAccessPermits(true);
       this.loading = false;
       this.router.navigate(["desktop"]);
 
-    } else {    // invalid credentials. Error
-
-      this.loading = false;
-      this.messages.infoMsg("Something went Wrong! Try again...", "", 2000);
-      this.signupForm.reset();
     }
   }
 
 
+}
+
+function passwordsMatchValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+
+    if (password && confirmPassword && password != confirmPassword) {
+      return {
+        passwordsDontMatch: true
+      }
+    }
+    return null;
+  }
 }
