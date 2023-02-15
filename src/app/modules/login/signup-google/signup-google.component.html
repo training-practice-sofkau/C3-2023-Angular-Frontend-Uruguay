@@ -1,6 +1,6 @@
 <mat-card *ngIf= "(loginService.switchLogUp)">
   <mat-card-content>
-    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+    <form [formGroup]="signUpFormGoogle" (ngSubmit)="onSignUpGoogle()">
       <h2>Sign Up</h2>
       <mat-form-field>
         <input matInput placeholder="Full Name" name="fullName" required formControlName="fullName">
@@ -9,10 +9,10 @@
         <input matInput type="password" placeholder="Password" name="password" required formControlName="password">
       </mat-form-field>
       <!-- <mat-form-field appearance="fill">
-        <mat-label name="documentTypeName" required formControlName="documentTypeName">Document Type</mat-label>
+        <mat-label name="documentTypeName" required>Document Type</mat-label>
         <mat-select>
-          <mat-option value="Cedula">Cedula</mat-option>
-          <mat-option value="Pasaporte">Pasaporte</mat-option>
+          <mat-option value="one">CI</mat-option>
+          <mat-option value="two">Pasaporte</mat-option>
         </mat-select>
       </mat-form-field> -->
       <mat-form-field>
@@ -31,18 +31,8 @@
         <input matInput placeholder="Account Type" name="accountTypeName" required formControlName="accountTypeName">
       </mat-form-field>
       <button type="submit" mat-raised-button color="primary">Login</button>
-      <div class="content">
-      <div class="row">
-        <div class="col-md-3">
-          <button (click)="this.loginService.onClick()" butt class="btn btn-outline-dark" href="/users/googleauth" role="button" style="text-transform:none" >
-            <img  width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-            Login with Google
-          </button>
-        </div>
-      </div>
-      </div>
       <h3>¿Ya tienes una cuenta? </h3>
-      <button type="submit" mat-raised-button color="primary" (click)="(this.loginService.valorCaseLogin = 1)">Sing In</button>
+      <button type="submit" mat-raised-button color="primary" (click)="(loginService.valorCaseLogin = 1)">Sing In</button>
     </form>
   </mat-card-content>
 </mat-card>

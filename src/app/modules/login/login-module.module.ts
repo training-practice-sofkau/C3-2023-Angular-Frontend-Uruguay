@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { LoginRouteModule } from './login-route.module';
+import { SignupGoogleComponent } from './signup-google/signup-google.component';
 
 
 
@@ -15,6 +16,7 @@ import { LoginRouteModule } from './login-route.module';
     SinginComponent,
     SingupComponent,
     SingOutComponent,
+    SignupGoogleComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { LoginRouteModule } from './login-route.module';
     SinginComponent,
     SingupComponent,
     LoginRouteModule,
+    SignupGoogleComponent,
   ],
-  providers: [LoginService],
+  providers: []
 })
 export class LoginModule { }
