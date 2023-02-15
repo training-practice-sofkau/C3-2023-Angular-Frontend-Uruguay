@@ -2,19 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountDashboardComponent, AccountInfoComponent } from './';
 import { AccountBtnsComponent } from './account-btns/account-btns.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountRoutingModule } from './account-routing.module';
+import { AccountShowInfoComponent } from './account-show-info/account-show-info.component';
 
 
 @NgModule({
   declarations: [
     AccountDashboardComponent,
     AccountInfoComponent,
-    AccountBtnsComponent
+    AccountBtnsComponent,
+    AccountShowInfoComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   exports: [AccountDashboardComponent,
     AccountInfoComponent,

@@ -1,0 +1,42 @@
+<div class="relative flex flex-col min-w-0 break-words w-full mb-3 shadow-lg rounded-lg bg-blueGray-100 border-0 mt-4" *ngIf="account">
+  <div class="rounded-t bg-white mb-0 px-6 py-6">
+      <div class="flex flex-col shadow rounded px-4 py-2">
+
+        <p class="text-3xl">Account Information</p>
+
+        <div class="text-center text-white bg-red-500 text-lg" *ngIf="cannotDelete">
+          <p>Cannot delete an account with balance, please transfer your balance</p>
+        </div>
+        <table>
+          <tr class="text-2xl">
+            <th>Id</th>
+            <th>Type</th>
+            <th>Customer</th>
+          </tr>
+          <tr class="text-xl">
+            <td>{{account.id}}</td>
+            <td>{{account.accountType.name}}</td>
+            <td>{{account.customer.fullName}}</td>
+          </tr>
+          <tr class="text-2xl">
+            <th>Balance</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr class="text-xl">
+            <td>$ {{account.balance}}</td>
+            <td><button (click)="changeAccountType()" class="bg-white text-blue-500 active:bg-blue-600 font-bold text-xs uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+              Change Account Type
+            </button></td>
+            <td><button (click)="deleteAccount()" class="bg-white text-blue-500 active:bg-blue-600 font-bold text-xs uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
+              Delete Account
+            </button></td>
+          </tr>
+        </table>
+
+        <div class="flex flex-row justify-center mx-2">
+
+        </div>
+      </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { MaterialModule } from '../material/material.module';
 import { SignInComponent, SignOutComponent, SignUpComponent } from './';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginRoutingModule } from './login-routing.module';
 
 
 

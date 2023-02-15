@@ -10,9 +10,14 @@
         <h5 class="text-blueGray-700 text-xl font-bold">
           Sign Up
         </h5>
-        <a href="http://localhost:4200/login/sign-in" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
-          Sign In
-        </a>
+        <div class="flex flex-row justify-end">
+          <button (click)="signUpGoogle()"class="bg-white text-blue-500 active:bg-blue-600 font-bold text-xs uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" >
+            Sign Up with <span class="text-blue-500">G</span> <span class="text-red-500">o</span> <span class="text-yellow-500">o</span> <span class="text-blue-500">g</span> <span class="text-green-500">l</span> <span class="text-red-500">e</span>
+          </button>
+          <a href="http://localhost:4200/login/sign-in" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" type="button">
+            Sign In
+          </a>
+        </div>
       </div>
     </div>
     <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
@@ -26,7 +31,9 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Email address
               </label>
-              <input formControlName="email" type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="sofka@example.com">
+              <input [(ngModel)]="email" formControlName="email" type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="sofka@example.com">
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.email.errors?.['required'] || formUser.controls.email.pristine">Email is Required</p>
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.email.errors?.['email'] || formUser.controls.email.pristine">Email needs @</p>
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -34,7 +41,8 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Full Name
               </label>
-              <input formControlName="fullName" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Carlos Example">
+              <input [(ngModel)]="fullName" formControlName="fullName" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Carlos Example">
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.fullName.errors?.['required'] || formUser.controls.fullName.pristine">Full Name is Required</p>
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -46,6 +54,7 @@
                 <option value="National ID">National ID</option>
                 <option value="Passport ID">Passport ID</option>
               </select>
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.documentType.errors?.['required'] || formUser.controls.documentType.pristine">Document Type is Required</p>
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -54,6 +63,7 @@
                 Document
               </label>
               <input formControlName="document" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="12345678">
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.document.errors?.['required'] || formUser.controls.document.pristine">Document is Required</p>
             </div>
           </div>
         </div>
@@ -64,6 +74,8 @@
                 Password
               </label>
               <input formControlName="password" type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="·············">
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.password.errors?.['required'] || formUser.controls.password.pristine">Password is Required</p>
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.password.errors?.['minlength'] || formUser.controls.password.pristine">Password need minimum 8 characters</p>
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -72,6 +84,9 @@
                 Confirm Password
               </label>
               <input formControlName="confirmPassword" type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="·············">
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.confirmPassword.errors?.['required'] || formUser.controls.confirmPassword.pristine">Password is Required</p>
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="!formUser.controls.confirmPassword.errors?.['minlength'] || formUser.controls.confirmPassword.pristine">Password need minimum 8 characters</p>
+              <p class="text-center bg-red-400 text-white rounded-b-sm" [hidden]="(formUser.controls.confirmPassword.value === formUser.controls.password.value) || formUser.controls.confirmPassword.pristine">Passwords do not match</p>
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -79,7 +94,7 @@
               <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                 Phone
               </label>
-              <input formControlName="phone" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="09X XXX XXX">
+              <input [(ngModel)]="phone" formControlName="phone" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="09X XXX XXX">
             </div>
           </div>
               <input type="submit" class="border-0 mt-[27px] ml-[15rem] py-2 bg-pink-500 text-white active:bg-pink-600 font-bold uppercase rounded text-sm shadow focus:outline-none focus:ring h-[3.2rem] w-32 ease-linear transition-all duration-150" value="Register" (click)="signUp()">
