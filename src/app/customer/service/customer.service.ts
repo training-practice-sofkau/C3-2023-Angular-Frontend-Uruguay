@@ -92,4 +92,13 @@ export class CustomerService implements OnDestroy {
     }
   }
 
+  getEmail(email: string ):void{  
+    if(this.customerOneObservable.observed && !this.customerOneObservable.closed){
+      this.apiService.getEmailCustomer(email).subscribe({
+        next : (data) => (this.customer = data),
+        complete: () =>(this.customerOneObservable.next(this.customer))
+      });
+    }
+  }
+
 }
