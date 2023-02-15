@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { tokenUser } from '../interfaces/tokenModel';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/customer/service/customer.service';
+import { Customer } from 'src/app/customer/interface/customer';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { CustomerService } from 'src/app/customer/service/customer.service';
 export class SinginComponent implements OnInit {
   
   //token ! : string;
+  customerLogeado!:Customer;
   userSignIn!: SignIn ;
   tokenUser : tokenUser = {
     username : "",
@@ -25,7 +27,7 @@ export class SinginComponent implements OnInit {
   public formLogin!: FormGroup ; 
 
   constructor(private authService : AuthService,
-private formBuilder : FormBuilder,
+    private formBuilder : FormBuilder,
     private router : Router,
     private customerService : CustomerService ){}
     
@@ -63,13 +65,20 @@ private formBuilder : FormBuilder,
       })
     .catch(err => (console.log(err))); 
 
-    
+    this.getCustomerEmail();
   }
 
   google(){
     return this.authService.loginGoogle()
     .then(data => console.log(data.user.getIdToken()))
     .catch(err => console.log(err))
+  }
+
+  getCustomerEmail(){
+    this.customerService.getEmail(this.userSignIn.username); 
+    // this.customerService.customerOneObservable.subscribe(
+    //   (data) => {this.customerLogeado = data}
+    // );
   }
 
   
