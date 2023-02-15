@@ -39,10 +39,10 @@ export class CustomerService {
 return this.httpClient.get<SignUpModel>(this.api + "/security/newUser" )
     }
 
-    createUser(user: SignUpModel): Observable<SignUpModel> {
-      return this.httpClient.post<SignUpModel>(
+    createUser(user: SignUpModel): Observable<string> {
+      return this.httpClient.post(
         this.api + '/security/newUser',
-        user
+        user,{responseType: 'text'}
       );
     }
 

@@ -11,37 +11,37 @@
 
     <div class="container">
     <h1>Formulario de Registro</h1>
-    <form>
+    <form [formGroup]="signUpForm" (ngSubmit)="register()">
       <label for="nombre">Nombre completo:</label>
-      <input [(ngModel)]="fullname" type="text" id="fullname" name="fullname">
+      <input formControlName="fullname" type="text" id="fullname" name="fullname">
 
       <label for="documento">Documento:</label>
-      <input [(ngModel)]="document" type="text" id="document" name="document" >
+      <input formControlName="document" type="text" id="document" name="document" >
 
       <label for="tipoDoc">Tipo de documento:</label>
-      <select [(ngModel)]="typeDoc" id="tipoDoc" name="tipoDoc">
+      <select formControlName="documentTypeId" id="tipoDoc" name="tipoDoc">
         <option value="cedula">Cedula</option>
         <option value="pasaporte">Pasaporte</option>
       </select>
 
       <label for="phone">Telefono:</label>
-      <input [(ngModel)]="phone" type="tel" id="phone" name="phone">
+      <input formControlName="phone" type="tel" id="phone" name="phone">
 
       <label for="tipoAcc">Tipo de Cuenta:</label>
-      <select [(ngModel)]="typeAcc" id="typeAcc" name="tipoAcc">
+      <select formControlName="accountTypeId" id="typeAcc" name="tipoAcc">
         <option value="Caja Ahorro">Caja ahorro</option>
         <option value="Cuenta Dolares">Cuenta Dolares</option>
       </select>
 
       <label for="email">Email:</label>
-      <input [(ngModel)]="email" type="text" id="email" name="email" required>
+      <input formControlName="email" type="text" id="email" name="email" required>
 
       <label for="password">Passowrd:</label>
-      <input [(ngModel)]="password" type="text" id="password" name="password" required>
+      <input formControlName="password" type="text" id="password" name="password" required>
 
       <div class="buttons">
         <input type="button" value="Atrás">
-        <input (click)="register(document,email,password,fullname,phone,typeAcc,typeDoc)" type="submit" value="Registrar">
+        <input type="submit"  (click)="true"  value="Registrar">
       </div>
 
     </form>

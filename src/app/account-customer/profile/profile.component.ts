@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../services/customer.service';
 import { CustomerModel } from '../../interfaces/customer.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../login/services/auth.service';
+import { Auth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +19,7 @@ export class ProfileComponent implements OnInit {
   customer: CustomerModel | undefined
   customers: CustomerModel[] = [];
 
-  constructor(public customerService: CustomerService) { }
+  constructor(public customerService: CustomerService, private auth:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.getInfoCust();
@@ -33,6 +36,14 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  logOut(){
+    this.auth.logout()
+    .then(() =>{
+      this.auth.setStatusVariable(true)
+      this.router.navigate(['/SignIn']);
+        })
+        .catch(error=>console.log(error))
+  }
 
 
   public getAllCust(): void {
@@ -43,8 +54,11 @@ export class ProfileComponent implements OnInit {
 
     });
 
-
   }
 
+
+
+
+  
 
 }

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ErrorHandler } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder } from '@angular/forms';
 import jwtDecode from 'jwt-decode';
+import { signOut } from 'firebase/auth';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-singin',
@@ -57,6 +59,8 @@ formLogin = this.formBuilder.group({
   password: [''],
 });
 
+
+
 /*
 login (username: string, password:string){
   //consultar si el user existet
@@ -68,6 +72,19 @@ this.router.navigate(['/Myaccount'])
 
 }
 */
+
+onClick(){
+
+  this.serviceCom.loginWithGoogle()
+  .then(response =>{
+    //cambio valor status
+    this.serviceCom.setStatusVariable(false)
+    this.router.navigate(['/account-customer/profile'])  })
+  .catch(error =>console.log(error))
+
+}
+
+
 
 
 }

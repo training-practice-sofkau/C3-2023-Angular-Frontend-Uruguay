@@ -1,6 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/account-customer/services/customer.service';
 import { AuthService } from '../services/auth.service';
@@ -20,58 +19,59 @@ export class SingupComponent {
     private serviceCom: AuthService,
     private formBuilder: FormBuilder,
     public customerService: CustomerService
-
+    
     //private jwt_decode: jwtDecode
   ) { }
+  
+  formValue: FormGroup | undefined;
 
-
-  public email: string = "";
-  public password: string = "";
-  public typeDoc: string = "";
-  public document: string = "";
-  public fullname: string = "";
-  public phone: string = "";
-  public typeAcc: string = "";
-
-  formLogin = this.formBuilder.group({
-    email: [''],
-    password: [''],
-    typeDoc: [''],
-    document: [''],
-    fullname: [''],
-    phone: [''],
-    typeAcc: [''], //"6bb44742-fd21-4582-878a-efa627b194f8"
-
+  signUpForm = this.formBuilder.group({
+    documentTypeId: this.formBuilder.nonNullable.control('',
+    { validators: [Validators.required] }),
+    document: this.formBuilder.nonNullable.control('',
+    { validators: [Validators.required] }),
+    fullName: this.formBuilder.nonNullable.control('',
+    { validators: [Validators.required]}),
+    email: this.formBuilder.nonNullable.control('',
+    { validators: [Validators.required, Validators.email] }),
+    phone: this.formBuilder.nonNullable.control('',
+    { validators: [Validators.required] }),
+    password: this.formBuilder.nonNullable.control('',
+    { validators: [Validators.required] }),
+    accountTypeId: this.formBuilder.nonNullable.control('', 
+    { validators: [Validators.required] }),
+    
   });
 
 
 
-
-
-
-
-
-
-  register(document: string, email: string, password: string, fullname: string, phone: string, typeAcc: string, TypeDoc: string) {
+ 
+ // register(document: string, email: string, password: string, fullname: string, phone: string, typeAcc: string, TypeDoc: string) {
+   
+ register() {
    
     console.log(this.signUp)
     this.signUp = {
-      documentTypeId: "64e40ae6-5374-4ac5-8498-1beac191d535",
-      document:document,
-      fullName: fullname,
-      email: email,
-      phone: phone,
-      password: password,
-      accountTypeId: "6bb44742-fd21-4582-878a-efa627b194f8",
-
+      documentTypeId: this.signUpForm.controls["documentTypeId"].value, 
+      document: this.signUpForm.controls["document"].value,
+      fullName: this.signUpForm.controls["fullName"].value,
+      email: this.signUpForm.controls["email"].value,
+      phone: this.signUpForm.controls["phone"].value,
+      password: this.signUpForm.controls["password"].value,
+      accountTypeId: this.signUpForm.controls["accountTypeId"].value, 
     };
-  
-console.log(this.signUp)
+
+    this.formValue = new FormGroup({
+       email: new FormControl().value,
+       password: new FormControl().value,
+     });
+
+console.log(this.formValue?.value)
 
     this.customerService.createUser(this.signUp).subscribe({
       next: token => {
         localStorage.setItem('token', "tokentest");
-
+        this.serviceCom.register(this.formValue?.value)
       },
       error: err => console.error(err),
       complete: () => {
@@ -83,6 +83,18 @@ console.log(this.signUp)
    
 }
    
+
+/*
+
+ documentTypeId: "64e40ae6-5374-4ac5-8498-1beac191d535",
+      document:document,
+      fullName: fullname,
+      email: email,
+      phone: phone,
+      password: password,
+      accountTypeId: "6bb44742-fd21-4582-878a-efa627b194f8",
+
+*/
    
    
     /*

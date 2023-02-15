@@ -265,3 +265,46 @@ input[type=text]:placeholder {
 * {
   box-sizing: border-box;
 }
+
+///////////////////////////
+/// 
+.boton-login {
+	display: inline-block;
+	position: relative;
+	background-color: #ff7f7f;
+	color: #eaec7e;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	line-height: 50px;
+	height: 50px;
+	padding: 0 30px;
+	border: none;
+	border-radius: 25px;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.boton-login:hover {
+	background-color: #f5f5f5;
+}
+
+/* Estilos del icono de Google */
+.icono-google {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background-image: url('https://www.gstatic.com/images/branding/product/2x/google_48dp.png');
+	background-size: cover;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+/* Estilos del texto del botón */
+.texto-boton {
+	display: inline-block;
+	vertical-align: middle;
+}
