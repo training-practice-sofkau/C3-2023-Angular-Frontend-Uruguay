@@ -7,6 +7,6 @@ export const environment = {
     authDomain: 'c3-2023-angular.firebaseapp.com',
     messagingSenderId: '1068117568280',
   },
-  production: true,
+  production: false,
   apiUrl: 'http://localhost:3000/api'
 };

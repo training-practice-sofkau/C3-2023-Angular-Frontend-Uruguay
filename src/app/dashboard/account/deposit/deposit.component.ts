@@ -28,8 +28,9 @@ export class DepositComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, protected userData: UserDataService, private depositService: DepositService, private api: AppService) {}
 
   ngOnInit(): void {
-    this.depositService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (this.UserAccountsList.length !== data.length) this.UserAccountsList = data });
+    this.depositService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (JSON.stringify(this.UserAccountsList) !== JSON.stringify(data)) this.UserAccountsList = data });
     this.depositService.updateUserAccountsTable();
+
   }
 
   catchInfo(info: InfoTypes){

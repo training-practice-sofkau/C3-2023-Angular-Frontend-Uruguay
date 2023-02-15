@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.userData.clear();
-      this.router.navigate(['/']);
+      this.router.navigate(['/login/sign-up']);
       return false;
     }
   }
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
       next: (value) => { this.validateToken(value) },
       error: () => {
         this.userData.clear();
-        this.router.navigate(['/']);
+        this.router.navigate(['/login/sign-up']);
       }
     });
   }
@@ -36,7 +36,7 @@ export class AuthGuard implements CanActivate {
   validateToken(token: JwtTokenModel){
     if (Date.now() <= token.exp && token.customer.id) {
       this.userData.clear();
-      this.router.navigate(['/']);
+      this.router.navigate(['/login/sign-up']);
     }
   }
 

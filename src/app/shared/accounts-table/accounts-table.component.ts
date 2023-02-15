@@ -16,7 +16,7 @@ export class AccountsTableComponent implements OnInit {
   constructor(@Host() public userAccountsTableService: AccountsTableService){}
 
   ngOnInit(): void {
-    this.userAccountsTableService.accountsEmitter.subscribe((data: AccountModel[]) => { if (this.AccountsList.length !== data.length) this.AccountsList = data });
+    this.userAccountsTableService.accountsEmitter.subscribe((data: AccountModel[]) => { if (JSON.stringify(this.AccountsList) !== JSON.stringify(data)) this.AccountsList = data });
     this.userAccountsTableService.updateAllAccounts();
   }
 

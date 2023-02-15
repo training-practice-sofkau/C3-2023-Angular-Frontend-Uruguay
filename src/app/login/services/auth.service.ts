@@ -66,6 +66,10 @@ export class AuthService {
     );
   }
 
+  toGoogleLogin() {
+    return signInWithPopup(this.gauth, new GoogleAuthProvider());
+  }
+
   loadCurrentUser(): void {
     let user: CustomerModel;
     if (this.userData.check('token')){
@@ -80,9 +84,4 @@ export class AuthService {
       });
     }
   }
-
-  toGoogleLogin() {
-    return signInWithPopup(this.gauth, new GoogleAuthProvider());
-  }
-
 }
