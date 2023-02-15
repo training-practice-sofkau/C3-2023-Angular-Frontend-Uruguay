@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
-import { HotToastService } from '@ngneat/hot-toast';
+
 
 
 //Interfaces
@@ -25,11 +25,10 @@ export class SignUpComponent {
   signupForm: FormGroup;
   documentTypes: string[] = ["ID Card", "Passport ID"];
   accountTypes: string[] = ["Saving", "Checks"];
-  defaultDocType: string = this.documentTypes[0];
+
   hidePass = true;
   hideConfirmPass = true
   loading = false;
-
 
   constructor(private fb: FormBuilder,
     private customerService: CustomerService,
@@ -58,16 +57,28 @@ export class SignUpComponent {
   createNewCustomer() {
     const customer: CustomerSignUpModel = this.signupForm.getRawValue();
 
+    this.validateRegistration(customer);
+
+  }
+
+  registerWithGoogle(){
+
+    this.authService.loginWithFirebase()
+
+
     const email = this.signupForm.get('email')?.value;
     const pass = this.signupForm.get('password')?.value;
 
-     this.authService.registerWithFirebase(email, pass)
+
+
+    /* this.authService.registerWithFirebase(email, pass)
       .subscribe(() => {
         this.loading = true;
         setTimeout(() => {
-          this.validateRegistration(customer);
+        //  this.validateRegistration(customer);
         }, 1500);
       })
+ */
   }
 
 
@@ -85,6 +96,8 @@ export class SignUpComponent {
             const token = responseValue.token;
             const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
             const account = decoded.id;
+
+console.log('account: ' + account + ' - ' + token)
 
             localStorage.setItem('token', token);
             localStorage.setItem('currentAccount', account);
@@ -106,6 +119,7 @@ export class SignUpComponent {
 
       this.authService.setUserLogStatus(true);
       this.authService.setPublicZoneStatus(false);
+      this.authService.setUserAccessPermits(true);
       this.loading = false;
       this.router.navigate(["desktop"]);
 

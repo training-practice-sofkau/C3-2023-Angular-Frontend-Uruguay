@@ -14,6 +14,8 @@ import { CustomerService } from '../../services/customer.service';
 import { CustomerSignInModel } from '../../interfaces/customer.interface';
 import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
 import { AuthService } from '../../services/auth.service';
+import { GoogleAuthProvider } from '@angular/fire/auth';
+
 
 
 @Component({
@@ -63,16 +65,29 @@ export class SignInComponent {
     }, 1500);
   }
 
-  loginWithGoogle(){
+  loginWithGoogle() {
     this.authService.loginWithFirebase()
-      .then(googleResp => {
-        const token = googleResp.user.getIdToken();
-        //const decoded = jwt_decode(token) ;
+      .then(result => {
+        //const credentials = GoogleAuthProvider.credentialFromResult(result);
+        const user = result.user;
 
-        console.log(token + " TOKEN ");
+        this.customerService.findCustomerByEmail(user.email)
+          .subscribe(
+             userData => {
+            //localStorage.setItem('token', JSON.stringify(userData));
+            localStorage.setItem('customerID', userData.id);
+            this.transitionToDesktop(true);
+          })
+
+      }).catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+
       })
-      .catch(error => console.log(error));
-
   }
 
 
@@ -96,7 +111,7 @@ export class SignInComponent {
             const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
             const account = decoded.id;
 
-            localStorage.setItem('token', token);
+            //localStorage.setItem('token', token);
             localStorage.setItem('customerID', account);
 
             this.transitionToDesktop(true);
@@ -104,10 +119,7 @@ export class SignInComponent {
         },
         error: (e) => {
           this.transitionToDesktop(false);
-        },
-        complete: () => {
-
-        },
+        }
       })
   }
 
