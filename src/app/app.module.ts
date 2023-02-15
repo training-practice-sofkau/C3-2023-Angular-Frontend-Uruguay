@@ -13,6 +13,9 @@ import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio/ejerci
 import { HttpClientModule } from '@angular/common/http';
 import { GlobalService } from './global-service/service-global.service';
 import { FormsModule } from '@angular/forms';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -33,6 +36,8 @@ import { FormsModule } from '@angular/forms';
     CustomerAccountModule,
     TransactionsModule,
     FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
     
   ],
   providers: [GlobalService],

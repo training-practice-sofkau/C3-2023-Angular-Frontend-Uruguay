@@ -15,10 +15,6 @@ import { Route, Router } from '@angular/router';
 })
 export class SinginComponent {
 
-  /*
-  email: string | undefined ;
-  password: string | undefined;
-  */
 
   constructor(public globalService :GlobalService,
               private formBuilder : FormBuilder,
@@ -29,36 +25,43 @@ export class SinginComponent {
   
   }
 
-//fullName: this.formBuilder.nonNullable.control('', { validators: [Validators.required] }),
 
   signInForm = this.formBuilder.group({
     username: new FormControl('', Validators.required),
     password: new FormControl ('', Validators.required)
   });
 
+  /*
+  signInForm = this.formBuilder.group({
+    username: new FormControl('', Validators.required),
+    password: new FormControl ('', Validators.required)
+  });
+  */
 
   postSignIn(){
+
     if(this.signInForm.controls.username.value && this.signInForm.controls.password.value){
         let form: SignIn = {
           username: this.signInForm.controls.username.value,
           password: this.signInForm.controls.password.value 
         }
         this.loginService.login(form).subscribe({
-          next: (response) =>{localStorage.setItem('Token', response),
-        this.routes.navigate(['/customer-account/app-user-profile'])},
+          next: (response) =>{localStorage.setItem('Token', response);
+          this.loginService.activeLogin();
+          this.routes.navigate(['/customer-account/app-user-profile'])},
           error: (error:HttpErrorResponse)=> {alert(error.message)}
           })
-
-
     }
   }
 
-  /*
-  login() {
-    console.log(this.email);
-    console.log(this.password);
-  }
-*/
 
+  /*
+  OnSubmit(){
+    this.loginService.registerGoogle(this.signInForm.value)
+    .then(response =>{console.log(response)}) //LA RESPUESTA QUE ME ENVIA FIREBASE, ACA VA LA REDIRECCION QUE INDICO
+    .catch(error => console.log('Algo salio mal papá!'));
+
+  }
+  */
 
 }

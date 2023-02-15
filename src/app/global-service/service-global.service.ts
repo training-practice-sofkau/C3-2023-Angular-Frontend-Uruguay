@@ -7,25 +7,10 @@ export class GlobalService {
 
 
    constructor() {
-    this.defaultLogged()
+
   }
 
-//************************CONTROL VARIABLE LOCAL STORAGE*********************/
-
- defaultLogged(){
-   if(!localStorage.getItem('MyToken')){
-     localStorage.setItem('MyToken', 'false')
-   }   
- }
-
- activeLogged(){
-   localStorage.getItem('MyToken')
-   localStorage.setItem('MyToken', 'true')
- }
-
- logOut(){
-   localStorage.clear()
- }
+ 
    //*********************CONTROL DE COMPONENTES USER*************************/
   
   public valorCaseUser : number = 0;

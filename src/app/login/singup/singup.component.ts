@@ -38,15 +38,13 @@ export class SingupComponent {
       const dataRegister: SignUpModel = {
 
         fullName: this.signUpForm.controls["fullName"].value,
-        //documentTypeName: this.signUpForm.controls.documentTypeName.value,
-        documentTypeName: this.signUpForm.controls["documentTypeName"].value, //?
+        documentTypeName: this.signUpForm.controls["documentTypeName"].value,
         document: this.signUpForm.controls["document"].value,
         phone: this.signUpForm.controls["phone"].value,
         email: this.signUpForm.controls["email"].value,
         password: this.signUpForm.controls["password"].value,
-        accountTypeName: this.signUpForm.controls["documentTypeName"].value, //?
-       // accountTypeName: this.signUpForm.controls.accountTypeName.value, 
-
+        accountTypeName: this.signUpForm.controls["documentTypeName"].value,
+      
       }
 
       this.loginService.signUp(dataRegister).subscribe(data =>{console.log(data);
@@ -55,6 +53,18 @@ export class SingupComponent {
       this.routes.navigate(['/customer-account/app-user-profile'])});    
     }
   }
+
+
+  pickGoogle(){
+    this.loginService.loginGoogle()
+    .then(response =>{console.log(response)}) //LA RESPUESTA QUE ME ENVIA FIREBASE, ACA VA LA REDIRECCION QUE INDICO
+    .catch(error => console.log(error));
+
+  }
+
+
+
+
   
   
 }
