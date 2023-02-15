@@ -27,6 +27,19 @@ export class CustomerApiService {
     .get<CustomerModel[]>('http://localhost:3000/customer/', this.options);
   }
 
+  getCustomerById(): Observable<CustomerModel>{
+    return this.http
+    .get<CustomerModel>('http://localhost:3000/customer/'+localStorage.getItem('current-customer-id'),
+      this.options);
+  }
+
+  getCustomerByEmail(): Observable<CustomerModel>{
+    return this.http
+    .get<CustomerModel>('http://localhost:3000/customer/email/'+this.auth.dataFromGoogle.email,
+      this.options);
+  }
+
+
   postCustomer(customer: Object): void {
     this.http.post('http://localhost:3000/security/customer', customer, this.options)
     .subscribe(user => user);

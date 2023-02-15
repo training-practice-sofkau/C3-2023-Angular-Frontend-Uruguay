@@ -1,24 +1,36 @@
 import { Injectable } from '@angular/core';
-import { CustomerModel } from 'src/app/interfaces/Customer.interface';
-import { DocumentTypeModel } from '../../../interfaces/Customer.interface';
-import { AccountModel } from '../../../interfaces/account.model';
+import { Auth, GoogleAuthProvider, signInWithPopup, UserCredential } from '@angular/fire/auth';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AccountModel } from 'src/app/interfaces/account.model';
+import { GoogleUserModel } from 'src/app/interfaces/google-user.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  userLogged: boolean = false;
   
-  signedUpUsers: CustomerModel[] = [];
+  // signedUpUsers: CustomerModel[] = [];
 
-  signedUpUser: Object = {};
+  // signedUpUser: Object = {};
 
-  documentTypes: DocumentTypeModel[] = [];
+  // documentTypes: DocumentTypeModel[] = [];
+  
+  dataFromGoogle: GoogleUserModel = {};
+  
+  private navBarState: BehaviorSubject<boolean> = new BehaviorSubject(false);  
+  navBarState$: Observable<boolean> = this.navBarState.asObservable();
+  
 
-  customerAccounts: AccountModel[] = [];
+  constructor(private auth: Auth) { }
+    
 
-  constructor() { }
+  setNavBarState(state: boolean) {
+    this.navBarState.next(state);
+  }
 
 
+  signUpGoogle(): Promise<UserCredential> {
+    return signInWithPopup(this.auth, new GoogleAuthProvider());
+  }
 }
