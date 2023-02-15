@@ -5,6 +5,7 @@
         <div class="form-group">
           <label for="incomeAccount">Cuenta de ingreso:</label>
           <select class="form-control" id="incomeAccount" formControlName="incomeAccount" (change)="updateSelectedIncomeAccount($event)">
+            <option value="">Seleccione una opción</option>
             <option *ngFor="let account of accounts" [value]="account.id">{{ account.accountType.name }}</option>
           </select>
         </div>
@@ -21,7 +22,8 @@
           <label for="transferReason">Razón:</label>
           <input type="text" class="form-control" id="transferReason" formControlName="transferReason">
         </div>
-        <button type="submit" class="btn btn-primary" (click)="createTransfer()">Crear transferencia</button>
+        <button   (click)="createTransfer()"   [disabled]="!transferForm.valid"   (click)="onSave()" type="button" class="btn btn-primary">Crear transferencia</button>
+        <button     (click)="onClose()" type="button" class="btn btn-outline-dark" >Cancelar</button>
       </form>
     </div>
   </div>

@@ -6,6 +6,7 @@ import { DepositInterface } from '../../../tools/interface/deposit.interface';
 import { AccountTransfer } from '../../../tools/interface/accountTransfer';
 import { Router } from '@angular/router';
 import { AlertsService } from '../../../shared/alerts/alertsservices/alertsservices.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-newdeposit',
@@ -14,7 +15,7 @@ import { AlertsService } from '../../../shared/alerts/alertsservices/alertsservi
 export class NewdepositComponent implements OnInit {
   depositForm: FormGroup ;
 
-  constructor(private FormBuilder: FormBuilder,  public DepositService: DepositService, public Router: Router, public AlertsService: AlertsService) {
+  constructor(private FormBuilder: FormBuilder,  public DepositService: DepositService, public Router: Router, public AlertsService: AlertsService, public modalService: NgbModal) {
     this.depositForm = this.FormBuilder.group({
       accountType: ['', Validators.required],
       depositAmount: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.min(1)]]
@@ -23,85 +24,43 @@ export class NewdepositComponent implements OnInit {
 
 
   public account:AccountInterfaec | undefined
-  public accounts:AccountTransfer[] = [] ;
-  public selectedAccountId: string | undefined;
+  public accounts!:AccountTransfer[]  ;
+  public selectedAccountId!: string
+  public amount!: number
+
+  public depositList!: DepositInterface[] ;
 
     ngOnInit() {
-      this.getDataAccount()
-    if (!Array.isArray(this.accounts)) {
-      console.log(this.accounts);
+      this.DepositService.getDataAccount()
+      const list = localStorage.getItem('depositList')
+     this.accounts = list? JSON.parse(list) :null
 
-        this.accounts = [this.accounts];
-        console.log(this.accounts);
+     this.DepositService.getAcountList().subscribe((accountUser) => {
+      this.accounts = accountUser;
+    });  
 
-      }
-
-      console.log(this.accounts);
-
-
-    this.depositForm = this.FormBuilder.group({
+     this.depositForm = this.FormBuilder.group({
       accountType: ['', Validators.required],
       depositAmount: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.min(1)]]
     });
   }
 
   updateSelectedAccount(event: any) {
-    this.selectedAccountId = event.target.value;
-    console.log(this.selectedAccountId)
-  }
+    this.selectedAccountId = event.target.value ;
+    this.DepositService.updateSelectedAccount(this.selectedAccountId)
+      }
 
-  createdeposit(){
+    getAmount(){
+      this.amount = parseInt (this.depositForm.value.depositAmount)
+      this.DepositService.getAmount(this.amount)
 
-   const account = localStorage.getItem('account');
-   this.account = account ? JSON.parse(account) : null;
-   const url = `http://localhost:3000/deposit/newDeposit`
-
-   const depositdata: DepositInterface = {
-      amount:  Number(this.depositForm.value.depositAmount),
-     date_time: Date.now(),
-     accountId: this.selectedAccountId ,
-     state: true,
-     id: this.selectedAccountId
-   };
-   this.DepositService.post(url, depositdata)
-     .subscribe((response) => {
-       console.log(response);
-     });
-
-     this.Router.navigate(['deposit']);
-
-
-
- }
-
-
-
- getDataAccount(){
-
-  const account = localStorage.getItem('account');
-  this.account = account ? JSON.parse(account) : null;
-
-
-  this.DepositService.get2(`http://localhost:3000/account/${this.account?.accountUser.customer.id}`).subscribe(
-    data => {
-      console.log(data)
-      this.accounts = data
-      localStorage.setItem('depositList', JSON.stringify(this.accounts))
-
-
-    },
-    error => {
-      console.error(error);
     }
-  );
 
+    onSave(): void {
+      this.modalService.dismissAll();
+    }
+    onClose(): void {
+      this.modalService.dismissAll();
+    }
 
-
-}
-
-
-
-
-
-
-}
+  }

@@ -9,6 +9,6 @@ export interface customerInterface {
   phone: string;
   password: string;
   avatarUrl?: string;
-  id?: string;
+  id: string;
   state?: boolean;
 }

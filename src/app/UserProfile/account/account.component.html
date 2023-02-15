@@ -36,7 +36,7 @@
       <p class="card-text">Id de Usuario: {{ customer?.id }}</p>
     </div>
     <div class="btn-container d-flex justify-content-between mt-4">
-      <button (click)="openEditModal()" class="btn btn-primary mr-3">Agregar tipo de cuenta</button>
+      <button (click)="openEditModal(CreateaccounttypeComponent)" class="btn btn-primary mr-3">Agregar tipo de cuenta</button>
       <button (click)="openEditModal2()" class="btn btn-primary">Agregar depósito</button>
     </div>
     <div class="mt-4">
@@ -48,32 +48,21 @@
 
 
 
-<ng-template #content let-modal>
-  <app-createaccounttype>
-
+<ng-template #CreateaccounttypeComponent >
   <div class="modal-header">
-    <h4 class="modal-title">Registro</h4>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="modal.dismiss()"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <h4 class="modal-title">Agregar Cuenta</h4>
+
   </div>
 
   <div class="modal-body">
+    <app-createaccounttype>
+  </app-createaccounttype>
+
   </div>
+
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="modal.close()"
-    >
-      Cerrar
-    </button>
+    <button    [disabled]="myForm.invalid" (click)="this.accountService.createAccount()"  (click)="onSave()" type="button" class="btn btn-primary">Guardar</button>
+    <button     (click)="onClose()" type="button" class="btn btn-outline-dark" >Cancelar</button>
   </div>
-</app-createaccounttype>
 
 </ng-template>

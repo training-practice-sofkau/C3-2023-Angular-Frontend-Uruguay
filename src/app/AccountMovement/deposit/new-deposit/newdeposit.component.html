@@ -6,20 +6,23 @@
         <div class="form-group">
           <label for="accountType">Seleccione su tipo de cuenta </label>
           <select class="form-control" formControlName="accountType" id="accountType" (change)="updateSelectedAccount($event)">
+            <option value="">Seleccione una opción</option>
             <option *ngFor="let account of accounts" [value]="account.id">{{account.accountType.name  }}</option>
           </select>
 
-
-
-
         </div>
-      
         <div class="form-group">
           <label for="depositAmount">Saldo</label>
-          <input type="text" class="form-control" formControlName="depositAmount" id="depositAmount">
+          <input type="text" class="form-control" formControlName="depositAmount" id="depositAmount" (input)="getAmount()">
         </div>
-        <button type="submit"  (click)="createdeposit()" class="btn btn-primary" [disabled]="!depositForm.valid">Validar</button>
+        <div class="modal-footer">
+          <button   (click)="this.DepositService.createdeposit()"   [disabled]="!depositForm.valid"   (click)="onSave()" type="button" class="btn btn-primary">Validar</button>
+          <button     (click)="onClose()" type="button" class="btn btn-outline-dark" >Cancelar</button>
+        </div>
       </form>
     </div>
   </div>
 </div>
+
+
+

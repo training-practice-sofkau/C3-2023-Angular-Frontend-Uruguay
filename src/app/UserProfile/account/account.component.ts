@@ -3,7 +3,8 @@ import { AccountTypeinterface, AccountInterfaec, customerInterface} from '../../
 import { AccountService } from './services/account.service'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AccountTransfer } from '../../tools/interface/accountTransfer';
-import { CreateaccounttypeComponent, NewdepositComponent } from 'src/app/AccountMovement';
+import {  NewdepositComponent } from 'src/app/AccountMovement';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-account',
@@ -18,13 +19,22 @@ export class AccountComponent implements OnInit {
   public account: AccountInterfaec | undefined
   public accountUser: AccountTransfer[] = []
 
-  constructor(private accountService: AccountService, private modalService: NgbModal) {}
+  constructor(public accountService: AccountService, public modalService: NgbModal, public FormBuilder: FormBuilder) {}
+  myForm!: FormGroup;
 
   ngOnInit() {
+    this.myForm = this.FormBuilder.group({
+      documentType: [null, Validators.required]
+    });
     this.persona = this.accountService.getDataAccount();
     this.accountType = this.accountService.getDataAccountType();
-    this.customer = this.accountService.getDatacustomer();
-    this.accountUser = this.accountService.getaccountUser();
+    this.accountService.getAccountList().subscribe((accountUser) => {
+      this.accountUser = accountUser;
+    });
+    this.accountService.getcustomer().subscribe((customer) => {
+      this.customer = customer;
+    });
+
   }
 
 
@@ -40,10 +50,17 @@ export class AccountComponent implements OnInit {
     return this.accountService.getDataAccountType()
   }
 
-  openEditModal() {
-    this.modalService.open(CreateaccounttypeComponent);
+  openEditModal(CreateaccounttypeComponent: any) {
+    this.modalService.open(CreateaccounttypeComponent, {ariaLabelledBy: 'modal-basic-title'});
+
   }
 
+  onSave(): void {
+    this.modalService.dismissAll();
+  }
+  onClose(): void {
+    this.modalService.dismissAll();
+  }
 
   openEditModal2() {
     this.modalService.open(NewdepositComponent);

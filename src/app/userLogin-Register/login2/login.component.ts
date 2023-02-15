@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SingupComponent } from './singup/singup.component';
 import { AuthService } from './services/auth.service';
-import { FormBuilder } from '@angular/forms';
+import { Form, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { lastValueFrom } from 'rxjs';
@@ -17,13 +17,13 @@ import { AccountService } from '../../UserProfile/account/services/account.servi
 
   templateUrl: './login.component.html',
 })
-export class LoginComponent {
+export class LoginComponent    {
   public id: string = '';
   public customer = {};
   public account = {};
   public accountType = {};
-  public password: string = '';
-  public username: string = '';
+  public password!:string
+  public username!: string
 
   constructor(
     private modalService: NgbModal,
@@ -33,6 +33,7 @@ export class LoginComponent {
     private router: Router,
     private AccountService: AccountService
   ) {}
+
 
   /**
    * The function takes an event object as an argument, and then calls the preventDefault() method on
@@ -45,10 +46,12 @@ export class LoginComponent {
   }
   /* Creating a form group with two controls, username and password. */
 
-  formLogin = this.formBuilder.group({
-    username: [''],
-    password: [''],
-  });
+      formLogin = this.formBuilder.group({
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        username: ['', [Validators.required, Validators.minLength(5)]],
+      })
+
+
   /**
    * The function takes in two parameters, username and password, and then calls the login function from
    * the AuthService
@@ -82,14 +85,28 @@ export class LoginComponent {
     this.AuthService.register(username, password);
   }
 
+ loginCheck()
+ {
+  this.username = this.formLogin.value.username || ''
+  this.password = this.formLogin.value.password || ''
+  console.log(this.password)
+  console.log(this.username)
+
+  this.login(this.username, this.password);
+
+ }
+
+
+
   /**
    * We're using the `lastValueFrom` operator to get the last value from the observable returned by the
    * `post` method of the `AuthService` service
    * @param {string} username - The username of the user.
    * @param {string} password - string
    */
-  async login(username: string, password: string) {
+    async login(username: string, password: string) {
     try {
+      console.log(username);
       const source$ = this.AuthService.post(
         'http://localhost:3000/security/sign-in',
         {
@@ -123,6 +140,8 @@ export class LoginComponent {
     }
   }
 
+
+
   /**
    * It returns true if the token is a string and not an empty string
    * @param {string} token - The token to validate.
@@ -148,10 +167,11 @@ export class LoginComponent {
    */
 
   redirectToAccount() {
-    this.router.navigate(['account']);
-    
 
+      this.router.navigate(['account']);
   }
+
+
 
   /**
    * The function send() is called when the user clicks the submit button. It takes the values from the
@@ -255,6 +275,7 @@ export class LoginComponent {
           password: password,
           avatarUrl: decodedToken.picture || 'fotoperfil',
           token: '',
+          id:''  ,
           documentType: {
             name: 'Cedula',
             id: '',

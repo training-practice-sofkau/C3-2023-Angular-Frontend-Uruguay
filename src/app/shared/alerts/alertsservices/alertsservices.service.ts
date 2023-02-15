@@ -68,7 +68,10 @@ export class AlertsService {
     })
   }
 
-
+ alertOk(){
+  Swal.getConfirmButton()
+  window.location.reload();
+ }
 
   Post(url: string){
     return this.http.post(url, '' )
