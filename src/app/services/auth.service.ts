@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithPopup, GoogleAuthProvider, } from '@angular/fire/auth';
-import { createUserWithEmailAndPassword } from '@firebase/auth';
-import { BehaviorSubject, from, Observable } from 'rxjs';
-import { CustomerModel } from '../interfaces/customer.interface';
+
+import { BehaviorSubject, } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'

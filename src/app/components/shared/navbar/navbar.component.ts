@@ -3,9 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
 import { AppComponent } from '../../../app.component';
-import { MenuService } from '../../../services/menu.service';
-import { MenuItem } from '../../../interfaces/menu.interface';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 
 

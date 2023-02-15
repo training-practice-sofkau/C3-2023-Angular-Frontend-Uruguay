@@ -13,7 +13,7 @@ import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/
 import { CustomerService } from '../../services/customer.service';
 import { MessengerService } from '../../services/messenger.service';
 import { AuthService } from '../../services/auth.service';
-import { GoogleAuthProvider } from '@angular/fire/auth';
+
 
 
 @Component({
