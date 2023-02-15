@@ -20,7 +20,7 @@ export class UserAccountsComponent implements OnInit {
   constructor(private userData: UserDataService, private userAccountsService: UserAccountsService, private router: Router){}
 
   ngOnInit(): void {
-    this.userAccountsService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (this.UserAccountsList.length !== data.length) this.UserAccountsList = data });
+    this.userAccountsService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (JSON.stringify(this.UserAccountsList) !== JSON.stringify(data)) this.UserAccountsList = data });
     this.userAccountsService.updateUserAccountsTable();
   }
 

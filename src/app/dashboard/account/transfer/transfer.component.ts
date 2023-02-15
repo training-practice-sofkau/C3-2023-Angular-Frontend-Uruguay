@@ -37,7 +37,9 @@ export class TransferComponent {
 
   ngOnInit(): void {
 
-    this.depositService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (this.UserAccountsList.length !== data.length) this.UserAccountsList = data });
+    this.depositService.userAccountsEmitter.subscribe((data: AccountModel[]) => {
+      if (JSON.stringify(this.UserAccountsList) !== JSON.stringify(data)) this.UserAccountsList = data;
+    });
     this.depositService.updateUserAccountsTable();
 
     this.AccountsListOfUserEmitter.subscribe((data: AccountModel[]) => { this.AccountsListOfUser = data; })
@@ -45,7 +47,7 @@ export class TransferComponent {
       if (cedula !== null && cedula.toString().length === 8 && this.transferForm.controls.cedula.valid){
         this.api.getAllAccountsByDocument(cedula).subscribe({
           next: (data) => {
-            if (this.AccountsListOfUser.length !== data.length) {
+            if (this.AccountsListOfUser !== data) {
               this.AccountsListOfUser = data;
               this.AccountsListOfUserEmitter.next(this.AccountsListOfUser);
               this.error.state = false;

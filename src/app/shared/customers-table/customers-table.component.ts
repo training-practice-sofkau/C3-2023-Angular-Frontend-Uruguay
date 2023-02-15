@@ -16,7 +16,7 @@ export class CustomersTableComponent implements OnInit {
   constructor(@Host() public userCustomersTableService: CustomersTableService){}
 
   ngOnInit(): void {
-    this.userCustomersTableService.customersEmitter.subscribe((data: CustomerModel[]) => { if (this.CustomerList.length !== data.length) this.CustomerList = data });
+    this.userCustomersTableService.customersEmitter.subscribe((data: CustomerModel[]) => { if (JSON.stringify(this.CustomerList) !== JSON.stringify(data)) this.CustomerList = data });
     this.userCustomersTableService.updateAllCustomers();
   }
 
