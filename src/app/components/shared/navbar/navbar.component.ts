@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 import { AppComponent } from '../../../app.component';
-import { AuthService } from '../../../services/auth.service';
-
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  loggedUser: boolean = false;
-
-  private onUserStatusChange: Subscription | undefined;
+  loggedUser!: boolean ;
 
   constructor(
     public authService: AuthService,
@@ -26,9 +22,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
-    this.onUserStatusChange = this.authService.loggedUser.subscribe(
-      currentStatus => this.loggedUser = currentStatus);
+    this.authService.loggedUser.subscribe(currentStatus => this.loggedUser = currentStatus);
   }
+
   /**
    * Set the conditions to end the user service
    * and exit the desktop
