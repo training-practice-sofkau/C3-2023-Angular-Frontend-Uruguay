@@ -5,7 +5,9 @@ import { CustomerModel } from './interfaces/customer.interface';
 import { AccountModel } from './interfaces/account.interface';
 import { DepositCreateModel } from './interfaces/deposit.create.interface';
 import { DepositResponseModel } from './interfaces/deposit.response.interface';
-import { environment } from './environments/environment';
+import { environment } from '../environments/environment';
+import { TransferCreateModel } from './interfaces/transfer.create.interface';
+import { TransferResponseModel } from './interfaces/transfer.response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +55,17 @@ export class AppService {
     );
   }
 
+  getAllAccountsByDocument(document: string) : Observable<AccountModel[]> {
+    const httpOptions = {
+      headers: this.httpheaders,
+      params: new HttpParams().set("document", document)
+    };
+    return this.http.get<AccountModel[]>(
+      this.baseurl + "/account/get-by-customer-document",
+      httpOptions
+    );
+  }
+
   getCustomerById(id: string): Observable<CustomerModel> {
     const httpOptions = {
       headers: this.httpheaders,
@@ -71,6 +84,17 @@ export class AppService {
     };
     return this.http.post<DepositResponseModel>(
       this.baseurl + "/deposit/create", body,
+      httpOptions
+    );
+  }
+
+  createTransfer(data: TransferCreateModel): Observable<TransferResponseModel> {
+    const body = data;
+    const httpOptions = {
+      headers: this.httpheaders
+    };
+    return this.http.post<TransferResponseModel>(
+      this.baseurl + "/transfer/create", body,
       httpOptions
     );
   }

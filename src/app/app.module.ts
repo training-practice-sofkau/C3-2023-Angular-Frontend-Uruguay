@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AccountModule } from './dashboard/account/account.module';
 import { PageNotFoundModule } from './404/page-not-found.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from './environments/environment';
+import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({

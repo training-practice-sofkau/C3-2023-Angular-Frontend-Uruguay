@@ -30,6 +30,7 @@ export class DepositComponent implements OnInit {
   ngOnInit(): void {
     this.depositService.userAccountsEmitter.subscribe((data: AccountModel[]) => { if (this.UserAccountsList.length !== data.length) this.UserAccountsList = data });
     this.depositService.updateUserAccountsTable();
+
   }
 
   catchInfo(info: InfoTypes){

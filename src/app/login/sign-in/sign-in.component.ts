@@ -47,7 +47,6 @@ export class SigninComponent {
       .then(response => {
         let answer: LoginResponseModel;
         if (response.user.email){
-          console.log(response.user.email)
           this.auth.loginGoogle(response.user.email).subscribe({
             next: (value) => { answer = value; },
             error: () => { this.catchError(ErrorTypes.notfound) },
