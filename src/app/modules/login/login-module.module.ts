@@ -30,6 +30,6 @@ import { SignupGoogleComponent } from './signup-google/signup-google.component';
     LoginRouteModule,
     SignupGoogleComponent,
   ],
-  providers: [LoginService],
+  providers: []
 })
 export class LoginModule { }

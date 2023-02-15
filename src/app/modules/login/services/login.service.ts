@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SignIn } from 'src/app/interfaces/sign-in.interface';
 import { ApiService } from '../../../services/api.service';
 import { HttpClient } from '@angular/common/http';
@@ -26,11 +26,14 @@ export class LoginService {
   email = ''
   fullName = ''
 
+  private currentStatus: boolean = false;
+  public currentStatusEmitter: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.currentStatus);
+
   constructor(public api: ApiService,
               private http: HttpClient,
               private auth: Auth,
               private router: Router,
-    ) { }
+    ) {}
 
   login(form: SignIn): Observable<string>{
     let direction = this.api.url + "/security/signIn";
@@ -47,12 +50,13 @@ export class LoginService {
   }
 
   defaultLogin() {
-    if(!localStorage.getItem('key'))
-    localStorage.setItem('key', 'false')
+    localStorage.setItem('key', 'false');
   }
 
   activeLogin(){
-    localStorage.setItem('key', 'true')
+    localStorage.setItem('key', 'true');
+    this.currentStatus = !this.currentStatus;
+    this.currentStatusEmitter.next(this.currentStatus);
   }
 
   loginWithGoogle(){

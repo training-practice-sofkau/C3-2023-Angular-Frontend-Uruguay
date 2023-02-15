@@ -16,7 +16,7 @@ export class GuardGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login/home']);
     return false;
   }
 }

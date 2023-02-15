@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../login/services/login.service';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,8 @@ import { LoginService } from '../../login/services/login.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(public loginService: LoginService){}
 
-  ngDoCheck(){
-    this.loginService.eligeLogin()
-  }
+  constructor(public loginService: LoginService,
+    private app: AppComponent){}
 
 }

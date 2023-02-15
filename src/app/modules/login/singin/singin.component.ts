@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SinginComponent {
 
-  constructor(public loginService: LoginService,
+  constructor(protected loginService: LoginService,
     private formBuilder: FormBuilder,
     private router: Router,
   ) { }
@@ -29,7 +29,7 @@ export class SinginComponent {
       this.loginService.login(form).subscribe(data => {
         console.log(data);
         localStorage.setItem('token', data);
-        this.loginService.activeLogin()
+        this.loginService.activeLogin();
         this.router.navigate(['account/user']);
       })
     }
