@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { AppComponent } from '../../../app.component';
-import { MenuService } from '../../../services/menu.service';
-import { MenuItem } from '../../../interfaces/menu.interface';
-import { BehaviorSubject, Subscription } from 'rxjs';
-
-
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -41,11 +37,9 @@ export class NavbarComponent implements OnInit {
     localStorage.clear();
     this.authService.setUserLogStatus(false);
     this.authService.setPublicZoneStatus(true);
+    this.authService.setUserAccessPermits(false);
     this.appComp.toHome();
     this.router.navigate(["/"]);
   }
-
-
-
 
 }

@@ -3,8 +3,6 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn,
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 
-
-
 //Interfaces
 import { CustomerSignUpModel } from '../../interfaces/customer.interface';
 import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
@@ -13,7 +11,7 @@ import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/
 import { CustomerService } from '../../services/customer.service';
 import { MessengerService } from '../../services/messenger.service';
 import { AuthService } from '../../services/auth.service';
-import { GoogleAuthProvider } from '@angular/fire/auth';
+
 
 
 @Component({
@@ -64,6 +62,7 @@ export class SignUpComponent {
 
   registerWithGoogle() {
 
+    //this gets Google account info and sets it on the form ( user needs to complete all data to register )
     this.authService.loginWithFirebase()
       .then(result => {
 
@@ -120,12 +119,6 @@ export class SignUpComponent {
       this.router.navigate(["desktop"]);
 
     }
-    /*  else {    // invalid credentials. Error
-
-      this.loading = false;
-      this.messages.infoMsg("Something went Wrong! Try again...", "", 2000);
-      this.signupForm.reset();
-    } */
   }
 
 

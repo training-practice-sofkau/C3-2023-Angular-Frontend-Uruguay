@@ -14,7 +14,7 @@ import { CustomerService } from '../../services/customer.service';
 import { CustomerSignInModel } from '../../interfaces/customer.interface';
 import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/responses.interface';
 import { AuthService } from '../../services/auth.service';
-import { GoogleAuthProvider } from '@angular/fire/auth';
+
 
 
 
@@ -65,29 +65,27 @@ export class SignInComponent {
     }, 1500);
   }
 
+  /**
+   * Gets the User information from Google API and checks that the email
+   * has a registered account in the database
+   * If so, stores the relevant data in localStorage and redirects
+   * to Customer area
+   */
   loginWithGoogle() {
     this.authService.loginWithFirebase()
       .then(result => {
-        //const credentials = GoogleAuthProvider.credentialFromResult(result);
+
         const user = result.user;
 
         this.customerService.findCustomerByEmail(user.email)
           .subscribe(
-             userData => {
-            //localStorage.setItem('token', JSON.stringify(userData));
-            localStorage.setItem('customerID', userData.id);
-            this.transitionToDesktop(true);
-          })
+            userData => {
 
-      }).catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
+              localStorage.setItem('customerID', userData.id);
+              this.transitionToDesktop(true);
+            })
 
-      })
+      }).catch(error => { console.log(error) })
   }
 
 
