@@ -14,6 +14,9 @@ import { CustomerModule } from './customer/customer.module';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
 import { CookieService } from 'ngx-cookie-service';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { CookieService } from 'ngx-cookie-service';
     AccountModule,
     CustomerModule,
     ComponentsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
     
   ],
   providers: [CookieService],

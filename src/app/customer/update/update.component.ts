@@ -7,6 +7,7 @@ import { Customer } from '../interface/customer';
 
 @Component({
   selector: 'app-update',
+  providers: [CustomerService],
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.scss']
 })
@@ -26,7 +27,6 @@ export class UpdateComponent implements OnInit{
     email: "",
     phone: "",
     password: "",
-    
   }
 
   constructor(
@@ -41,46 +41,48 @@ export class UpdateComponent implements OnInit{
     this.upDateFromApi();//lo muestro en el fomulario 
   }
   
-    editarCustomer(){
-      //actualizo el customer pasando el identificaado del customer
-      this.customerService.updateOneCustomer(this.customerId);
-      //Ahora lo capuro y lo igualo a mi variable customer
-      this.customerService.customerOneObservable
-      .subscribe((data : Customer) => {this.customerEdit = data}); 
-      this.customerService.updateOneCustomer(this.customerId);  
-    }
+  editarCustomer(){
+    //actualizo el customer pasando el identificaado del customer
+    this.customerService.updateOneCustomer(this.customerId);
+    //Ahora lo capuro y lo igualo a mi variable customer
+    this.customerService.customerOneObservable
+    .subscribe((data : Customer) => {this.customerEdit = data}); 
+    this.customerService.updateOneCustomer(this.customerId);  
+  }
   
-    initForm():FormGroup{
-      return this.formBuilder.group(
-        {
-          // documentType:[],
-          document:['',[Validators.required]],
-          fullName:['',[Validators.required]],
-          email:['',[Validators.required,Validators.email]],
-          phone:['',[Validators.required]],
-          password:['',[Validators.required,Validators.minLength(8)]],
-  
-          terms:['',[Validators.required,Validators.requiredTrue]],
-        })
-    }
-    
-    //Funcion para actualizar la info del formulario 
-    upDateFromApi():void{
-      const response = {
-        document:this.customerEdit.document,
-        fullName:this.customerEdit.fullName,
-        email:this.customerEdit.email,
-        phone:parseInt(this.customerEdit.phone),
-        password:this.customerEdit.password,
+  initForm():FormGroup{
+    return this.formBuilder.group(
+      {
+        // documentType:[],
+        documentTypeId:['',[Validators.required]],
+        accountTypeId:['',[Validators.required]],
+        document:['',[Validators.required]],
+        fullName:['',[Validators.required]],
+        email:['',[Validators.required,Validators.email]],
+        phone:['',[Validators.required]],
+        password:['',[Validators.required,Validators.minLength(8)]],
         
-        terms:false,
-      }
-      this.FormUpDate.patchValue(response);
+      })
+  }
+    
+  //Funcion para actualizar la info del formulario 
+  upDateFromApi():void{
+    const response = {
+      documentTypeId: this.customerEdit.documentType.id,
+      document:this.customerEdit.document,
+      fullName:this.customerEdit.fullName,
+      email:this.customerEdit.email,
+      phone:parseInt(this.customerEdit.phone),
+      password:this.customerEdit.password,
     }
+    this.FormUpDate.patchValue(response);
+  }
 
 
   send():void{
-    console.log('form => ',this.FormUpDate.value);  
+    console.log('form => ',this.FormUpDate.value); 
+    //this.customerService.upDateCustomer(thi)
+     
   }
 
   paramsCustomerId():void{ 
@@ -92,7 +94,7 @@ export class UpdateComponent implements OnInit{
 
   
   saveEdit(){
-    //Tengo que llamar desde el servico a mi funcion updateCustomer para consumir la api
+    
   }
   
 

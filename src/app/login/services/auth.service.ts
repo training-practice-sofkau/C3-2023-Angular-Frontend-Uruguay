@@ -1,15 +1,14 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import {  DocumentTypeModel } from '../../program-Funcional/interfaces/customerModel';
 import { BehaviorSubject } from 'rxjs';
 import { SignUpModel } from "../interfaces/signUpModel";
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { UserResponse, SignIn } from '../interfaces/signInModel';
-import { FormBuilder, NumberValueAccessor } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { SignIn } from '../interfaces/signInModel';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { tokenCustomer, tokenUser } from '../interfaces/tokenModel';
-import { Customer } from '../../customer/interface/customer';
+import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut ,signInWithPopup, GoogleAuthProvider} from "@angular/fire/auth";
 
 
 @Injectable({
@@ -17,6 +16,29 @@ import { Customer } from '../../customer/interface/customer';
 })
 export class AuthService {
   
+  constructor(
+    private apiService : ApiService,
+    private cookies : CookieService,
+    private router : Router,
+    private Auth : Auth) { }
+
+
+registerFire(user : SignIn){ //esto es para registrarse pero tengo que pasarle los demas valores
+  return createUserWithEmailAndPassword(this.Auth,user.username,user.password);
+}
+
+loginFire(user: SignIn){
+  return signInWithEmailAndPassword(this.Auth,user.username,user.password);
+}
+singOut(){
+  return signOut(this.Auth);
+}
+
+loginGoogle(){
+  return signInWithPopup(this.Auth, new GoogleAuthProvider());
+}
+
+
   protected documentType: DocumentTypeModel = {
     name: "",
   };
@@ -33,14 +55,11 @@ export class AuthService {
   
   helper = new JwtHelperService();
   user ! : SignIn;
+  private token!: string;
   customerSignUp! : SignUpModel;
   public signUpObservable: BehaviorSubject<SignUpModel> = 
   new BehaviorSubject<SignUpModel>(this.newCustomer);
   
-  constructor(
-    private apiService : ApiService,
-    private cookies : CookieService,
-    private router : Router) { }
     
     newSigIn(user : SignIn){
       this.apiService.logIn(user).subscribe(
@@ -51,8 +70,8 @@ export class AuthService {
       this.apiService.sigUp(newCustomer).subscribe(
         (data) => sessionStorage.setItem('token',data));
     }
-    
-    
+
+
     hasUser():boolean{
       if(typeof sessionStorage.getItem('token') === 'string'){
         return true;
@@ -71,6 +90,7 @@ export class AuthService {
       
     }
 
+    
     getCustomerLocalStorage():tokenCustomer{
       const token = sessionStorage.getItem('token');
       if(token ){
@@ -86,13 +106,6 @@ export class AuthService {
       sessionStorage.removeItem('token');
       this.router.navigate(['/singin']);
     }
-  //
-  // setToken(token: string){
-  //   this.cookies.set('token',token);
-  // }
-  // getToken(){
-  //   this.cookies.get('token');
-  // }
 
 
 
