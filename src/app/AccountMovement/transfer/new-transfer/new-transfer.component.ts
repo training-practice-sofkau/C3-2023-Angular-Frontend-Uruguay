@@ -72,11 +72,11 @@ export class NewTransferComponent implements OnInit {
 
     };
 
-    console.log(transferData)
-      this.TransferService.post(url, transferData)
-      .subscribe((response) => {
-        console.log(response);
-      });
+    // console.log(transferData)
+    //   this.TransferService.post(url, transferData)
+    //   .subscribe((response) => {
+    //     console.log(response);
+    //   });
 
     this.Router.navigate(['transfer']);
   }

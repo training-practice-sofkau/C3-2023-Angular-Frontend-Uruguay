@@ -1,6 +1,6 @@
 import { AccountService } from '../services/account.service';
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { AccountComponent } from '../account.component'
 
 
 
@@ -9,16 +9,17 @@ import { Component } from '@angular/core';
   selector: 'app-createaccounttype',
   templateUrl: './createaccounttype.component.html',
 })
-export class CreateaccounttypeComponent {
+export class CreateaccounttypeComponent   {
 
-  constructor(public AccountService: AccountService,
+  constructor(public AccountService: AccountService, public AccountComponent: AccountComponent
     ) {}
+ 
 
   public accountName: string = ''
   public accountType: string = ''
 
   updateName(event: any) {
-    this.accountName = event.target.value;
+    this.accountName = event.target.value ;
     this.AccountService.updateName(this.accountName)
   }
   updateAccountType(event: any) {

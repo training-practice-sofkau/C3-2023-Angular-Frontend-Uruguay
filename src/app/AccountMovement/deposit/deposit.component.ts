@@ -1,45 +1,36 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NewdepositComponent } from './new-deposit/newdeposit.component';
-import { DepositService } from '../../AccountMovement';
+import { DepositService } from '../../AccountMovement'
 import { DepositInterface } from 'src/app/tools/interface/deposit.interface';
-import { AccountInterfaec } from '../../tools/interface/account-interface';
+import { AccountInterfaec } from 'src/app/tools/interface/account-interface';
 
 @Component({
   selector: 'app-deposit',
   templateUrl: './deposit.component.html',
 })
-export class DepositComponent {
-  depositList: DepositInterface[] = []
-  public customer: AccountInterfaec | undefined
-  constructor(private modalService: NgbModal, private http: HttpClient, private depositService: DepositService){}
+export class DepositComponent implements OnInit {
+  depositList: DepositInterface[] = [];
+  customer: AccountInterfaec | undefined;
 
+  constructor(
+    private modalService: NgbModal,
+    private depositService: DepositService
+  ) {}
 
+  ngOnInit() {
+    this.depositService.getDataAccount()
+    this.depositService.getDepositListt().subscribe((accountUser) => {
+      this.depositList = accountUser;
+    })
+    this.depositService.getDepositListByCustomer();
 
-
-
-
-  async ngOnInit() {
-    const customerId = localStorage.getItem('account');
-    this.customer =  customerId ? JSON.parse(customerId) : null
-
-    const url = `http://localhost:3000/deposit/${this.customer?.accountUser.customer.id}`;
-    this.depositService.get(url).subscribe(
-      data => {
-        this.depositList = data;
-        console.log(this.depositList)
-      },
-      error => {
-        console.error(error);
-      }    )
   }
-
-
-
-
 
   openEditModal() {
     this.modalService.open(NewdepositComponent);
   }
 }
+
+
+

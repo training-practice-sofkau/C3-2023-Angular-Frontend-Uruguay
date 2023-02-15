@@ -5,6 +5,7 @@
         <div class="form-group">
           <label for="incomeAccount">Cuenta de ingreso:</label>
           <select class="form-control" id="incomeAccount" formControlName="incomeAccount" (change)="updateSelectedIncomeAccount($event)">
+            <option value="">Seleccione una opción</option>
             <option *ngFor="let account of accounts" [value]="account.id">{{ account.accountType.name }}</option>
           </select>
         </div>
