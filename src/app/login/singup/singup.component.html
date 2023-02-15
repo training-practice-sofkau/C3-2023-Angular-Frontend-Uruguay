@@ -11,26 +11,39 @@
 
     <div class="container">
     <h1>Formulario de Registro</h1>
-    <form>
+    <form [formGroup]="signUpForm" (ngSubmit)="register()">
       <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" required>
+      <input formControlName="fullname" type="text" id="fullname" name="fullname">
 
       <label for="documento">Documento:</label>
-      <input type="text" id="documento" name="documento" required>
+      <input formControlName="document" type="text" id="document" name="document" >
 
-      <label for="tipo">Tipo de documento:</label>
-      <select id="tipo" name="tipo">
+      <label for="tipoDoc">Tipo de documento:</label>
+      <select formControlName="documentTypeId" id="tipoDoc" name="tipoDoc">
         <option value="cedula">Cedula</option>
         <option value="pasaporte">Pasaporte</option>
       </select>
 
-      <label for="telefono">Telefono:</label>
-      <input type="tel" id="telefono" name="telefono" required>
+      <label for="phone">Telefono:</label>
+      <input formControlName="phone" type="tel" id="phone" name="phone">
+
+      <label for="tipoAcc">Tipo de Cuenta:</label>
+      <select formControlName="accountTypeId" id="typeAcc" name="tipoAcc">
+        <option value="Caja Ahorro">Caja ahorro</option>
+        <option value="Cuenta Dolares">Cuenta Dolares</option>
+      </select>
+
+      <label for="email">Email:</label>
+      <input formControlName="email" type="text" id="email" name="email" required>
+
+      <label for="password">Passowrd:</label>
+      <input formControlName="password" type="text" id="password" name="password" required>
 
       <div class="buttons">
         <input type="button" value="Atrás">
-        <input type="submit" value="Registrar">
+        <input type="submit"  (click)="true"  value="Registrar">
       </div>
+
     </form>
   </div>
 </body>

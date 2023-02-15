@@ -10,18 +10,23 @@
                 id="icon" alt="User Icon" />
         </div>
 
-        <!--(ngModel)]="login" (ngModel)]="password" Login Form 
-    form (ngSubmit)="login(login,password)"-->
-        <form >
+    
+        <form  [formGroup]="signInForm" (ngSubmit)="login()">
             <div class="form-group">
-                <input [(ngModel)]="username" type="text" id="username" class="fadeIn second" name="username"
-                    placeholder="username">
+                <input formControlName="email"  id="email" class="fadeIn second" name="email"
+                    placeholder="email">
             </div>
             <div class="form-group">
-             <input [(ngModel)]="password" type="text" id="password" class="fadeIn third"
+             <input formControlName="password"  id="password" class="fadeIn third"
                 name="password" placeholder="password">
             </div>
-            <input type="submit" (click)="login(username,password)" class="fadeIn fourth" value="Log In">
+        
+            <input type="submit"  class="fadeIn fourth" value="Log In">
+
+            <button class="boton-login">
+                <span class="icono-google"></span>
+                <span type="submit" (click)="onClick()" class="texto-boton">Iniciar sesión con Google</span>
+            </button>
         </form>
 
         <!-- Remind Passowrd -->

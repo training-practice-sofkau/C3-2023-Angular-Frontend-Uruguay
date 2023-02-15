@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { LoginModule } from './login/login-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
 import { NewDepositComponent } from './movements/new-deposit/new-deposit.component';
 import { NewTransaccionComponent } from './movements/new-transaccion/new-transaccion.component';
 import { ViewTransferComponent } from './movements/view-transfer/view-transfer.component';
@@ -15,14 +13,21 @@ import { CustomerService } from './administrator/services/customer.service';
 import { DepositService } from './administrator/services/deposit.service';
 import { TransferService } from './administrator/services/transfer.service';
 import { EjercicioComponent } from './prog-functional/ejercicio/ejercicio.component';
-import { AccountCustomerModule } from './account-customer/account-customer.module';
+import {HttpClientModule} from  '@angular/common/http'
+//import { FormsModule } from '@angular/forms';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environment/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { NgModule } from '@angular/core';
 import { HomeComponent } from './pages/home/home.component';
-//import { PagesModule } from './pages/pages.module';
 import { CustomerComponent } from './administrator/customer/customer.component';
 import { CustomerProfileComponent } from './pages/customer-profile/customer-profile.component';
-import {HttpClientModule} from  '@angular/common/http'
-import { FormsModule } from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { SignUpModel } from './interfaces/singup.interface';
+import { SingupComponent } from './login/singup/singup.component';
+import { SinginComponent } from './login/singin/singin.component';
+import { LoginModule } from './login/login-module.module';
+
 
 
 
@@ -34,9 +39,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     NewTransaccionComponent,
     ViewTransferComponent,
     EjercicioComponent,
-   HomeComponent,
-   CustomerComponent,
-   CustomerProfileComponent,
+   //HomeComponent,
+   //CustomerComponent,
+   //CustomerProfileComponent,
+   
   
 
   ],
@@ -44,14 +50,12 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
-    MaterialModule,
     SharedModule,
-    LoginModule,
-    AccountCustomerModule,
-    //PagesModule
-    HttpClientModule,
-    FormsModule
+   HttpClientModule,
+   LoginModule,
+    //FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
 
   ],
   providers: [AuthService, AccountService, CustomerService, DepositService, DepositService, TransferService],

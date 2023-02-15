@@ -59,7 +59,7 @@ export class EjercicioComponent {
     ({
       state: customer.state,
       name: customer.fullName,
-      docType: customer.documentType.name
+   //   docType: customer.documentType.name
     })
     ).filter(customer => customer.state === state);
 
@@ -68,15 +68,15 @@ export class EjercicioComponent {
   //no observer
   //listar los usuarios con pasaporte y solo traer sus tipo de documento y nombre
   listForDocType(): void {
-    const filteredData = baseCustomers.filter(d => d.documentType.name == 'Pasaporte');
-    this.selectedData1 = filteredData.map(d => ({ name: d.fullName, document: d.documentType.name }));
+  //  const filteredData = baseCustomers.filter(d => d.documentType.name == 'Pasaporte');
+  //  this.selectedData1 = filteredData.map(d => ({ name: d.fullName, document: d.documentType.name }));
   }
 
   //no observer
   //Aplicar un cambo a un elemento de una registro *****
   modDocumentType(): void {
-    const documetMod = baseCustomers.map(d => ({ ...d, score: d.documentType.name = "Cedula" }));
-    this.selectedData = documetMod.map(d => ({ name: d.fullName, document: d.documentType.name }));
+   // const documetMod = baseCustomers.map(d => ({ ...d, score: d.documentType.name = "Cedula" }));
+   // this.selectedData = documetMod.map(d => ({ name: d.fullName, document: d.documentType.name }));
 
   }
   //no observer
@@ -90,18 +90,18 @@ export class EjercicioComponent {
 
   //no se termino de implementar la idea
   getInfo(fn: (parametro: string[]) => void) {
-    const customersInfo = baseCustomers.map(usuario =>
-      `id de cuenta: ${usuario.id},
-      id de tipo de documento: ${usuario.documentType.id}
-      nombre del documento: ${usuario.documentType.name}
-      estado del documento: ${usuario.documentType.state}
-      numero del documento: ${usuario.document}
-      nombre completo: ${usuario.fullName}
-      correo electronico: ${usuario.email}
-      telefono: ${usuario.phone}
-      contraseña: ${usuario.password}
-      estado de la cuenta: ${usuario.state}`);
-    fn(customersInfo);
+    // const customersInfo = baseCustomers.map(usuario =>
+    //   `id de cuenta: ${usuario.id},
+    //   id de tipo de documento: ${usuario.documentType.id}
+    //   nombre del documento: ${usuario.documentType.name}
+    //   estado del documento: ${usuario.documentType.state}
+    //   numero del documento: ${usuario.document}
+    //   nombre completo: ${usuario.fullName}
+    //   correo electronico: ${usuario.email}
+    //   telefono: ${usuario.phone}
+    //   contraseña: ${usuario.password}
+    //   estado de la cuenta: ${usuario.state}`);
+    // fn(customersInfo);
   }
 
   //funcion Pura

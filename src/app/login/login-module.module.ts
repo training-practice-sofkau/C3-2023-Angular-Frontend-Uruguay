@@ -13,12 +13,14 @@ import {ReactiveFormsModule} from '@angular/forms';
     SinginComponent,
     SingupComponent,
     SingOutComponent,
+    
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[SinginComponent,SingupComponent]
 })
