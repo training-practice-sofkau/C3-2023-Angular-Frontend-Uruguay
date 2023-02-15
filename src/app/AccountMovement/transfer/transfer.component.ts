@@ -23,13 +23,13 @@ export class TransferComponent implements OnInit {
     this.modalService.open(NewTransferComponent);
   }
 
+
+
+
   ngOnInit() {
-    const customerId = localStorage.getItem('account');
-    this.customer = customerId ? JSON.parse(customerId) : null;
-    this.transferService.getTransferList(this.customer?.accountUser.id)
-      .subscribe(
-        data => this.transferList = data,
-        error => console.error(error)
-      );
+   this.transferService.getTransferLista()
+   this.transferService.getTransferListt().subscribe((transfer) => {
+    this.transferList = transfer;
+  })
   }
 }

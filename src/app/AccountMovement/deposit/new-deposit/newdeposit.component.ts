@@ -51,7 +51,7 @@ export class NewdepositComponent implements OnInit {
       }
 
     getAmount(){
-      this.amount =  this.depositForm.value.depositAmount
+      this.amount = parseInt (this.depositForm.value.depositAmount)
       this.DepositService.getAmount(this.amount)
 
     }

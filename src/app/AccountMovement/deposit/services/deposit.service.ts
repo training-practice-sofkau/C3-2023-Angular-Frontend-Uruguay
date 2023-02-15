@@ -56,7 +56,7 @@ getAmount(amount:number)
   createDepositMap(){
       this.depositdata= {
       amount: this.amount,
-     date_time: Date.now(),
+      date_time: Date.now(),
      accountId: this.selectedAccountId ,
      state: true,
      id: this.selectedAccountId
@@ -90,7 +90,7 @@ getAmount(amount:number)
       this.getAccountList(this.account.accountUser.customer.id).subscribe(
         data => {
           console.log(data)
-          this.getDepositListByCustomer() 
+          this.getDepositListByCustomer()
           this.depositList = data
           localStorage.setItem('depositList', JSON.stringify(this.depositList))
           this.accountList.next(this.depositList);
@@ -117,6 +117,7 @@ getDepositListByCustomer() {
         depositList => {
           this.accounts = depositList;
           this.setDepositListt(this.accounts)
+
         },
         error => {
           console.error(error);
