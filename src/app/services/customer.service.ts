@@ -53,9 +53,6 @@ export class CustomerService {
 
           localStorage.setItem("customer", JSON.stringify(responseValue));
         },
-        /* error: (e) => {
-          console.log("Something went wrong, no customer data available!");
-        } */
       })
   }
 
@@ -83,9 +80,6 @@ export class CustomerService {
 
           localStorage.setItem("accounts", JSON.stringify(responseValue));
         },
-        /* error: (e) => {
-          console.log("Something went wrong, no customer data available!");
-        } */
       })
   }
 }

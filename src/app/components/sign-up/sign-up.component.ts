@@ -13,6 +13,7 @@ import { SigninResponseModel, SigninTokenResponseModel } from '../../interfaces/
 import { CustomerService } from '../../services/customer.service';
 import { MessengerService } from '../../services/messenger.service';
 import { AuthService } from '../../services/auth.service';
+import { GoogleAuthProvider } from '@angular/fire/auth';
 
 
 @Component({
@@ -61,25 +62,20 @@ export class SignUpComponent {
 
   }
 
-  registerWithGoogle(){
+  registerWithGoogle() {
 
     this.authService.loginWithFirebase()
+      .then(result => {
 
+        const user = result.user;
 
-    const email = this.signupForm.get('email')?.value;
-    const pass = this.signupForm.get('password')?.value;
+        this.signupForm.controls['email'].setValue(result.user.email);
+        this.signupForm.controls['fullname'].setValue(result.user.displayName);
+        this.signupForm.controls['phone'].setValue(result.user.phoneNumber);
 
+      }).catch (error => { })
+    }
 
-
-    /* this.authService.registerWithFirebase(email, pass)
-      .subscribe(() => {
-        this.loading = true;
-        setTimeout(() => {
-        //  this.validateRegistration(customer);
-        }, 1500);
-      })
- */
-  }
 
 
   validateRegistration(customer: CustomerSignUpModel) {
@@ -97,7 +93,7 @@ export class SignUpComponent {
             const decoded: SigninTokenResponseModel = jwt_decode(token) as SigninTokenResponseModel;
             const account = decoded.id;
 
-console.log('account: ' + account + ' - ' + token)
+            console.log('account: ' + account + ' - ' + token)
 
             localStorage.setItem('token', token);
             localStorage.setItem('currentAccount', account);

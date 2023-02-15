@@ -45,14 +45,14 @@ export class AuthService {
 
   /**
    * User to make a registration of new user with Firebase
-   * @param email
-   * @param pass
-   * @returns promise
+   * param email
+   * param pass
+   * returns promise
    */
-  registerWithFirebase(email: string, pass: string) {
+ /*  registerWithFirebase(email: string, pass: string) {
 
     return from(createUserWithEmailAndPassword(this.auth, email, pass))
-  }
+  } */
 
 
   // Returns access permits to desktop for current user
