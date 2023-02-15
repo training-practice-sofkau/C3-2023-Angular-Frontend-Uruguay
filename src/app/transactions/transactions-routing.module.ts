@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ViewTransfersComponent } from './view-transfers/view-transfers.component';
 import { HomeComponent } from '../shared/home/home.component';
 import { NewDepositComponent } from './new-deposit/new-deposit.component';
+import { GuardLoginGuard } from '../Guards/guard-login.guard';
 
 
 
@@ -11,8 +12,8 @@ const routes : Routes = [
 
     { path : '',
       children: [
-        {path: 'app-view-transfers', component: ViewTransfersComponent },
-        {path: 'app-new-deposit', component: NewDepositComponent },
+        {path: 'app-view-transfers', component: ViewTransfersComponent, canActivate: [GuardLoginGuard ]},
+        {path: 'app-new-deposit', component: NewDepositComponent, canActivate: [GuardLoginGuard ] },
         {path: '**', component: HomeComponent}
       ]
     },

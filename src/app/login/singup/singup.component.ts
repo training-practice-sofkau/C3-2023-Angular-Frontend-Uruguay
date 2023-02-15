@@ -53,6 +53,18 @@ export class SingupComponent {
       this.routes.navigate(['/customer-account/app-user-profile'])});    
     }
   }
+
+
+  pickGoogle(){
+    this.loginService.loginGoogle()
+    .then(response =>{console.log(response)}) //LA RESPUESTA QUE ME ENVIA FIREBASE, ACA VA LA REDIRECCION QUE INDICO
+    .catch(error => console.log(error));
+
+  }
+
+
+
+
   
   
 }
